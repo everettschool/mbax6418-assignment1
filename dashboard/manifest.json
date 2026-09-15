@@ -1,0 +1,9 @@
+{
+  "title": "Gift card reviews: does the model agree with the stars?",
+  "runs": [
+    {
+      "run": "first100_v1",
+      "label": "First 100 · two classes"
+    }
+  ]
+}
