@@ -1,0 +1,16 @@
+LLM anger rows (id, truth, rating, title): [(4, 'NEGATIVE', 1.0, 'Not $10 Gift Cards'), (15, 'NEGATIVE', 1.0, 'One Star'), (17, 'POSITIVE', 5.0, 'No note attached to sent gift card'), (32, 'NEGATIVE', 2.0, 'Mistake'), (51, 'NEGATIVE', 1.0, 'The added value was great, but no more'), (63, 'NEGATIVE', 1.0, "A problem to use at drive thru's"), (91, 'NEGATIVE', 3.0, 'Okay as a gift')]
+  lexicon['great'] (8 emotions only): absent
+  lexicon['easy'] (8 emotions only): absent
+  lexicon['loved'] (8 emotions only): absent
+  lexicon['love'] (8 emotions only): ['joy']
+  lexicon['lov'] (8 emotions only): absent
+  lexicon['gift'] (8 emotions only): ['anticipation', 'joy', 'surprise']
+  lexicon['cheer'] (8 emotions only): ['anticipation', 'joy', 'surprise', 'trust']
+  lexicon['hit'] (8 emotions only): ['anger']
+  lexicon['fits'] (8 emotions only): ['anger']
+  lexicon['credit'] (8 emotions only): ['trust']
+  lexicon['works'] (8 emotions only): absent
+  lexicon['work'] (8 emotions only): absent
+  lookup('loved') -> None | lookup('works') -> None
+  review 17 contains 'loved': True | 'love' among hit words: False
+  review 74: 'great' 'great buy' nrc: NONE []

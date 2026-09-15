@@ -43,6 +43,14 @@ def load_run(entry):
     for name in ["emotion_metrics.json"]:
         if (run_dir / name).exists():
             extras[name.removesuffix(".json")] = json.loads((run_dir / name).read_text())
+    if "emotion_metrics" in extras:
+        # Refuse stale emotion metrics: rows must carry word-list fields and reproduce the agreement count.
+        em = extras["emotion_metrics"]
+        if not all("nrc_emotion" in r for r in rows):
+            raise SystemExit(f"{entry['run']}: emotion_metrics.json exists but predictions lack nrc_emotion; re-run nrc_emotion.py")
+        agree = sum(bool(r["emotion_agree"]) for r in rows)
+        if (em["agreement"]["all_rows"]["agree"], em["n_rows"]) != (agree, len(rows)):
+            raise SystemExit(f"{entry['run']}: emotion_metrics.json does not match predictions; re-run nrc_emotion.py")
     return {
         **entry,
         "sources": {"metrics": rel(run_dir / "metrics.json"), "meta": rel(run_dir / "run_meta.json"),

@@ -152,20 +152,36 @@ def visible_ids(page):
                                      "els => els.filter(e => !e.hidden).map(e => Number(e.dataset.reviewId))")
 
 
-def apply_filters(page, result="all", truth="all", pred="all", query=""):
+def apply_filters(page, result="all", truth="all", pred="all", query="", emo="all"):
     page.click("#f-reset")
     page.select_option("#f-result", result)
     page.select_option("#f-truth", truth)
     page.select_option("#f-pred", pred)
+    if page.locator("#f-emo").count():
+        page.select_option("#f-emo", emo)
+    else:
+        check(emo == "all", "emotion filter requested but #f-emo is absent")
     page.fill("#f-search", query)
 
 
-def expected_ids(rows, result="all", truth="all", pred="all", query=""):
+def emo_group(r):
+    if r["emotion_agree"]:
+        return "agree"
+    if r["nrc_emotion"] == "TIE":
+        return "tie"
+    if r["nrc_emotion"] == "NONE":
+        return "none"
+    return "differ"
+
+
+def expected_ids(rows, result="all", truth="all", pred="all", query="", emo="all"):
     q = query.strip().lower()
     out = []
     for r in rows:
         ok = r["prediction"] == r["truth"]
         if result == "match" and not ok or result == "miss" and ok:
+            continue
+        if emo != "all" and emo_group(r) != emo:
             continue
         if truth != "all" and r["truth"] != truth:
             continue
@@ -193,6 +209,13 @@ def check_filters(page, run):
         {"result": "miss", "query": "card"},
         {"truth": labels[-1], "pred": labels[-1], "query": "the"},
     ]
+    if rows and "nrc_emotion" in rows[0]:
+        cases += [{"emo": g} for g in ["agree", "differ", "tie", "none"]]
+        cases += [{"emo": "differ", "result": "miss"}, {"emo": "tie", "truth": labels[0]},
+                  {"emo": "agree", "query": "gift"}]
+        check(page.locator("#sec-emotion").is_visible(), f"[{run}] emotion section hidden although run has emotions")
+    else:
+        check(not page.locator("#sec-emotion").is_visible(), f"[{run}] emotion section shown for a run without emotions")
     if "NEUTRAL" in labels:
         cases += [{"truth": "NEUTRAL", "pred": "NEGATIVE"}, {"truth": "NEGATIVE", "pred": "NEUTRAL"},
                   {"truth": "NEUTRAL", "result": "miss"}]
@@ -250,6 +273,15 @@ def main():
             n_cases = check_filters(page, run)
             check_untagged_percentages(page, run)
             print(f"[{run}] {n_cases} filter cases checked")
+        # Narrow screens: no run's page may scroll sideways at phone width (tables and the
+        # emotion cross-tab scroll inside their own wrappers).
+        page.set_viewport_size({"width": 400, "height": 900})
+        for run in runs:
+            page.click(f'[data-run-tab="{run}"]')
+            width = page.evaluate("document.documentElement.scrollWidth")
+            check(width <= 400, f"[{run}] page is {width}px wide at a 400px viewport (sideways scroll)")
+            print(f"[{run}] 400px viewport: page scrollWidth {width}px")
+        page.set_viewport_size({"width": 1440, "height": 900})
         check(not errors, f"console errors: {errors}")
         check(not requests, f"non-file network requests: {requests}")
         browser.close()

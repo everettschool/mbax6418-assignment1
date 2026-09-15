@@ -1,0 +1,37 @@
+== joy -> anticipation rows: what decides anticipation
+  id 9: scores={'anticipation': 1} anticipation-only words=['mail'] -> without them anticipation still sole winner: False
+  id 16: scores={'anticipation': 2, 'joy': 1, 'surprise': 1} anticipation-only words=['recipient'] -> without them anticipation still sole winner: False
+  id 41: scores={'anticipation': 2, 'joy': 1, 'trust': 1} anticipation-only words=['mail'] -> without them anticipation still sole winner: False
+  id 42: scores={'anticipation': 3, 'joy': 2, 'surprise': 1, 'trust': 2} anticipation-only words=['mail'] -> without them anticipation still sole winner: False
+  id 70: scores={'anticipation': 8, 'joy': 7, 'surprise': 5, 'trust': 3} anticipation-only words=['mail'] -> without them anticipation still sole winner: False
+  id 71: scores={'anticipation': 4, 'joy': 3, 'surprise': 1, 'trust': 2} anticipation-only words=['time'] -> without them anticipation still sole winner: False
+  id 93: scores={'anger': 1, 'anticipation': 4, 'joy': 3, 'surprise': 2, 'trust': 1} anticipation-only words=['time'] -> without them anticipation still sole winner: False
+  id 95: scores={'anticipation': 9, 'joy': 7, 'sadness': 1, 'surprise': 7, 'trust': 2} anticipation-only words=['store', 'store'] -> without them anticipation still sole winner: False
+
+== hit tokens within 3 tokens after a negator (context)
+  id 1 (POSITIVE, llm=joy, nrc=TIE): 's never too late'
+  id 3 (POSITIVE, llm=joy, nrc=TIE): 'who doesn t love'
+  id 3 (POSITIVE, llm=joy, nrc=TIE): 'doesn t love shopping'
+  id 4 (NEGATIVE, llm=anger, nrc=joy): 'not gift'
+  id 4 (NEGATIVE, llm=anger, nrc=joy): 't able to cover'
+  id 46 (POSITIVE, llm=disgust, nrc=joy): 'card nothing to show'
+  id 57 (POSITIVE, llm=joy, nrc=joy): 'who wouldn t love'
+  id 57 (POSITIVE, llm=joy, nrc=joy): 't love this wonderful'
+  id 63 (NEGATIVE, llm=anger, nrc=trust): 'credit not as gift'
+  id 64 (POSITIVE, llm=joy, nrc=joy): 'but nothing is good'
+  id 76 (POSITIVE, llm=joy, nrc=joy): 'sum no service fee'
+  id 76 (POSITIVE, llm=joy, nrc=joy): 'is not to love'
+  id 90 (POSITIVE, llm=joy, nrc=TIE): 'not necessary i recommend'
+  id 91 (NEGATIVE, llm=anger, nrc=anticipation): 'text without the fees'
+  id 95 (POSITIVE, llm=joy, nrc=anticipation): 't have to leave'
+
+== LLM trust rows: text vs the v2 gloss 'dependable, safe, or convenient'
+  id 14: nrc=TIE easy/convenien/saver/simple present=True | 'Easy..' | 'Reloading is easy. Shopping is easy. Amazon is easy.'
+  id 31: nrc=NONE easy/convenien/saver/simple present=True | 'So easy' | 'Easy to do'
+  id 34: nrc=anticipation easy/convenien/saver/simple present=True | 'Secure' | 'So easy to use and recipients get to choose how to use it.'
+  id 49: nrc=NONE easy/convenien/saver/simple present=True | 'Reccomend' | 'Really easy to load'
+  id 55: nrc=NONE easy/convenien/saver/simple present=True | 'Five Stars' | 'Simple and easy.'
+  id 56: nrc=anticipation easy/convenien/saver/simple present=True | 'As described.' | 'Being able to reload the gift card is a time saver.'
+  id 78: nrc=NONE easy/convenien/saver/simple present=True | 'Was easy to do' | 'Easy to use'
+  id 92: nrc=joy easy/convenien/saver/simple present=False | 'Good gift' | 'Those who already have everything, they can buy an audible book, an ol'
+  id 97: nrc=NONE easy/convenien/saver/simple present=True | 'Easy to use' | 'It’s easy to use and very convenient. I would definitely consider refi'

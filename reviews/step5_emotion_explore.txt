@@ -1,0 +1,119 @@
+agreement: {"all_rows": {"n": 100, "agree": 20, "rate": 0.2}, "excluding_none": {"n": 85, "agree": 20, "rate": 0.23529411764705882}, "excluding_none_and_tie": {"n": 38, "agree": 20, "rate": 0.5263157894736842}}
+
+TIE rows: 47 | LLM emotion inside tied set: 45
+most common tied sets: [(('anticipation', 'joy', 'surprise'), 15), (('anticipation', 'joy'), 14), (('anticipation', 'joy', 'surprise', 'trust'), 13), (('joy', 'surprise'), 1), (('anger', 'anticipation', 'joy', 'surprise', 'trust'), 1), (('anger', 'anticipation', 'joy', 'surprise'), 1)]
+lexicon words hit most in TIE rows: [('gift', 40), ('good', 29), ('perfect', 7), ('birthday', 7), ('money', 5), ('pretty', 4), ('shopping', 4), ('surprise', 4), ('holiday', 4), ('case', 2)]
+lexicon words hit most overall (with emotions): [('gift', 104, ['anticipation', 'joy', 'surprise']), ('good', 33, ['anticipation', 'joy', 'surprise', 'trust']), ('perfect', 17, ['anticipation', 'joy', 'trust']), ('love', 13, ['joy']), ('birthday', 10, ['anticipation', 'joy', 'surprise']), ('time', 9, ['anticipation']), ('happy', 7, ['anticipation', 'joy', 'trust']), ('money', 6, ['anger', 'anticipation', 'joy', 'surprise', 'trust']), ('mail', 6, ['anticipation']), ('pretty', 5, ['anticipation', 'joy', 'trust'])]
+rows whose only hit word is 'gift': 8
+fallback stems used: [(('gifts', 'gift'), 5), (('friends', 'friend'), 3), (('times', 'time'), 3), (('showed', 'show'), 2), (('mailed', 'mail'), 2), (('thrilled', 'thrill'), 1), (('arrives', 'arrive'), 1), (('cases', 'case'), 1), (('embarrassed', 'embarrass'), 1), (('loves', 'love'), 1)]
+
+NONE rows (llm emotion | title | text):
+  15: anger | 'One Star' | 'Card did not work!!!!'
+  31: trust | 'So easy' | 'Easy to do'
+  45: joy | '👍' | '👍'
+  49: trust | 'Reccomend' | 'Really easy to load'
+  55: trust | 'Five Stars' | 'Simple and easy.'
+  67: joy | 'Yay so easy!' | 'So easy! No scraping!'
+  68: joy | ':)' | 'easy to use'
+  69: joy | '10/10' | 'works great'
+  74: joy | 'great' | 'great buy'
+  77: joy | 'Timing' | 'Great timing.'
+  78: trust | 'Was easy to do' | 'Easy to use'
+  79: joy | 'PENGUINS' | 'So so cute!'
+  86: joy | 'Amazing' | 'It can be used for a variety of things.'
+  97: trust | 'Easy to use' | 'It’s easy to use and very convenient. I would definitely consider refill more in'
+  98: joy | 'Easy to use' | 'Very easy to use. I wish I knew about it earlier'
+
+LLM x NRC crosstab (nonzero cells): {'anger->anticipation': 3, 'anger->joy': 1, 'anger->sadness': 1, 'anger->trust': 1, 'anger->NONE': 1, 'anticipation->anticipation': 1, 'anticipation->TIE': 2, 'disgust->joy': 1, 'joy->anticipation': 8, 'joy->joy': 19, 'joy->TIE': 44, 'joy->NONE': 9, 'trust->anticipation': 2, 'trust->joy': 1, 'trust->TIE': 1, 'trust->NONE': 5}
+
+SINGLE-WINNER DIVERGENT rows:
+
+  id 4 truth=NEGATIVE llm=anger nrc=joy scores={'anticipation': 6, 'fear': 1, 'joy': 11, 'sadness': 2, 'surprise': 6, 'trust': 5}
+    TITLE: Not $10 Gift Cards
+    TEXT: I bought this pack of Starbucks Gift cards in 2019. Ive given them to friends and I gave 2 to my daughter.<br />My daughter used one recently and it had $6.52 on the card not $10.00. She had the cashier check the balance of the other card and it had $5.32 on it! She had forgotten that she had these gift cards, so yes, 2 years later decided to use the when she found them! Do they decline in value? 
+    HITS: [['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['friends', 'friend', ['joy', 'trust']], ['daughter', 'daughter', ['joy']], ['daughter', 'daughter', ['joy']], ['cashier', 'cashier', ['trust']], ['forgotten', 'forgotten', ['fear', 'sadness']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['found', 'found', ['joy', 'trust']], ['embarrassed', 'embarrass', ['sadness']], ['gifts', 'gift', ['anticipation', 'joy', 'surprise']], ['friends', 'friend', ['joy', 'trust']], ['receiving', 'receiving', ['anticipation', 'joy', 'surprise']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['cover', 'cover', ['trust']]]
+
+  id 9 truth=POSITIVE llm=joy nrc=anticipation scores={'anticipation': 1}
+    TITLE: Great for saying “thank you” to the mail person, farrier, yard man,etc
+    TEXT: So many people<br />Make your life better so remember them!
+    HITS: [['mail', 'mail', ['anticipation']]]
+
+  id 16 truth=POSITIVE llm=joy nrc=anticipation scores={'anticipation': 2, 'joy': 1, 'surprise': 1}
+    TITLE: Great Product.
+    TEXT: I bought this for a Christmas gift.The recipient really liked it.
+    HITS: [['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['recipient', 'recipient', ['anticipation']]]
+
+  id 17 truth=POSITIVE llm=anger nrc=anticipation scores={'anger': 1, 'anticipation': 9, 'joy': 4, 'surprise': 3, 'trust': 2}
+    TITLE: No note attached to sent gift card
+    TEXT: What a pretty gift card presentation , the recipient loved it ! I have one complaint , I took the time and wrote a short note to the recipient of the gift card so she knew who and why the GC was being sent but the note wasn’t attached. I’ve used the option to write a note on many occasions and several times it showed up without the note . I actually had to contact her to ask if she had checked her
+    HITS: [['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['pretty', 'pretty', ['anticipation', 'joy', 'trust']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['recipient', 'recipient', ['anticipation']], ['complaint', 'complaint', ['anger']], ['time', 'time', ['anticipation']], ['recipient', 'recipient', ['anticipation']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['times', 'time', ['anticipation']], ['showed', 'show', ['trust']], ['mail', 'mail', ['anticipation']]]
+
+  id 32 truth=NEGATIVE llm=anger nrc=sadness scores={'anger': 1, 'sadness': 2, 'trust': 1}
+    TITLE: Mistake
+    TEXT: Hit button by mistake n deduction from credit card on file
+    HITS: [['mistake', 'mistake', ['sadness']], ['hit', 'hit', ['anger']], ['mistake', 'mistake', ['sadness']], ['credit', 'credit', ['trust']]]
+
+  id 34 truth=POSITIVE llm=trust nrc=anticipation scores={'anticipation': 1}
+    TITLE: Secure
+    TEXT: So easy to use and recipients get to choose how to use it.
+    HITS: [['recipients', 'recipient', ['anticipation']]]
+
+  id 41 truth=POSITIVE llm=joy nrc=anticipation scores={'anticipation': 2, 'joy': 1, 'trust': 1}
+    TITLE: Grest Sandwitches !!
+    TEXT: Perfect and I even used Amazon Points - was mailed right out.
+    HITS: [['perfect', 'perfect', ['anticipation', 'joy', 'trust']], ['mailed', 'mail', ['anticipation']]]
+
+  id 42 truth=POSITIVE llm=joy nrc=anticipation scores={'anticipation': 3, 'joy': 2, 'surprise': 1, 'trust': 2}
+    TITLE: GOOD PIZZA !!
+    TEXT: Perfect and I even used Amazon Points - was mailed right out.
+    HITS: [['good', 'good', ['anticipation', 'joy', 'surprise', 'trust']], ['perfect', 'perfect', ['anticipation', 'joy', 'trust']], ['mailed', 'mail', ['anticipation']]]
+
+  id 46 truth=POSITIVE llm=disgust nrc=joy scores={'anticipation': 1, 'joy': 2, 'surprise': 1, 'trust': 1}
+    TITLE: Love it!!
+    TEXT: This is an online gift card nothing to show sorry🤪
+    HITS: [['love', 'love', ['joy']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['show', 'show', ['trust']]]
+
+  id 51 truth=NEGATIVE llm=anger nrc=anticipation scores={'anticipation': 3, 'joy': 2, 'surprise': 2, 'trust': 1}
+    TITLE: The added value was great, but no more
+    TEXT: Purchasing an Amazon gift card came with an added monetary value but no more.<br /><br />A Bronx cheer for you!
+    HITS: [['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['monetary', 'monetary', ['anticipation']], ['cheer', 'cheer', ['anticipation', 'joy', 'surprise', 'trust']]]
+
+  id 56 truth=POSITIVE llm=trust nrc=anticipation scores={'anticipation': 2, 'joy': 1, 'surprise': 1}
+    TITLE: As described.
+    TEXT: Being able to reload the gift card is a time saver.
+    HITS: [['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['time', 'time', ['anticipation']]]
+
+  id 63 truth=NEGATIVE llm=anger nrc=trust scores={'anticipation': 3, 'fear': 2, 'joy': 2, 'sadness': 2, 'surprise': 1, 'trust': 6}
+    TITLE: A problem to use at drive thru's
+    TEXT: I only used the $50 card one time at Burger King. It was difficult to use. Must be run as credit, not as gift card. No remaining balance is given at the end of the transaction. And although it's on me, I misplaced or lost this card after only spending about $6 of it. I was hoping that the seller could provide me with the full card number so that I could at least use it online for other purchases. 
+    HITS: [['problem', 'problem', ['fear', 'sadness']], ['time', 'time', ['anticipation']], ['difficult', 'difficult', ['fear']], ['credit', 'credit', ['trust']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['transaction', 'transaction', ['trust']], ['lost', 'lost', ['sadness']], ['provide', 'provide', ['trust']], ['shows', 'show', ['trust']], ['happy', 'happy', ['anticipation', 'joy', 'trust']], ['credit', 'credit', ['trust']]]
+
+  id 70 truth=POSITIVE llm=joy nrc=anticipation scores={'anticipation': 8, 'joy': 7, 'surprise': 5, 'trust': 3}
+    TITLE: Perfect for a birthday 🎂
+    TEXT: Another nice gift box from Amazon. With the world the way it is now I had to send a gift rather than going to a party. And Amazon has a good selection of gift boxes and fast shipping so my nephew was happy when he received the card in the mail.
+    HITS: [['perfect', 'perfect', ['anticipation', 'joy', 'trust']], ['birthday', 'birthday', ['anticipation', 'joy', 'surprise']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['good', 'good', ['anticipation', 'joy', 'surprise', 'trust']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['happy', 'happy', ['anticipation', 'joy', 'trust']], ['mail', 'mail', ['anticipation']]]
+
+  id 71 truth=POSITIVE llm=joy nrc=anticipation scores={'anticipation': 4, 'joy': 3, 'surprise': 1, 'trust': 2}
+    TITLE: Perfect!
+    TEXT: Bought this for a gift and was very happy it shipped quickly and they received it just in time! Amazon is awesome! 🤩
+    HITS: [['perfect', 'perfect', ['anticipation', 'joy', 'trust']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['happy', 'happy', ['anticipation', 'joy', 'trust']], ['time', 'time', ['anticipation']]]
+
+  id 91 truth=NEGATIVE llm=anger nrc=anticipation scores={'anger': 2, 'anticipation': 4, 'joy': 3, 'surprise': 3, 'trust': 1}
+    TITLE: Okay as a gift
+    TEXT: After I bought several I realized I could have sent "gift" money via text without the fees or wait.
+    HITS: [['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['money', 'money', ['anger', 'anticipation', 'joy', 'surprise', 'trust']], ['fees', 'fee', ['anger']], ['wait', 'wait', ['anticipation']]]
+
+  id 92 truth=POSITIVE llm=trust nrc=joy scores={'anticipation': 3, 'joy': 4, 'surprise': 3, 'trust': 3}
+    TITLE: Good gift
+    TEXT: Those who already have everything, they can buy an audible book, an old rerun of a favorite movie, some little thing they may want, or whatever as a gift for any occasion. I recommend.
+    HITS: [['good', 'good', ['anticipation', 'joy', 'surprise', 'trust']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['favorite', 'favorite', ['joy', 'trust']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['recommend', 'recommend', ['trust']]]
+
+  id 93 truth=POSITIVE llm=joy nrc=anticipation scores={'anger': 1, 'anticipation': 4, 'joy': 3, 'surprise': 2, 'trust': 1}
+    TITLE: So convenient.
+    TEXT: Arrived on time, in perfect shape, and best of all the person receiving the gift can buy whatever they want. One size fits all!
+    HITS: [['time', 'time', ['anticipation']], ['perfect', 'perfect', ['anticipation', 'joy', 'trust']], ['receiving', 'receiving', ['anticipation', 'joy', 'surprise']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['fits', 'fits', ['anger']]]
+
+  id 95 truth=POSITIVE llm=joy nrc=anticipation scores={'anticipation': 9, 'joy': 7, 'sadness': 1, 'surprise': 7, 'trust': 2}
+    TITLE: Can Do It From Home
+    TEXT: Usually I either receive an Amazon gift card as a birthday and/or Christmas gift or I purchase them at a store. Then it's very easy to add the amount to my gift card balance using my cell phone. Well I was stuck inside for several days due to a blizzard and I bought quite a few books then due to a travel ban I could not go to the store to purchase a gift card.<br />So after checking my Gift Card B
+    HITS: [['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['birthday', 'birthday', ['anticipation', 'joy', 'surprise']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['store', 'store', ['anticipation']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['store', 'store', ['anticipation']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['gift', 'gift', ['anticipation', 'joy', 'surprise']], ['manage', 'manage', ['trust']], ['leave', 'leave', ['sadness', 'surprise']], ['comfort', 'comfort', ['anticipation', 'joy', 'trust']]]

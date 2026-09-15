@@ -1,0 +1,51 @@
+browser: chromium 153.0.8010.12; page 144,091 bytes; runs ['first100_v1', 'first100_v2']
+[first100_v1] 60 metric numbers and 14 chart marks checked
+  [first100_v1] filter none: 100 rows OK
+  [first100_v1] filter {'result': 'match'}: 97 rows OK
+  [first100_v1] filter {'result': 'miss'}: 3 rows OK
+  [first100_v1] filter {'truth': 'POSITIVE'}: 93 rows OK
+  [first100_v1] filter {'truth': 'NEGATIVE'}: 7 rows OK
+  [first100_v1] filter {'pred': 'POSITIVE'}: 92 rows OK
+  [first100_v1] filter {'pred': 'NEGATIVE'}: 8 rows OK
+  [first100_v1] filter {'pred': 'UNPARSED'}: 0 rows OK
+  [first100_v1] filter {'query': 'gift'}: 58 rows OK
+  [first100_v1] filter {'query': 'SCAM'}: 0 rows OK
+  [first100_v1] filter {'query': '  card '}: 39 rows OK
+  [first100_v1] filter {'query': 'zzqqxx-no-match'}: 0 rows OK
+  [first100_v1] filter {'result': 'miss', 'truth': 'NEGATIVE'}: 1 rows OK
+  [first100_v1] filter {'result': 'match', 'pred': 'POSITIVE'}: 91 rows OK
+  [first100_v1] filter {'truth': 'POSITIVE', 'pred': 'NEGATIVE'}: 2 rows OK
+  [first100_v1] filter {'result': 'miss', 'query': 'card'}: 2 rows OK
+  [first100_v1] filter {'truth': 'NEGATIVE', 'pred': 'NEGATIVE', 'query': 'the'}: 4 rows OK
+[first100_v1] 17 filter cases checked
+[first100_v2] 189 metric numbers and 115 chart marks checked
+  [first100_v2] filter none: 100 rows OK
+  [first100_v2] filter {'result': 'match'}: 97 rows OK
+  [first100_v2] filter {'result': 'miss'}: 3 rows OK
+  [first100_v2] filter {'truth': 'POSITIVE'}: 93 rows OK
+  [first100_v2] filter {'truth': 'NEGATIVE'}: 7 rows OK
+  [first100_v2] filter {'pred': 'POSITIVE'}: 92 rows OK
+  [first100_v2] filter {'pred': 'NEGATIVE'}: 8 rows OK
+  [first100_v2] filter {'pred': 'UNPARSED'}: 0 rows OK
+  [first100_v2] filter {'query': 'gift'}: 58 rows OK
+  [first100_v2] filter {'query': 'SCAM'}: 0 rows OK
+  [first100_v2] filter {'query': '  card '}: 39 rows OK
+  [first100_v2] filter {'query': 'zzqqxx-no-match'}: 0 rows OK
+  [first100_v2] filter {'result': 'miss', 'truth': 'NEGATIVE'}: 1 rows OK
+  [first100_v2] filter {'result': 'match', 'pred': 'POSITIVE'}: 91 rows OK
+  [first100_v2] filter {'truth': 'POSITIVE', 'pred': 'NEGATIVE'}: 2 rows OK
+  [first100_v2] filter {'result': 'miss', 'query': 'card'}: 2 rows OK
+  [first100_v2] filter {'truth': 'NEGATIVE', 'pred': 'NEGATIVE', 'query': 'the'}: 4 rows OK
+  [first100_v2] filter {'emo': 'agree'}: 20 rows OK
+  [first100_v2] filter {'emo': 'differ'}: 18 rows OK
+  [first100_v2] filter {'emo': 'tie'}: 47 rows OK
+  [first100_v2] filter {'emo': 'none'}: 15 rows OK
+  [first100_v2] filter {'emo': 'differ', 'result': 'miss'}: 2 rows OK
+  [first100_v2] filter {'emo': 'tie', 'truth': 'POSITIVE'}: 47 rows OK
+  [first100_v2] filter {'emo': 'agree', 'query': 'gift'}: 17 rows OK
+[first100_v2] 24 filter cases checked
+[first100_v1] 400px viewport: page scrollWidth 400px
+[first100_v2] 400px viewport: page scrollWidth 400px
+
+1344 checks, 0 failures
+PASS

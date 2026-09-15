@@ -254,6 +254,11 @@ def run(prompt_path, selection, run_name, preview=0):
         "rows_needing_retry": sum(len(r["raw_responses"]) > 1 for r in out),
     }
     (run_dir / "run_meta.json").write_text(json.dumps(meta, indent=2))
+    # Fresh predictions carry no word-list fields; emotion metrics from an earlier pass would be stale.
+    stale = run_dir / "emotion_metrics.json"
+    if stale.exists():
+        stale.unlink()
+        print(f"removed stale {stale.relative_to(ROOT)}; re-run src/nrc_emotion.py {run_dir.relative_to(ROOT)}")
     print(json.dumps({k: meta[k] for k in ["run", "n_rows", "api_call_count", "cache_hits",
                                             "parse_fail_count", "api_error_count"]}))
 

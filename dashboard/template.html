@@ -30,6 +30,10 @@
   --hit:        #3e4a57;
   --miss:       #d9822b;
 
+  /* two emotion readers: the model vs the NRC word list */
+  --llm:        #7a5195;
+  --lex:        #b08a3e;
+
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --radius: 10px;
@@ -158,6 +162,52 @@ tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
 }
 .reset:hover { background: var(--surface); }
 .field select:focus-visible, .field input:focus-visible, .reset:focus-visible { outline: 2px solid var(--pos); outline-offset: 1px; }
+/* ---------- emotion ---------- */
+.emo-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; margin-bottom: 24px; }
+@media (max-width: 720px) { .emo-tiles, .tiles { grid-template-columns: 1fr; } }
+.emo-grid { display: grid; grid-template-columns: minmax(300px, 0.8fr) 1.2fr; gap: 32px; align-items: start; }
+@media (max-width: 1000px) { .emo-grid { grid-template-columns: 1fr; } }
+.h3 { margin: 0 0 4px; font-size: 14px; font-weight: 650; }
+.pairbars { display: grid; grid-template-columns: 96px 1fr 1fr; gap: 7px 14px; align-items: center; font-size: 12.5px; margin-top: 12px; }
+.pairbars .head { color: var(--ink-3); font-size: 11.5px; }
+.pairbars .name { color: var(--ink-2); }
+.hbar { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.htrack { flex: 1; min-width: 0; }
+.hbar .bar { height: 12px; min-width: 2px; min-height: 2px; background: var(--c); border-radius: 0 4px 4px 0; }
+.hbar .v { color: var(--ink-2); font-variant-numeric: tabular-nums; min-width: 2ch; text-align: right; }
+.hbar.zero .v, .hbar.na { color: var(--ink-3); }
+.xt { display: grid; gap: 2px; margin-top: 12px; }
+.xt-head { font-size: 11px; color: var(--ink-2); text-align: center; padding-bottom: 4px; white-space: nowrap; line-height: 1.2; align-self: end; }
+.emo-context { margin: -8px 0 24px; font-size: 13.5px; color: var(--ink-2); max-width: 100ch; }
+.xt-wrap { overflow-x: auto; }
+.xt-wrap .xt { min-width: 560px; }  /* keeps column headers apart; narrower screens scroll the wrapper */
+/* Grid children default to min-width:auto, which lets a wide child (the cross-tab) stretch its
+   column past the screen; 0 lets the child's own scroll wrapper take the overflow instead. */
+.grid-2 > *, .verdict > *, .emo-grid > * { min-width: 0; }
+@media (max-width: 1000px) { .emo-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 960px) { .grid-2, .verdict { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- narrow screens ---------- */
+@media (max-width: 560px) {
+  .wrap { padding-inline: 16px; }
+  .card { padding: 18px 16px; }
+  h1 { font-size: 24px; }
+  .hero-value { font-size: 52px; }
+  .stack-row { grid-template-columns: 1fr; gap: 6px; }
+  .stack-values { grid-column: 1; margin-top: 0; }
+  .cbar { grid-template-columns: 84px minmax(0, 1fr); }
+  .cbar-text { grid-column: 1 / -1; }
+  .pairbars { grid-template-columns: 70px minmax(0, 1fr) minmax(0, 1fr); gap: 6px 8px; }
+  .cm { grid-template-columns: 84px repeat(3, minmax(56px, 1fr)) !important; }
+}
+.xt-rowhead { font-size: 12px; color: var(--ink-2); display: flex; align-items: center; }
+.xt .cell { min-height: 32px; border-radius: 4px; }
+.xt .cell .count { font-size: 13px; font-weight: 600; letter-spacing: 0; }
+.hits { display: none; margin-top: 6px; font-size: 12px; color: var(--ink-3); }
+tr.expanded .hits { display: block; }
+td.emo { white-space: nowrap; font-size: 12.5px; color: var(--ink); }
+td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
+
 .cell.clickable { cursor: pointer; }
 .cell.clickable:hover { filter: brightness(0.94); }
 
@@ -198,6 +248,8 @@ tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
     <section class="card" id="sec-confusion" aria-labelledby="cm-title"></section>
     <section class="card" id="sec-classes" aria-labelledby="classes-title"></section>
   </div>
+
+  <section class="card" id="sec-emotion" aria-labelledby="emo-title" hidden></section>
 
   <section class="card" id="sec-reviews" aria-labelledby="reviews-title"></section>
 
@@ -439,22 +491,125 @@ tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
       precision);
   }
 
+  /* ---------- emotion: the model vs the NRC word list ---------- */
+  const EMOTIONS = ["anger", "anticipation", "disgust", "fear", "joy", "sadness", "surprise", "trust"];
+  const emoName = k => k === "UNPARSED" ? "Unparsed" : k === "TIE" ? "Tie" : k === "NONE" ? "None" : k;
+
+  function renderEmotion(run) {
+    const sec = $("sec-emotion"), em = run.emotion_metrics;
+    if (!em) { sec.hidden = true; sec.replaceChildren(); return; }
+    sec.hidden = false;
+    const E = (path, format, cls) => metric(em, run.sources.emotion_metrics, path, format, run.run, cls);
+
+    const tile = (label, ratePath, groupPath, note) => el("div", { class: "tile" },
+      el("div", { class: "tile-label" }, label),
+      E(ratePath, "pct", "tile-value"),
+      el("div", { class: "tile-note" }, E(groupPath + ".agree", "count"), " of ", E(groupPath + ".n", "count"), " reviews", note));
+
+    const tiles = el("div", { class: "emo-tiles" },
+      tile("Same emotion, all reviews", "agreement_rate_all_rows", "agreement.all_rows"),
+      tile("Leaving out reviews with no lexicon words", "agreement_rate_excluding_none", "agreement.excluding_none"),
+      tile("Also leaving out word-list ties", "agreement_rate_excluding_none_and_tie", "agreement.excluding_none_and_tie"));
+
+    // Skew context: what a constant answer would score against the same word list.
+    const context = el("p", { class: "emo-context" },
+      "For scale: answering “", E("constant_baseline_emotion", "text"), "” for every review would match the word list on ",
+      E("constant_baseline_rate_all_rows", "pct"), " of all reviews (", E("constant_baseline.all_rows.agree", "count"), " of ",
+      E("constant_baseline.all_rows.n", "count"), ") and on ", E("constant_baseline_rate_excluding_none_and_tie", "pct"),
+      " where it has one winner (", E("constant_baseline.excluding_none_and_tie.agree", "count"), " of ",
+      E("constant_baseline.excluding_none_and_tie.n", "count"), "). The word list tied on ", E("tie_rows", "count"),
+      " reviews; the model's emotion is among the tied ones in ", E("tie_rows_llm_emotion_in_tied_set", "count"),
+      ", and “", E("constant_baseline_emotion", "text"), "” alone is among them in ", E("tie_rows_constant_in_tied_set", "count"),
+      ", so ties do not show the model reading emotion better.");
+
+    // Counts per emotion from each reader, on one shared scale.
+    const keys = [...EMOTIONS, "TIE", "NONE", "UNPARSED"];
+    const max = Math.max(1, ...Object.values(em.llm_emotion_counts), ...Object.values(em.nrc_emotion_counts));
+    const bar = (field, key, tone, who) => {
+      const v = em[field][key];
+      if (v === undefined) return el("div", { class: "hbar na" }, "—");
+      const track = el("div", { class: "htrack" });
+      if (v > 0) track.append(mark(run, `emotion.${field}.${key}`, v, `${who}: ${emoName(key)}`, "bar",
+        `width:${(100 * v / max).toFixed(2)}%; --c:var(${tone})`));
+      return el("div", { class: "hbar" + (v ? "" : " zero") }, track, E(`${field}.${key}`, "count", "v"));
+    };
+    const pair = el("div", { class: "pairbars" },
+      el("span", {}), el("span", { class: "head" }, el("span", { class: "key", style: "--c:var(--llm)" }), "Model"),
+      el("span", { class: "head" }, el("span", { class: "key", style: "--c:var(--lex)" }), "NRC word list"),
+      keys.map(k => [el("span", { class: "name" }, emoName(k)),
+        bar("llm_emotion_counts", k, "--llm", "Model"), bar("nrc_emotion_counts", k, "--lex", "Word list")]));
+
+    // Cross-tab: rows = the model's emotion, columns = the word list's emotion.
+    const rows = em.crosstab.rows, cols = em.crosstab.columns;
+    const cmax = Math.max(1, ...Object.values(em.crosstab_cells));
+    const xt = el("div", { class: "xt", role: "table", "aria-label": "Emotion cross-tab, rows are the model, columns are the word list",
+      style: `grid-template-columns: 88px repeat(${cols.length}, minmax(34px, 1fr))` });
+    xt.append(el("div", { class: "cm-axis", style: "align-self:end" }, "Model ↓ words →"));
+    const SHORT = { anticipation: "anticip." };  // keeps a narrow column header on one line
+    for (const c of cols) xt.append(el("div", { class: "xt-head", role: "columnheader", title: emoName(c), "aria-label": emoName(c) },
+      SHORT[c] || emoName(c)));
+    for (const r of rows) {
+      xt.append(el("div", { class: "xt-rowhead", role: "rowheader" }, emoName(r)));
+      for (const c of cols) {
+        const key = `${r}->${c}`, n = em.crosstab_cells[key];
+        const strength = n ? Math.round(14 + 86 * n / cmax) : 0;
+        const tone = r === c ? "--hit" : "--lex";
+        const cell = mark(run, `emotion.crosstab_cells.${key}`, n, `Model: ${emoName(r)} · word list: ${emoName(c)}`,
+          "cell" + (n ? "" : " zero") + (strength > 55 ? " dark" : ""),
+          n ? `background: color-mix(in srgb, var(${tone}) ${strength}%, var(--surface))` : "");
+        cell.setAttribute("role", "cell");
+        cell.append(E(`crosstab_cells.${key}`, "count", "count"));
+        xt.append(cell);
+      }
+    }
+
+    sec.replaceChildren(
+      el("div", { class: "sec-head" }, el("div", {},
+        el("h2", { id: "emo-title" }, "Primary emotion, read two ways"),
+        el("p", { class: "sub" }, "The model names one emotion per review. The NRC word list counts emotion words in the same title and text and takes the most frequent emotion: Tie means several emotions share the top count, None means it found no emotion words."))),
+      tiles,
+      context,
+      el("div", { class: "emo-grid" },
+        el("div", {}, el("p", { class: "h3" }, "How often each reader picks each emotion"),
+          el("p", { class: "sub" }, "Reviews per emotion; both bars share one scale."), pair),
+        el("div", {}, el("p", { class: "h3" }, "Where the two readers land together"),
+          el("p", { class: "sub" }, "Rows: the model's emotion. Columns: the word list's. Slate diagonal = same emotion; ochre = different, darker = more reviews."),
+          el("div", { class: "xt-wrap" }, xt))));
+  }
+
+  function emoGroup(r) {
+    if (r.emotion_agree) return "agree";
+    if (r.nrc_emotion === "TIE") return "tie";
+    if (r.nrc_emotion === "NONE") return "none";
+    return "differ";
+  }
+
   /* ---------- review table ---------- */
   function renderReviews(run) {
     const rows = run.rows;
+    const hasEmo = rows.length > 0 && "nrc_emotion" in rows[0];
     const tbody = el("tbody", {});
     for (const r of rows) {
       const ok = r.prediction === r.truth;
+      const emoCells = !hasEmo ? [] : [
+        el("td", { class: "emo" }, r.llm_emotion || "—"),
+        el("td", { class: "emo" }, r.nrc_emotion === "TIE" ? ["tie", el("small", {}, r.nrc_tied.join(" / "))]
+          : r.nrc_emotion === "NONE" ? "none" : r.nrc_emotion,
+          el("small", {}, r.emotion_agree ? "same as model" : ""))];
+      const hits = !hasEmo ? null : el("div", { class: "hits" }, "Word-list hits: ",
+        r.nrc_hits.length ? r.nrc_hits.map(h => `${h[0]}${h[0] !== h[1] ? " → " + h[1] : ""} (${h[2].join(", ")})`).join("; ") : "none");
       const tr = el("tr", { class: ok ? "" : "is-miss", "data-review-id": r.review_id,
-        "data-correct": String(ok), "data-truth": r.truth, "data-prediction": r.prediction },
+        "data-correct": String(ok), "data-truth": r.truth, "data-prediction": r.prediction,
+        "data-emo": hasEmo ? emoGroup(r) : null },
         el("td", { class: "num" }, r.review_id),
         el("td", { class: "num" }, r.rating + "★"),
         el("td", {}, el("span", { class: "chip", style: `--c:${colorOf(r.truth)}` }, nice(r.truth))),
         el("td", {}, el("span", { class: "chip", style: `--c:${colorOf(r.prediction)}` }, nice(r.prediction))),
         el("td", {}, el("span", { class: "result", style: `--c:var(${ok ? "--hit" : "--miss"})` },
           el("span", { class: "mark", "aria-hidden": "true" }, ok ? "✓" : "✕"), ok ? "Match" : "Miss")),
+        emoCells,
         el("td", { class: "title" }, el("div", { class: "clamp" }, displayText(r.title))),
-        el("td", { class: "text" }, el("div", { class: "clamp" }, displayText(r.text))));
+        el("td", { class: "text" }, el("div", { class: "clamp" }, displayText(r.text)), hits));
       tr.addEventListener("click", () => tr.classList.toggle("expanded"));
       // Search matches the stored text or its display form (entities decoded), case-insensitive.
       const hay = r.title + "\n" + r.text;
@@ -463,7 +618,8 @@ tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
       tbody.append(tr);
     }
     const table = el("table", { id: "review-table" },
-      el("thead", {}, el("tr", {}, ["ID", "Stars", "Answer key", "Model", "Result", "Title", "Review"].map(h => el("th", { scope: "col" }, h)))),
+      el("thead", {}, el("tr", {}, ["ID", "Stars", "Answer key", "Model", "Result",
+        ...(hasEmo ? ["Model emotion", "Word list"] : []), "Title", "Review"].map(h => el("th", { scope: "col" }, h)))),
       tbody);
     $("sec-reviews").replaceChildren(
       el("div", { class: "sec-head" },
@@ -488,12 +644,19 @@ tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
         el("select", { id: "f-truth" }, opt("all", "Any"), run.metrics.labels.map(l => opt(l, nice(l))))),
       el("label", { class: "field" }, el("span", {}, "Model said"),
         el("select", { id: "f-pred" }, opt("all", "Any"), run.metrics.confusion_matrix.columns.map(c => opt(c, nice(c))))),
+      !(run.rows.length && "nrc_emotion" in run.rows[0]) ? null : el("label", { class: "field" }, el("span", {}, "Emotion readers"),
+        el("select", { id: "f-emo" }, opt("all", "Any"), opt("agree", "Same emotion"), opt("differ", "Different emotion"),
+          opt("tie", "Word list tie"), opt("none", "Word list found none"))),
       el("label", { class: "field grow" }, el("span", {}, "Search title and review"),
         el("input", { id: "f-search", type: "search", placeholder: "e.g. scam, balance, birthday", autocomplete: "off" })),
       el("button", { id: "f-reset", class: "reset", type: "button" }, "Reset"));
-    for (const id of ["f-result", "f-truth", "f-pred"]) box.querySelector("#" + id).addEventListener("change", applyFilters);
+    for (const id of ["f-result", "f-truth", "f-pred", "f-emo"]) {
+      const s = box.querySelector("#" + id);
+      if (s) s.addEventListener("change", applyFilters);
+    }
     box.querySelector("#f-search").addEventListener("input", applyFilters);
     box.querySelector("#f-reset").addEventListener("click", () => {
+      if (box.querySelector("#f-emo")) box.querySelector("#f-emo").value = "all";
       box.querySelector("#f-result").value = "all";
       box.querySelector("#f-truth").value = "all";
       box.querySelector("#f-pred").value = "all";
@@ -506,12 +669,14 @@ tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
   function applyFilters() {
     const result = $("f-result").value, truth = $("f-truth").value, pred = $("f-pred").value;
     const q = $("f-search").value.trim().toLowerCase();
+    const emo = $("f-emo") ? $("f-emo").value : "all";
     let shown = 0;
     for (const tr of $("review-table").tBodies[0].rows) {
       const ok = tr.dataset.correct === "true";
       const keep = (result === "all" || (result === "match") === ok)
         && (truth === "all" || tr.dataset.truth === truth)
         && (pred === "all" || tr.dataset.prediction === pred)
+        && (emo === "all" || tr.dataset.emo === emo)
         && (!q || tr._hay.includes(q) || tr._hayDisplay.includes(q));
       tr.hidden = !keep;
       if (keep) shown++;
@@ -525,6 +690,7 @@ tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
   // Clicking a confusion-matrix cell shows exactly those reviews.
   function filterTo(truth, pred) {
     $("f-result").value = "all";
+    if ($("f-emo")) $("f-emo").value = "all";
     $("f-truth").value = truth;
     $("f-pred").value = pred;
     $("f-search").value = "";
@@ -570,6 +736,9 @@ tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
     if (t) { const r = t.getBoundingClientRect(); showTip(t, r.left + r.width / 2, r.top); }
   });
   document.addEventListener("focusout", () => tip.classList.remove("on"));
+  // A click (e.g. a heatmap cell that scrolls to the table) or any scroll hides a stale tooltip.
+  document.addEventListener("click", () => tip.classList.remove("on"));
+  window.addEventListener("scroll", () => tip.classList.remove("on"), { passive: true });
 
   /* ---------- run selection ---------- */
   function selectRun(name) {
@@ -580,6 +749,7 @@ tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
     renderVerdict(current);
     renderConfusion(current);
     renderClasses(current);
+    renderEmotion(current);
     renderReviews(current);
     renderMethod(current);
     document.body.dataset.run = current.run;

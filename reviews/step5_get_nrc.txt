@@ -1,0 +1,29 @@
+{
+  "source": "official",
+  "download_client": "urllib",
+  "download_url": "https://saifmohammad.com/WebDocs/Lexicons/NRC-Emotion-Lexicon.zip",
+  "source_page": "https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm",
+  "zip_sha256": "4edcbd00b1d38ace19ecebca17a50ce08719785b9476cd12d31532eff0fc34e6",
+  "zip_member": "NRC-Emotion-Lexicon/NRC-Emotion-Lexicon-Wordlevel-v0.92.txt",
+  "license_files_in_zip": [
+    "NRC-Emotion-Lexicon/README.txt"
+  ],
+  "lexicon_file": "data/nrc/NRC-Emotion-Lexicon-Wordlevel.txt",
+  "lexicon_sha256": "02c661544f4f12ae0c14f9576a10959e8d39a151bb091e455a71a08dcaa2535a",
+  "columns_found": [
+    "anger",
+    "anticipation",
+    "disgust",
+    "fear",
+    "joy",
+    "negative",
+    "positive",
+    "sadness",
+    "surprise",
+    "trust"
+  ],
+  "word_count": 14154,
+  "words_with_any_of_8_emotions": 4454,
+  "citation": "Saif M. Mohammad and Peter D. Turney. Crowdsourcing a Word-Emotion Association Lexicon. Computational Intelligence, 29(3): 436-465, 2013.",
+  "committed": false
+}
