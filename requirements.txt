@@ -1,0 +1,4 @@
+openai==3.14.0
+python-dotenv==1.2.3
+playwright==1.63.0
+pypdf==6.18.1

@@ -1,0 +1,12 @@
+data/
+cache/
+.env
+__pycache__/
+.venv/
+venv/
+node_modules/
+.DS_Store
+.playwright/
+*.pyc
+# orchestration prompt for the agent session, not a deliverable; names the endpoint host
+prompt.md
