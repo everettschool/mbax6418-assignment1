@@ -1,0 +1,196 @@
+{
+  "run": "balanced150_v3",
+  "label_scheme": "three",
+  "labels": [
+    "POSITIVE",
+    "NEUTRAL",
+    "NEGATIVE"
+  ],
+  "confusion_matrix_orientation": "rows = truth (from rating), columns = predicted",
+  "n_rows": 150,
+  "correct": 110,
+  "incorrect": 40,
+  "accuracy": 0.7333333333333333,
+  "truth_distribution": {
+    "counts": {
+      "POSITIVE": 50,
+      "NEUTRAL": 50,
+      "NEGATIVE": 50
+    },
+    "share": {
+      "POSITIVE": 0.3333333333333333,
+      "NEUTRAL": 0.3333333333333333,
+      "NEGATIVE": 0.3333333333333333
+    }
+  },
+  "prediction_distribution": {
+    "counts": {
+      "POSITIVE": 57,
+      "NEUTRAL": 23,
+      "NEGATIVE": 70,
+      "UNPARSED": 0
+    },
+    "share": {
+      "POSITIVE": 0.38,
+      "NEUTRAL": 0.15333333333333332,
+      "NEGATIVE": 0.4666666666666667,
+      "UNPARSED": 0.0
+    }
+  },
+  "majority_class": "POSITIVE",
+  "majority_baseline_accuracy": 0.3333333333333333,
+  "accuracy_minus_majority_baseline": 0.39999999999999997,
+  "balanced_accuracy": 0.7333333333333334,
+  "majority_baseline_balanced_accuracy": 0.3333333333333333,
+  "macro_f1": 0.704316562113259,
+  "per_class": {
+    "POSITIVE": {
+      "support": 50,
+      "predicted": 57,
+      "correct": 48,
+      "wrong": 2,
+      "precision": 0.8421052631578947,
+      "precision_undefined_never_predicted": false,
+      "recall": 0.96,
+      "f1": 0.8971962616822429
+    },
+    "NEUTRAL": {
+      "support": 50,
+      "predicted": 23,
+      "correct": 17,
+      "wrong": 33,
+      "precision": 0.7391304347826086,
+      "precision_undefined_never_predicted": false,
+      "recall": 0.34,
+      "f1": 0.4657534246575342
+    },
+    "NEGATIVE": {
+      "support": 50,
+      "predicted": 70,
+      "correct": 45,
+      "wrong": 5,
+      "precision": 0.6428571428571429,
+      "precision_undefined_never_predicted": false,
+      "recall": 0.9,
+      "f1": 0.75
+    }
+  },
+  "confusion_matrix": {
+    "rows": [
+      "POSITIVE",
+      "NEUTRAL",
+      "NEGATIVE"
+    ],
+    "columns": [
+      "POSITIVE",
+      "NEUTRAL",
+      "NEGATIVE",
+      "UNPARSED"
+    ],
+    "counts": [
+      [
+        48,
+        2,
+        0,
+        0
+      ],
+      [
+        8,
+        17,
+        25,
+        0
+      ],
+      [
+        1,
+        4,
+        45,
+        0
+      ]
+    ]
+  },
+  "confusion_cells": {
+    "POSITIVE->POSITIVE": 48,
+    "POSITIVE->NEUTRAL": 2,
+    "POSITIVE->NEGATIVE": 0,
+    "POSITIVE->UNPARSED": 0,
+    "NEUTRAL->POSITIVE": 8,
+    "NEUTRAL->NEUTRAL": 17,
+    "NEUTRAL->NEGATIVE": 25,
+    "NEUTRAL->UNPARSED": 0,
+    "NEGATIVE->POSITIVE": 1,
+    "NEGATIVE->NEUTRAL": 4,
+    "NEGATIVE->NEGATIVE": 45,
+    "NEGATIVE->UNPARSED": 0
+  },
+  "confusion_row_share": {
+    "POSITIVE->POSITIVE": 0.96,
+    "POSITIVE->NEUTRAL": 0.04,
+    "POSITIVE->NEGATIVE": 0.0,
+    "POSITIVE->UNPARSED": 0.0,
+    "NEUTRAL->POSITIVE": 0.16,
+    "NEUTRAL->NEUTRAL": 0.34,
+    "NEUTRAL->NEGATIVE": 0.5,
+    "NEUTRAL->UNPARSED": 0.0,
+    "NEGATIVE->POSITIVE": 0.02,
+    "NEGATIVE->NEUTRAL": 0.08,
+    "NEGATIVE->NEGATIVE": 0.9,
+    "NEGATIVE->UNPARSED": 0.0
+  },
+  "misclassified_review_ids": {
+    "POSITIVE->NEUTRAL": [
+      12158,
+      43820
+    ],
+    "NEUTRAL->POSITIVE": [
+      20086,
+      23773,
+      43478,
+      73030,
+      134401,
+      144067,
+      144273,
+      146724
+    ],
+    "NEUTRAL->NEGATIVE": [
+      4880,
+      6689,
+      18646,
+      22082,
+      29467,
+      32735,
+      33885,
+      48586,
+      51332,
+      53136,
+      60608,
+      60681,
+      88199,
+      88606,
+      88787,
+      94255,
+      111780,
+      111827,
+      114708,
+      119458,
+      121389,
+      129667,
+      140179,
+      143371,
+      147336
+    ],
+    "NEGATIVE->POSITIVE": [
+      116236
+    ],
+    "NEGATIVE->NEUTRAL": [
+      31137,
+      49142,
+      99795,
+      136849
+    ]
+  },
+  "parse_fail_count": 0,
+  "api_error_count": 0,
+  "unparsed_count": 0,
+  "unparsed_share": 0.0,
+  "rows_needing_retry": 1
+}

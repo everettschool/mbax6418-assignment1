@@ -1,0 +1,89 @@
+== A. All 40 wrong rows on balanced150_v3 (sent title | sent text)
+[31137] 1★ NEGATIVE->NEUTRAL emo=anticipation | T: '' | X: 'bought it for my dad for is one of those addicted to this coffee chain'
+[49142] 1★ NEGATIVE->NEUTRAL emo=trust | T: 'Nada de especial' | X: 'Es como cualquier otra forma de pagar'
+[99795] 1★ NEGATIVE->NEUTRAL emo=anticipation | T: '' | X: 'There is a very small chance that any Gift Card will not be stolen in the mail.'
+[136849] 1★ NEGATIVE->NEUTRAL emo=anticipation | T: 'Just found it.' | X: 'Just found it.'
+[116236] 1★ NEGATIVE->POSITIVE emo=surprise | T: 'The snowflake tin was a nice decorative addition to contain the gift card.' | X: 'The recipient of the gift card was surprised to find that Amazon gift cards came with a tin as the "wrapping".'
+[4880] 3★ NEUTRAL->NEGATIVE emo=sadness | T: 'It’s a gift card' | X: 'I was hoping I could recharge this card.'
+[6689] 3★ NEUTRAL->NEGATIVE emo=anger | T: "Be wary that sometimes they don't work." | X: 'Beware of dud cards. Sometimes they are rejected as used.'
+[18646] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'No ornament' | X: 'I specially ordered a gift card with a reindeer ornament inside and did not receive the ornament.'
+[22082] 3★ NEUTRAL->NEGATIVE emo=anger | T: "Didn't think that through" | X: "Yes but I wish I could buy another gift card with this, I know your thinking &#34;you can't do that anywhere&#34; but I loaded my account this way bc I've been having security issues with my credit cards, so I thought I'd just load money ahead of time.  I knew better, just wasn't thinking  □[:^/"
+[29467] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Help' | X: 'I bought four of these but there is no way of telling which are 25 and which are fifty. They all came in the same box.'
+[32735] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'There is nothing wrong about this giftcard to review. ...' | X: 'There is nothing wrong about this giftcard to review. But I kept a message in the Gift options and it was not sent along with the gift card!'
+[33885] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Lost $100.00' | X: 'It did not work. I lost the money. Lost'
+[48586] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Looks Easy but Not' | X: 'Sometimes I encountered an error when trying to reload my balance with a credit card. It took longer for the transaction to go through.'
+[51332] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'It’s okay.' | X: 'Hasn’t seems to load like I set it up weekly to do'
+[53136] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'No credit this time' | X: "I didnt get my 10$ for reloding 100$. 😣 other than that, I've used it before and get credit for 10$ ,its awesome."
+[60608] 3★ NEUTRAL->NEGATIVE emo=sadness | T: 'Good idea, convenient, but needs improvement' | X: 'I I was really excited when I saw that I could save $10 on my first $100 reload to a gift card. But then reality sets in and I realized it on the applied to the first reload! Bummer. I am a retired fixed income shopper, so the ten dollar savings was important. I’m disappointed I can’t save every time I reload the card.  It’s a brilliant idea but I probably won’t be using it again. Might be good fo'
+[60681] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Missing message' | X: 'The gift card was delivered the next day, as promised. But I\'m glad I had it sent to me instead of to the birthday boy, because the message and the "to-from" which was supposed to be written on the card, was missing.<br />It was just blank.<br /><br />I\'ve ordered gift cards before and the messages were printed on the card as instructed. I don\'t know what happened here.'
+[88199] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Did not receive mini envelope' | X: 'Did not receive mini envelope'
+[88606] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Difficult to determine gift card value when not purchasing a card with a printed amount.' | X: 'Was unable to find a serial number in my order history to compare to the serial numbers on the cards, and as I had ordered multiple cards in differing amounts at different times, (but stored them together until I was ready to distribute them as gifts), I was unable to easily determine which card was worth which amount. Although the online directions said to match the last four digits on each card '
+[88787] 3★ NEUTRAL->NEGATIVE emo=sadness | T: 'Still a happy recipient of this gift.' | X: 'This was a gift and it took almost five days to be mailed to me. Very disappointed.'
+[94255] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Former way too add funds to amz balance was MUCH easier.' | X: 'AMZ changed mode of loading funds into acct bal - this New way much more difficult. They (AMZ) "fixed" something for the Customer that was NOT broken.'
+[111780] 3★ NEUTRAL->NEGATIVE emo=anger | T: '' | X: 'Not as fast as the egift card'
+[111827] 3★ NEUTRAL->NEGATIVE emo=disgust | T: 'The card and the outbox look so cheap. I ...' | X: 'The card and the outbox look so cheap. I would be embarrassed to give to someone else as a gift.'
+[114708] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Frustrated' | X: 'It kept saying my funds were declined'
+[119458] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Prime video purchases are automatically deducted from gift card balances.' | X: 'I dislike the fact that: when I order a movie on Prime video the amount is automatically deducted from my gift card balance!'
+[121389] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Need Money & Travel via e-delivery' | X: 'Using Amazon & Southwest is a breeze.<br /><br />HOWEVER!! Cannot give 5 stars unless and until you create ability to send via e-delivery.<br /><br />In the past 18 months, via Amazon, I have NOT had ability to use Amex points for Visa/mc/Amex money or Southwest tickets, via email delivery, instead having to paying precious cash, because neither can come to me E-mail.<br /><br />On Amazon, I l can'
+[129667] 3★ NEUTRAL->NEGATIVE emo=sadness | T: 'Gift card with incentive that I can’t seem to use' | X: 'I purchased this because they were offering a $15 Amazon gift card with this that supposedly had gone to my account. I read all the fine print about how it can be used. I got an email that it is ready to use, but I can’t seem to find anything to purchase that I can use the $15 off on.  It said for items sold by Amazon and shipped by Amazon. I put things in my cart go to checking and it doesn’t sho'
+[140179] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Disappointing' | X: 'I had the same equivalent model 3 years prior. Was amazing. This one improves physically with the screen. HOWEVER, it constantly has pages "not responding". Any time I click too quickly through a few pages it happens. I was travelling during the last 30 days of my return period or I would have returned it.'
+[143371] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Pivots too much' | X: 'This shaver pivots way too much and will lose contact with skin. You can do better.'
+[147336] 3★ NEUTRAL->NEGATIVE emo=anger | T: 'Gift cards' | X: 'The gift is fine,  but I bought 4 cards.  3 with one amount and one with a different amount and they are not marked.  So I do not know which is which.'
+[20086] 3★ NEUTRAL->POSITIVE emo=trust | T: 'Took awhile to figure out what to do' | X: 'Very fast, accurate and available<br />Took a bit to figure out what to do though. After I figured it out , it was very easy'
+[23773] 3★ NEUTRAL->POSITIVE emo=joy | T: 'Great gifts for prizes at any party that may fall under as useful rather than dollar store items' | X: 'Purchased to give it away as a wedding shower game prizes instead of bath and body items that would allow guests to use the $10 gifts for a more meaningful gift and they could save the gift card and spend it when they would add it to their funds while purchasing gifts for the holidays or birthdays the app is nice and allows me to purchase items as gifts for thank you'
+[43478] 3★ NEUTRAL->POSITIVE emo=joy | T: '' | X: 'Children loved them'
+[73030] 3★ NEUTRAL->POSITIVE emo=joy | T: '' | X: 'I like very good products.'
+[134401] 3★ NEUTRAL->POSITIVE emo=joy | T: 'Yas' | X: 'Yas'
+[144067] 3★ NEUTRAL->POSITIVE emo=joy | T: '' | X: 'Good because I spent my gift card.'
+[144273] 3★ NEUTRAL->POSITIVE emo=trust | T: 'Budgeting ahead of time' | X: 'I appreciate having the ability to get the things I need when it is saved for in a budget..'
+[146724] 3★ NEUTRAL->POSITIVE emo=joy | T: '' | X: 'good'
+[12158] 5★ POSITIVE->NEUTRAL emo=trust | T: "It's a gift card." | X: "You can't really go wrong with a gift card."
+[43820] 5★ POSITIVE->NEUTRAL emo=trust | T: 'just like the description' | X: "It's a gift card, just like the description."
+
+== B. Star/rating words in SENT content (all runs), broader regex
+  balanced150_v3 121389 3★ pred=NEGATIVE text: ...'reeze.<br /><br />HOWEVER!! Cannot give 5 stars unless and until you create ability to '
+  balanced150_v3 140676 1★ pred=NEGATIVE title: ..."I would give this 'zero stars'"
+
+== B2. Is a blank SENT title informative? original empty titles vs blanked star titles, by class (whole file, included rows)
+  POSITIVE: pool 134913; originally empty title 0 (0.0%); blanked star title 30617 (22.7%)
+     among rows whose SENT title is empty, share that are blanked star titles: 100.0%
+  NEGATIVE: pool 14178; originally empty title 0 (0.0%); blanked star title 823 (5.8%)
+     among rows whose SENT title is empty, share that are blanked star titles: 100.0%
+  NEUTRAL: pool 3270; originally empty title 0 (0.0%); blanked star title 428 (13.1%)
+     among rows whose SENT title is empty, share that are blanked star titles: 100.0%
+  near-variant star titles NOT blanked (e.g. 'Five stars!', '5 stars'), by (class, rating): {('POSITIVE', 5): 93, ('POSITIVE', 4): 3, ('NEUTRAL', 3): 3} {'POSITIVE': ['5 star', '4 stars', '5 stars'], 'NEUTRAL': ['3 stars', 'Three stars.', 'Three stars.']}
+
+== C. first100 v1 vs v3 predictions
+  17 5★ v1=NEGATIVE v3=NEGATIVE v3truth=POSITIVE
+  46 5★ v1=NEGATIVE v3=NEUTRAL v3truth=POSITIVE
+  83 5★ v1=POSITIVE v3=NEUTRAL v3truth=POSITIVE
+  91 3★ v1=NEGATIVE v3=NEGATIVE v3truth=NEUTRAL
+  98 3★ v1=POSITIVE v3=POSITIVE v3truth=NEUTRAL
+
+== D. Emotions, balanced150_v3
+  NRC answer counts: Counter({'TIE': 67, 'NONE': 24, 'anticipation': 22, 'trust': 18, 'joy': 8, 'anger': 4, 'fear': 3, 'sadness': 2, 'disgust': 2})
+  NRC answer by truth: {'POSITIVE': {'TIE': 26, 'joy': 7, 'NONE': 11, 'anticipation': 3, 'trust': 3}, 'NEUTRAL': {'anticipation': 11, 'TIE': 17, 'NONE': 11, 'fear': 2, 'trust': 7, 'sadness': 1, 'anger': 1}, 'NEGATIVE': {'sadness': 1, 'TIE': 24, 'trust': 8, 'anticipation': 8, 'NONE': 2, 'fear': 1, 'disgust': 2, 'anger': 3, 'joy': 1}}
+  LLM answer counts: Counter({'anger': 62, 'joy': 46, 'trust': 22, 'anticipation': 8, 'sadness': 6, 'disgust': 3, 'surprise': 2, 'fear': 1})
+  anticipation answers 22; with gift 17; answer if gift hits removed: Counter({'anticipation': 13, 'TIE': 2, 'trust': 1, 'fear': 1})
+  gift-hit rows overall: 74 of 150
+  NRC answer when gift removed, ALL rows: Counter({'TIE': 45, 'NONE': 44, 'trust': 22, 'anticipation': 18, 'joy': 6, 'fear': 5, 'sadness': 4, 'anger': 4, 'disgust': 2})
+  the 16 agreements: [(1088, 'anticipation', 'NEUTRAL'), (7403, 'joy', 'POSITIVE'), (12831, 'joy', 'POSITIVE'), (20086, 'trust', 'NEUTRAL'), (26065, 'joy', 'POSITIVE'), (28744, 'joy', 'POSITIVE'), (64629, 'joy', 'POSITIVE'), (66066, 'joy', 'POSITIVE'), (81141, 'trust', 'NEUTRAL'), (98972, 'trust', 'POSITIVE'), (99897, 'anger', 'NEGATIVE'), (109268, 'joy', 'POSITIVE'), (114708, 'anger', 'NEUTRAL'), (140676, 'anger', 'NEGATIVE'), (144273, 'trust', 'NEUTRAL'), (147222, 'anger', 'NEGATIVE')]
+  nrc_hits keys sample: [['gifts', 'gift', ['anticipation', 'joy', 'surprise']], ['god', 'god', ['anticipation', 'fear', 'joy', 'trust']]]
+  first100_v3: non-joy LLM rows 18 agree among them 0
+  balanced ties/none: Counter({'TIE': 67, 'NONE': 24})
+  POSITIVE: LLM=NRC 8/50; NRC single winner 13
+  NEUTRAL: LLM=NRC 5/50; NRC single winner 22
+  NEGATIVE: LLM=NRC 3/50; NRC single winner 24
+  N->NEG rows NRC answers: Counter({'anticipation': 7, 'TIE': 6, 'NONE': 4, 'trust': 4, 'fear': 2, 'sadness': 1, 'anger': 1})
+
+== E. Blanked-title effect on 3★->POSITIVE
+  blanked 4/10 POSITIVE; not blanked 4/40
+  Fisher one-sided p (>= 4 of 10) = 0.041
+  expected 3★->POSITIVE at mean 6.61 blanked titles: 6.98 vs observed 8
+
+== F. Blanked titles in NEUTRAL->NEGATIVE / by prediction (NEUTRAL row)
+   {'blanked': Counter({'NEUTRAL': 5, 'POSITIVE': 4, 'NEGATIVE': 1}), 'not': Counter({'NEGATIVE': 24, 'NEUTRAL': 12, 'POSITIVE': 4})}
+
+== G. Balanced sample NEGATIVE row: 2★ rows and predictions
+   Counter({(1, 'NEGATIVE'): 38, (2, 'NEGATIVE'): 7, (1, 'NEUTRAL'): 4, (1, 'POSITIVE'): 1})
+  POSITIVE row: Counter({(5, 'POSITIVE'): 48, (5, 'NEUTRAL'): 2})

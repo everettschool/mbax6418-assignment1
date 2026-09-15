@@ -1,0 +1,11 @@
+first100_v3 misclassified: {'POSITIVE->NEUTRAL': [46, 83], 'POSITIVE->NEGATIVE': [17], 'NEUTRAL->POSITIVE': [98], 'NEUTRAL->NEGATIVE': [91]}
+recall: {'POSITIVE': (90, 93), 'NEUTRAL': (0, 2), 'NEGATIVE': (5, 5)}
+emotion agreement: {"all_rows": {"n": 100, "agree": 20, "rate": 0.2}, "excluding_none": {"n": 85, "agree": 20, "rate": 0.23529411764705882}, "excluding_none_and_tie": {"n": 38, "agree": 20, "rate": 0.5263157894736842}} | constant joy {"n": 100, "agree": 22, "rate": 0.22}
+
+Rows whose v3 prediction differs from v1 (v1 binary, v3 three-class):
+  46 (5★) v1=NEGATIVE v3=NEUTRAL truth3=POSITIVE | 'Love it!!' | 'This is an online gift card nothing to show sorry🤪'
+  83 (5★) v1=POSITIVE v3=NEUTRAL truth3=POSITIVE | 'Best gift for someone you don’t know what to ' | 'This was for a gift'
+
+The two 3★ reviews in batch_100: [(91, 'NEGATIVE', 'Okay as a gift'), (98, 'POSITIVE', 'Easy to use')]
+
+balanced150_v3 texts that mention stars in the customer's own words (sent to the model): [(121389, 3, 'NEGATIVE', '5 stars')]

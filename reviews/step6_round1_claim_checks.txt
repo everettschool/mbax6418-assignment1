@@ -1,0 +1,9 @@
+balanced150_v3 word-list 'anticipation' answers: 22; with 'gift' among hit words: 17 [1088, 11674, 20858, 22082, 22402, 28824, 33769, 60681, 63787, 87935, 88606, 88787, 116329, 119173, 121389, 129667, 131304]
+
+Texts behind the 'could not use the card / lost money -> NEGATIVE' rule claim:
+  [33885] 3★ predicted NEGATIVE | TITLE: Lost $100.00 | TEXT: It did not work. I lost the money. Lost
+  [114708] 3★ predicted NEGATIVE | TITLE: Frustrated | TEXT: It kept saying my funds were declined
+  [6689] 3★ predicted NEGATIVE | TITLE: Be wary that sometimes they don't work. | TEXT: Beware of dud cards. Sometimes they are rejected as used.
+
+NEUTRAL row predictions (truth NEUTRAL): {'NEUTRAL': 17, 'NEGATIVE': 25, 'POSITIVE': 8}
+LLM emotion for the 25 NEUTRAL->NEGATIVE rows: {'sadness': 4, 'anger': 20, 'disgust': 1}

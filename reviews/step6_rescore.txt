@@ -1,0 +1,12 @@
+first100_v1: accuracy 97.0% (97/100); majority baseline 93.0% (POSITIVE); balanced accuracy 91.8%; unparsed 0
+  truth counts: {'POSITIVE': 93, 'NEGATIVE': 7} | predicted counts: {'POSITIVE': 92, 'NEGATIVE': 8, 'UNPARSED': 0}
+  confusion (rows=truth): {'POSITIVE->POSITIVE': 91, 'POSITIVE->NEGATIVE': 2, 'POSITIVE->UNPARSED': 0, 'NEGATIVE->POSITIVE': 1, 'NEGATIVE->NEGATIVE': 6, 'NEGATIVE->UNPARSED': 0}
+first100_v2: accuracy 97.0% (97/100); majority baseline 93.0% (POSITIVE); balanced accuracy 91.8%; unparsed 0
+  truth counts: {'POSITIVE': 93, 'NEGATIVE': 7} | predicted counts: {'POSITIVE': 92, 'NEGATIVE': 8, 'UNPARSED': 0}
+  confusion (rows=truth): {'POSITIVE->POSITIVE': 91, 'POSITIVE->NEGATIVE': 2, 'POSITIVE->UNPARSED': 0, 'NEGATIVE->POSITIVE': 1, 'NEGATIVE->NEGATIVE': 6, 'NEGATIVE->UNPARSED': 0}
+first100_v3: accuracy 95.0% (95/100); majority baseline 93.0% (POSITIVE); balanced accuracy 65.6%; unparsed 0
+  truth counts: {'POSITIVE': 93, 'NEUTRAL': 2, 'NEGATIVE': 5} | predicted counts: {'POSITIVE': 91, 'NEUTRAL': 2, 'NEGATIVE': 7, 'UNPARSED': 0}
+  confusion (rows=truth): {'POSITIVE->POSITIVE': 90, 'POSITIVE->NEUTRAL': 2, 'POSITIVE->NEGATIVE': 1, 'POSITIVE->UNPARSED': 0, 'NEUTRAL->POSITIVE': 1, 'NEUTRAL->NEUTRAL': 0, 'NEUTRAL->NEGATIVE': 1, 'NEUTRAL->UNPARSED': 0, 'NEGATIVE->POSITIVE': 0, 'NEGATIVE->NEUTRAL': 0, 'NEGATIVE->NEGATIVE': 5, 'NEGATIVE->UNPARSED': 0}
+balanced150_v3: accuracy 73.3% (110/150); majority baseline 33.3% (POSITIVE); balanced accuracy 73.3%; unparsed 0
+  truth counts: {'POSITIVE': 50, 'NEUTRAL': 50, 'NEGATIVE': 50} | predicted counts: {'POSITIVE': 57, 'NEUTRAL': 23, 'NEGATIVE': 70, 'UNPARSED': 0}
+  confusion (rows=truth): {'POSITIVE->POSITIVE': 48, 'POSITIVE->NEUTRAL': 2, 'POSITIVE->NEGATIVE': 0, 'POSITIVE->UNPARSED': 0, 'NEUTRAL->POSITIVE': 8, 'NEUTRAL->NEUTRAL': 17, 'NEUTRAL->NEGATIVE': 25, 'NEUTRAL->UNPARSED': 0, 'NEGATIVE->POSITIVE': 1, 'NEGATIVE->NEUTRAL': 4, 'NEGATIVE->NEGATIVE': 45, 'NEGATIVE->UNPARSED': 0}

@@ -10,6 +10,7 @@ For every runs/*/predictions.jsonl (and any extra files given on the command lin
   5. No non-title/text field value of the row appears in the template part, and the
      distinctive ones (asin, parent_asin, user_id, timestamp) appear nowhere at all.
   6. Titles or texts that are only a star phrase ("Five Stars") were blanked, never sent.
+  7. No sent title or text is a star count in another spelling ("5 stars", "Three stars.").
 Occurrences of the forbidden words inside a review's own words are counted and
 reported, not failed: they are the customer's text, not a leak.
 """
@@ -24,6 +25,9 @@ import classify as cl  # noqa: E402
 import load_data as ld  # noqa: E402
 
 FORBIDDEN = re.compile(r"\b(rating|star|stars|helpful|verified)\b", re.IGNORECASE)
+# Wider than the exact blanking rule: a sent title or text that is only a star count in any spelling
+# ("5 stars", "Three stars.", "zero star") would be the rating itself reaching the model.
+STAR_VARIANT = re.compile(r"^\W*(zero|one|two|three|four|five|[0-5](\.\d)?)\s*-?\s*stars?\W*$", re.IGNORECASE)
 DISTINCTIVE = ["asin", "parent_asin", "user_id", "timestamp"]
 
 
@@ -55,6 +59,9 @@ def audit(pred_path, prompt_file, prompt_sha=None):
         for field in ("title", "text"):
             if cl.STAR_TITLE.match(src[field]) and f"<<<{src[field]}>>>" in full:
                 errors.append(f"{rid}: star-phrase {field} '{src[field]}' was sent to the model")
+        for field, value in (("title", cl.model_title(src["title"])), ("text", cl.model_text(src["text"]))):
+            if STAR_VARIANT.match(value):
+                errors.append(f"{rid}: sent {field} '{value}' is a star-count phrase the blanking rule missed")
         star_titles += bool(cl.STAR_TITLE.match(src["title"]) or cl.STAR_TITLE.match(src["text"]))
         own_word_hits += bool(FORBIDDEN.search(cl.model_title(src["title"]) + "\n" + cl.model_text(src["text"])))
         for field, value in src.items():

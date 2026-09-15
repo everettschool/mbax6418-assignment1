@@ -1,0 +1,4 @@
+review_id=1088 status=OK raw=['LABEL=NEUTRAL;EMOTION=anticipation']
+review_id=1818 status=OK raw=['LABEL=POSITIVE;EMOTION=joy']
+review_id=2669 status=OK raw=['LABEL=NEGATIVE;EMOTION=anger']
+preview stats: {'api_calls': 3, 'cache_hits': 0}

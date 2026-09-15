@@ -1,0 +1,129 @@
+== A. All 25 NEUTRAL->NEGATIVE rows: exactly what the model saw (title | text)
+
+[4880] LLM emotion sadness | word list TIE
+  TITLE: 'It’s a gift card'
+  TEXT: 'I was hoping I could recharge this card.'
+
+[6689] LLM emotion anger | word list fear
+  TITLE: "Be wary that sometimes they don't work."
+  TEXT: 'Beware of dud cards. Sometimes they are rejected as used.'
+
+[18646] LLM emotion anger | word list TIE
+  TITLE: 'No ornament'
+  TEXT: 'I specially ordered a gift card with a reindeer ornament inside and did not receive the ornament.'
+
+[22082] LLM emotion anger | word list anticipation
+  TITLE: "Didn't think that through"
+  TEXT: "Yes but I wish I could buy another gift card with this, I know your thinking &#34;you can't do that anywhere&#34; but I loaded my account this way bc I've been having security issues with my credit cards, so I thought I'd just load money ahead of time.  I knew better, just wasn't thinking  □[:^/"
+
+[29467] LLM emotion anger | word list NONE
+  TITLE: 'Help'
+  TEXT: 'I bought four of these but there is no way of telling which are 25 and which are fifty. They all came in the same box.'
+
+[32735] LLM emotion anger | word list TIE
+  TITLE: 'There is nothing wrong about this giftcard to review. ...'
+  TEXT: 'There is nothing wrong about this giftcard to review. But I kept a message in the Gift options and it was not sent along with the gift card!'
+
+[33885] LLM emotion anger | word list sadness
+  TITLE: 'Lost $100.00'
+  TEXT: 'It did not work. I lost the money. Lost'
+
+[48586] LLM emotion anger | word list trust
+  TITLE: 'Looks Easy but Not'
+  TEXT: 'Sometimes I encountered an error when trying to reload my balance with a credit card. It took longer for the transaction to go through.'
+
+[51332] LLM emotion anger | word list NONE
+  TITLE: 'It’s okay.'
+  TEXT: 'Hasn’t seems to load like I set it up weekly to do'
+
+[53136] LLM emotion anger | word list trust
+  TITLE: 'No credit this time'
+  TEXT: "I didnt get my 10$ for reloding 100$. 😣 other than that, I've used it before and get credit for 10$ ,its awesome."
+
+[60608] LLM emotion sadness | word list trust
+  TITLE: 'Good idea, convenient, but needs improvement'
+  TEXT: 'I I was really excited when I saw that I could save $10 on my first $100 reload to a gift card. But then reality sets in and I realized it on the applied to the first reload! Bummer. I am a retired fixed income shopper, so the ten dollar savings was important. I’m disappointed I can’t save every time I reload the card.  It’s a brilliant idea but I probably won’t be using it again. Might be good for someone that wants to set up a gift card for someone else or to budget there monthly savings towards shopping.'
+
+[60681] LLM emotion anger | word list anticipation
+  TITLE: 'Missing message'
+  TEXT: 'The gift card was delivered the next day, as promised. But I\'m glad I had it sent to me instead of to the birthday boy, because the message and the "to-from" which was supposed to be written on the card, was missing.<br />It was just blank.<br /><br />I\'ve ordered gift cards before and the messages were printed on the card as instructed. I don\'t know what happened here.'
+
+[88199] LLM emotion anger | word list NONE
+  TITLE: 'Did not receive mini envelope'
+  TEXT: 'Did not receive mini envelope'
+
+[88606] LLM emotion anger | word list anticipation
+  TITLE: 'Difficult to determine gift card value when not purchasing a card with a printed amount.'
+  TEXT: 'Was unable to find a serial number in my order history to compare to the serial numbers on the cards, and as I had ordered multiple cards in differing amounts at different times, (but stored them together until I was ready to distribute them as gifts), I was unable to easily determine which card was worth which amount. Although the online directions said to match the last four digits on each card to the four digits listed for each card on my order history, I was unable to find any such 4 digits in my order history related to the purchased gift cards.'
+
+[88787] LLM emotion sadness | word list anticipation
+  TITLE: 'Still a happy recipient of this gift.'
+  TEXT: 'This was a gift and it took almost five days to be mailed to me. Very disappointed.'
+
+[94255] LLM emotion anger | word list fear
+  TITLE: 'Former way too add funds to amz balance was MUCH easier.'
+  TEXT: 'AMZ changed mode of loading funds into acct bal - this New way much more difficult. They (AMZ) "fixed" something for the Customer that was NOT broken.'
+
+[111780] LLM emotion anger | word list NONE
+  TITLE: ''
+  TEXT: 'Not as fast as the egift card'
+
+[111827] LLM emotion disgust | word list TIE
+  TITLE: 'The card and the outbox look so cheap. I ...'
+  TEXT: 'The card and the outbox look so cheap. I would be embarrassed to give to someone else as a gift.'
+
+[114708] LLM emotion anger | word list anger
+  TITLE: 'Frustrated'
+  TEXT: 'It kept saying my funds were declined'
+
+[119458] LLM emotion anger | word list TIE
+  TITLE: 'Prime video purchases are automatically deducted from gift card balances.'
+  TEXT: 'I dislike the fact that: when I order a movie on Prime video the amount is automatically deducted from my gift card balance!'
+
+[121389] LLM emotion anger | word list anticipation
+  TITLE: 'Need Money & Travel via e-delivery'
+  TEXT: 'Using Amazon & Southwest is a breeze.<br /><br />HOWEVER!! Cannot give 5 stars unless and until you create ability to send via e-delivery.<br /><br />In the past 18 months, via Amazon, I have NOT had ability to use Amex points for Visa/mc/Amex money or Southwest tickets, via email delivery, instead having to paying precious cash, because neither can come to me E-mail.<br /><br />On Amazon, I l can take 1,000,000 Amex points convert to gift cards (food, stores, etc), in 5 min, but not for Visa, MC, or Air travel. Bad bad bad'
+
+[129667] LLM emotion sadness | word list anticipation
+  TITLE: 'Gift card with incentive that I can’t seem to use'
+  TEXT: 'I purchased this because they were offering a $15 Amazon gift card with this that supposedly had gone to my account. I read all the fine print about how it can be used. I got an email that it is ready to use, but I can’t seem to find anything to purchase that I can use the $15 off on.  It said for items sold by Amazon and shipped by Amazon. I put things in my cart go to checking and it doesn’t show. I have purchased items thinking maybe I have to go through with the purchase. Please tell me what actually qualifies for this $15 credit. Disappointed since the gift card promotion is the reason I decided to buy the Apple gift card when I did.'
+
+[140179] LLM emotion anger | word list anticipation
+  TITLE: 'Disappointing'
+  TEXT: 'I had the same equivalent model 3 years prior. Was amazing. This one improves physically with the screen. HOWEVER, it constantly has pages "not responding". Any time I click too quickly through a few pages it happens. I was travelling during the last 30 days of my return period or I would have returned it.'
+
+[143371] LLM emotion anger | word list trust
+  TITLE: 'Pivots too much'
+  TEXT: 'This shaver pivots way too much and will lose contact with skin. You can do better.'
+
+[147336] LLM emotion anger | word list TIE
+  TITLE: 'Gift cards'
+  TEXT: 'The gift is fine,  but I bought 4 cards.  3 with one amount and one with a different amount and they are not marked.  So I do not know which is which.'
+
+== B. The 4 NEGATIVE->NEUTRAL rows: exactly what the model saw
+  [31137] TITLE: '' | TEXT: 'bought it for my dad for is one of those addicted to this coffee chain'
+  [49142] TITLE: 'Nada de especial' | TEXT: 'Es como cualquier otra forma de pagar'
+  [99795] TITLE: '' | TEXT: 'There is a very small chance that any Gift Card will not be stolen in the mail.'
+  [136849] TITLE: 'Just found it.' | TEXT: 'Just found it.'
+
+== C. Word-list 'anticipation' answers: which anticipation words, and the answer without 'gift'
+  [1088] LLM anticipation | anticipation-tagged hit words ['gift', 'god', 'long', 'time'] | text 'I have so many gifts needed for the next few months these should be a God send. It took a long time on chat to find out how much they were for I wish '
+  [11674] LLM anger | anticipation-tagged hit words ['delivery', 'gift', 'delivery', 'attempt', 'delivery', 'store', 'delivery'] | text 'I know nothing is wrong with these gift cards.  However, I was at home day before yesterday when the UPS driver put the notice about a delivery attemp'
+  [119173] LLM anger | anticipation-tagged hit words ['money', 'money', 'gift', 'attempt', 'money', 'gift', 'gift', 'money'] | text 'Stole my money! I had a gift card with a very low balance, so I attempted to put money on it. I transferred $25.00 to my Amazon gift card from my chec'
+  answer if 'gift' hits removed: {'anticipation': 18, 'TIE': 2, 'trust': 1, 'fear': 1}
+  anticipation-tagged words across those 22 answers: [('gift', 31), ('time', 13), ('delivery', 7), ('money', 7), ('store', 4), ('expected', 4), ('happen', 3), ('recipient', 3), ('attempt', 2), ('good', 2)]
+  word-list answers on the 25 NEUTRAL->NEGATIVE rows: {'TIE': 6, 'fear': 2, 'anticipation': 7, 'NONE': 4, 'sadness': 1, 'trust': 4, 'anger': 1}
+
+== D. Is an empty sent title informative?
+  originally empty titles by class: {'POSITIVE': 0, 'NEGATIVE': 0, 'NEUTRAL': 0} of pools {'POSITIVE': 134913, 'NEGATIVE': 14178, 'NEUTRAL': 3270}
+  NEUTRAL rows predicted POSITIVE: blanked 4/10, not blanked 4/40; Fisher exact one-sided p = 0.041
+  expected 3★->POSITIVE at the seed-mean 6.613 blanked titles: 6.98 (observed 8)
+
+== E. Star-rating title variants NOT caught by the exact blanking rule (whole file, included rows)
+  counts by (class, stars): {('POSITIVE', 5): 93, ('POSITIVE', 4): 3, ('NEGATIVE', 1): 4, ('NEUTRAL', 3): 3} | total 103
+  examples: {'POSITIVE': ['5 star', '4 stars', '5 stars', '5 stars!'], 'NEGATIVE': ['ZERO STARS!', '0 stars', 'Zero stars', '0 stars'], 'NEUTRAL': ['3 stars', 'Three stars.', 'Three stars.']}
+  variant phrases in the title/text actually sent in the four saved runs: none
+
+== F. Balanced run's per-class recalls applied to batch_100's class mix (93/2/5)
+  expected accuracy = (93*0.96 + 2*0.34 + 5*0.9) / 100 = 0.9446 (first100_v3 observed 0.95)
+  first100_v3 balanced accuracy 0.6559; if one of its 2 NEUTRAL reviews had been right: 0.8226

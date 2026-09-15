@@ -1,0 +1,1334 @@
+MBAX 6418 · ASSIGNMENT 1 · AMAZON REVIEWS '23, GIFT CARDS
+
+Gift card reviews: does the model agree with the stars?
+Balanced 150 · three classes
+First 100 · three classes
+First 100 · two classes + emotion
+First 100 · two classes
+
+150 reviews: for each three-class truth label, random.Random(42).sample(sorted included review_ids of that class, 50); ids saved to sample_ids.json. Prompt prompts/sentiment_v3.txt, three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative.
+Stars in this sample: 1★ 43 · 2★ 7 · 3★ 50 · 4★ 0 · 5★ 50.
+
+Agreement with the star rating
+
+73.3%
+
+110 of 150 reviews match the answer key.
+
+Unreadable model replies: 0 (counted as wrong).
+
+The model matches the stars on 73.3% of these reviews. Answering any one class every time would score 33.3%.
+
+Reading the reviews is worth +40.0 pts over that shortcut. Weakest class: Neutral, 17 of 50 right (34.0%).
+
+Always-one-class baseline
+33.3%
+every class is the same size here
+Balanced accuracy
+73.3%
+average hit rate per class; baseline 33.3%
+Macro F1
+70.4%
+precision and recall, classes weighted equally
+How the classes are split: the stars' answer key vs the model's answers
+Answer key
+Positive 50 (33.3%)
+Neutral 50 (33.3%)
+Negative 50 (33.3%)
+Model
+Positive 57 (38.0%)
+Neutral 23 (15.3%)
+Negative 70 (46.7%)
+Unparsed 0 (0.0%)
+Where the answers land
+
+Confusion matrix. Rows are the answer key from the stars; columns are the model's prediction. Slate cells on the diagonal are right; amber cells are mistakes. Darker means a bigger share of the row.
+
+STARS SAY ↓ / MODEL SAYS →
+Positive
+Neutral
+Negative
+Unparsed
+Positive
+50 reviews
+48
+96.0% of row
+2
+4.0% of row
+0
+0.0% of row
+0
+0.0% of row
+Neutral
+50 reviews
+8
+16.0% of row
+17
+34.0% of row
+25
+50.0% of row
+0
+0.0% of row
+Negative
+50 reviews
+1
+2.0% of row
+4
+8.0% of row
+45
+90.0% of row
+0
+0.0% of row
+Right (diagonal)
+Wrong
+Unparsed = the reply could not be read; always wrong
+Right answers by class
+
+For each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.
+
+Positive
+48 of 50 · 96.0%
+Neutral
+17 of 50 · 34.0%
+Negative
+45 of 50 · 90.0%
+Right
+Wrong
+
+When the model says a class, how often it is right (precision): Positive 84.2% · Neutral 73.9% · Negative 64.3%
+
+Each class is a third of this sample. The whole file is 88.5% positive, 2.1% neutral and 9.3% negative. Re-weighted to that mix, precision would be about: Positive 99.4% · Neutral 14.5% · Negative 88.6% (a rough estimate from this sample).
+
+Primary emotion, read two ways
+
+The model names one emotion per review. The NRC word list counts emotion words in the same title and text and takes the most frequent emotion: Tie means several emotions share the top count, None means it found no emotion words.
+
+Same emotion, all reviews
+10.7%
+16 of 150 reviews
+Leaving out reviews with no lexicon words
+12.7%
+16 of 126 reviews
+Also leaving out word-list ties
+27.1%
+16 of 59 reviews
+
+For scale: answering “anger” for every review would match the word list on 2.7% of all reviews (4 of 150) and on 6.8% where it has one winner (4 of 59). The word list tied on 67 reviews; the model's emotion is among the tied ones in 37 of them, and “anger” is among them in 6. The strongest single constant is “anticipation”, which matches the word list on 14.7% of all reviews (22 of 150); the model is at 10.7%.
+
+How often each reader picks each emotion
+
+Reviews per emotion; both bars share one scale.
+
+Model
+NRC word list
+anger
+62
+4
+anticipation
+8
+22
+disgust
+3
+2
+fear
+1
+3
+joy
+46
+8
+sadness
+6
+2
+surprise
+2
+0
+trust
+22
+18
+Tie
+—
+67
+None
+—
+24
+Unparsed
+0
+—
+
+Where the two readers land together
+
+Rows: the model's emotion. Columns: the word list's. Slate diagonal = same emotion; ochre = different, darker = more reviews.
+
+MODEL ↓ WORDS →
+anger
+anticip.
+disgust
+fear
+joy
+sadness
+surprise
+trust
+Tie
+None
+anger
+4
+12
+2
+3
+1
+2
+0
+9
+25
+4
+anticipation
+0
+1
+0
+0
+0
+0
+0
+0
+5
+2
+disgust
+0
+0
+0
+0
+0
+0
+0
+0
+2
+1
+fear
+0
+0
+0
+0
+0
+0
+0
+0
+1
+0
+joy
+0
+2
+0
+0
+7
+0
+0
+2
+24
+11
+sadness
+0
+2
+0
+0
+0
+0
+0
+3
+1
+0
+surprise
+0
+1
+0
+0
+0
+0
+0
+0
+1
+0
+trust
+0
+4
+0
+0
+0
+0
+0
+4
+8
+6
+Unparsed
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+Every review, with the model's answer
+
+Stars decide the answer key; the model saw only the title and review text. Mistakes are tinted. Click a row to read the full review (HTML line breaks and entities in the raw text are rendered for reading).
+
+Showing 150 of 150 reviews
+Result
+All
+Matches only
+Mistakes only
+Answer key (stars)
+Any
+Positive
+Neutral
+Negative
+Model said
+Any
+Positive
+Neutral
+Negative
+Unparsed
+Emotion readers
+Any
+Same emotion
+Different emotion
+Word list tie
+Word list found none
+Search title and review
+Reset
+ID	Stars	Answer key	Model	Result	Model emotion	Word list	Title	Review
+1088	3★	Neutral	Neutral	✓Match	anticipation	anticipation
+same as model
+	
+bit of a learning curve
+	
+I have so many gifts needed for the next few months these should be a God send. It took a long time on chat to find out how much they were for I wish it was printed on the card
+
+1818	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Great
+	
+It's good
+
+2669	1★	Negative	Negative	✓Match	anger	sadness
+	
+The website is a scam to register your visa card.
+	
+Beware that it is nearly impossible to register your card on the website listed on card. Error messages or it redirects you to a another site. The number directs to go to website and the website directs you their number.
+
+4880	3★	Neutral	Negative	✕Miss	sadness	tie
+anticipation / joy / surprise
+	
+It’s a gift card
+	
+I was hoping I could recharge this card.
+
+5080	3★	Neutral	Neutral	✓Match	anticipation	tie
+anticipation / joy / surprise
+	
+Three Stars
+	
+I wanted gift cards in the amount of $100.
+
+6014	3★	Neutral	Neutral	✓Match	trust	none
+	
+Ok
+	
+None
+
+6689	3★	Neutral	Negative	✕Miss	anger	fear
+	
+Be wary that sometimes they don't work.
+	
+Beware of dud cards. Sometimes they are rejected as used.
+
+6979	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / trust
+	
+Cute Little Amazon Box
+	
+Really cool little box that closes with magnets. It's definitely a fun idea.
+
+7403	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Great gift!
+	
+Love the snowflake tin!
+
+8328	5★	Positive	Positive	✓Match	trust	tie
+anticipation / joy / surprise
+	
+Gift
+	
+Easy to use
+
+8878	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Five Stars
+	
+Makes a great gift purchase
+
+9606	1★	Negative	Negative	✓Match	anger	tie
+anger / disgust / fear
+	
+Horrible
+	
+Absolutely horrible. The card is invalid and not usable. Why would Amazon “sell” these!!!
+
+10062	2★	Negative	Negative	✓Match	anger	tie
+anticipation / joy / surprise
+	
+Nice design, but needs to be redesigned.
+	
+I get it that this gift card can be loaded with various amounts, but like most gift cards there should be a way to make it clear the gift amount on the card or envelope.
+
+The envelope was damaged and I had to tape it up.
+
+11089	2★	Negative	Negative	✓Match	anger	trust
+	
+Didn't show up on my account
+	
+Purchased a Reload and was supposed to get a $10 bonus but it didn't show up on my account. Called Amazon and they said they would put it on but I wouldn't see it. Hard to know if it was really added.
+
+11674	2★	Negative	Negative	✓Match	anger	anticipation
+	
+Trouble with delivery
+	
+I know nothing is wrong with these gift cards. However, I was at home day before yesterday when the UPS driver put the notice about a delivery attempt on my door. I found the notice 20 min after he left. He neither knocked or rang the bell. I had cancelled an appointment to be home for this important delivery. Now, because of the stupidity of the driver, I, who am handicapped, must get myself to the UPS store for pickup. There was no sense in this. Perhaps Fed-EX would be a better choice for delivery.
+
+12158	5★	Positive	Neutral	✕Miss	trust	tie
+anticipation / joy / surprise
+	
+It's a gift card.
+	
+You can't really go wrong with a gift card.
+
+12831	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+This is the perfect gift
+	
+What’s not to like? This card is good for anything, anytime. I love using the Amazon Gift Card to show anyone they are loved and appreciated.
+
+18646	3★	Neutral	Negative	✕Miss	anger	tie
+anticipation / joy / surprise
+	
+No ornament
+	
+I specially ordered a gift card with a reindeer ornament inside and did not receive the ornament.
+
+19508	5★	Positive	Positive	✓Match	joy	none
+	
+Five Stars
+	
+kids like it
+
+19979	3★	Neutral	Neutral	✓Match	trust	none
+	
+Ok
+	
+Ok
+
+20086	3★	Neutral	Positive	✕Miss	trust	trust
+same as model
+	
+Took awhile to figure out what to do
+	
+Very fast, accurate and available
+Took a bit to figure out what to do though. After I figured it out , it was very easy
+
+20858	3★	Neutral	Neutral	✓Match	trust	anticipation
+	
+... time I ordered custom gift cards they turned out awesome. This time
+	
+The first time I ordered custom gift cards they turned out awesome. This time, the screen preview looked great but when I received them, the colors were off and could not see one of the colors, as it was so faint. Otherwise, I am pleased with the user friendly website and the entire process. Items ship promptly and have always been in good condition upon receipt. I'm sure this order was just a fluke.
+
+22082	3★	Neutral	Negative	✕Miss	anger	anticipation
+	
+Didn't think that through
+	
+Yes but I wish I could buy another gift card with this, I know your thinking "you can't do that anywhere" but I loaded my account this way bc I've been having security issues with my credit cards, so I thought I'd just load money ahead of time. I knew better, just wasn't thinking □[:^/
+
+22126	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / trust
+	
+Great way to shop
+	
+Love reloading from home. Easier to do than constantly going back and forth to the store for more cards. Very easy and convenient
+
+22176	3★	Neutral	Neutral	✓Match	trust	none
+	
+Alright
+	
+It's alright.
+
+22402	5★	Positive	Positive	✓Match	joy	anticipation
+	
+Nice as a gift!
+	
+Great for gift giving and I loved the first time reload incentive!
+
+23773	3★	Neutral	Positive	✕Miss	joy	tie
+anticipation / joy
+	
+Great gifts for prizes at any party that may fall under as useful rather than dollar store items
+	
+Purchased to give it away as a wedding shower game prizes instead of bath and body items that would allow guests to use the $10 gifts for a more meaningful gift and they could save the gift card and spend it when they would add it to their funds while purchasing gifts for the holidays or birthdays the app is nice and allows me to purchase items as gifts for thank you
+
+24440	5★	Positive	Positive	✓Match	joy	trust
+	
+Good purchase
+	
+Bought for my son in law. He liked it.
+
+26065	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+My daughter loves it!
+	
+Bought during lightening deals and have as a gift. My daughter was happy to use.
+
+26333	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Great gift card
+	
+This card holder was unbelievably AWESOME!
+
+27188	5★	Positive	Positive	✓Match	joy	none
+	
+Movies
+	
+Great
+
+28744	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Five Stars
+	
+Love these bags!
+
+28824	5★	Positive	Positive	✓Match	joy	anticipation
+	
+This is so cute!
+	
+Used for a group gift card. There just happened to be 5 of us and she's a dog mama.
+
+29257	1★	Negative	Negative	✓Match	anger	anticipation
+	
+Does not work
+	
+This card does not work at Lorna Jane online or retail store. Will try for a refund
+
+29467	3★	Neutral	Negative	✕Miss	anger	none
+	
+Help
+	
+I bought four of these but there is no way of telling which are 25 and which are fifty. They all came in the same box.
+
+30779	1★	Negative	Negative	✓Match	anger	tie
+anger / anticipation / disgust / fear / joy / surprise
+	
+Never
+	
+Horrible I got Different $20 $ 40 for my 9 nieces & nieces considering I had bought smaller gifts so younger ones . All came in one package no denomination tags . Total bs
+
+31137	1★	Negative	Neutral	✕Miss	anticipation	none
+	
+One Star
+	
+bought it for my dad for is one of those addicted to this coffee chain
+
+31331	5★	Positive	Positive	✓Match	joy	none
+	
+Five Stars
+	
+tyvm
+
+32735	3★	Neutral	Negative	✕Miss	anger	tie
+anticipation / joy / surprise
+	
+There is nothing wrong about this giftcard to review. ...
+	
+There is nothing wrong about this giftcard to review. But I kept a message in the Gift options and it was not sent along with the gift card!
+
+33653	1★	Negative	Negative	✓Match	anger	tie
+sadness / trust
+	
+Do not buy
+	
+The first card had nothing loaded on it. Called Amazon and they sent another card which also had nothing on it. According to darden both were invalid card numbers.
+
+33769	2★	Negative	Negative	✓Match	anger	anticipation
+	
+Two Stars
+	
+Bad Deal!!
+You pay over 10 to receive a 10 gift card. Best to buy at store
+
+33885	3★	Neutral	Negative	✕Miss	anger	sadness
+	
+Lost $100.00
+	
+It did not work. I lost the money. Lost
+
+35162	5★	Positive	Positive	✓Match	joy	trust
+	
+Great way to save
+	
+Back in the day, my bank used to have something called Christmas Club where the bank would automatically put your chosen amount from your checking to Christmas account, and in December you would have money saved up. That never worked for me because I always would up using it for other things.
+
+I am now using my Amazon Gift Card as a Christmas Club. Every month I move a certain amount from my checking account to the card. The best part is, I can't use it anywhere but Amazon. So, I can't decide that I want to go out to a posh restaurant just for the hell of it, my money is safely at Amazon where I can't get it. That's a good thing, because I do most of my shopping at Amazon anyway, and now, I'll have "free" money to spend for Christmas, or save up for something my family really wants.
+
+36112	1★	Negative	Negative	✓Match	anger	trust
+	
+Don’t think they gave me the $25 they promised
+	
+Very confusing to use…. I was supposed to get $25 to try this out and had no way to see if I got it, nor where to find my balance, and Amazon is not easy to communicate with so I will not be recharging this ever again.
+
+39307	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Gift card in a tin
+	
+Liked the packaging; perfect with a ribbon bow for a gift
+
+43478	3★	Neutral	Positive	✕Miss	joy	none
+	
+Three Stars
+	
+Children loved them
+
+43820	5★	Positive	Neutral	✕Miss	trust	tie
+anticipation / joy / surprise
+	
+just like the description
+	
+It's a gift card, just like the description.
+
+44675	1★	Negative	Negative	✓Match	anger	tie
+anticipation / joy / trust
+	
+Not happy
+	
+Reloaded wrong balance because it didn’t confirm for me to check.
+
+44991	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Looks Good
+	
+I like because it worked
+
+47781	3★	Neutral	Neutral	✓Match	anticipation	none
+	
+So so
+	
+They work so so I had 1 go on blink that day and others didn't fit what I needed it for. Be sure it doesn't work before sending back.
+
+48586	3★	Neutral	Negative	✕Miss	anger	trust
+	
+Looks Easy but Not
+	
+Sometimes I encountered an error when trying to reload my balance with a credit card. It took longer for the transaction to go through.
+
+48789	3★	Neutral	Neutral	✓Match	trust	tie
+anticipation / joy / surprise
+	
+Three Stars
+	
+was a requested gift
+
+49142	1★	Negative	Neutral	✕Miss	trust	none
+	
+Nada de especial
+	
+Es como cualquier otra forma de pagar
+
+49268	3★	Neutral	Neutral	✓Match	anger	tie
+anticipation / trust
+	
+Not what I thought it could be used for
+	
+I can't really complain but I originally got a pre-paid visa card and wanted to use Amazon pay to buy something outside of Amazon. The merchant used Amazon pay but you I guess its just the credit card and not the gift cards so I wasn't able to use it that way but I was able to add the card to my Amazon account and used it to buy something on Amazon so it wasn't a total loss. Annoyed me when it first happens but not enough to stop me from using Amazon again.
+
+50323	1★	Negative	Negative	✓Match	anger	tie
+anticipation / joy / surprise
+	
+confused about this $50 gift card came as two cards is it $25 for $50 did not want $25
+	
+confused about this $50 gift card came as two cards is it $25 for $50 did not want $25
+
+51332	3★	Neutral	Negative	✕Miss	anger	none
+	
+It’s okay.
+	
+Hasn’t seems to load like I set it up weekly to do
+
+53136	3★	Neutral	Negative	✕Miss	anger	trust
+	
+No credit this time
+	
+I didnt get my 10$ for reloding 100$. 😣 other than that, I've used it before and get credit for 10$ ,its awesome.
+
+54441	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / trust
+	
+Perfect
+	
+Fast, easy
+
+56332	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Fun Gift Box
+	
+Great gift box. Makes a boring gift card more fun.
+
+58006	1★	Negative	Negative	✓Match	anger	fear
+	
+WARNING: URL on card is unsecured!
+	
+This is extremely sketchy, the URL provided has no SSL license and is unsecured. Be extremely cautious. Strongly avoid buying this card!
+
+59883	3★	Neutral	Neutral	✓Match	anticipation	tie
+anticipation / joy / surprise
+	
+It was a gift
+	
+It was a gift for back to school supplies
+
+60608	3★	Neutral	Negative	✕Miss	sadness	trust
+	
+Good idea, convenient, but needs improvement
+	
+I I was really excited when I saw that I could save $10 on my first $100 reload to a gift card. But then reality sets in and I realized it on the applied to the first reload! Bummer. I am a retired fixed income shopper, so the ten dollar savings was important. I’m disappointed I can’t save every time I reload the card. It’s a brilliant idea but I probably won’t be using it again. Might be good for someone that wants to set up a gift card for someone else or to budget there monthly savings towards shopping.
+
+60681	3★	Neutral	Negative	✕Miss	anger	anticipation
+	
+Missing message
+	
+The gift card was delivered the next day, as promised. But I'm glad I had it sent to me instead of to the birthday boy, because the message and the "to-from" which was supposed to be written on the card, was missing.
+It was just blank.
+
+I've ordered gift cards before and the messages were printed on the card as instructed. I don't know what happened here.
+
+61019	5★	Positive	Positive	✓Match	joy	none
+	
+👍🏻
+	
+👍🏻
+
+61957	5★	Positive	Positive	✓Match	trust	tie
+anticipation / trust
+	
+Yes, reloading was very efficient.
+	
+Yes, reloading was very efficient.
+
+62470	5★	Positive	Positive	✓Match	trust	tie
+anticipation / joy
+	
+convenient
+	
+very convenient for gifts. if you know someone who'll buy from amazon then give them one of these. the box looks good. i don't know why people were complaining about the bow on the ribbon being flat. mine looked just fine and you can always fix it. it's ribbon. good stuff.
+
+63075	1★	Negative	Negative	✓Match	anger	tie
+anticipation / joy / surprise
+	
+No Longer work
+	
+They re-designed their web site and now gift cards no longer work. You can only enter 1 per purchase and then it doesn't apply it.
+
+63252	5★	Positive	Positive	✓Match	joy	none
+	
+Five Stars
+	
+GREAT PRODUCT THANKS
+
+63787	1★	Negative	Negative	✓Match	anger	anticipation
+	
+NOT a GREAT Deal !!
+	
+In December if you reloaded a $25 gift card would be get $5 off your next order.
+
+WELL, THERE WAS NO $5 OFF MY NEXT ORDER !!
+
+WATCH OUT ITS A SCAM !!!!
+
+64204	1★	Negative	Negative	✓Match	anger	trust
+	
+AVOID. Confusing and convoluted. Just avoid.
+	
+AVOID. I sent an email gift card to a friend through the Spa Finder website and they canceled it without telling me. Total (TOTAL) waste of time and effort. Their reps could not explain why (though they go through this looooong, scripted, "I am happy to help you today and I will provide you with excellent customer service and let's see if we can find out..." OMG. Just stop talking and solve the problem. They could not. Never again. Avoid.
+
+64629	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Great gift
+	
+I loved the box it came in the friend/family member said it was the best gift she got and promised to use it on herself
+
+64766	1★	Negative	Negative	✓Match	fear	tie
+anticipation / joy / surprise
+	
+No money
+	
+So I ordered a $25 gift card as a gift for a co worker. She tried to redeem it and it had no money on it. Sure hope the other 8 I bought have money.
+
+66027	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Amazon Gift Card
+	
+Great for those I buy for who prefer choosing their own gift.
+
+66066	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Wonderful gift
+	
+They love the gift cards was very easy too used
+
+66434	1★	Negative	Negative	✓Match	anger	tie
+anticipation / joy / surprise
+	
+Someone else used Giftcard!!!
+	
+I'll NEVER SEND A GIFT CARD FROM Amazon again!!! Someone stole from my son's front porch and used it within minutes of it being delivered! We reported to Amazon and we were suppose to get a call back within 2 hours but we've not heard back after about 6 hours. It seems like Amazon should be able to stop a purchase, or should have not allowed someone with a name different than on the gift card to use it. Very disappointed in Amazon, and our son didn't get his Christmas present, either!
+
+69540	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Cute gift tag card!
+	
+Christmas gift for nephew. He loved it!
+
+69573	1★	Negative	Negative	✓Match	anger	disgust
+	
+Amazon Customer Service
+	
+Customer Service at Amazon Sucks... Its like 50/50 half the time you get someone super nice. . The other half they are as bad as Cable Service Providers are.. But the concept that Amazon is not at all responsible for its delivery due to hiring out like UPS is horrible... Its just utter Rubbish sometimes the utter low grade customer service you get from them.
+
+72260	3★	Neutral	Neutral	✓Match	disgust	none
+	
+Not impressed with giftcard design sent
+	
+Giftcard came as advertised but you can get better designs right across the street at Starbucks.
+
+73030	3★	Neutral	Positive	✕Miss	joy	tie
+anticipation / joy / surprise / trust
+	
+Three Stars
+	
+I like very good products.
+
+75162	5★	Positive	Positive	✓Match	joy	tie
+joy / trust
+	
+Five Stars
+	
+Excellent.
+
+76073	1★	Negative	Negative	✓Match	anger	trust
+	
+No value on those cards
+	
+Do not buy. Omg i can not believe this. I gave those as part of christmas present to my kids teachers. And i have one left for myself. Not until recently I found out It has no value in it.
+
+76564	1★	Negative	Negative	✓Match	anger	tie
+anticipation / joy / sadness / surprise
+	
+Not activated
+	
+We purchased two of these cards as a Christmas gift for our son. He has gone more than once to the theatre and the cards do not work. The manager was unable to correct the issue. VERY FRUSTRATING!
+
+76589	1★	Negative	Negative	✓Match	anger	tie
+fear / sadness
+	
+I give up!
+	
+If it ain't broke.....
+
+78268	5★	Positive	Positive	✓Match	joy	tie
+joy / surprise
+	
+Cute Gift Card
+	
+Such a wonderful way to dress up a gift card!
+
+79103	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Forever 21
+	
+What's not to love about this store& it's gift cards. Always a big selection. Seasonal items go very early so buy it when you see it.
+
+79198	5★	Positive	Positive	✓Match	joy	none
+	
+Five Stars
+	
+Very cute ‼️
+
+81141	3★	Neutral	Neutral	✓Match	trust	trust
+same as model
+	
+Easy to do but very slow.
+	
+Worked well but it was very slow took several days to show the balance.
+
+82446	5★	Positive	Positive	✓Match	trust	none
+	
+Five Stars
+	
+Very easy to do. Walks you through step by step to reload your card.
+
+83550	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / trust
+	
+fast response
+	
+Led clip lamp , just what I needed for a bedroom reading light in my RV. Perfect .
+
+87620	1★	Negative	Negative	✓Match	anger	tie
+anticipation / joy / surprise
+	
+Bag bar code on my gift card
+	
+Ordered a gift card from ( Amazon) the code doesn't work.
+
+87935	1★	Negative	Negative	✓Match	surprise	anticipation
+	
+Not a good gift
+	
+Much smaller than expected.
+
+88199	3★	Neutral	Negative	✕Miss	anger	none
+	
+Did not receive mini envelope
+	
+Did not receive mini envelope
+
+88606	3★	Neutral	Negative	✕Miss	anger	anticipation
+	
+Difficult to determine gift card value when not purchasing a card with a printed amount.
+	
+Was unable to find a serial number in my order history to compare to the serial numbers on the cards, and as I had ordered multiple cards in differing amounts at different times, (but stored them together until I was ready to distribute them as gifts), I was unable to easily determine which card was worth which amount. Although the online directions said to match the last four digits on each card to the four digits listed for each card on my order history, I was unable to find any such 4 digits in my order history related to the purchased gift cards.
+
+88787	3★	Neutral	Negative	✕Miss	sadness	anticipation
+	
+Still a happy recipient of this gift.
+	
+This was a gift and it took almost five days to be mailed to me. Very disappointed.
+
+94255	3★	Neutral	Negative	✕Miss	anger	fear
+	
+Former way too add funds to amz balance was MUCH easier.
+	
+AMZ changed mode of loading funds into acct bal - this New way much more difficult. They (AMZ) "fixed" something for the Customer that was NOT broken.
+
+96801	5★	Positive	Positive	✓Match	joy	tie
+joy / surprise
+	
+Makes a Wonderful Christmas Gift!!!!!!
+	
+Christmas Gift
+
+97886	5★	Positive	Positive	✓Match	joy	none
+	
+Say as has been done
+	
+The very best.
+
+98972	5★	Positive	Positive	✓Match	trust	trust
+same as model
+	
+Use it without any worries
+	
+The best way of purchasing Nintendo Credit
+
+99280	2★	Negative	Negative	✓Match	anger	tie
+anticipation / joy / surprise
+	
+Disappointed and messed
+	
+I ordered a gift card for $225, on a Nativity card, in the plaid box. Card arrived on a plain $50 "a" amazon card. Turns out that $225 was loaded on the $50 card,after contacting customer service. Very confusing and not what I ordered as a gift. Rather disappointing that $50 was on a $225 card! Why offer c,hoice selections fo gift cards if thy're not going to be sent out that way??
+
+99795	1★	Negative	Neutral	✕Miss	anticipation	tie
+anticipation / surprise
+	
+One Star
+	
+There is a very small chance that any Gift Card will not be stolen in the mail.
+
+99897	2★	Negative	Negative	✓Match	anger	anger
+same as model
+	
+Purchase Fee is Way To High
+	
+At most, the purchase fee for these should .99. It's a gift card. Visa will definitely get their money out of its use.
+
+Otherwise, the fine print is printed to fine (make it bigger!).
+
+103415	5★	Positive	Positive	✓Match	trust	tie
+anger / anticipation / fear / joy / trust
+	
+Its safer than cash
+	
+I travel a lot and It's like cash but safer in a strange environment
+
+104225	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+gift card
+	
+Always a great present.
+
+104442	2★	Negative	Negative	✓Match	anger	tie
+anticipation / sadness
+	
+If you do not receive it call immediately!
+	
+They lost track of both of them, missed our event they were being used for. 1 1/2 week late. Amazon customer service once we found how to call them were all over it.
+
+104511	3★	Neutral	Neutral	✓Match	trust	anticipation
+	
+but at the same time it's nice to know that it takes that much in case ...
+	
+It took a lot longer than I expected to reload my balance as I already have all the necessary information, but at the same time it's nice to know that it takes that much in case someone else were to get a hold of my account
+
+109268	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+amazing
+	
+i love it very nice
+
+109689	5★	Positive	Positive	✓Match	trust	none
+	
+Five Stars
+	
+Easy way to add to your balance for purchases!
+
+111185	1★	Negative	Negative	✓Match	anger	tie
+anger / disgust / fear
+	
+Terrible Experience
+	
+I Bought the Card to For Gas On My Travels and The Card does Not even Work, I’ve went to 2 different gas stations and Both were declined. When I call the number on the back of the card it says I Have the available funds but When I try to use the card it completely declines. Horrible experience horrible customer service. And I Will really needed this Gift Card. But I will Never Purchase this ever again.
+
+111780	3★	Neutral	Negative	✕Miss	anger	none
+	
+Three Stars
+	
+Not as fast as the egift card
+
+111827	3★	Neutral	Negative	✕Miss	disgust	tie
+anticipation / joy / sadness / surprise
+	
+The card and the outbox look so cheap. I ...
+	
+The card and the outbox look so cheap. I would be embarrassed to give to someone else as a gift.
+
+114708	3★	Neutral	Negative	✕Miss	anger	anger
+same as model
+	
+Frustrated
+	
+It kept saying my funds were declined
+
+116236	1★	Negative	Positive	✕Miss	surprise	tie
+anticipation / surprise
+	
+The snowflake tin was a nice decorative addition to contain the gift card.
+	
+The recipient of the gift card was surprised to find that Amazon gift cards came with a tin as the "wrapping".
+
+116329	1★	Negative	Negative	✓Match	anger	anticipation
+	
+The first time I've ordered a gift card on which the recipient had to scan it to determine its amount!
+	
+Why in the world can't the amount the card is for be included on the gift card? The recipient should not have to go through a scanning process to determine it's worth and use it..
+
+119173	1★	Negative	Negative	✓Match	anger	anticipation
+	
+Stole my money!!
+	
+Stole my money! I had a gift card with a very low balance, so I attempted to put money on it. I transferred $25.00 to my Amazon gift card from my checking on the website. I was charged the $25, but it never loaded to my gift card! What the s***? Literally stole my money!
+
+119458	3★	Neutral	Negative	✕Miss	anger	tie
+anticipation / joy / surprise
+	
+Prime video purchases are automatically deducted from gift card balances.
+	
+I dislike the fact that: when I order a movie on Prime video the amount is automatically deducted from my gift card balance!
+
+119679	3★	Neutral	Neutral	✓Match	trust	anticipation
+	
+Three Stars
+	
+everything seems to work as expected.
+
+121389	3★	Neutral	Negative	✕Miss	anger	anticipation
+	
+Need Money & Travel via e-delivery
+	
+Using Amazon & Southwest is a breeze.
+
+HOWEVER!! Cannot give 5 stars unless and until you create ability to send via e-delivery.
+
+In the past 18 months, via Amazon, I have NOT had ability to use Amex points for Visa/mc/Amex money or Southwest tickets, via email delivery, instead having to paying precious cash, because neither can come to me E-mail.
+
+On Amazon, I l can take 1,000,000 Amex points convert to gift cards (food, stores, etc), in 5 min, but not for Visa, MC, or Air travel. Bad bad bad
+
+121949	5★	Positive	Positive	✓Match	joy	none
+	
+Five Stars
+	
+Loved ALL of it. I bought many and will do the same again. Bravo Anaxon!
+
+122720	5★	Positive	Positive	✓Match	joy	none
+	
+Excelente tarjeta
+	
+Excelente tarjeta. Económica y con una solución térmica que funciona 10/10.
+La tarjeta es muy silenciosa y me toco con memorias hynx, las cuales me dan un gran margen de oc.
+Recomendadisima cuando esta en oferta
+
+122948	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Good for reloading
+	
+What I like about the Amazon reload is that it really doesn’t have a minimum to how you can put in. Stuff like this is quite astonishing perfect when you have a small amount of money left in a gift card. I’d say personally, this is best by far for reloads.
+
+123096	1★	Negative	Negative	✓Match	anger	tie
+anticipation / surprise
+	
+You better use it or you might lose it!
+	
+BEWARE! I will NEVER use Amazon's gift card balance again. I had a balance of almost $500. Someone hacked my account used the balance and Amazon would not replace it. If you get a gift card use it immediately or you might lose it.
+
+123203	1★	Negative	Negative	✓Match	anger	trust
+	
+Was very confused . PLEASE BRING BACK THE OLD SYSTEM
+	
+The explanation of how to reload was not clear. Very confusing.
+
+124665	1★	Negative	Negative	✓Match	sadness	trust
+	
+These cards are not redeemable
+	
+I was so excited to get these two $15 Audible gift cards, but they are not redeemable. I have been trying for a week and keep getting the message "Sorry, we can't process your request right now. Please try again later or contact Customer Care". I did reach out to customer care and did not get a reasonable response. I still don't have my two Audible credits. Very disappointed. All I want to do is to listen to some audiobooks in isolation.
+
+128016	3★	Neutral	Neutral	✓Match	disgust	tie
+anticipation / joy / surprise
+	
+Three Stars
+	
+The box is nice, but the gift card is cardboard, not plastic.
+
+129667	3★	Neutral	Negative	✕Miss	sadness	anticipation
+	
+Gift card with incentive that I can’t seem to use
+	
+I purchased this because they were offering a $15 Amazon gift card with this that supposedly had gone to my account. I read all the fine print about how it can be used. I got an email that it is ready to use, but I can’t seem to find anything to purchase that I can use the $15 off on. It said for items sold by Amazon and shipped by Amazon. I put things in my cart go to checking and it doesn’t show. I have purchased items thinking maybe I have to go through with the purchase. Please tell me what actually qualifies for this $15 credit. Disappointed since the gift card promotion is the reason I decided to buy the Apple gift card when I did.
+
+129711	1★	Negative	Negative	✓Match	anger	joy
+	
+went to use it today September 18 she was told there was no money on it and it was in active
+	
+What a rip off money was not put on the card there was supposed to be $100 my daughter went to use it and she was told it was not active what a rip off
+
+131115	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Five Stars
+	
+Great gift
+
+131304	1★	Negative	Negative	✓Match	anger	anticipation
+	
+Amazon keeps deny reload because they keep changing billing address
+	
+I occassionally get AMEX gift cards that I use to reload an Amazon gift card balance with. However, Amazon repeatedly automatically makes minor changes to the billing address associated with my AMEX card, but are big enough changes on AMEX's side to decline the transaction -- leaving me without a gift card balance reload and down $1.00 for two weeks time since that's the amount Amazon charges when initiating the reload. NOT COOL, AMAZON! THERE NEEDS TO BE A WAY TO ENTER A BILLING ADDRESS ***AS-IS***
+
+134312	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Five Stars
+	
+Great gift
+
+134393	1★	Negative	Negative	✓Match	anger	tie
+anger / fear / sadness / surprise
+	
+Does not work ANYWHERE!
+	
+I activated card. See balance. And card is rejected EVERYWHERE! I can’t even add it to my own PayPal account. I’ll have to call and argue but this was sent as money to help in an emergency! Not helping! DO NOT EVER RELY ON THIS IF YOU HAVE AN EMERGENCY!
+
+134401	3★	Neutral	Positive	✕Miss	joy	none
+	
+Yas
+	
+Yas
+
+136849	1★	Negative	Neutral	✕Miss	anticipation	tie
+joy / trust
+	
+Just found it.
+	
+Just found it.
+
+137093	1★	Negative	Negative	✓Match	anger	tie
+anger / anticipation / disgust / fear / joy / sadness / surprise / trust
+	
+A waste of money.
+	
+The product did not work at all for me or my husband. We tried it for a week and actually slept worse than before taking it.
+
+137730	3★	Neutral	Neutral	✓Match	anticipation	tie
+anticipation / joy / surprise
+	
+Three Stars
+	
+Just needed a gift card
+
+138151	3★	Neutral	Neutral	✓Match	trust	tie
+joy / trust
+	
+Helpful Review
+	
+Has tons of options and can find most things however the quality of the products seems to be cheap /generic....
+
+138561	1★	Negative	Negative	✓Match	anger	tie
+anticipation / disgust
+	
+One Star
+	
+Amazon totally messed up delivery date. Will never order again !
+
+140179	3★	Neutral	Negative	✕Miss	anger	anticipation
+	
+Disappointing
+	
+I had the same equivalent model 3 years prior. Was amazing. This one improves physically with the screen. HOWEVER, it constantly has pages "not responding". Any time I click too quickly through a few pages it happens. I was travelling during the last 30 days of my return period or I would have returned it.
+
+140676	1★	Negative	Negative	✓Match	anger	anger
+same as model
+	
+I would give this 'zero stars'
+	
+card did not work
+company did not properly activate it
+I am now fighting with them online, via email and phone
+their customer service is absolutely awful
+DO NOT order from this company-- EVER!!
+
+141083	1★	Negative	Negative	✓Match	anger	tie
+fear / sadness
+	
+Missing mini envelope
+	
+No envelope
+
+141193	1★	Negative	Negative	✓Match	anger	disgust
+	
+AWFUL!!
+	
+This was suppose to come in a gift box. I received it in an ugly gray snowflake tin. YUK!! The card had marks all over it like greasy fingers, but the smudges would not rub off. It looked terrible to give to someone for a gift. I was very disappointed. And...It took 5 days to get it, not 1.
+
+142699	1★	Negative	Negative	✓Match	sadness	trust
+	
+cant buy stuff without credit card
+	
+I cant buy stuff without credit card :( im sad
+
+143127	1★	Negative	Negative	✓Match	anger	tie
+anticipation / joy / surprise
+	
+Not activated
+	
+I have these as gifts and they were not activated. How embarrassing. I want my money back.
+
+143371	3★	Neutral	Negative	✕Miss	anger	trust
+	
+Pivots too much
+	
+This shaver pivots way too much and will lose contact with skin. You can do better.
+
+144067	3★	Neutral	Positive	✕Miss	joy	tie
+anticipation / joy / surprise
+	
+Three Stars
+	
+Good because I spent my gift card.
+
+144273	3★	Neutral	Positive	✕Miss	trust	trust
+same as model
+	
+Budgeting ahead of time
+	
+I appreciate having the ability to get the things I need when it is saved for in a budget..
+
+146724	3★	Neutral	Positive	✕Miss	joy	tie
+anticipation / joy / surprise / trust
+	
+Three Stars
+	
+good
+
+147222	1★	Negative	Negative	✓Match	anger	anger
+same as model
+	
+it is confusing and sucks money from your creadit card in seconds
+	
+i tried to by a gift cards for somebody. instead it charged me for my own gift card. I hate it completely, especially because they do not explain you what it is, but charge you right away. Bloody money suckers.
+
+147336	3★	Neutral	Negative	✕Miss	anger	tie
+anticipation / joy / surprise
+	
+Gift cards
+	
+The gift is fine, but I bought 4 cards. 3 with one amount and one with a different amount and they are not marked. So I do not know which is which.
+
+147577	1★	Negative	Negative	✓Match	anger	trust
+	
+Does not work
+	
+The card does not work. I don't know who to contact to fix it.
+
+149306	5★	Positive	Positive	✓Match	trust	anticipation
+	
+Worked like as expected
+	
+Worked just as intended!
+How this run was made
+
+Everything on this page is read from the run's saved files; nothing is typed in by hand.
+
+Model
+cyankiwi/Qwen3.6-35B-A3B-AWQ-4bit
+Temperature
+0
+Prompt file
+prompts/sentiment_v3.txt
+Prompt sha256
+eee1dc0e0560d137816d851dd524565326ab09a89d7e3ddc84b8b91e4f70b2e9
+Reviews scored
+150
+Selection
+for each three-class truth label, random.Random(42).sample(sorted included review_ids of that class, 50); ids saved to sample_ids.json
+Random seed
+42
+Parse failures · API errors
+0 · 0
+Dataset rows in file
+152,410
+Source files
+runs/balanced150_v3/metrics.json
+runs/balanced150_v3/predictions.jsonl

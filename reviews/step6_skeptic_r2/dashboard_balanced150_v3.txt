@@ -1,0 +1,32 @@
+
+
+  
+    MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards
+    Gift card reviews: does the model agree with the stars?
+    Balanced 150 · three classesFirst 100 · three classesFirst 100 · two classes + emotionFirst 100 · two classes
+  
+
+
+
+  150 reviews: for each three-class truth label, random.Random(42).sample(sorted included review_ids of that class, 50); ids saved to sample_ids.json. Prompt prompts/sentiment_v3.txt, three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative.Stars in this sample: 1★ 43 · 2★ 7 · 3★ 50 · 4★ 0 · 5★ 50.
+
+  Agreement with the star rating73.3%110 of 150 reviews match the answer key.Unreadable model replies: 0 (counted as wrong).The model matches the stars on 73.3% of these reviews. Answering any one class every time would score 33.3%.Reading the reviews is worth +40.0 pts over that shortcut. Weakest class: Neutral, 17 of 50 right (34.0%).Always-one-class baseline33.3%every class is the same size hereBalanced accuracy73.3%average hit rate per class; baseline 33.3%Macro F170.4%precision and recall, classes weighted equallyHow the classes are split: the stars' answer key vs the model's answersAnswer keyPositive 50 (33.3%)Neutral 50 (33.3%)Negative 50 (33.3%)ModelPositive 57 (38.0%)Neutral 23 (15.3%)Negative 70 (46.7%)Unparsed 0 (0.0%)
+
+  
+    Where the answers landConfusion matrix. Rows are the answer key from the stars; columns are the model's prediction. Slate cells on the diagonal are right; amber cells are mistakes. Darker means a bigger share of the row.Stars say ↓ / model says →PositiveNeutralNegativeUnparsedPositive50 reviews4896.0% of row24.0% of row00.0% of row00.0% of rowNeutral50 reviews816.0% of row1734.0% of row2550.0% of row00.0% of rowNegative50 reviews12.0% of row48.0% of row4590.0% of row00.0% of rowRight (diagonal)WrongUnparsed = the reply could not be read; always wrong
+    Right answers by classFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.Positive48 of 50 · 96.0%Neutral17 of 50 · 34.0%Negative45 of 50 · 90.0%RightWrongWhen the model says a class, how often it is right (precision): Positive 84.2% · Neutral 73.9% · Negative 64.3%Each class is a third of this sample. The whole file is 88.5% positive, 2.1% neutral and 9.3% negative. Re-weighted to that mix, precision would be about: Positive 99.4% · Neutral 14.5% · Negative 88.6% (a rough estimate from this sample).
+  
+
+  Primary emotion, read two waysThe model names one emotion per review. The NRC word list counts emotion words in the same title and text and takes the most frequent emotion: Tie means several emotions share the top count, None means it found no emotion words.Same emotion, all reviews10.7%16 of 150 reviewsLeaving out reviews with no lexicon words12.7%16 of 126 reviewsAlso leaving out word-list ties27.1%16 of 59 reviewsFor scale: answering “anger” for every review would match the word list on 2.7% of all reviews (4 of 150) and on 6.8% where it has one winner (4 of 59). The word list tied on 67 reviews; the model's emotion is among the tied ones in 37 of them, and “anger” is among them in 6. The strongest single constant is “anticipation”, which matches the word list on 14.7% of all reviews (22 of 150); the model is at 10.7%.How often each reader picks each emotionReviews per emotion; both bars share one scale.ModelNRC word listanger624anticipation822disgust32fear13joy468sadness62surprise20trust2218Tie—67None—24Unparsed0—Where the two readers land togetherRows: the model's emotion. Columns: the word list's. Slate diagonal = same emotion; ochre = different, darker = more reviews.Model ↓ words →angeranticip.disgustfearjoysadnesssurprisetrustTieNoneanger412231209254anticipation0100000052disgust0000000021fear0000000010joy020070022411sadness0200000310surprise0100000010trust0400000486Unparsed0000000000
+
+  Every review, with the model's answerStars decide the answer key; the model saw only the title and review text. Mistakes are tinted. Click a row to read the full review (HTML line breaks and entities in the raw text are rendered for reading).Showing 150 of 150 reviewsResultAllMatches onlyMistakes onlyAnswer key (stars)AnyPositiveNeutralNegativeModel saidAnyPositiveNeutralNegativeUnparsedEmotion readersAnySame emotionDifferent emotionWord list tieWord list found noneSearch title and reviewResetIDStarsAnswer keyModelResultModel emotionWord listTitleReviewNo reviews match these filters.
+
+  How this run was madeEverything on this page is read from the run's saved files; nothing is typed in by hand.Modelcyankiwi/Qwen3.6-35B-A3B-AWQ-4bitTemperature0Prompt fileprompts/sentiment_v3.txtPrompt sha256eee1dc0e0560d137816d851dd524565326ab09a89d7e3ddc84b8b91e4f70b2e9Reviews scored150Selectionfor each three-class truth label, random.Random(42).sample(sorted included review_ids of that class, 50); ids saved to sample_ids.jsonRandom seed42Parse failures · API errors0 · 0Dataset rows in file152,410Source filesruns/balanced150_v3/metrics.jsonruns/balanced150_v3/predictions.jsonl
+
+
+
+
+
+
+
+

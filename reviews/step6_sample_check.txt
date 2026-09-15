@@ -1,0 +1,8 @@
+seed: 42 | per_class: 50 | total ids: 150 | unique: 150
+per-class id counts: {'NEGATIVE': 50, 'NEUTRAL': 50, 'POSITIVE': 50}
+pool sizes: {'NEGATIVE': 14178, 'NEUTRAL': 3270, 'POSITIVE': 134913} | excluded by inclusion rule: 49
+saved ids == independent re-draw with random.Random(42): True
+star ratings within sample: {1: 43, 2: 7, 3: 50, 5: 50}
+overlap with batch_100 (review_ids 0-99): []
+duplicate title+text groups in sample: {'Five Stars': 2}
+star-phrase titles in sample (blanked for the model): 26

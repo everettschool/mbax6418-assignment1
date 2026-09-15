@@ -272,6 +272,14 @@ def main():
             print(f"[{run}] {n_metrics} metric numbers and {n_marks} chart marks checked")
             n_cases = check_filters(page, run)
             check_untagged_percentages(page, run)
+            # Rendering slips that no number check catches: stringified DOM nodes, missing fields.
+            # Review text is customer data and may legitimately contain these words; check everything else.
+            body = page.evaluate("""() => { const c = document.body.cloneNode(true);
+                c.querySelectorAll('#review-table tbody, script, style').forEach(e => e.remove());
+                return c.textContent; }""")
+            for bad in ["[object", "undefined", "NaN"]:
+                check(bad not in body, f"[{run}] page text contains '{bad}'")
+            check(not re.search(r"\bnull\b", body), f"[{run}] page text contains the word 'null'")
             print(f"[{run}] {n_cases} filter cases checked")
         # Narrow screens: no run's page may scroll sideways at phone width (tables and the
         # emotion cross-tab scroll inside their own wrappers).

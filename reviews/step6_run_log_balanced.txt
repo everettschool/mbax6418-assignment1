@@ -1,0 +1,7 @@
+25/150 done; stats={'api_calls': 23, 'cache_hits': 3}
+50/150 done; stats={'api_calls': 48, 'cache_hits': 3}
+75/150 done; stats={'api_calls': 73, 'cache_hits': 3}
+100/150 done; stats={'api_calls': 98, 'cache_hits': 3}
+125/150 done; stats={'api_calls': 123, 'cache_hits': 3}
+150/150 done; stats={'api_calls': 147, 'cache_hits': 4}
+{"run": "balanced150_v3", "n_rows": 150, "api_call_count": 147, "cache_hits": 4, "parse_fail_count": 0, "api_error_count": 0}

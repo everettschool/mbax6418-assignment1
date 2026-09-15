@@ -1,0 +1,58 @@
+per_class: {"POSITIVE": {"support": 50, "predicted": 57, "correct": 48, "precision": 0.8421, "recall": 0.96, "f1": 0.8972}, "NEUTRAL": {"support": 50, "predicted": 23, "correct": 17, "precision": 0.7391, "recall": 0.34, "f1": 0.4658}, "NEGATIVE": {"support": 50, "predicted": 70, "correct": 45, "precision": 0.6429, "recall": 0.9, "f1": 0.75}}
+macro_f1: 0.7043 | rows_needing_retry: 1
+emotion agreement: {"all_rows": {"n": 150, "agree": 16, "rate": 0.10666666666666667}, "excluding_none": {"n": 126, "agree": 16, "rate": 0.12698412698412698}, "excluding_none_and_tie": {"n": 59, "agree": 16, "rate": 0.2711864406779661}} | constant: anger {"all_rows": {"n": 150, "agree": 4, "rate": 0.02666666666666667}, "excluding_none": {"n": 126, "agree": 4, "rate": 0.031746031746031744}, "excluding_none_and_tie": {"n": 59, "agree": 4, "rate": 0.06779661016949153}}
+LLM emotions: {'anger': 62, 'anticipation': 8, 'disgust': 3, 'fear': 1, 'joy': 46, 'sadness': 6, 'surprise': 2, 'trust': 22, 'UNPARSED': 0}
+NRC emotions: {'anger': 4, 'anticipation': 22, 'disgust': 2, 'fear': 3, 'joy': 8, 'sadness': 2, 'surprise': 0, 'trust': 18, 'TIE': 67, 'NONE': 24}
+LLM non-constant agreement: {"all_rows": {"n": 88, "agree": 12, "rate": 0.13636363636363635}, "excluding_none_and_tie": {"n": 26, "agree": 12, "rate": 0.46153846153846156}}
+
+== NEUTRAL->NEGATIVE: 25 rows; LLM emotions {'sadness': 4, 'anger': 20, 'disgust': 1}
+  4880 (3★, sadness): 'It’s a gift card' | 'I was hoping I could recharge this card.'
+  6689 (3★, anger): "Be wary that sometimes they don't work." | 'Beware of dud cards. Sometimes they are rejected as used.'
+  18646 (3★, anger): 'No ornament' | 'I specially ordered a gift card with a reindeer ornament inside and did not receive the ornament.'
+  22082 (3★, anger): "Didn't think that through" | "Yes but I wish I could buy another gift card with this, I know your thinking &#34;you can't do that anywhere&#34; but I loaded my account this way bc I've been having security issues with my credit cards, so I thought I'"
+  29467 (3★, anger): 'Help' | 'I bought four of these but there is no way of telling which are 25 and which are fifty. They all came in the same box.'
+  32735 (3★, anger): 'There is nothing wrong about this giftcard to revi' | 'There is nothing wrong about this giftcard to review. But I kept a message in the Gift options and it was not sent along with the gift card!'
+  33885 (3★, anger): 'Lost $100.00' | 'It did not work. I lost the money. Lost'
+  48586 (3★, anger): 'Looks Easy but Not' | 'Sometimes I encountered an error when trying to reload my balance with a credit card. It took longer for the transaction to go through.'
+  51332 (3★, anger): 'It’s okay.' | 'Hasn’t seems to load like I set it up weekly to do'
+  53136 (3★, anger): 'No credit this time' | "I didnt get my 10$ for reloding 100$. 😣 other than that, I've used it before and get credit for 10$ ,its awesome."
+  60608 (3★, sadness): 'Good idea, convenient, but needs improvement' | 'I I was really excited when I saw that I could save $10 on my first $100 reload to a gift card. But then reality sets in and I realized it on the applied to the first reload! Bummer. I am a retired fixed income shopper, '
+  60681 (3★, anger): 'Missing message' | 'The gift card was delivered the next day, as promised. But I\'m glad I had it sent to me instead of to the birthday boy, because the message and the "to-from" which was supposed to be written on the card, was missing.<br '
+  88199 (3★, anger): 'Did not receive mini envelope' | 'Did not receive mini envelope'
+  88606 (3★, anger): 'Difficult to determine gift card value when not pu' | 'Was unable to find a serial number in my order history to compare to the serial numbers on the cards, and as I had ordered multiple cards in differing amounts at different times, (but stored them together until I was rea'
+  88787 (3★, sadness): 'Still a happy recipient of this gift.' | 'This was a gift and it took almost five days to be mailed to me. Very disappointed.'
+  94255 (3★, anger): 'Former way too add funds to amz balance was MUCH e' | 'AMZ changed mode of loading funds into acct bal - this New way much more difficult. They (AMZ) "fixed" something for the Customer that was NOT broken.'
+  111780 (3★, anger): 'Three Stars' | 'Not as fast as the egift card'
+  111827 (3★, disgust): 'The card and the outbox look so cheap. I ...' | 'The card and the outbox look so cheap. I would be embarrassed to give to someone else as a gift.'
+  114708 (3★, anger): 'Frustrated' | 'It kept saying my funds were declined'
+  119458 (3★, anger): 'Prime video purchases are automatically deducted f' | 'I dislike the fact that: when I order a movie on Prime video the amount is automatically deducted from my gift card balance!'
+  121389 (3★, anger): 'Need Money & Travel via e-delivery' | 'Using Amazon & Southwest is a breeze.<br /><br />HOWEVER!! Cannot give 5 stars unless and until you create ability to send via e-delivery.<br /><br />In the past 18 months, via Amazon, I have NOT had ability to use Amex '
+  129667 (3★, sadness): 'Gift card with incentive that I can’t seem to use' | 'I purchased this because they were offering a $15 Amazon gift card with this that supposedly had gone to my account. I read all the fine print about how it can be used. I got an email that it is ready to use, but I can’t'
+  140179 (3★, anger): 'Disappointing' | 'I had the same equivalent model 3 years prior. Was amazing. This one improves physically with the screen. HOWEVER, it constantly has pages "not responding". Any time I click too quickly through a few pages it happens. I '
+  143371 (3★, anger): 'Pivots too much' | 'This shaver pivots way too much and will lose contact with skin. You can do better.'
+  147336 (3★, anger): 'Gift cards' | 'The gift is fine,  but I bought 4 cards.  3 with one amount and one with a different amount and they are not marked.  So I do not know which is which.'
+
+== NEUTRAL->POSITIVE: 8 rows; LLM emotions {'trust': 2, 'joy': 6}
+  20086 (3★, trust): 'Took awhile to figure out what to do' | 'Very fast, accurate and available<br />Took a bit to figure out what to do though. After I figured it out , it was very easy'
+  23773 (3★, joy): 'Great gifts for prizes at any party that may fall ' | 'Purchased to give it away as a wedding shower game prizes instead of bath and body items that would allow guests to use the $10 gifts for a more meaningful gift and they could save the gift card and spend it when they wo'
+  43478 (3★, joy): 'Three Stars' | 'Children loved them'
+  73030 (3★, joy): 'Three Stars' | 'I like very good products.'
+  134401 (3★, joy): 'Yas' | 'Yas'
+  144067 (3★, joy): 'Three Stars' | 'Good because I spent my gift card.'
+  144273 (3★, trust): 'Budgeting ahead of time' | 'I appreciate having the ability to get the things I need when it is saved for in a budget..'
+  146724 (3★, joy): 'Three Stars' | 'good'
+
+== NEGATIVE->NEUTRAL: 4 rows; LLM emotions {'anticipation': 3, 'trust': 1}
+  31137 (1★, anticipation): 'One Star' | 'bought it for my dad for is one of those addicted to this coffee chain'
+  49142 (1★, trust): 'Nada de especial' | 'Es como cualquier otra forma de pagar'
+  99795 (1★, anticipation): 'One Star' | 'There is a very small chance that any Gift Card will not be stolen in the mail.'
+  136849 (1★, anticipation): 'Just found it.' | 'Just found it.'
+
+== POSITIVE->NEUTRAL: 2 rows; LLM emotions {'trust': 2}
+  12158 (5★, trust): "It's a gift card." | "You can't really go wrong with a gift card."
+  43820 (5★, trust): 'just like the description' | "It's a gift card, just like the description."
+
+== NEGATIVE->POSITIVE: 1 rows; LLM emotions {'surprise': 1}
+  116236 (1★, surprise): 'The snowflake tin was a nice decorative addition t' | 'The recipient of the gift card was surprised to find that Amazon gift cards came with a tin as the "wrapping".'
+
+== NEUTRAL->NEUTRAL (sample of titles): [(1088, 'bit of a learning curve'), (5080, 'Three Stars'), (6014, 'Ok'), (19979, 'Ok'), (20858, '... time I ordered custom gift cards the'), (22176, 'Alright'), (47781, 'So so'), (48789, 'Three Stars'), (49268, 'Not what I thought it could be used for'), (59883, 'It was a gift'), (72260, 'Not impressed with giftcard design sent'), (81141, 'Easy to do but very slow.'), (104511, "but at the same time it's nice to know t"), (119679, 'Three Stars'), (128016, 'Three Stars'), (137730, 'Three Stars'), (138151, 'Helpful Review')]

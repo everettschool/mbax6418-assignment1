@@ -346,9 +346,12 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
     three: "three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative",
   };
   function renderBlurb(run) {
+    // Star mix of this run's own sample, so gaps (e.g. no 4-star reviews) are visible on the page.
+    const stars = ["1", "2", "3", "4", "5"].map((s, i) => [i ? " · " : "", s + "★ ", M(run, `sample_rating_counts.${s}`, "count")]);
     $("run-blurb").replaceChildren(
       META(run, "n_rows", "count"), " reviews: ", META(run, "selection_rule", "text"), ". Prompt ",
-      META(run, "prompt_file", "text", "mono"), ", ", SCHEME_TEXT[run.meta.label_scheme] || run.meta.label_scheme, ".");
+      META(run, "prompt_file", "text", "mono"), ", ", SCHEME_TEXT[run.meta.label_scheme] || run.meta.label_scheme, ".",
+      el("br"), el("span", {}, "Stars in this sample: ", stars, "."));
   }
 
   /* ---------- verdict + headline numbers ---------- */
@@ -357,6 +360,10 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
     const labels = m.labels;
     const weakest = labels.slice().sort((a, b) =>
       m.per_class[a].recall - m.per_class[b].recall || labels.indexOf(a) - labels.indexOf(b))[0];
+    // On a balanced sample every class is equally common; naming one would imply a choice that isn't there.
+    const topCount = Math.max(...labels.map(l => m.truth_distribution.counts[l]));
+    const tiedMajority = labels.filter(l => m.truth_distribution.counts[l] === topCount).length > 1;
+    const shortcut = tiedMajority ? "any one class" : "“" + nice(m.majority_class) + "”";
 
     const hero = el("div", {},
       el("p", { class: "kicker" }, "Agreement with the star rating"),
@@ -369,19 +376,22 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
     const body = el("div", {},
       el("h2", { class: "verdict-head", id: "verdict-head" },
         "The model matches the stars on ", M(run, "accuracy", "pct"), " of these reviews. ",
-        "Answering “", nice(m.majority_class), "” every time would score ",
+        "Answering ", shortcut, " every time would score ",
         M(run, "majority_baseline_accuracy", "pct"), "."),
       el("p", { class: "verdict-line" },
-        "Reading the reviews is worth ", M(run, "accuracy_minus_majority_baseline", "pp"),
-        " over that shortcut. Weakest class: ", el("b", {}, nice(weakest)), ", ",
+        // On an equal-mix sample the shortcut is set by the sampling, so a margin over it is not comparable across runs.
+        tiedMajority
+          ? ["Every class is the same size in this sample, so that shortcut reflects the sample's forced mix, not real reviews. Weakest class: "]
+          : ["Reading the reviews is worth ", M(run, "accuracy_minus_majority_baseline", "pp"), " over that shortcut. Weakest class: "],
+        el("b", {}, nice(weakest)), ", ",
         M(run, `per_class.${weakest}.correct`, "count"), " of ",
         M(run, `per_class.${weakest}.support`, "count"), " right (",
         M(run, `per_class.${weakest}.recall`, "pct"), ")."),
       el("div", { class: "tiles" },
         el("div", { class: "tile" },
-          el("div", { class: "tile-label" }, "Always-“" + nice(m.majority_class) + "” baseline"),
+          el("div", { class: "tile-label" }, tiedMajority ? "Always-one-class baseline" : "Always-“" + nice(m.majority_class) + "” baseline"),
           M(run, "majority_baseline_accuracy", "pct", "tile-value"),
-          el("div", { class: "tile-note" }, "share of the most common class")),
+          el("div", { class: "tile-note" }, tiedMajority ? "every class is the same size here" : "share of the most common class")),
         el("div", { class: "tile" },
           el("div", { class: "tile-label" }, "Balanced accuracy"),
           M(run, "balanced_accuracy", "pct", "tile-value"),
@@ -480,6 +490,15 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
     }
     const precision = el("p", { class: "footnote" }, "When the model says a class, how often it is right (precision): ",
       m.labels.map((k, i) => [i ? " · " : "", nice(k), " ", M(run, `per_class.${k}.precision`, "pct")]));
+    // On a balanced sample precision reflects the forced equal mix; show the whole-file re-weighting when saved.
+    const cmp = DATA.comparisons, popKey = `${run.run}_population_weighted_precision`;
+    const C = (path, format) => metric(cmp, DATA.comparisons_source, path, format, run.run);
+    const popNote = !(cmp && cmp[popKey]) ? null : el("p", { class: "footnote" },
+      "Each class is a third of this sample. The whole file is ", C("population_weights.POSITIVE", "pct"), " positive, ",
+      C("population_weights.NEUTRAL", "pct"), " neutral and ", C("population_weights.NEGATIVE", "pct"),
+      " negative. Re-weighted to that mix, precision would be about: ",
+      m.labels.map((k, i) => [i ? " · " : "", nice(k), " ", C(`${popKey}.${k}`, "pct")]),
+      ", and accuracy about ", C(`${run.run}_population_weighted_accuracy`, "pct"), " (a rough estimate from this sample).");
     $("sec-classes").replaceChildren(
       el("div", { class: "sec-head" }, el("div", {},
         el("h2", { id: "classes-title" }, "Right answers by class"),
@@ -488,7 +507,7 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
       el("div", { class: "legend", style: "margin-top:12px" },
         el("span", {}, el("span", { class: "key", style: "--c:var(--hit)" }), "Right"),
         el("span", {}, el("span", { class: "key", style: "--c:var(--miss)" }), "Wrong")),
-      precision);
+      precision, ...(popNote ? [popNote] : []));  // replaceChildren would print a literal "null"
   }
 
   /* ---------- emotion: the model vs the NRC word list ---------- */
@@ -519,8 +538,11 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
       " where it has one winner (", E("constant_baseline.excluding_none_and_tie.agree", "count"), " of ",
       E("constant_baseline.excluding_none_and_tie.n", "count"), "). The word list tied on ", E("tie_rows", "count"),
       " reviews; the model's emotion is among the tied ones in ", E("tie_rows_llm_emotion_in_tied_set", "count"),
-      ", and “", E("constant_baseline_emotion", "text"), "” alone is among them in ", E("tie_rows_constant_in_tied_set", "count"),
-      ", so ties do not show the model reading emotion better.");
+      " of them, and “", E("constant_baseline_emotion", "text"), "” is among them in ", E("tie_rows_constant_in_tied_set", "count"), ".",
+      em.best_constant_baseline_emotion === em.constant_baseline_emotion ? null : [
+        " The strongest single constant is “", E("best_constant_baseline_emotion", "text"), "”, which matches the word list on ",
+        E("best_constant_baseline_rate_all_rows", "pct"), " of all reviews (", E("best_constant_baseline.all_rows.agree", "count"),
+        " of ", E("best_constant_baseline.all_rows.n", "count"), "); the model is at ", E("agreement_rate_all_rows", "pct"), "."]);
 
     // Counts per emotion from each reader, on one shared scale.
     const keys = [...EMOTIONS, "TIE", "NONE", "UNPARSED"];
@@ -757,8 +779,13 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
 
   $("page-title").textContent = DATA.title;
   document.title = DATA.title;
-  const fromHash = (location.hash.match(/run=([\w-]+)/) || [])[1];
-  selectRun(fromHash);
+  const runFromHash = () => (location.hash.match(/run=([\w-]+)/) || [])[1];
+  selectRun(runFromHash());
+  // A shared or edited #run= link switches runs without a reload.
+  window.addEventListener("hashchange", () => {
+    const name = runFromHash();
+    if (name && (!current || name !== current.run)) selectRun(name);
+  });
   window.__dashboard = { selectRun, data: DATA };
 })();
 </script>

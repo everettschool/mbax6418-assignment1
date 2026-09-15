@@ -1,0 +1,3 @@
+balanced150_v3: accuracy 73.3% (110/150); majority baseline 33.3% (POSITIVE); balanced accuracy 73.3%; unparsed 0
+  truth counts: {'POSITIVE': 50, 'NEUTRAL': 50, 'NEGATIVE': 50} | predicted counts: {'POSITIVE': 57, 'NEUTRAL': 23, 'NEGATIVE': 70, 'UNPARSED': 0}
+  confusion (rows=truth): {'POSITIVE->POSITIVE': 48, 'POSITIVE->NEUTRAL': 2, 'POSITIVE->NEGATIVE': 0, 'POSITIVE->UNPARSED': 0, 'NEUTRAL->POSITIVE': 8, 'NEUTRAL->NEUTRAL': 17, 'NEUTRAL->NEGATIVE': 25, 'NEUTRAL->UNPARSED': 0, 'NEGATIVE->POSITIVE': 1, 'NEGATIVE->NEUTRAL': 4, 'NEGATIVE->NEGATIVE': 45, 'NEGATIVE->UNPARSED': 0}

@@ -1,0 +1,32 @@
+
+
+  
+    MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards
+    Gift card reviews: does the model agree with the stars?
+    Balanced 150 · three classesFirst 100 · three classesFirst 100 · two classes + emotionFirst 100 · two classes
+  
+
+
+
+  100 reviews: first 100 review_ids in file order that pass the inclusion rule. Prompt prompts/sentiment_v1.txt, two classes; answer key from the stars: 4–5★ positive, 1–3★ negative.Stars in this sample: 1★ 4 · 2★ 1 · 3★ 2 · 4★ 2 · 5★ 91.
+
+  Agreement with the star rating97.0%97 of 100 reviews match the answer key.Unreadable model replies: 0 (counted as wrong).The model matches the stars on 97.0% of these reviews. Answering “Positive” every time would score 93.0%.Reading the reviews is worth +4.0 pts over that shortcut. Weakest class: Negative, 6 of 7 right (85.7%).Always-“Positive” baseline93.0%share of the most common classBalanced accuracy91.8%average hit rate per class; baseline 50.0%Macro F189.2%precision and recall, classes weighted equallyHow the classes are split: the stars' answer key vs the model's answersAnswer keyPositive 93 (93.0%)Negative 7 (7.0%)ModelPositive 92 (92.0%)Negative 8 (8.0%)Unparsed 0 (0.0%)
+
+  
+    Where the answers landConfusion matrix. Rows are the answer key from the stars; columns are the model's prediction. Slate cells on the diagonal are right; amber cells are mistakes. Darker means a bigger share of the row.Stars say ↓ / model says →PositiveNegativeUnparsedPositive93 reviews9197.8% of row22.2% of row00.0% of rowNegative7 reviews114.3% of row685.7% of row00.0% of rowRight (diagonal)WrongUnparsed = the reply could not be read; always wrong
+    Right answers by classFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.Positive91 of 93 · 97.8%Negative6 of 7 · 85.7%RightWrongWhen the model says a class, how often it is right (precision): Positive 98.9% · Negative 75.0%null
+  
+
+  
+
+  Every review, with the model's answerStars decide the answer key; the model saw only the title and review text. Mistakes are tinted. Click a row to read the full review (HTML line breaks and entities in the raw text are rendered for reading).Showing 100 of 100 reviewsResultAllMatches onlyMistakes onlyAnswer key (stars)AnyPositiveNegativeModel saidAnyPositiveNegativeUnparsedSearch title and reviewResetIDStarsAnswer keyModelResultTitleReviewNo reviews match these filters.
+
+  How this run was madeEverything on this page is read from the run's saved files; nothing is typed in by hand.Modelcyankiwi/Qwen3.6-35B-A3B-AWQ-4bitTemperature0Prompt fileprompts/sentiment_v1.txtPrompt sha256e95b64f78fa20966cb1c3e90ac4456a316aa30226d063c0eb5526904ca6fc498Reviews scored100Selectionfirst 100 review_ids in file order that pass the inclusion ruleRandom seed42Parse failures · API errors0 · 0Dataset rows in file152,410Source filesruns/first100_v1/metrics.jsonruns/first100_v1/predictions.jsonl
+
+
+
+
+
+
+
+

@@ -10,3 +10,10 @@ node_modules/
 *.pyc
 # orchestration prompt for the agent session, not a deliverable; names the endpoint host
 prompt.md
+
+# reviewer scratch copies must never carry data, lexicon, cache, or secrets
+reviews/**/data/
+reviews/**/cache/
+reviews/**/.env
+*.jsonl.gz
+**/NRC-Emotion-Lexicon*

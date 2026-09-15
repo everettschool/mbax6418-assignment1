@@ -1,0 +1,9 @@
+[balanced150_v3] verdict: The model matches the stars on 73.3% of these reviews. Answering any one class every time would score 33.3%. | Every class is the same size in this sample, so that shortcut reflects the sample's forced mix, not real reviews. Weakest class: Neutral, 17 of 50 right (34.0%).
+[balanced150_v3] class footnotes: When the model says a class, how often it is right (precision): Positive 84.2% · Neutral 73.9% · Negative 64.3% || Each class is a third of this sample. The whole file is 88.5% positive, 2.1% neutral and 9.3% negative. Re-weighted to that mix, precision would be about: Positive 99.4% · Neutral 14.5% · Negative 88.6%, and accuracy about 94.1% (a rough estimate from this sample).
+[balanced150_v3] word 'null' outside table: False | '[object': False
+[first100_v3] verdict: The model matches the stars on 95.0% of these reviews. Answering “Positive” every time would score 93.0%. | Reading the reviews is worth +2.0 pts over that shortcut. Weakest class: Neutral, 0 of 2 right (0.0%).
+[first100_v3] class footnotes: When the model says a class, how often it is right (precision): Positive 98.9% · Neutral 0.0% · Negative 71.4%
+[first100_v3] word 'null' outside table: False | '[object': False
+[first100_v1] verdict: The model matches the stars on 97.0% of these reviews. Answering “Positive” every time would score 93.0%. | Reading the reviews is worth +4.0 pts over that shortcut. Weakest class: Negative, 6 of 7 right (85.7%).
+[first100_v1] class footnotes: When the model says a class, how often it is right (precision): Positive 98.9% · Negative 75.0%
+[first100_v1] word 'null' outside table: False | '[object': False

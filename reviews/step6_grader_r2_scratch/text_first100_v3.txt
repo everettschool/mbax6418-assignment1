@@ -1,0 +1,1001 @@
+MBAX 6418 · ASSIGNMENT 1 · AMAZON REVIEWS '23, GIFT CARDS
+
+Gift card reviews: does the model agree with the stars?
+Balanced 150 · three classes
+First 100 · three classes
+First 100 · two classes + emotion
+First 100 · two classes
+
+100 reviews: first 100 review_ids in file order that pass the inclusion rule. Prompt prompts/sentiment_v3.txt, three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative.
+Stars in this sample: 1★ 4 · 2★ 1 · 3★ 2 · 4★ 2 · 5★ 91.
+
+Agreement with the star rating
+
+95.0%
+
+95 of 100 reviews match the answer key.
+
+Unreadable model replies: 0 (counted as wrong).
+
+The model matches the stars on 95.0% of these reviews. Answering “Positive” every time would score 93.0%.
+
+Reading the reviews is worth +2.0 pts over that shortcut. Weakest class: Neutral, 0 of 2 right (0.0%).
+
+Always-“Positive” baseline
+93.0%
+share of the most common class
+Balanced accuracy
+65.6%
+average hit rate per class; baseline 33.3%
+Macro F1
+60.4%
+precision and recall, classes weighted equally
+How the classes are split: the stars' answer key vs the model's answers
+Answer key
+Positive 93 (93.0%)
+Neutral 2 (2.0%)
+Negative 5 (5.0%)
+Model
+Positive 91 (91.0%)
+Neutral 2 (2.0%)
+Negative 7 (7.0%)
+Unparsed 0 (0.0%)
+Where the answers land
+
+Confusion matrix. Rows are the answer key from the stars; columns are the model's prediction. Slate cells on the diagonal are right; amber cells are mistakes. Darker means a bigger share of the row.
+
+STARS SAY ↓ / MODEL SAYS →
+Positive
+Neutral
+Negative
+Unparsed
+Positive
+93 reviews
+90
+96.8% of row
+2
+2.2% of row
+1
+1.1% of row
+0
+0.0% of row
+Neutral
+2 reviews
+1
+50.0% of row
+0
+0.0% of row
+1
+50.0% of row
+0
+0.0% of row
+Negative
+5 reviews
+0
+0.0% of row
+0
+0.0% of row
+5
+100.0% of row
+0
+0.0% of row
+Right (diagonal)
+Wrong
+Unparsed = the reply could not be read; always wrong
+Right answers by class
+
+For each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.
+
+Positive
+90 of 93 · 96.8%
+Neutral
+0 of 2 · 0.0%
+Negative
+5 of 5 · 100.0%
+Right
+Wrong
+
+When the model says a class, how often it is right (precision): Positive 98.9% · Neutral 0.0% · Negative 71.4%
+
+null
+Primary emotion, read two ways
+
+The model names one emotion per review. The NRC word list counts emotion words in the same title and text and takes the most frequent emotion: Tie means several emotions share the top count, None means it found no emotion words.
+
+Same emotion, all reviews
+20.0%
+20 of 100 reviews
+Leaving out reviews with no lexicon words
+23.5%
+20 of 85 reviews
+Also leaving out word-list ties
+52.6%
+20 of 38 reviews
+
+For scale: answering “joy” for every review would match the word list on 22.0% of all reviews (22 of 100) and on 57.9% where it has one winner (22 of 38). The word list tied on 47 reviews; the model's emotion is among the tied ones in 45 of them, and “joy” is among them in 45.
+
+How often each reader picks each emotion
+
+Reviews per emotion; both bars share one scale.
+
+Model
+NRC word list
+anger
+7
+0
+anticipation
+2
+14
+disgust
+0
+0
+fear
+0
+0
+joy
+82
+22
+sadness
+0
+1
+surprise
+0
+0
+trust
+9
+1
+Tie
+—
+47
+None
+—
+15
+Unparsed
+0
+—
+
+Where the two readers land together
+
+Rows: the model's emotion. Columns: the word list's. Slate diagonal = same emotion; ochre = different, darker = more reviews.
+
+MODEL ↓ WORDS →
+anger
+anticip.
+disgust
+fear
+joy
+sadness
+surprise
+trust
+Tie
+None
+anger
+0
+3
+0
+0
+1
+1
+0
+1
+0
+1
+anticipation
+0
+0
+0
+0
+0
+0
+0
+0
+2
+0
+disgust
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+fear
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+joy
+0
+9
+0
+0
+20
+0
+0
+0
+44
+9
+sadness
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+surprise
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+trust
+0
+2
+0
+0
+1
+0
+0
+0
+1
+5
+Unparsed
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+Every review, with the model's answer
+
+Stars decide the answer key; the model saw only the title and review text. Mistakes are tinted. Click a row to read the full review (HTML line breaks and entities in the raw text are rendered for reading).
+
+Showing 100 of 100 reviews
+Result
+All
+Matches only
+Mistakes only
+Answer key (stars)
+Any
+Positive
+Neutral
+Negative
+Model said
+Any
+Positive
+Neutral
+Negative
+Unparsed
+Emotion readers
+Any
+Same emotion
+Different emotion
+Word list tie
+Word list found none
+Search title and review
+Reset
+ID	Stars	Answer key	Model	Result	Model emotion	Word list	Title	Review
+0	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Great gift
+	
+Having Amazon money is always good.
+
+1	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+amazon gift card
+	
+Always the perfect gift. I have never given one and had someone seem or act disappointed. Just the opposite. They are thrilled and excited to have a bit of a spree. Always the perfect size and color! Arrives in 1 day in most cases. So it's never too late! Lots of cards to chose from... thank you... birthday... wedding..baby.. and many that work for many occasions...
+
+2	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+perfect gift
+	
+When you have a person who is hard to shop for.. an amazon gift card is P E R F E C T. Man or woman... No matter what their hobby... lifestyle.. or age. All you have to do is pick the $. Don't forget to mention that it is a GIFT when you check out - you will have some gift card options. I've ordered many of these over years. They are always received with glee. Woo hoo! If you're looking for a great fit for me - this is just my size! :) Best to all!
+
+3	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Nice looking
+	
+The tin is a nice touch and pretty large. It's about 4" in diameter and about 1/2" thick. I added a pretty red ribbon and it is perfect. Who doesn't love shopping on Amazon? Arrived quickly, I have Prime... but I think they ship the gift cards out SUPER fast... like over night. In case you need it for a FAST gift.
+
+4	1★	Negative	Negative	✓Match	anger	joy
+	
+Not $10 Gift Cards
+	
+I bought this pack of Starbucks Gift cards in 2019. Ive given them to friends and I gave 2 to my daughter.
+My daughter used one recently and it had $6.52 on the card not $10.00. She had the cashier check the balance of the other card and it had $5.32 on it! She had forgotten that she had these gift cards, so yes, 2 years later decided to use the when she found them! Do they decline in value? And then both had random amounts on them! I'm embarrassed now to have given them as gifts! Friends receiving the gift card aren't going to tell you that weren't able to cover their order with the card you gave them!!!
+
+5	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Cute!
+	
+That snowman tin is adorable
+
+6	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Easy gift
+	
+Great and easy gift
+
+7	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Great gift
+	
+Super cute nice quality tin
+Your choose amount
+
+8	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Gifts for my two granddaughters
+	
+They love it !!
+
+9	5★	Positive	Positive	✓Match	joy	anticipation
+	
+Great for saying “thank you” to the mail person, farrier, yard man,etc
+	
+So many people
+Make your life better so remember them!
+
+10	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Convenient, safe, and perfect gift
+	
+My grandson inlaw loves his gift cards, so it's the perfect gift for Christmas
+
+11	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Giftcard
+	
+What can you say about a gift card? Well, it was valid. It's a good gift for someone who doesn't like to cook. Arrived promptly.
+
+12	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Simple giftcard!
+	
+Easy way to gift money for birthdays.
+
+13	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Great giftcard
+	
+Great gift for online shoppers!
+
+14	5★	Positive	Positive	✓Match	trust	tie
+anticipation / joy / surprise / trust
+	
+Easy..
+	
+Reloading is easy. Shopping is easy. Amazon is easy.
+
+15	1★	Negative	Negative	✓Match	anger	none
+	
+One Star
+	
+Card did not work!!!!
+
+16	5★	Positive	Positive	✓Match	joy	anticipation
+	
+Great Product.
+	
+I bought this for a Christmas gift.The recipient really liked it.
+
+17	5★	Positive	Negative	✕Miss	anger	anticipation
+	
+No note attached to sent gift card
+	
+What a pretty gift card presentation , the recipient loved it ! I have one complaint , I took the time and wrote a short note to the recipient of the gift card so she knew who and why the GC was being sent but the note wasn’t attached. I’ve used the option to write a note on many occasions and several times it showed up without the note . I actually had to contact her to ask if she had checked her mail knowing it had arrived .
+
+18	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Gift card
+	
+Perfect! Arrived just when stated!
+
+19	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Good
+	
+Good gift card
+
+20	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Good Product
+	
+Good Product
+
+21	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Good Product
+	
+Good Product
+
+22	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Good Product
+	
+Good Product
+
+23	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Good Product
+	
+Good Product
+
+24	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Good Product
+	
+Good Product
+
+25	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Good product
+	
+Good product
+
+26	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Good product
+	
+Good product
+
+27	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Good Product
+	
+Good Product
+
+28	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Good Product
+	
+Good Product
+
+29	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Good
+	
+Good
+
+30	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Gift card
+	
+Perfect for Christmas
+
+31	5★	Positive	Positive	✓Match	trust	none
+	
+So easy
+	
+Easy to do
+
+32	2★	Negative	Negative	✓Match	anger	sadness
+	
+Mistake
+	
+Hit button by mistake n deduction from credit card on file
+
+33	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Great gift idea
+	
+Always great to order from my home. Amazon rocks!
+
+34	5★	Positive	Positive	✓Match	trust	anticipation
+	
+Secure
+	
+So easy to use and recipients get to choose how to use it.
+
+35	5★	Positive	Positive	✓Match	joy	tie
+joy / surprise
+	
+Birthday surprise!
+	
+This was a good birthday surprise!
+
+36	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Birthday Gift
+	
+Have given as Holiday, Birthday & Other Occasions remembrances. Always appreciated by the person receiving.
+
+37	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Fun
+	
+Awesome & they work
+
+38	5★	Positive	Positive	✓Match	joy	anticipation
+	
+Reload is super easy.
+	
+Really ready to reload gift cards.
+
+39	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Convenience of giftabiliy.
+	
+A great way to give a gift to family members in physical form. It was so convenient.
+
+40	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Great Gift Package
+	
+Nice gift packaging for any event
+
+41	5★	Positive	Positive	✓Match	joy	anticipation
+	
+Grest Sandwitches !!
+	
+Perfect and I even used Amazon Points - was mailed right out.
+
+42	5★	Positive	Positive	✓Match	joy	anticipation
+	
+GOOD PIZZA !!
+	
+Perfect and I even used Amazon Points - was mailed right out.
+
+43	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+We like this Store and they stock Tons of different Items for all kinds of Pets
+	
+Our cats love this place.
+
+44	5★	Positive	Positive	✓Match	joy	tie
+anger / anticipation / joy / surprise / trust
+	
+Money was loaded on card
+	
+Was cute and the money was loaded when it arrived
+
+45	5★	Positive	Positive	✓Match	joy	none
+	
+👍
+	
+👍
+
+46	5★	Positive	Neutral	✕Miss	joy	joy
+same as model
+	
+Love it!!
+	
+This is an online gift card nothing to show sorry🤪
+
+47	5★	Positive	Positive	✓Match	joy	tie
+anger / anticipation / joy / surprise
+	
+Five Stars
+	
+Gift cards are always a hit.
+
+48	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+So cool you can get a free tin with the gift ...
+	
+So cool you can get a free tin with the gift card and it comes in 24 hours!! Super awesome. Last year I just printed off the gift cards which looked kind of cheap even though the cards were for substantial amounts. Highly recommend.
+
+49	5★	Positive	Positive	✓Match	trust	none
+	
+Reccomend
+	
+Really easy to load
+
+50	5★	Positive	Positive	✓Match	anticipation	tie
+anticipation / joy / surprise
+	
+Little sister surprise
+	
+Same gift as her big sister's, this little one can choose the exact thing she most desires and run to the door for three days in anticipation. A combined birthday and Christmas present for one who knows her own mind. Good choice!
+
+51	1★	Negative	Negative	✓Match	anger	anticipation
+	
+The added value was great, but no more
+	
+Purchasing an Amazon gift card came with an added monetary value but no more.
+
+A Bronx cheer for you!
+
+52	4★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Perfect gift!
+	
+This is near where I work and has a drive through. Nothing better during these times to give than a gift of good food they can pick up with minimal contact. Gift cards are the way to go these days!
+
+53	4★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Great staff appreciation gift!
+	
+What better gift during these times than one to treat yourself. This is a great gift I gave out to my staff and even those who don't read liked the idea of being able to listen to the audiobooks as well as there being content and other media through Audible.
+
+54	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Cute cute cute!
+	
+I love the tin! The gift cards can be ordered on different amounts.
+
+55	5★	Positive	Positive	✓Match	trust	none
+	
+Five Stars
+	
+Simple and easy.
+
+56	5★	Positive	Positive	✓Match	trust	anticipation
+	
+As described.
+	
+Being able to reload the gift card is a time saver.
+
+57	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Perfect gift for any occasion. Let them pick out what they love!
+	
+I mean really, who wouldn't LOVE this?!? Wonderful gift for any occasion.
+
+58	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+12 year old daughter loved this gift!
+	
+Perfect gift for your kids!
+
+59	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Easy to send to an Amazon shopper
+	
+This is a simple gift to friends or family. For me it was easy to setup. Took ok only about 30 seconds. I also redeem Visa gifts by giving the gift card to myself. I like there isnt a fee. I do want Amazon to make some cooler cards with my animation when a receiver gets it.
+
+60	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Rec'd promo from Amazon when reloading gift card.
+	
+Bonus, rec'd a promo from Amazon for reloading gift card. Yeah.
+
+Gift card was posted to my account quickly.
+
+61	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Saves a Little Over time.
+	
+Nice way to save a few bucks overtime by reloading your own gift card.
+
+62	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+What a great company
+	
+Who wouldn't want an Amazon gift card? The box foretold the contents, lol.
+
+63	1★	Negative	Negative	✓Match	anger	trust
+	
+A problem to use at drive thru's
+	
+I only used the $50 card one time at Burger King. It was difficult to use. Must be run as credit, not as gift card. No remaining balance is given at the end of the transaction. And although it's on me, I misplaced or lost this card after only spending about $6 of it. I was hoping that the seller could provide me with the full card number so that I could at least use it online for other purchases. They failed to respond. I have the receipt from BK, but it only shows the last 4 numbers. There isn't a way of contacting happy cards customer service online that I could figure out. I wish I'd just stuck with credit cards. A lot safer.
+
+64	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+A gift card does make a great gift for a tweenager.
+	
+We all know the kid who wants nothing. Or actually wants everything but nothing is good enough. YES,YES,the secret weapon. A AMAZON GIFT CARD!! You pulled it off. You showed your love and you are the best and greatest. Happy Birthday to just because,You are the BEST!!
+
+65	5★	Positive	Positive	✓Match	joy	tie
+disgust / sadness
+	
+Nice to have
+	
+This comes in very handy, and makes the guilt less
+
+66	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Excellent Gift
+	
+Who would not like an Amazon Gift Card? Makes everyone I give them, happy!
+
+67	5★	Positive	Positive	✓Match	joy	none
+	
+Yay so easy!
+	
+So easy! No scraping!
+
+68	5★	Positive	Positive	✓Match	joy	none
+	
+:)
+	
+easy to use
+
+69	5★	Positive	Positive	✓Match	joy	none
+	
+10/10
+	
+works great
+
+70	5★	Positive	Positive	✓Match	joy	anticipation
+	
+Perfect for a birthday 🎂
+	
+Another nice gift box from Amazon. With the world the way it is now I had to send a gift rather than going to a party. And Amazon has a good selection of gift boxes and fast shipping so my nephew was happy when he received the card in the mail.
+
+71	5★	Positive	Positive	✓Match	joy	anticipation
+	
+Perfect!
+	
+Bought this for a gift and was very happy it shipped quickly and they received it just in time! Amazon is awesome! 🤩
+
+72	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Gift box nice!
+	
+Love the gift box. So much j NB icee than just handing a gift card to the grandkids.
+
+73	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+It was soooo easy
+	
+It was a nice way to give a present
+
+74	5★	Positive	Positive	✓Match	joy	none
+	
+great
+	
+great buy
+
+75	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Amazon Thinks of Everything!
+	
+GREAT idea! I was so happy to have these on hand for the Holidays!
+
+76	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Amazon lover giftee? Buy it!
+	
+So gift card for certain sum. No service fee. Lively metal gift box - yes..... I said metal. What is not to love about this???!
+
+Well done Amazon. Well done.
+
+77	5★	Positive	Positive	✓Match	joy	none
+	
+Timing
+	
+Great timing.
+
+78	5★	Positive	Positive	✓Match	trust	none
+	
+Was easy to do
+	
+Easy to use
+
+79	5★	Positive	Positive	✓Match	joy	none
+	
+PENGUINS
+	
+So so cute!
+
+80	5★	Positive	Positive	✓Match	joy	tie
+anticipation / surprise
+	
+Believe this is the best gift to give !
+	
+The recipient can choose what they want so the giver has less chance of a mistake.
+
+81	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+convenient
+	
+A great and convenient gift idea-price is right too!
+
+82	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Five Stars
+	
+The gift card came in a pretty box.
+Thanks Amozan.
+
+83	5★	Positive	Neutral	✕Miss	anticipation	tie
+anticipation / joy / surprise
+	
+Best gift for someone you don’t know what to get
+	
+This was for a gift
+
+84	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise / trust
+	
+Great value
+	
+Made my shopping much better good value
+
+85	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Sweet gift!
+	
+I sent this to my brother and he couldn't stop talking about it. This boxes puts a little more nice into a gift. Very pretty!
+
+86	5★	Positive	Positive	✓Match	joy	none
+	
+Amazing
+	
+It can be used for a variety of things.
+
+87	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy / surprise
+	
+Great Holder
+	
+Great holder for gift cards
+
+88	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Gift card
+	
+Makes these so easy for any holiday and especially stops buying something people do not like
+
+89	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Starbuck gift card
+	
+My friend like the gift card like the sweater for holiday card
+
+90	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Good litte thank-you gifts
+	
+I'm happy they did not cost me more than their face value to buy. I gave them out as a nice thank you to those who helped me with small things around my house. I sent them in the mail as a surprise, knowing money or gifts was not necessary. I recommend them.
+
+91	3★	Neutral	Negative	✕Miss	anger	anticipation
+	
+Okay as a gift
+	
+After I bought several I realized I could have sent "gift" money via text without the fees or wait.
+
+92	5★	Positive	Positive	✓Match	trust	joy
+	
+Good gift
+	
+Those who already have everything, they can buy an audible book, an old rerun of a favorite movie, some little thing they may want, or whatever as a gift for any occasion. I recommend.
+
+93	5★	Positive	Positive	✓Match	joy	anticipation
+	
+So convenient.
+	
+Arrived on time, in perfect shape, and best of all the person receiving the gift can buy whatever they want. One size fits all!
+
+94	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Just what was ordered.
+	
+Made holiday shopping easy!
+
+95	5★	Positive	Positive	✓Match	joy	anticipation
+	
+Can Do It From Home
+	
+Usually I either receive an Amazon gift card as a birthday and/or Christmas gift or I purchase them at a store. Then it's very easy to add the amount to my gift card balance using my cell phone. Well I was stuck inside for several days due to a blizzard and I bought quite a few books then due to a travel ban I could not go to the store to purchase a gift card.
+So after checking my Gift Card Balance I saw that I had overindulged and it needed to be topped up. One of the options under Manage Your Balance was to Reload Your Balance. I had never used this option but decided to try it. It was so easy to do and I didn't have to leave the comfort of my home. I will be using it again in the future.
+
+96	5★	Positive	Positive	✓Match	joy	joy
+same as model
+	
+Love it!
+	
+Love my card!!
+
+97	5★	Positive	Positive	✓Match	trust	none
+	
+Easy to use
+	
+It’s easy to use and very convenient. I would definitely consider refill more in the future
+
+98	3★	Neutral	Positive	✕Miss	joy	none
+	
+Easy to use
+	
+Very easy to use. I wish I knew about it earlier
+
+99	5★	Positive	Positive	✓Match	joy	tie
+anticipation / joy
+	
+Perfect gift sent I a lovely container
+	
+Sent in a lovely container
+How this run was made
+
+Everything on this page is read from the run's saved files; nothing is typed in by hand.
+
+Model
+cyankiwi/Qwen3.6-35B-A3B-AWQ-4bit
+Temperature
+0
+Prompt file
+prompts/sentiment_v3.txt
+Prompt sha256
+eee1dc0e0560d137816d851dd524565326ab09a89d7e3ddc84b8b91e4f70b2e9
+Reviews scored
+100
+Selection
+first 100 review_ids in file order that pass the inclusion rule
+Random seed
+42
+Parse failures · API errors
+0 · 0
+Dataset rows in file
+152,410
+Source files
+runs/first100_v3/metrics.json
+runs/first100_v3/predictions.jsonl

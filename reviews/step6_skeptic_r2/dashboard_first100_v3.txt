@@ -1,0 +1,32 @@
+
+
+  
+    MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards
+    Gift card reviews: does the model agree with the stars?
+    Balanced 150 · three classesFirst 100 · three classesFirst 100 · two classes + emotionFirst 100 · two classes
+  
+
+
+
+  100 reviews: first 100 review_ids in file order that pass the inclusion rule. Prompt prompts/sentiment_v3.txt, three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative.Stars in this sample: 1★ 4 · 2★ 1 · 3★ 2 · 4★ 2 · 5★ 91.
+
+  Agreement with the star rating95.0%95 of 100 reviews match the answer key.Unreadable model replies: 0 (counted as wrong).The model matches the stars on 95.0% of these reviews. Answering “Positive” every time would score 93.0%.Reading the reviews is worth +2.0 pts over that shortcut. Weakest class: Neutral, 0 of 2 right (0.0%).Always-“Positive” baseline93.0%share of the most common classBalanced accuracy65.6%average hit rate per class; baseline 33.3%Macro F160.4%precision and recall, classes weighted equallyHow the classes are split: the stars' answer key vs the model's answersAnswer keyPositive 93 (93.0%)Neutral 2 (2.0%)Negative 5 (5.0%)ModelPositive 91 (91.0%)Neutral 2 (2.0%)Negative 7 (7.0%)Unparsed 0 (0.0%)
+
+  
+    Where the answers landConfusion matrix. Rows are the answer key from the stars; columns are the model's prediction. Slate cells on the diagonal are right; amber cells are mistakes. Darker means a bigger share of the row.Stars say ↓ / model says →PositiveNeutralNegativeUnparsedPositive93 reviews9096.8% of row22.2% of row11.1% of row00.0% of rowNeutral2 reviews150.0% of row00.0% of row150.0% of row00.0% of rowNegative5 reviews00.0% of row00.0% of row5100.0% of row00.0% of rowRight (diagonal)WrongUnparsed = the reply could not be read; always wrong
+    Right answers by classFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.Positive90 of 93 · 96.8%Neutral0 of 2 · 0.0%Negative5 of 5 · 100.0%RightWrongWhen the model says a class, how often it is right (precision): Positive 98.9% · Neutral 0.0% · Negative 71.4%null
+  
+
+  Primary emotion, read two waysThe model names one emotion per review. The NRC word list counts emotion words in the same title and text and takes the most frequent emotion: Tie means several emotions share the top count, None means it found no emotion words.Same emotion, all reviews20.0%20 of 100 reviewsLeaving out reviews with no lexicon words23.5%20 of 85 reviewsAlso leaving out word-list ties52.6%20 of 38 reviewsFor scale: answering “joy” for every review would match the word list on 22.0% of all reviews (22 of 100) and on 57.9% where it has one winner (22 of 38). The word list tied on 47 reviews; the model's emotion is among the tied ones in 45 of them, and “joy” is among them in 45.How often each reader picks each emotionReviews per emotion; both bars share one scale.ModelNRC word listanger70anticipation214disgust00fear00joy8222sadness01surprise00trust91Tie—47None—15Unparsed0—Where the two readers land togetherRows: the model's emotion. Columns: the word list's. Slate diagonal = same emotion; ochre = different, darker = more reviews.Model ↓ words →angeranticip.disgustfearjoysadnesssurprisetrustTieNoneanger0300110101anticipation0000000020disgust0000000000fear0000000000joy090020000449sadness0000000000surprise0000000000trust0200100015Unparsed0000000000
+
+  Every review, with the model's answerStars decide the answer key; the model saw only the title and review text. Mistakes are tinted. Click a row to read the full review (HTML line breaks and entities in the raw text are rendered for reading).Showing 100 of 100 reviewsResultAllMatches onlyMistakes onlyAnswer key (stars)AnyPositiveNeutralNegativeModel saidAnyPositiveNeutralNegativeUnparsedEmotion readersAnySame emotionDifferent emotionWord list tieWord list found noneSearch title and reviewResetIDStarsAnswer keyModelResultModel emotionWord listTitleReviewNo reviews match these filters.
+
+  How this run was madeEverything on this page is read from the run's saved files; nothing is typed in by hand.Modelcyankiwi/Qwen3.6-35B-A3B-AWQ-4bitTemperature0Prompt fileprompts/sentiment_v3.txtPrompt sha256eee1dc0e0560d137816d851dd524565326ab09a89d7e3ddc84b8b91e4f70b2e9Reviews scored100Selectionfirst 100 review_ids in file order that pass the inclusion ruleRandom seed42Parse failures · API errors0 · 0Dataset rows in file152,410Source filesruns/first100_v3/metrics.jsonruns/first100_v3/predictions.jsonl
+
+
+
+
+
+
+
+

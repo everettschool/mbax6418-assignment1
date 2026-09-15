@@ -1,0 +1,4 @@
+nrc_hits sample: [['gifts', 'gift', ['anticipation', 'joy', 'surprise']], ['god', 'god', ['anticipation', 'fear', 'joy', 'trust']], ['long', 'long', ['anticipation']]]
+rows where word list answered anticipation: 22 | of them with 'gift' among anticipation hits: 17
+top anticipation-contributing words: [('gift', 31), ('time', 13), ('delivery', 7), ('money', 7), ('store', 4), ('expected', 4), ('happen', 3), ('recipient', 3), ('attempt', 2), ('good', 2), ('deal', 2), ('pay', 2)]
+top trust-contributing words (word-list answer trust): [('credit', 7), ('account', 4), ('good', 4), ('save', 4), ('show', 3), ('money', 3), ('don', 3), ('budget', 3), ('bank', 2), ('shopping', 2), ('excited', 2), ('pivot', 2)]

@@ -1,0 +1,173 @@
+{
+  "run": "first100_v3",
+  "label_scheme": "three",
+  "labels": [
+    "POSITIVE",
+    "NEUTRAL",
+    "NEGATIVE"
+  ],
+  "confusion_matrix_orientation": "rows = truth (from rating), columns = predicted",
+  "n_rows": 100,
+  "correct": 95,
+  "incorrect": 5,
+  "accuracy": 0.95,
+  "sample_rating_counts": {
+    "1": 4,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 91
+  },
+  "sample_rating_share": {
+    "1": 0.04,
+    "2": 0.01,
+    "3": 0.02,
+    "4": 0.02,
+    "5": 0.91
+  },
+  "truth_distribution": {
+    "counts": {
+      "POSITIVE": 93,
+      "NEUTRAL": 2,
+      "NEGATIVE": 5
+    },
+    "share": {
+      "POSITIVE": 0.93,
+      "NEUTRAL": 0.02,
+      "NEGATIVE": 0.05
+    }
+  },
+  "prediction_distribution": {
+    "counts": {
+      "POSITIVE": 91,
+      "NEUTRAL": 2,
+      "NEGATIVE": 7,
+      "UNPARSED": 0
+    },
+    "share": {
+      "POSITIVE": 0.91,
+      "NEUTRAL": 0.02,
+      "NEGATIVE": 0.07,
+      "UNPARSED": 0.0
+    }
+  },
+  "majority_class": "POSITIVE",
+  "majority_baseline_accuracy": 0.93,
+  "accuracy_minus_majority_baseline": 0.019999999999999907,
+  "balanced_accuracy": 0.6559139784946236,
+  "majority_baseline_balanced_accuracy": 0.3333333333333333,
+  "macro_f1": 0.6038647342995169,
+  "per_class": {
+    "POSITIVE": {
+      "support": 93,
+      "predicted": 91,
+      "correct": 90,
+      "wrong": 3,
+      "precision": 0.989010989010989,
+      "precision_undefined_never_predicted": false,
+      "recall": 0.967741935483871,
+      "f1": 0.9782608695652174
+    },
+    "NEUTRAL": {
+      "support": 2,
+      "predicted": 2,
+      "correct": 0,
+      "wrong": 2,
+      "precision": 0.0,
+      "precision_undefined_never_predicted": false,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "NEGATIVE": {
+      "support": 5,
+      "predicted": 7,
+      "correct": 5,
+      "wrong": 0,
+      "precision": 0.7142857142857143,
+      "precision_undefined_never_predicted": false,
+      "recall": 1.0,
+      "f1": 0.8333333333333333
+    }
+  },
+  "confusion_matrix": {
+    "rows": [
+      "POSITIVE",
+      "NEUTRAL",
+      "NEGATIVE"
+    ],
+    "columns": [
+      "POSITIVE",
+      "NEUTRAL",
+      "NEGATIVE",
+      "UNPARSED"
+    ],
+    "counts": [
+      [
+        90,
+        2,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        5,
+        0
+      ]
+    ]
+  },
+  "confusion_cells": {
+    "POSITIVE->POSITIVE": 90,
+    "POSITIVE->NEUTRAL": 2,
+    "POSITIVE->NEGATIVE": 1,
+    "POSITIVE->UNPARSED": 0,
+    "NEUTRAL->POSITIVE": 1,
+    "NEUTRAL->NEUTRAL": 0,
+    "NEUTRAL->NEGATIVE": 1,
+    "NEUTRAL->UNPARSED": 0,
+    "NEGATIVE->POSITIVE": 0,
+    "NEGATIVE->NEUTRAL": 0,
+    "NEGATIVE->NEGATIVE": 5,
+    "NEGATIVE->UNPARSED": 0
+  },
+  "confusion_row_share": {
+    "POSITIVE->POSITIVE": 0.967741935483871,
+    "POSITIVE->NEUTRAL": 0.021505376344086023,
+    "POSITIVE->NEGATIVE": 0.010752688172043012,
+    "POSITIVE->UNPARSED": 0.0,
+    "NEUTRAL->POSITIVE": 0.5,
+    "NEUTRAL->NEUTRAL": 0.0,
+    "NEUTRAL->NEGATIVE": 0.5,
+    "NEUTRAL->UNPARSED": 0.0,
+    "NEGATIVE->POSITIVE": 0.0,
+    "NEGATIVE->NEUTRAL": 0.0,
+    "NEGATIVE->NEGATIVE": 1.0,
+    "NEGATIVE->UNPARSED": 0.0
+  },
+  "misclassified_review_ids": {
+    "POSITIVE->NEUTRAL": [
+      46,
+      83
+    ],
+    "POSITIVE->NEGATIVE": [
+      17
+    ],
+    "NEUTRAL->POSITIVE": [
+      98
+    ],
+    "NEUTRAL->NEGATIVE": [
+      91
+    ]
+  },
+  "parse_fail_count": 0,
+  "api_error_count": 0,
+  "unparsed_count": 0,
+  "unparsed_share": 0.0,
+  "rows_needing_retry": 0
+}

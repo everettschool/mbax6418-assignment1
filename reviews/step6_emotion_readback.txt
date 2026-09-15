@@ -1,0 +1,7 @@
+== selected by clicking tabs
+[balanced150_v3] body data-run=balanced150_v3 | For scale: answering “anger” for every review would match the word list on 2.7% of all reviews (4 of 150) and on 6.8% where it has one winner (4 of 59). The word list tied on 67 reviews; the model's emotion is among the tied ones in 37 of them, and “anger” is among them in 6. The strongest single constant is “anticipation”, which matches the word list on 14.7% of all reviews (22 of 150); the model is at 10.7%.
+[first100_v3] body data-run=first100_v3 | For scale: answering “joy” for every review would match the word list on 22.0% of all reviews (22 of 100) and on 57.9% where it has one winner (22 of 38). The word list tied on 47 reviews; the model's emotion is among the tied ones in 45 of them, and “joy” is among them in 45.
+[first100_v2] body data-run=first100_v2 | For scale: answering “joy” for every review would match the word list on 22.0% of all reviews (22 of 100) and on 57.9% where it has one winner (22 of 38). The word list tied on 47 reviews; the model's emotion is among the tied ones in 45 of them, and “joy” is among them in 45.
+== selected by changing only the #run= hash
+[first100_v2] body data-run=first100_v2 | tie clause: " on 47 reviews; the model's emotion is among the tied ones in 45 of them, and “joy” is amo"
+[balanced150_v3] body data-run=balanced150_v3 | tie clause: " on 67 reviews; the model's emotion is among the tied ones in 37 of them, and “anger” is a"

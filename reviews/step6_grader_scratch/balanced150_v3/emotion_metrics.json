@@ -1,0 +1,473 @@
+{
+  "run": "balanced150_v3",
+  "lexicon": {
+    "source": "official",
+    "download_url": "https://saifmohammad.com/WebDocs/Lexicons/NRC-Emotion-Lexicon.zip",
+    "lexicon_sha256": "02c661544f4f12ae0c14f9576a10959e8d39a151bb091e455a71a08dcaa2535a",
+    "word_count": 14154,
+    "words_with_any_of_8_emotions": 4454,
+    "citation": "Saif M. Mohammad and Peter D. Turney. Crowdsourcing a Word-Emotion Association Lexicon. Computational Intelligence, 29(3): 436-465, 2013."
+  },
+  "method": "NRC: lowercase alphabetic tokens of title + text (same star-phrase blanking as the model); fallback strips ing/ed/es/s if the stem is in the lexicon; sum per emotion over the 8 emotions only; argmax; ties -> TIE, no hits -> NONE. emotion_agree = exact match.",
+  "n_rows": 150,
+  "crosstab_orientation": "rows = LLM emotion, columns = NRC word-list emotion",
+  "llm_emotion_counts": {
+    "anger": 62,
+    "anticipation": 8,
+    "disgust": 3,
+    "fear": 1,
+    "joy": 46,
+    "sadness": 6,
+    "surprise": 2,
+    "trust": 22,
+    "UNPARSED": 0
+  },
+  "llm_emotion_share": {
+    "anger": 0.41333333333333333,
+    "anticipation": 0.05333333333333334,
+    "disgust": 0.02,
+    "fear": 0.006666666666666667,
+    "joy": 0.30666666666666664,
+    "sadness": 0.04,
+    "surprise": 0.013333333333333334,
+    "trust": 0.14666666666666667,
+    "UNPARSED": 0.0
+  },
+  "nrc_emotion_counts": {
+    "anger": 4,
+    "anticipation": 22,
+    "disgust": 2,
+    "fear": 3,
+    "joy": 8,
+    "sadness": 2,
+    "surprise": 0,
+    "trust": 18,
+    "TIE": 67,
+    "NONE": 24
+  },
+  "nrc_emotion_share": {
+    "anger": 0.02666666666666667,
+    "anticipation": 0.14666666666666667,
+    "disgust": 0.013333333333333334,
+    "fear": 0.02,
+    "joy": 0.05333333333333334,
+    "sadness": 0.013333333333333334,
+    "surprise": 0.0,
+    "trust": 0.12,
+    "TIE": 0.44666666666666666,
+    "NONE": 0.16
+  },
+  "agreement": {
+    "all_rows": {
+      "n": 150,
+      "agree": 16,
+      "rate": 0.10666666666666667
+    },
+    "excluding_none": {
+      "n": 126,
+      "agree": 16,
+      "rate": 0.12698412698412698
+    },
+    "excluding_none_and_tie": {
+      "n": 59,
+      "agree": 16,
+      "rate": 0.2711864406779661
+    }
+  },
+  "agreement_rate_all_rows": 0.10666666666666667,
+  "agreement_rate_excluding_none": 0.12698412698412698,
+  "agreement_rate_excluding_none_and_tie": 0.2711864406779661,
+  "tie_rows": 67,
+  "tie_rows_llm_emotion_in_tied_set": 37,
+  "tie_rows_llm_emotion_in_tied_set_rate": 0.5522388059701493,
+  "none_rows": 24,
+  "constant_baseline_note": "agreement of the word list with a constant answer equal to the LLM's most common emotion",
+  "constant_baseline_emotion": "anger",
+  "constant_baseline": {
+    "all_rows": {
+      "n": 150,
+      "agree": 4,
+      "rate": 0.02666666666666667
+    },
+    "excluding_none": {
+      "n": 126,
+      "agree": 4,
+      "rate": 0.031746031746031744
+    },
+    "excluding_none_and_tie": {
+      "n": 59,
+      "agree": 4,
+      "rate": 0.06779661016949153
+    }
+  },
+  "constant_baseline_rate_all_rows": 0.02666666666666667,
+  "constant_baseline_rate_excluding_none": 0.031746031746031744,
+  "constant_baseline_rate_excluding_none_and_tie": 0.06779661016949153,
+  "llm_minus_constant_rate_all_rows": 0.08,
+  "llm_minus_constant_rate_excluding_none_and_tie": 0.2033898305084746,
+  "tie_rows_constant_in_tied_set": 6,
+  "best_constant_baseline_note": "agreement of the word list with the single constant emotion that matches it most often",
+  "best_constant_baseline_emotion": "anticipation",
+  "best_constant_baseline": {
+    "all_rows": {
+      "n": 150,
+      "agree": 22,
+      "rate": 0.14666666666666667
+    },
+    "excluding_none": {
+      "n": 126,
+      "agree": 22,
+      "rate": 0.1746031746031746
+    },
+    "excluding_none_and_tie": {
+      "n": 59,
+      "agree": 22,
+      "rate": 0.3728813559322034
+    }
+  },
+  "best_constant_baseline_rate_all_rows": 0.14666666666666667,
+  "best_constant_baseline_rate_excluding_none_and_tie": 0.3728813559322034,
+  "llm_minus_best_constant_rate_all_rows": -0.039999999999999994,
+  "llm_minus_best_constant_rate_excluding_none_and_tie": -0.1016949152542373,
+  "agreement_llm_not_constant": {
+    "all_rows": {
+      "n": 88,
+      "agree": 12,
+      "rate": 0.13636363636363635
+    },
+    "excluding_none_and_tie": {
+      "n": 26,
+      "agree": 12,
+      "rate": 0.46153846153846156
+    }
+  },
+  "tiebreak_rule": "ties broken by fixed order anger, anticipation, disgust, fear, joy, sadness, surprise, trust (first tied wins)",
+  "agreement_tiebreak": {
+    "all_rows": {
+      "n": 150,
+      "agree": 28,
+      "rate": 0.18666666666666668
+    },
+    "excluding_none": {
+      "n": 126,
+      "agree": 28,
+      "rate": 0.2222222222222222
+    }
+  },
+  "tiebreak_label_counts": {
+    "anger": 10,
+    "anticipation": 75,
+    "disgust": 2,
+    "fear": 5,
+    "joy": 13,
+    "sadness": 3,
+    "surprise": 0,
+    "trust": 18,
+    "NONE": 24
+  },
+  "tie_rows_broken_to": {
+    "anger": 6,
+    "anticipation": 53,
+    "disgust": 0,
+    "fear": 2,
+    "joy": 5,
+    "sadness": 1,
+    "surprise": 0,
+    "trust": 0
+  },
+  "tiebreak_constant_baseline": {
+    "llm_most_common": {
+      "emotion": "anger",
+      "agree": 10,
+      "rate": 0.06666666666666667
+    },
+    "best_constant": {
+      "emotion": "anticipation",
+      "agree": 75,
+      "rate": 0.5
+    }
+  },
+  "unique_title_text": {
+    "n": 149,
+    "agree": 16,
+    "tie": 66,
+    "none": 24
+  },
+  "negation": {
+    "rows_with_negated_hits": 29,
+    "negated_hits_total": 39,
+    "rule": "hit token within 3 tokens after not/no/never/nothing/none/nor/without/t; counted, not reversed"
+  },
+  "crosstab": {
+    "rows": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust",
+      "UNPARSED"
+    ],
+    "columns": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust",
+      "TIE",
+      "NONE"
+    ],
+    "counts": [
+      [
+        4,
+        12,
+        2,
+        3,
+        1,
+        2,
+        0,
+        9,
+        25,
+        4
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        7,
+        0,
+        0,
+        2,
+        24,
+        11
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        8,
+        6
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "crosstab_cells": {
+    "anger->anger": 4,
+    "anger->anticipation": 12,
+    "anger->disgust": 2,
+    "anger->fear": 3,
+    "anger->joy": 1,
+    "anger->sadness": 2,
+    "anger->surprise": 0,
+    "anger->trust": 9,
+    "anger->TIE": 25,
+    "anger->NONE": 4,
+    "anticipation->anger": 0,
+    "anticipation->anticipation": 1,
+    "anticipation->disgust": 0,
+    "anticipation->fear": 0,
+    "anticipation->joy": 0,
+    "anticipation->sadness": 0,
+    "anticipation->surprise": 0,
+    "anticipation->trust": 0,
+    "anticipation->TIE": 5,
+    "anticipation->NONE": 2,
+    "disgust->anger": 0,
+    "disgust->anticipation": 0,
+    "disgust->disgust": 0,
+    "disgust->fear": 0,
+    "disgust->joy": 0,
+    "disgust->sadness": 0,
+    "disgust->surprise": 0,
+    "disgust->trust": 0,
+    "disgust->TIE": 2,
+    "disgust->NONE": 1,
+    "fear->anger": 0,
+    "fear->anticipation": 0,
+    "fear->disgust": 0,
+    "fear->fear": 0,
+    "fear->joy": 0,
+    "fear->sadness": 0,
+    "fear->surprise": 0,
+    "fear->trust": 0,
+    "fear->TIE": 1,
+    "fear->NONE": 0,
+    "joy->anger": 0,
+    "joy->anticipation": 2,
+    "joy->disgust": 0,
+    "joy->fear": 0,
+    "joy->joy": 7,
+    "joy->sadness": 0,
+    "joy->surprise": 0,
+    "joy->trust": 2,
+    "joy->TIE": 24,
+    "joy->NONE": 11,
+    "sadness->anger": 0,
+    "sadness->anticipation": 2,
+    "sadness->disgust": 0,
+    "sadness->fear": 0,
+    "sadness->joy": 0,
+    "sadness->sadness": 0,
+    "sadness->surprise": 0,
+    "sadness->trust": 3,
+    "sadness->TIE": 1,
+    "sadness->NONE": 0,
+    "surprise->anger": 0,
+    "surprise->anticipation": 1,
+    "surprise->disgust": 0,
+    "surprise->fear": 0,
+    "surprise->joy": 0,
+    "surprise->sadness": 0,
+    "surprise->surprise": 0,
+    "surprise->trust": 0,
+    "surprise->TIE": 1,
+    "surprise->NONE": 0,
+    "trust->anger": 0,
+    "trust->anticipation": 4,
+    "trust->disgust": 0,
+    "trust->fear": 0,
+    "trust->joy": 0,
+    "trust->sadness": 0,
+    "trust->surprise": 0,
+    "trust->trust": 4,
+    "trust->TIE": 8,
+    "trust->NONE": 6,
+    "UNPARSED->anger": 0,
+    "UNPARSED->anticipation": 0,
+    "UNPARSED->disgust": 0,
+    "UNPARSED->fear": 0,
+    "UNPARSED->joy": 0,
+    "UNPARSED->sadness": 0,
+    "UNPARSED->surprise": 0,
+    "UNPARSED->trust": 0,
+    "UNPARSED->TIE": 0,
+    "UNPARSED->NONE": 0
+  },
+  "divergent_review_ids": [
+    2669,
+    6689,
+    11089,
+    11674,
+    20858,
+    22082,
+    22402,
+    24440,
+    28824,
+    29257,
+    33769,
+    33885,
+    35162,
+    36112,
+    48586,
+    53136,
+    58006,
+    60608,
+    60681,
+    63787,
+    64204,
+    69573,
+    76073,
+    87935,
+    88606,
+    88787,
+    94255,
+    104511,
+    116329,
+    119173,
+    119679,
+    121389,
+    123203,
+    124665,
+    129667,
+    129711,
+    131304,
+    140179,
+    141193,
+    142699,
+    143371,
+    147577,
+    149306
+  ]
+}

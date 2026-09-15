@@ -1,0 +1,115 @@
+== 1. rating-like content in what the model saw (balanced150_v3)
+  121389 3.0 NEGATIVE ['5 stars'] | TITLE: <<<Need Money & Travel via e-delivery>>>  TEXT: <<<Using Amazon & Southwest is a breeze.<br /><br />HOWEVER!! Cannot give 5 stars unless and until you cr
+  138151 3.0 NEUTRAL ['Helpful'] | TITLE: <<<Helpful Review>>>  TEXT: <<<Has tons of options and can find most things however the quality of the products seems to be cheap /generic....>>>
+  140676 1.0 NEGATIVE ['stars'] | TITLE: <<<I would give this 'zero stars'>>>  TEXT: <<<card did not work<br />company did not properly activate  it<br />I am now fighting with them online, via 
+  near-miss star titles not blanked: [(140676, "I would give this 'zero stars'")]
+
+== 2. retry row / raw responses with >1 attempt
+  1088 from_cache True ['LABEL=NEUTRAL;EMOTION=anticipation']
+  1818 from_cache True ['LABEL=POSITIVE;EMOTION=joy']
+  2669 from_cache True ['LABEL=NEGATIVE;EMOTION=anger']
+  4880 from_cache False ['LABEL=NEGATIVE;EMOTION=disappointment', 'LABEL=NEGATIVE;EMOTION=sadness']
+  134312 from_cache True ['LABEL=POSITIVE;EMOTION=joy']
+
+== 3. blanked star titles by truth and correctness
+  (False, 'NEGATIVE', False) 3
+  (False, 'NEGATIVE', True) 43
+  (False, 'NEUTRAL', False) 28
+  (False, 'NEUTRAL', True) 12
+  (False, 'POSITIVE', False) 2
+  (False, 'POSITIVE', True) 36
+  (True, 'NEGATIVE', False) 2
+  (True, 'NEGATIVE', True) 2
+  (True, 'NEUTRAL', False) 5
+  (True, 'NEUTRAL', True) 5
+  (True, 'POSITIVE', True) 12
+
+== 4. full sent text for rows cited in the analysis
+  [4880] 3.0★ pred=NEGATIVE emo=sadness
+    SENT: 'TITLE:\n<<<It’s a gift card>>>\n\nTEXT:\n<<<I was hoping I could recharge this card.>>>'
+  [6689] 3.0★ pred=NEGATIVE emo=anger
+    SENT: "TITLE:\n<<<Be wary that sometimes they don't work.>>>\n\nTEXT:\n<<<Beware of dud cards. Sometimes they are rejected as used.>>>"
+  [33885] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<Lost $100.00>>>\n\nTEXT:\n<<<It did not work. I lost the money. Lost>>>'
+  [114708] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<Frustrated>>>\n\nTEXT:\n<<<It kept saying my funds were declined>>>'
+  [51332] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<It’s okay.>>>\n\nTEXT:\n<<<Hasn’t seems to load like I set it up weekly to do>>>'
+  [48586] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<Looks Easy but Not>>>\n\nTEXT:\n<<<Sometimes I encountered an error when trying to reload my balance with a credit card. It took longer for the transaction to go through.>>>'
+  [32735] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<There is nothing wrong about this giftcard to review. ...>>>\n\nTEXT:\n<<<There is nothing wrong about this giftcard to review. But I kept a message in the Gift options and it was not sent along with the gift card!>>>'
+  [60681] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<Missing message>>>\n\nTEXT:\n<<<The gift card was delivered the next day, as promised. But I\'m glad I had it sent to me instead of to the birthday boy, because the message and the "to-from" which was supposed to be written on the card, was missing.<br />It was just blank.<br /><br />I\'ve ordered gift cards before and the messages were printed on the card as instructed. I don\'t know what happened here.>>>'
+  [147336] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<Gift cards>>>\n\nTEXT:\n<<<The gift is fine,  but I bought 4 cards.  3 with one amount and one with a different amount and they are not marked.  So I do not know which is which.>>>'
+  [53136] 3.0★ pred=NEGATIVE emo=anger
+    SENT: "TITLE:\n<<<No credit this time>>>\n\nTEXT:\n<<<I didnt get my 10$ for reloding 100$. 😣 other than that, I've used it before and get credit for 10$ ,its awesome.>>>"
+  [60608] 3.0★ pred=NEGATIVE emo=sadness
+    SENT: 'TITLE:\n<<<Good idea, convenient, but needs improvement>>>\n\nTEXT:\n<<<I I was really excited when I saw that I could save $10 on my first $100 reload to a gift card. But then reality sets in and I realized it on the applied to the first reload! Bummer. I am a retired fixed income shopper, so the ten dollar savings was important. I’m disappointed I can’t save every time I reload the card.  It’s a brilliant idea but I probably won’t be using it again. Might be good for someone that wants to set up a gift card for someone else or to budget there monthly savings towards shopping.>>>'
+  [88787] 3.0★ pred=NEGATIVE emo=sadness
+    SENT: 'TITLE:\n<<<Still a happy recipient of this gift.>>>\n\nTEXT:\n<<<This was a gift and it took almost five days to be mailed to me. Very disappointed.>>>'
+  [121389] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<Need Money & Travel via e-delivery>>>\n\nTEXT:\n<<<Using Amazon & Southwest is a breeze.<br /><br />HOWEVER!! Cannot give 5 stars unless and until you create ability to send via e-delivery.<br /><br />In the past 18 months, via Amazon, I have NOT had ability to use Amex points for Visa/mc/Amex money or Southwest tickets, via email delivery, instead having to paying precious cash, because neither can come to me E-mail.<br /><br />On Amazon, I l can take 1,000,000 Amex points convert to gift cards (food, stores, etc), in 5 min, but not for Visa, MC, or Air travel. Bad bad bad>>>'
+  [129667] 3.0★ pred=NEGATIVE emo=sadness
+    SENT: 'TITLE:\n<<<Gift card with incentive that I can’t seem to use>>>\n\nTEXT:\n<<<I purchased this because they were offering a $15 Amazon gift card with this that supposedly had gone to my account. I read all the fine print about how it can be used. I got an email that it is ready to use, but I can’t seem to find anything to purchase that I can use the $15 off on.  It said for items sold by Amazon and shipped by Amazon. I put things in my cart go to checking and it doesn’t show. I have purchased items thinking maybe I have to go through with the purchase. Please tell me what actually qualifies for this $15 credit. Disappointed since the gift card promotion is the reason I decided to buy the Apple gift card when I did.>>>'
+  [31137] 1.0★ pred=NEUTRAL emo=anticipation
+    SENT: 'TITLE:\n<<<>>>\n\nTEXT:\n<<<bought it for my dad for is one of those addicted to this coffee chain>>>'
+  [49142] 1.0★ pred=NEUTRAL emo=trust
+    SENT: 'TITLE:\n<<<Nada de especial>>>\n\nTEXT:\n<<<Es como cualquier otra forma de pagar>>>'
+  [99795] 1.0★ pred=NEUTRAL emo=anticipation
+    SENT: 'TITLE:\n<<<>>>\n\nTEXT:\n<<<There is a very small chance that any Gift Card will not be stolen in the mail.>>>'
+  [136849] 1.0★ pred=NEUTRAL emo=anticipation
+    SENT: 'TITLE:\n<<<Just found it.>>>\n\nTEXT:\n<<<Just found it.>>>'
+  [116236] 1.0★ pred=POSITIVE emo=surprise
+    SENT: 'TITLE:\n<<<The snowflake tin was a nice decorative addition to contain the gift card.>>>\n\nTEXT:\n<<<The recipient of the gift card was surprised to find that Amazon gift cards came with a tin as the "wrapping".>>>'
+  [12158] 5.0★ pred=NEUTRAL emo=trust
+    SENT: "TITLE:\n<<<It's a gift card.>>>\n\nTEXT:\n<<<You can't really go wrong with a gift card.>>>"
+  [43820] 5.0★ pred=NEUTRAL emo=trust
+    SENT: "TITLE:\n<<<just like the description>>>\n\nTEXT:\n<<<It's a gift card, just like the description.>>>"
+  [20086] 3.0★ pred=POSITIVE emo=trust
+    SENT: 'TITLE:\n<<<Took awhile to figure out what to do>>>\n\nTEXT:\n<<<Very fast, accurate and available<br />Took a bit to figure out what to do though. After I figured it out , it was very easy>>>'
+  [23773] 3.0★ pred=POSITIVE emo=joy
+    SENT: 'TITLE:\n<<<Great gifts for prizes at any party that may fall under as useful rather than dollar store items>>>\n\nTEXT:\n<<<Purchased to give it away as a wedding shower game prizes instead of bath and body items that would allow guests to use the $10 gifts for a more meaningful gift and they could save the gift card and spend it when they would add it to their funds while purchasing gifts for the holidays or birthdays the app is nice and allows me to purchase items as gifts for thank you>>>'
+  [144273] 3.0★ pred=POSITIVE emo=trust
+    SENT: 'TITLE:\n<<<Budgeting ahead of time>>>\n\nTEXT:\n<<<I appreciate having the ability to get the things I need when it is saved for in a budget..>>>'
+  [111780] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<>>>\n\nTEXT:\n<<<Not as fast as the egift card>>>'
+  [88199] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<Did not receive mini envelope>>>\n\nTEXT:\n<<<Did not receive mini envelope>>>'
+  [18646] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<No ornament>>>\n\nTEXT:\n<<<I specially ordered a gift card with a reindeer ornament inside and did not receive the ornament.>>>'
+  [94255] 3.0★ pred=NEGATIVE emo=anger
+    SENT: 'TITLE:\n<<<Former way too add funds to amz balance was MUCH easier.>>>\n\nTEXT:\n<<<AMZ changed mode of loading funds into acct bal - this New way much more difficult. They (AMZ) "fixed" something for the Customer that was NOT broken.>>>'
+  [22082] 3.0★ pred=NEGATIVE emo=anger
+    SENT: "TITLE:\n<<<Didn't think that through>>>\n\nTEXT:\n<<<Yes but I wish I could buy another gift card with this, I know your thinking &#34;you can't do that anywhere&#34; but I loaded my account this way bc I've been having security issues with my credit cards, so I thought I'd just load money ahead of time.  I knew better, just wasn't thinking  □[:^/>>>"
+
+== 5. population-reweighted numbers (per-class rates from balanced run, class priors from file)
+  rating_distribution.json: {'source_file': 'Gift_Cards.jsonl.gz', 'row_count': 152410, 'rating_counts': {'1': 12326, '2': 1873, '3': 3271, '4': 6692, '5': 128248}, 'rating_pct': {'1': 8.0874, '2': 1.2289, '3': 2.1462, '4': 4.3908, '5': 84.1467}, 'inclusion_rule': 'text is non-empty after stripping whitespace', 'rows_failing_inclusion': 49, 'rows_failing_inclusion_by_rating': {'1': 18, '2': 3, '3': 1, '4': 1, '5': 26}}
+  class priors from pools: {'NEGATIVE': 0.0931, 'NEUTRAL': 0.0215, 'POSITIVE': 0.8855}
+  population-weighted accuracy: 0.9411
+  population-weighted precision POSITIVE: 0.9938  (balanced-sample precision 0.8421)
+  population-weighted precision NEUTRAL: 0.1455  (balanced-sample precision 0.7391)
+  population-weighted precision NEGATIVE: 0.8864  (balanced-sample precision 0.6429)
+  share of NEGATIVE predictions that are 3★ (population-weighted): 0.1136  (balanced: 25/70 = 0.3571)
+  share of NEUTRAL predictions from 4-5★ (population-weighted): 0.7061
+
+== 6. other seeds: star mix of the balanced draw (no model calls)
+  4★ count in POSITIVE draw over seeds 0-999: {0: 63, 1: 225, 2: 255, 3: 230, 4: 146, 5: 53, 6: 23, 7: 4, 9: 1} | share with 0: 0.063
+  seed 42: 4★ 0 | 'Three Stars' titles in NEUTRAL 10 | blanked total 26
+  'Three Stars' titles in NEUTRAL draw: median 6 5-95% 3 11
+  blanked titles in whole draw: median 21 5-95% 14 28
+  pool share of star-phrase titles by class: {'NEGATIVE': 0.058, 'NEUTRAL': 0.1309, 'POSITIVE': 0.2269}
+
+== 7. emotion claims
+  balanced150_v3 LLM emotion by truth: {('NEGATIVE', 'anger'): 41, ('NEGATIVE', 'anticipation'): 3, ('NEGATIVE', 'fear'): 1, ('NEGATIVE', 'sadness'): 2, ('NEGATIVE', 'surprise'): 2, ('NEGATIVE', 'trust'): 1, ('NEUTRAL', 'anger'): 21, ('NEUTRAL', 'anticipation'): 5, ('NEUTRAL', 'disgust'): 3, ('NEUTRAL', 'joy'): 6, ('NEUTRAL', 'sadness'): 4, ('NEUTRAL', 'trust'): 11, ('POSITIVE', 'joy'): 40, ('POSITIVE', 'trust'): 10}
+  balanced150_v3: non-joy LLM rows 104, agree 9
+    constant anger: 4    constant anticipation: 22    constant disgust: 2    constant fear: 3    constant joy: 8    constant sadness: 2    constant surprise: 0    constant trust: 18
+  first100_v3 LLM emotion by truth: {('NEGATIVE', 'anger'): 5, ('NEUTRAL', 'anger'): 1, ('NEUTRAL', 'joy'): 1, ('POSITIVE', 'anger'): 1, ('POSITIVE', 'anticipation'): 2, ('POSITIVE', 'joy'): 81, ('POSITIVE', 'trust'): 9}
+  first100_v3: non-joy LLM rows 18, agree 0
+    constant anger: 0    constant anticipation: 14    constant disgust: 0    constant fear: 0    constant joy: 22    constant sadness: 1    constant surprise: 0    constant trust: 1
+Traceback (most recent call last):
+  File "/Users/everett/Programming/mbax6418-assignment1/reviews/step6_skeptic/checks.py", line 106, in <module>
+    if "anticipation" in (h.get("emotions") or []):
+                          ^^^^^
+AttributeError: 'list' object has no attribute 'get'
