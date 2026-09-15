@@ -1,0 +1,24 @@
+1043: expected=POSITIVE predicted=POSITIVE status=OK raw=['LABEL=POSITIVE']
+1113: expected=POSITIVE predicted=POSITIVE status=OK raw=['LABEL=POSITIVE']
+1197: expected=POSITIVE predicted=POSITIVE status=OK raw=['LABEL=POSITIVE']
+1218: expected=POSITIVE predicted=POSITIVE status=OK raw=['LABEL=POSITIVE']
+1232: expected=POSITIVE predicted=POSITIVE status=OK raw=['LABEL=POSITIVE']
+1453: expected=NEGATIVE predicted=NEGATIVE status=OK raw=['LABEL=NEGATIVE']
+1624: expected=NEGATIVE predicted=NEGATIVE status=OK raw=['LABEL=NEGATIVE']
+2473: expected=NEGATIVE predicted=NEGATIVE status=OK raw=['LABEL=NEGATIVE']
+3637: expected=NEGATIVE predicted=NEGATIVE status=OK raw=['LABEL=NEGATIVE']
+4511: expected=NEGATIVE predicted=NEGATIVE status=OK raw=['LABEL=NEGATIVE']
+
+-- ratings revealed only now --
+1043: rating=5.0 truth=POSITIVE reading_agrees=True model_correct=True
+1113: rating=5.0 truth=POSITIVE reading_agrees=True model_correct=True
+1197: rating=5.0 truth=POSITIVE reading_agrees=True model_correct=True
+1218: rating=5.0 truth=POSITIVE reading_agrees=True model_correct=True
+1232: rating=5.0 truth=POSITIVE reading_agrees=True model_correct=True
+1453: rating=1.0 truth=NEGATIVE reading_agrees=True model_correct=True
+1624: rating=1.0 truth=NEGATIVE reading_agrees=True model_correct=True
+2473: rating=1.0 truth=NEGATIVE reading_agrees=True model_correct=True
+3637: rating=1.0 truth=NEGATIVE reading_agrees=True model_correct=True
+4511: rating=1.0 truth=NEGATIVE reading_agrees=True model_correct=True
+
+model matches reading on 10/10; stats={'api_calls': 10, 'cache_hits': 0}

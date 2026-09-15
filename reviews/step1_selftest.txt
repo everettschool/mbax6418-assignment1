@@ -1,0 +1,6 @@
+parser: 16 cases pass (incl. malformed, None, wrong case, wrong label)
+malformed twice -> FAIL, UNPARSED, both raw responses kept, nothing cached
+malformed then valid -> OK with both raws, cached; second call served from cache
+connection errors -> API_ERROR after 6 attempts, no crash
+build_messages rejects non-string input
+ALL SELF-TESTS PASS

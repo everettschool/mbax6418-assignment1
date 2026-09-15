@@ -1,0 +1,1 @@
+PASS cache/leakcheck_step1_spotcheck.jsonl: 10 rows, prompt prompts/sentiment_v1.txt; 0 rows had a star-phrase title/text blanked; 0 reviews use a forbidden word in their own sent title/text (customer's words, allowed)
