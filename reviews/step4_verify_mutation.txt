@@ -1,0 +1,4 @@
+CAUGHT: wrong embedded metric (accuracy 0.97 -> 0.96) -> exit 1, 4 failures; first: FAIL [first100_v1] runs/first100_v1/metrics.json#accuracy: data-raw 0.96 != file value 0.97
+CAUGHT: inverted match/mistake filter logic -> exit 1, 15 failures; first: FAIL [first100_v1] filter {'result': 'match'}: visible ids 3 != expected 97
+CAUGHT: chart marks collapsed to 0px -> exit 1, 8 failures; first: FAIL [first100_v1] mark truth_distribution.counts.POSITIVE (Answer key · Positive): value 93 renders at 0.00x16.00px (< 2px)
+ALL MUTATIONS CAUGHT

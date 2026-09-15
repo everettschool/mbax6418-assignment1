@@ -1,0 +1,23 @@
+browser: chromium 153.0.8010.12; page 66,772 bytes; runs ['first100_v1']
+[first100_v1] 60 metric numbers and 14 chart marks checked
+  [first100_v1] filter none: 100 rows OK
+  [first100_v1] filter {'result': 'match'}: 97 rows OK
+  [first100_v1] filter {'result': 'miss'}: 3 rows OK
+  [first100_v1] filter {'truth': 'POSITIVE'}: 93 rows OK
+  [first100_v1] filter {'truth': 'NEGATIVE'}: 7 rows OK
+  [first100_v1] filter {'pred': 'POSITIVE'}: 92 rows OK
+  [first100_v1] filter {'pred': 'NEGATIVE'}: 8 rows OK
+  [first100_v1] filter {'pred': 'UNPARSED'}: 0 rows OK
+  [first100_v1] filter {'query': 'gift'}: 58 rows OK
+  [first100_v1] filter {'query': 'SCAM'}: 0 rows OK
+  [first100_v1] filter {'query': '  card '}: 39 rows OK
+  [first100_v1] filter {'query': 'zzqqxx-no-match'}: 0 rows OK
+  [first100_v1] filter {'result': 'miss', 'truth': 'NEGATIVE'}: 1 rows OK
+  [first100_v1] filter {'result': 'match', 'pred': 'POSITIVE'}: 91 rows OK
+  [first100_v1] filter {'truth': 'POSITIVE', 'pred': 'NEGATIVE'}: 2 rows OK
+  [first100_v1] filter {'result': 'miss', 'query': 'card'}: 2 rows OK
+  [first100_v1] filter {'truth': 'NEGATIVE', 'pred': 'NEGATIVE', 'query': 'the'}: 4 rows OK
+[first100_v1] 17 filter cases checked
+
+294 checks, 0 failures
+PASS

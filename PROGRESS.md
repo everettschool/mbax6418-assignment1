@@ -3,13 +3,14 @@
 After any context compaction: read this file, ISSUES.md, docs/assignment.md, and reviews/ in full, then continue from "Next action". Never redo a step whose gate is recorded as passed.
 
 ## Current step
-Step 4 — Interactive filtering (starting)
+Step 5 — Primary emotion, two ways (starting)
 
 ## Gates passed
 - Step 0 — evidence: `runs/rating_distribution.json`, `reviews/step0/hello_browser.png`, Step 0 entries in ISSUES.md. `gh auth` OK (account essboomer); `gh repo view mbax6418-assignment1` → not found. Commit 8a8f484.
 - Step 1 (self-check) — spot check 10/10 (`reviews/step1_spotcheck.txt`, `.json`); parser/FAIL/API_ERROR self-test passes (`reviews/step1_selftest.txt`); `verify_leak.py` PASS (`reviews/step1_verify_leak.txt`). `prompts/sentiment_v1.txt` is now IMMUTABLE. Commit 8176267.
 - Step 2 (Grader + Numbers Auditor, round 1) — `runs/first100_v1/` (accuracy 97.0% vs majority baseline 93.0%; NEGATIVE recall 6/7); `reviews/step2_analysis.md`; `reviews/step2_grader.md` (1 MAJOR, 4 MINOR — all fixed); `reviews/step2_numbers_auditor.md` (0 mismatches, 1 MINOR — fixed); `reviews/step2_verify_leak.txt` PASS. Commit c0b780c.
-- Step 3 (Numbers Auditor, round 1) — `dashboard/template.html`, `dashboard/manifest.json`, `src/build_dashboard.py`, built `dashboard/index.html` (62,287 bytes, 0 console errors, 0 network requests); `reviews/step3_numbers_auditor.md` (0 mismatches over 62 fields / 56 numbers / 14 marks; 2 MINOR — both fixed); gate screenshot `reviews/step3_dashboard_1440x900.png` (viewed).
+- Step 3 (Numbers Auditor, round 1) — `dashboard/template.html`, `dashboard/manifest.json`, `src/build_dashboard.py`, built `dashboard/index.html` (62,287 bytes, 0 console errors, 0 network requests); `reviews/step3_numbers_auditor.md` (0 mismatches over 62 fields / 56 numbers / 14 marks; 2 MINOR — both fixed); gate screenshot `reviews/step3_dashboard_1440x900.png` (viewed). Commit b1b1229.
+- Step 4 (self-check) — filters (result / answer key / model / search, combinable, live count; heatmap cells filter the table) in `dashboard/template.html`; `src/verify_dashboard.py` PASS, 294 checks, 0 failures (`reviews/step4_verify_dashboard.txt`); mutation test: 3/3 broken pages caught (`reviews/step4_verify_mutation.txt`).
 
 ## Fixed facts (never re-decide)
 - Dataset: `data/Gift_Cards.jsonl.gz`, sha256 `e03a258ebd7b1e2591b09862aab65d3dcde9c300744d800aa1fbaf374b7c2340`, 152,410 rows, 49 rows fail inclusion rule.
@@ -37,7 +38,7 @@ Step 4 — Interactive filtering (starting)
 106 after Step 3 (3 Step 0 probes + 10 spot check + 3 preview + 90 first100_v1); live total in `cache/api_calls_total.json`. Cap 1500.
 
 ## Open reviewer findings
-(none — Step 3 round-1 findings both fixed)
+(none)
 
 ## Next action
-Commit Step 3. Then Step 4: add filters (correct/mismatched, truth class, predicted class, free-text search; combinable; live count) to `dashboard/template.html`; write `src/verify_dashboard.py` (browser asserts: each filter + combinations vs counts computed from predictions.jsonl; every data-raw equals its data-source file value and displayed text matches display rule); save output to `reviews/step4_verify_dashboard.txt`.
+Commit Step 4. Then Step 5: (a) `prompts/sentiment_v2.txt` = v1 + one primary emotion, output `LABEL=<X>;EMOTION=<Y>`; run on batch_100 → `runs/first100_v2/` (preview 3 first), score. (b) `src/get_nrc.py` (official EmoLex, fallback NRCLex bundle; record source, sha256, word count) and `src/nrc_emotion.py` (8 emotions only, asserted; s/es/ed/ing fallback; TIE/NONE); add `llm_emotion`, `nrc_emotion`, `emotion_agree` to predictions; emotion agreement 3 ways + cross-tab into `runs/<run>/emotion_metrics.json`; emotion section on dashboard (marks use `data-metric="emotion.<field>"`, which `verify_dashboard.py` resolves to emotion_metrics.json). Gate: Grader + Numbers Auditor; write `reviews/step5_analysis.md` with ≥3 divergent reviews grounded in their words and lexicon hits.
