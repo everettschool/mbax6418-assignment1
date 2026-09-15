@@ -1,0 +1,3 @@
+first100_v1: accuracy 97.0% (97/100); majority baseline 93.0% (POSITIVE); balanced accuracy 91.8%; unparsed 0
+  truth counts: {'POSITIVE': 93, 'NEGATIVE': 7} | predicted counts: {'POSITIVE': 92, 'NEGATIVE': 8, 'UNPARSED': 0}
+  confusion (rows=truth): {'POSITIVE->POSITIVE': 91, 'POSITIVE->NEGATIVE': 2, 'POSITIVE->UNPARSED': 0, 'NEGATIVE->POSITIVE': 1, 'NEGATIVE->NEGATIVE': 6, 'NEGATIVE->UNPARSED': 0}

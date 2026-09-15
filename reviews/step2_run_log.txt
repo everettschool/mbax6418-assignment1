@@ -1,0 +1,5 @@
+25/100 done; stats={'api_calls': 18, 'cache_hits': 7}
+50/100 done; stats={'api_calls': 40, 'cache_hits': 10}
+75/100 done; stats={'api_calls': 65, 'cache_hits': 10}
+100/100 done; stats={'api_calls': 90, 'cache_hits': 10}
+{"run": "first100_v1", "n_rows": 100, "api_call_count": 90, "cache_hits": 10, "parse_fail_count": 0, "api_error_count": 0}

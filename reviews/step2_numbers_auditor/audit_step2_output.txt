@@ -1,0 +1,114 @@
+== selection / source integrity
+OK   n rows: recomputed=100 reported=100
+OK   review_ids unique: recomputed=100 reported=100
+OK   review_ids == first 100 included ids: recomputed=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99] reported=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+OK   run_meta dataset_row_count: recomputed=152410 reported=152410
+OK   run_meta n_rows: recomputed=100 reported=100
+== truth re-derived from source rating (>=4 POSITIVE else NEGATIVE)
+OK   stored truth == re-derived truth (mismatch count): recomputed=0 reported=0
+== prediction re-parsed from raw_responses (own strict parser)
+OK   stored prediction == re-parsed (mismatch count): recomputed=0 reported=0
+OK   raw responses exactly 'LABEL=X' (non-exact count): recomputed=0 reported=0
+== metrics.json recomputation
+OK   n_rows: recomputed=100 reported=100
+OK   correct: recomputed=97 reported=97
+OK   incorrect: recomputed=3 reported=3
+OK   accuracy: recomputed=0.97 reported=0.97
+OK   truth counts: recomputed={'POSITIVE': 93, 'NEGATIVE': 7} reported={'POSITIVE': 93, 'NEGATIVE': 7}
+OK   truth share POSITIVE: recomputed=0.93 reported=0.93
+OK   truth share NEGATIVE: recomputed=0.07 reported=0.07
+OK   prediction counts: recomputed={'POSITIVE': 92, 'NEGATIVE': 8, 'UNPARSED': 0} reported={'POSITIVE': 92, 'NEGATIVE': 8, 'UNPARSED': 0}
+OK   prediction share POSITIVE: recomputed=0.92 reported=0.92
+OK   prediction share NEGATIVE: recomputed=0.08 reported=0.08
+OK   prediction share UNPARSED: recomputed=0.0 reported=0.0
+OK   majority_class: recomputed='POSITIVE' reported='POSITIVE'
+OK   majority_baseline_accuracy: recomputed=0.93 reported=0.93
+OK   accuracy_minus_majority_baseline: recomputed=0.039999999999999925 reported=0.039999999999999925
+OK   balanced_accuracy: recomputed=0.9178187403993856 reported=0.9178187403993856
+OK   majority_baseline_balanced_accuracy: recomputed=0.5 reported=0.5
+OK   macro_f1: recomputed=0.8918918918918919 reported=0.8918918918918919
+OK   POSITIVE support: recomputed=93 reported=93
+OK   POSITIVE predicted: recomputed=92 reported=92
+OK   POSITIVE correct: recomputed=91 reported=91
+OK   POSITIVE wrong: recomputed=2 reported=2
+OK   POSITIVE precision: recomputed=0.9891304347826086 reported=0.9891304347826086
+OK   POSITIVE precision_undefined flag: recomputed=False reported=False
+OK   POSITIVE recall: recomputed=0.978494623655914 reported=0.978494623655914
+OK   POSITIVE f1: recomputed=0.9837837837837837 reported=0.9837837837837837
+OK   NEGATIVE support: recomputed=7 reported=7
+OK   NEGATIVE predicted: recomputed=8 reported=8
+OK   NEGATIVE correct: recomputed=6 reported=6
+OK   NEGATIVE wrong: recomputed=1 reported=1
+OK   NEGATIVE precision: recomputed=0.75 reported=0.75
+OK   NEGATIVE precision_undefined flag: recomputed=False reported=False
+OK   NEGATIVE recall: recomputed=0.8571428571428571 reported=0.8571428571428571
+OK   NEGATIVE f1: recomputed=0.7999999999999999 reported=0.7999999999999999
+OK   confusion rows: recomputed=['POSITIVE', 'NEGATIVE'] reported=['POSITIVE', 'NEGATIVE']
+OK   confusion columns: recomputed=['POSITIVE', 'NEGATIVE', 'UNPARSED'] reported=['POSITIVE', 'NEGATIVE', 'UNPARSED']
+OK   confusion counts: recomputed=[[91, 2, 0], [1, 6, 0]] reported=[[91, 2, 0], [1, 6, 0]]
+OK   cell POSITIVE->POSITIVE: recomputed=91 reported=91
+OK   row share POSITIVE->POSITIVE: recomputed=0.978494623655914 reported=0.978494623655914
+OK   cell POSITIVE->NEGATIVE: recomputed=2 reported=2
+OK   row share POSITIVE->NEGATIVE: recomputed=0.021505376344086023 reported=0.021505376344086023
+OK   cell POSITIVE->UNPARSED: recomputed=0 reported=0
+OK   row share POSITIVE->UNPARSED: recomputed=0.0 reported=0.0
+OK   cell NEGATIVE->POSITIVE: recomputed=1 reported=1
+OK   row share NEGATIVE->POSITIVE: recomputed=0.14285714285714285 reported=0.14285714285714285
+OK   cell NEGATIVE->NEGATIVE: recomputed=6 reported=6
+OK   row share NEGATIVE->NEGATIVE: recomputed=0.8571428571428571 reported=0.8571428571428571
+OK   cell NEGATIVE->UNPARSED: recomputed=0 reported=0
+OK   row share NEGATIVE->UNPARSED: recomputed=0.0 reported=0.0
+OK   misclassified_review_ids: recomputed={'POSITIVE->NEGATIVE': [17, 46], 'NEGATIVE->POSITIVE': [98]} reported={'POSITIVE->NEGATIVE': [17, 46], 'NEGATIVE->POSITIVE': [98]}
+OK   parse_fail_count: recomputed=0 reported=0
+OK   api_error_count: recomputed=0 reported=0
+OK   unparsed_count: recomputed=0 reported=0
+OK   unparsed_share: recomputed=0.0 reported=0.0
+OK   rows_needing_retry: recomputed=0 reported=0
+OK   metrics.json keys not covered by this audit: recomputed=[] reported=[]
+== run_meta.json
+OK   run_meta parse_fail_count: recomputed=0 reported=0
+OK   run_meta api_error_count: recomputed=0 reported=0
+OK   run_meta rows_needing_retry: recomputed=0 reported=0
+OK   run_meta cache_hits == rows from_cache: recomputed=10 reported=10
+OK   run_meta api_call_count == rows not from cache (0 retries): recomputed=90 reported=90
+== rating_distribution.json (recomputed from full file)
+OK   row_count: recomputed=152410 reported=152410
+OK   rating_counts: recomputed={5: 128248, 1: 12326, 2: 1873, 4: 6692, 3: 3271} reported={1: 12326, 2: 1873, 3: 3271, 4: 6692, 5: 128248}
+OK   rating_pct 1: recomputed=8.0874 reported=8.0874
+OK   rating_pct 2: recomputed=1.2289 reported=1.2289
+OK   rating_pct 3: recomputed=2.1462 reported=2.1462
+OK   rating_pct 4: recomputed=4.3908 reported=4.3908
+OK   rating_pct 5: recomputed=84.1467 reported=84.1467
+OK   rows_failing_inclusion: recomputed=49 reported=49
+OK   rows_failing_inclusion_by_rating: recomputed={1: 18, 2: 3, 3: 1, 4: 1, 5: 26} reported={1: 18, 2: 3, 3: 1, 4: 1, 5: 26}
+== claims in reviews/step2_analysis.md and ISSUES.md
+OK   rounded accuracy 97.0: recomputed=97.0 reported=97.0
+OK   baseline 93.0: recomputed=93.0 reported=93.0
+OK   gain +4.0 pp: recomputed=4.0 reported=4.0
+OK   balanced acc 91.8 / 0.9178: recomputed=91.8 reported=91.8
+OK   POSITIVE recall 91/93=97.8: recomputed=(91, 93, 97.8) reported=(91, 93, 97.8)
+OK   POSITIVE precision 91/92=98.9: recomputed=(91, 92, 98.9) reported=(91, 92, 98.9)
+OK   NEGATIVE recall 6/7=85.7: recomputed=(6, 7, 85.7) reported=(6, 7, 85.7)
+OK   NEGATIVE precision 6/8=75.0: recomputed=(6, 8, 75.0) reported=(6, 8, 75.0)
+OK   NEGATIVE F1 0.800: recomputed=0.8 reported=0.8
+OK   one review moves NEGATIVE recall 14.3 pts: recomputed=14.3 reported=14.3
+OK   id 17 rating/truth/pred: recomputed=(5, 'POSITIVE', 'NEGATIVE') reported=(5, 'POSITIVE', 'NEGATIVE')
+OK   id 46 rating/truth/pred: recomputed=(5, 'POSITIVE', 'NEGATIVE') reported=(5, 'POSITIVE', 'NEGATIVE')
+OK   id 98 rating/truth/pred: recomputed=(3, 'NEGATIVE', 'POSITIVE') reported=(3, 'NEGATIVE', 'POSITIVE')
+OK   id 17 title: recomputed='No note attached to sent gift card' reported='No note attached to sent gift card'
+     id 17 text: 'What a pretty gift card presentation , the recipient loved it ! I have one complaint , I took the time and wrote a short note to the recipient of the gift card so she knew who and why the GC was being sent but the note wasn’t attached. I’ve used the option to write a note on many occasions and several times it showed up without the note . I actually had to contact her to ask if she had checked her mail knowing it had arrived .'
+OK   id 46 title/text: recomputed=('Love it!!', 'This is an online gift card nothing to show sorry🤪') reported=('Love it!!', 'This is an online gift card nothing to show sorry🤪')
+OK   id 98 title/text: recomputed=('Easy to use', 'Very easy to use. I wish I knew about it earlier') reported=('Easy to use', 'Very easy to use. I wish I knew about it earlier')
+OK   1-2 star ids in batch: recomputed=[4, 15, 32, 51, 63] reported=[4, 15, 32, 51, 63]
+OK   1-2 star all predicted NEGATIVE: recomputed=['NEGATIVE', 'NEGATIVE', 'NEGATIVE', 'NEGATIVE', 'NEGATIVE'] reported=['NEGATIVE', 'NEGATIVE', 'NEGATIVE', 'NEGATIVE', 'NEGATIVE']
+OK   3 star ids in batch: recomputed=[91, 98] reported=[91, 98]
+OK   3 star preds (91, 98): recomputed=['NEGATIVE', 'POSITIVE'] reported=['NEGATIVE', 'POSITIVE']
+     duplicate (title,text) groups: {('Good Product', 'Good Product'): [20, 21, 22, 23, 24, 27, 28], ('Good product', 'Good product'): [25, 26]}
+OK   'Good Product' ids: recomputed=[20, 21, 22, 23, 24, 27, 28] reported=[20, 21, 22, 23, 24, 27, 28]
+OK   'Good product' ids: recomputed=[25, 26] reported=[25, 26]
+OK   rows in duplicate groups (ISSUES: '9 of the 100'): recomputed=9 reported=9
+OK   rows that are repeats of an earlier row: recomputed=7 reported=7
+OK   cache hits = 3 preview (ids 0-2) + 7 repeats: recomputed=[0, 1, 2, 21, 22, 23, 24, 26, 27, 28] reported=[0, 1, 2, 21, 22, 23, 24, 26, 27, 28]
+OK   ISSUES Step 0: file share POSITIVE ~88.5%: recomputed=88.5 reported=88.5
+
+TOTAL FAILS: 0 []
