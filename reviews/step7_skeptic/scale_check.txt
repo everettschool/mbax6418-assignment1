@@ -1,0 +1,230 @@
+
+== balanced150_v3 @ 1440px
+  whole file rating_counts.5          share  84.1%  bar  152.6px  track  181.3px  => px per 1% = 1.81
+  whole file rating_counts.4          share   4.4%  bar    8.6px  track  197.0px  => px per 1% = 1.96
+  whole file rating_counts.3          share   2.1%  bar    4.2px  track  197.0px  => px per 1% = 1.96
+  whole file rating_counts.2          share   1.2%  bar    2.4px  track  197.0px  => px per 1% = 1.95
+  whole file rating_counts.1          share   8.1%  bar   15.3px  track  189.2px  => px per 1% = 1.89
+  sample     sample_rating_counts.5   share  33.3%  bar   72.1px  track  216.3px  => px per 1% = 2.16
+  sample     sample_rating_counts.3   share  33.3%  bar   72.1px  track  216.3px  => px per 1% = 2.16
+  sample     sample_rating_counts.2   share   4.7%  bar   10.1px  track  216.3px  => px per 1% = 2.16
+  sample     sample_rating_counts.1   share  28.7%  bar   62.0px  track  216.3px  => px per 1% = 2.16
+  paired truth_distribution.counts.POSITIVE         v= 50 bar  109.8 track  153.7 px/unit 2.196
+  paired prediction_distribution.counts.POSITIVE    v= 57 bar  125.2 track  153.7 px/unit 2.196
+  paired truth_distribution.counts.NEUTRAL          v= 50 bar  109.8 track  153.7 px/unit 2.196
+  paired prediction_distribution.counts.NEUTRAL     v= 23 bar   50.5 track  153.7 px/unit 2.196
+  paired truth_distribution.counts.NEGATIVE         v= 50 bar  109.8 track  153.7 px/unit 2.196
+  paired prediction_distribution.counts.NEGATIVE    v= 70 bar  153.7 track  153.7 px/unit 2.196
+  emo emotion.llm_emotion_counts.anger           v= 62 bar  110.5 track  119.5 px/unit 1.782
+  emo emotion.nrc_emotion_counts.anger           v=  4 bar    7.1 track  119.5 px/unit 1.775
+  emo emotion.llm_emotion_counts.anticipation    v=  8 bar   14.3 track  119.5 px/unit 1.788
+  emo emotion.nrc_emotion_counts.anticipation    v= 22 bar   39.2 track  119.5 px/unit 1.782
+  emo emotion.llm_emotion_counts.disgust         v=  3 bar    5.3 track  119.5 px/unit 1.767
+  emo emotion.nrc_emotion_counts.disgust         v=  2 bar    3.6 track  119.5 px/unit 1.800
+  emo emotion.llm_emotion_counts.fear            v=  1 bar    2.0 track  119.5 px/unit 2.000
+  emo emotion.nrc_emotion_counts.fear            v=  3 bar    5.3 track  119.5 px/unit 1.767
+  emo emotion.llm_emotion_counts.joy             v= 46 bar   82.0 track  119.5 px/unit 1.783
+  emo emotion.nrc_emotion_counts.joy             v=  8 bar   14.3 track  119.5 px/unit 1.788
+  emo emotion.llm_emotion_counts.sadness         v=  6 bar   10.7 track  119.5 px/unit 1.783
+  emo emotion.nrc_emotion_counts.sadness         v=  2 bar    3.6 track  119.5 px/unit 1.800
+  emo emotion.llm_emotion_counts.surprise        v=  2 bar    3.6 track  119.5 px/unit 1.800
+  emo emotion.llm_emotion_counts.trust           v= 22 bar   39.2 track  119.5 px/unit 1.782
+  emo emotion.nrc_emotion_counts.trust           v= 18 bar   32.1 track  119.5 px/unit 1.783
+  emo emotion.nrc_emotion_counts.TIE             v= 67 bar  119.5 track  119.5 px/unit 1.784
+  emo emotion.nrc_emotion_counts.NONE            v= 24 bar   42.8 track  119.5 px/unit 1.783
+  cbar ['Positive', 162.7, [['per_class.POSITIVE.correct', 48, 154.3], ['per_class.POSITIVE.wrong', 2, 6.4]]]
+  cbar ['Neutral', 154.6, [['per_class.NEUTRAL.correct', 17, 51.9], ['per_class.NEUTRAL.wrong', 33, 100.7]]]
+  cbar ['Negative', 162.7, [['per_class.NEGATIVE.correct', 45, 144.6], ['per_class.NEGATIVE.wrong', 5, 16.1]]]
+
+== first100_v3 @ 1440px
+  whole file rating_counts.5          share  84.1%  bar  152.6px  track  181.3px  => px per 1% = 1.81
+  whole file rating_counts.4          share   4.4%  bar    8.6px  track  197.0px  => px per 1% = 1.96
+  whole file rating_counts.3          share   2.1%  bar    4.2px  track  197.0px  => px per 1% = 1.96
+  whole file rating_counts.2          share   1.2%  bar    2.4px  track  197.0px  => px per 1% = 1.95
+  whole file rating_counts.1          share   8.1%  bar   15.3px  track  189.2px  => px per 1% = 1.89
+  sample     sample_rating_counts.5   share  91.0%  bar  196.8px  track  216.3px  => px per 1% = 2.16
+  sample     sample_rating_counts.4   share   2.0%  bar    4.3px  track  216.3px  => px per 1% = 2.15
+  sample     sample_rating_counts.3   share   2.0%  bar    4.3px  track  216.3px  => px per 1% = 2.15
+  sample     sample_rating_counts.2   share   1.0%  bar    2.2px  track  216.3px  => px per 1% = 2.20
+  sample     sample_rating_counts.1   share   4.0%  bar    8.6px  track  216.3px  => px per 1% = 2.15
+  paired truth_distribution.counts.POSITIVE         v= 93 bar  153.7 track  153.7 px/unit 1.653
+  paired prediction_distribution.counts.POSITIVE    v= 91 bar  150.4 track  153.7 px/unit 1.653
+  paired truth_distribution.counts.NEUTRAL          v=  2 bar    3.3 track  153.7 px/unit 1.650
+  paired prediction_distribution.counts.NEUTRAL     v=  2 bar    3.3 track  153.7 px/unit 1.650
+  paired truth_distribution.counts.NEGATIVE         v=  5 bar    8.3 track  153.7 px/unit 1.660
+  paired prediction_distribution.counts.NEGATIVE    v=  7 bar   11.6 track  153.7 px/unit 1.657
+  emo emotion.llm_emotion_counts.anger           v=  7 bar   10.2 track  119.5 px/unit 1.457
+  emo emotion.llm_emotion_counts.anticipation    v=  2 bar    2.9 track  119.5 px/unit 1.450
+  emo emotion.nrc_emotion_counts.anticipation    v= 14 bar   20.4 track  119.5 px/unit 1.457
+  emo emotion.llm_emotion_counts.joy             v= 82 bar  119.5 track  119.5 px/unit 1.457
+  emo emotion.nrc_emotion_counts.joy             v= 22 bar   32.0 track  119.5 px/unit 1.455
+  emo emotion.nrc_emotion_counts.sadness         v=  1 bar    2.0 track  119.5 px/unit 2.000
+  emo emotion.llm_emotion_counts.trust           v=  9 bar   13.1 track  119.5 px/unit 1.456
+  emo emotion.nrc_emotion_counts.trust           v=  1 bar    2.0 track  119.5 px/unit 2.000
+  emo emotion.nrc_emotion_counts.TIE             v= 47 bar   68.5 track  119.5 px/unit 1.457
+  emo emotion.nrc_emotion_counts.NONE            v= 15 bar   21.8 track  119.5 px/unit 1.453
+  cbar ['Positive', 162.7, [['per_class.POSITIVE.correct', 90, 155.5], ['per_class.POSITIVE.wrong', 3, 5.2]]]
+  cbar ['Neutral', 187.9, [['per_class.NEUTRAL.wrong', 2, 187.9]]]
+  cbar ['Negative', 170.8, [['per_class.NEGATIVE.correct', 5, 170.8]]]
+
+== first100_v2 @ 1440px
+  whole file rating_counts.5          share  84.1%  bar  152.6px  track  181.3px  => px per 1% = 1.81
+  whole file rating_counts.4          share   4.4%  bar    8.6px  track  197.0px  => px per 1% = 1.96
+  whole file rating_counts.3          share   2.1%  bar    4.2px  track  197.0px  => px per 1% = 1.96
+  whole file rating_counts.2          share   1.2%  bar    2.4px  track  197.0px  => px per 1% = 1.95
+  whole file rating_counts.1          share   8.1%  bar   15.3px  track  189.2px  => px per 1% = 1.89
+  sample     sample_rating_counts.5   share  91.0%  bar  196.8px  track  216.3px  => px per 1% = 2.16
+  sample     sample_rating_counts.4   share   2.0%  bar    4.3px  track  216.3px  => px per 1% = 2.15
+  sample     sample_rating_counts.3   share   2.0%  bar    4.3px  track  216.3px  => px per 1% = 2.15
+  sample     sample_rating_counts.2   share   1.0%  bar    2.2px  track  216.3px  => px per 1% = 2.20
+  sample     sample_rating_counts.1   share   4.0%  bar    8.6px  track  216.3px  => px per 1% = 2.15
+  paired truth_distribution.counts.POSITIVE         v= 93 bar  153.7 track  153.7 px/unit 1.653
+  paired prediction_distribution.counts.POSITIVE    v= 92 bar  152.1 track  153.7 px/unit 1.653
+  paired truth_distribution.counts.NEGATIVE         v=  7 bar   11.6 track  153.7 px/unit 1.657
+  paired prediction_distribution.counts.NEGATIVE    v=  8 bar   13.2 track  153.7 px/unit 1.650
+  emo emotion.llm_emotion_counts.anger           v=  7 bar   10.4 track  119.5 px/unit 1.486
+  emo emotion.llm_emotion_counts.anticipation    v=  3 bar    4.5 track  119.5 px/unit 1.500
+  emo emotion.nrc_emotion_counts.anticipation    v= 14 bar   20.9 track  119.5 px/unit 1.493
+  emo emotion.llm_emotion_counts.disgust         v=  1 bar    2.0 track  119.5 px/unit 2.000
+  emo emotion.llm_emotion_counts.joy             v= 80 bar  119.5 track  119.5 px/unit 1.494
+  emo emotion.nrc_emotion_counts.joy             v= 22 bar   32.8 track  119.5 px/unit 1.491
+  emo emotion.nrc_emotion_counts.sadness         v=  1 bar    2.0 track  119.5 px/unit 2.000
+  emo emotion.llm_emotion_counts.trust           v=  9 bar   13.4 track  119.5 px/unit 1.489
+  emo emotion.nrc_emotion_counts.trust           v=  1 bar    2.0 track  119.5 px/unit 2.000
+  emo emotion.nrc_emotion_counts.TIE             v= 47 bar   70.2 track  119.5 px/unit 1.494
+  emo emotion.nrc_emotion_counts.NONE            v= 15 bar   22.4 track  119.5 px/unit 1.493
+  cbar ['Positive', 162.7, [['per_class.POSITIVE.correct', 91, 157.3], ['per_class.POSITIVE.wrong', 2, 3.5]]]
+  cbar ['Negative', 179.4, [['per_class.NEGATIVE.correct', 6, 152], ['per_class.NEGATIVE.wrong', 1, 25.3]]]
+
+== first100_v1 @ 1440px
+  whole file rating_counts.5          share  84.1%  bar  152.6px  track  181.3px  => px per 1% = 1.81
+  whole file rating_counts.4          share   4.4%  bar    8.6px  track  197.0px  => px per 1% = 1.96
+  whole file rating_counts.3          share   2.1%  bar    4.2px  track  197.0px  => px per 1% = 1.96
+  whole file rating_counts.2          share   1.2%  bar    2.4px  track  197.0px  => px per 1% = 1.95
+  whole file rating_counts.1          share   8.1%  bar   15.3px  track  189.2px  => px per 1% = 1.89
+  sample     sample_rating_counts.5   share  91.0%  bar  196.8px  track  216.3px  => px per 1% = 2.16
+  sample     sample_rating_counts.4   share   2.0%  bar    4.3px  track  216.3px  => px per 1% = 2.15
+  sample     sample_rating_counts.3   share   2.0%  bar    4.3px  track  216.3px  => px per 1% = 2.15
+  sample     sample_rating_counts.2   share   1.0%  bar    2.2px  track  216.3px  => px per 1% = 2.20
+  sample     sample_rating_counts.1   share   4.0%  bar    8.6px  track  216.3px  => px per 1% = 2.15
+  paired truth_distribution.counts.POSITIVE         v= 93 bar  153.7 track  153.7 px/unit 1.653
+  paired prediction_distribution.counts.POSITIVE    v= 92 bar  152.1 track  153.7 px/unit 1.653
+  paired truth_distribution.counts.NEGATIVE         v=  7 bar   11.6 track  153.7 px/unit 1.657
+  paired prediction_distribution.counts.NEGATIVE    v=  8 bar   13.2 track  153.7 px/unit 1.650
+  cbar ['Positive', 162.7, [['per_class.POSITIVE.correct', 91, 157.3], ['per_class.POSITIVE.wrong', 2, 3.5]]]
+  cbar ['Negative', 179.4, [['per_class.NEGATIVE.correct', 6, 152], ['per_class.NEGATIVE.wrong', 1, 25.3]]]
+
+== balanced150_v3 @ 400px
+  whole file rating_counts.5          share  84.1%  bar  154.8px  track  184.0px  => px per 1% = 1.84
+  whole file rating_counts.4          share   4.4%  bar    8.8px  track  199.7px  => px per 1% = 2.00
+  whole file rating_counts.3          share   2.1%  bar    4.3px  track  199.7px  => px per 1% = 2.00
+  whole file rating_counts.2          share   1.2%  bar    2.5px  track  199.7px  => px per 1% = 2.03
+  whole file rating_counts.1          share   8.1%  bar   15.5px  track  191.8px  => px per 1% = 1.92
+  sample     sample_rating_counts.5   share  33.3%  bar   73.0px  track  219.0px  => px per 1% = 2.19
+  sample     sample_rating_counts.3   share  33.3%  bar   73.0px  track  219.0px  => px per 1% = 2.19
+  sample     sample_rating_counts.2   share   4.7%  bar   10.2px  track  219.0px  => px per 1% = 2.19
+  sample     sample_rating_counts.1   share  28.7%  bar   62.8px  track  219.0px  => px per 1% = 2.19
+  paired truth_distribution.counts.POSITIVE         v= 50 bar  111.7 track  156.4 px/unit 2.234
+  paired prediction_distribution.counts.POSITIVE    v= 57 bar  127.3 track  156.4 px/unit 2.233
+  paired truth_distribution.counts.NEUTRAL          v= 50 bar  111.7 track  156.4 px/unit 2.234
+  paired prediction_distribution.counts.NEUTRAL     v= 23 bar   51.4 track  156.4 px/unit 2.235
+  paired truth_distribution.counts.NEGATIVE         v= 50 bar  111.7 track  156.4 px/unit 2.234
+  paired prediction_distribution.counts.NEGATIVE    v= 70 bar  156.4 track  156.4 px/unit 2.234
+  emo emotion.llm_emotion_counts.anger           v= 62 bar   92.8 track  100.3 px/unit 1.497
+  emo emotion.nrc_emotion_counts.anger           v=  4 bar    6.0 track  100.3 px/unit 1.500
+  emo emotion.llm_emotion_counts.anticipation    v=  8 bar   12.0 track  100.3 px/unit 1.500
+  emo emotion.nrc_emotion_counts.anticipation    v= 22 bar   32.9 track  100.3 px/unit 1.495
+  emo emotion.llm_emotion_counts.disgust         v=  3 bar    4.5 track  100.3 px/unit 1.500
+  emo emotion.nrc_emotion_counts.disgust         v=  2 bar    3.0 track  100.3 px/unit 1.500
+  emo emotion.llm_emotion_counts.fear            v=  1 bar    2.0 track  100.3 px/unit 2.000
+  emo emotion.nrc_emotion_counts.fear            v=  3 bar    4.5 track  100.3 px/unit 1.500
+  emo emotion.llm_emotion_counts.joy             v= 46 bar   68.8 track  100.3 px/unit 1.496
+  emo emotion.nrc_emotion_counts.joy             v=  8 bar   12.0 track  100.3 px/unit 1.500
+  emo emotion.llm_emotion_counts.sadness         v=  6 bar    9.0 track  100.3 px/unit 1.500
+  emo emotion.nrc_emotion_counts.sadness         v=  2 bar    3.0 track  100.3 px/unit 1.500
+  emo emotion.llm_emotion_counts.surprise        v=  2 bar    3.0 track  100.3 px/unit 1.500
+  emo emotion.llm_emotion_counts.trust           v= 22 bar   32.9 track  100.3 px/unit 1.495
+  emo emotion.nrc_emotion_counts.trust           v= 18 bar   26.9 track  100.3 px/unit 1.494
+  emo emotion.nrc_emotion_counts.TIE             v= 67 bar  100.3 track  100.3 px/unit 1.497
+  emo emotion.nrc_emotion_counts.NONE            v= 24 bar   35.9 track  100.3 px/unit 1.496
+  cbar ['Positive', 236, [['per_class.POSITIVE.correct', 48, 224.6], ['per_class.POSITIVE.wrong', 2, 9.4]]]
+  cbar ['Neutral', 236, [['per_class.NEUTRAL.correct', 17, 79.6], ['per_class.NEUTRAL.wrong', 33, 154.4]]]
+  cbar ['Negative', 236, [['per_class.NEGATIVE.correct', 45, 210.6], ['per_class.NEGATIVE.wrong', 5, 23.4]]]
+
+== first100_v3 @ 400px
+  whole file rating_counts.5          share  84.1%  bar  154.8px  track  184.0px  => px per 1% = 1.84
+  whole file rating_counts.4          share   4.4%  bar    8.8px  track  199.7px  => px per 1% = 2.00
+  whole file rating_counts.3          share   2.1%  bar    4.3px  track  199.7px  => px per 1% = 2.00
+  whole file rating_counts.2          share   1.2%  bar    2.5px  track  199.7px  => px per 1% = 2.03
+  whole file rating_counts.1          share   8.1%  bar   15.5px  track  191.8px  => px per 1% = 1.92
+  sample     sample_rating_counts.5   share  91.0%  bar  199.3px  track  219.0px  => px per 1% = 2.19
+  sample     sample_rating_counts.4   share   2.0%  bar    4.4px  track  219.0px  => px per 1% = 2.20
+  sample     sample_rating_counts.3   share   2.0%  bar    4.4px  track  219.0px  => px per 1% = 2.20
+  sample     sample_rating_counts.2   share   1.0%  bar    2.2px  track  219.0px  => px per 1% = 2.20
+  sample     sample_rating_counts.1   share   4.0%  bar    8.8px  track  219.0px  => px per 1% = 2.20
+  paired truth_distribution.counts.POSITIVE         v= 93 bar  156.4 track  156.4 px/unit 1.682
+  paired prediction_distribution.counts.POSITIVE    v= 91 bar  153.0 track  156.4 px/unit 1.681
+  paired truth_distribution.counts.NEUTRAL          v=  2 bar    3.4 track  156.4 px/unit 1.700
+  paired prediction_distribution.counts.NEUTRAL     v=  2 bar    3.4 track  156.4 px/unit 1.700
+  paired truth_distribution.counts.NEGATIVE         v=  5 bar    8.4 track  156.4 px/unit 1.680
+  paired prediction_distribution.counts.NEGATIVE    v=  7 bar   11.8 track  156.4 px/unit 1.686
+  emo emotion.llm_emotion_counts.anger           v=  7 bar    8.6 track  100.3 px/unit 1.229
+  emo emotion.llm_emotion_counts.anticipation    v=  2 bar    2.4 track  100.3 px/unit 1.200
+  emo emotion.nrc_emotion_counts.anticipation    v= 14 bar   17.1 track  100.3 px/unit 1.221
+  emo emotion.llm_emotion_counts.joy             v= 82 bar  100.3 track  100.3 px/unit 1.223
+  emo emotion.nrc_emotion_counts.joy             v= 22 bar   26.9 track  100.3 px/unit 1.223
+  emo emotion.nrc_emotion_counts.sadness         v=  1 bar    2.0 track  100.3 px/unit 2.000
+  emo emotion.llm_emotion_counts.trust           v=  9 bar   11.0 track  100.3 px/unit 1.222
+  emo emotion.nrc_emotion_counts.trust           v=  1 bar    2.0 track  100.3 px/unit 2.000
+  emo emotion.nrc_emotion_counts.TIE             v= 47 bar   57.5 track  100.3 px/unit 1.223
+  emo emotion.nrc_emotion_counts.NONE            v= 15 bar   18.3 track  100.3 px/unit 1.220
+  cbar ['Positive', 236, [['per_class.POSITIVE.correct', 90, 226.5], ['per_class.POSITIVE.wrong', 3, 7.5]]]
+  cbar ['Neutral', 236, [['per_class.NEUTRAL.wrong', 2, 236]]]
+  cbar ['Negative', 236, [['per_class.NEGATIVE.correct', 5, 236]]]
+
+== first100_v2 @ 400px
+  whole file rating_counts.5          share  84.1%  bar  154.8px  track  184.0px  => px per 1% = 1.84
+  whole file rating_counts.4          share   4.4%  bar    8.8px  track  199.7px  => px per 1% = 2.00
+  whole file rating_counts.3          share   2.1%  bar    4.3px  track  199.7px  => px per 1% = 2.00
+  whole file rating_counts.2          share   1.2%  bar    2.5px  track  199.7px  => px per 1% = 2.03
+  whole file rating_counts.1          share   8.1%  bar   15.5px  track  191.8px  => px per 1% = 1.92
+  sample     sample_rating_counts.5   share  91.0%  bar  199.3px  track  219.0px  => px per 1% = 2.19
+  sample     sample_rating_counts.4   share   2.0%  bar    4.4px  track  219.0px  => px per 1% = 2.20
+  sample     sample_rating_counts.3   share   2.0%  bar    4.4px  track  219.0px  => px per 1% = 2.20
+  sample     sample_rating_counts.2   share   1.0%  bar    2.2px  track  219.0px  => px per 1% = 2.20
+  sample     sample_rating_counts.1   share   4.0%  bar    8.8px  track  219.0px  => px per 1% = 2.20
+  paired truth_distribution.counts.POSITIVE         v= 93 bar  156.4 track  156.4 px/unit 1.682
+  paired prediction_distribution.counts.POSITIVE    v= 92 bar  154.7 track  156.4 px/unit 1.682
+  paired truth_distribution.counts.NEGATIVE         v=  7 bar   11.8 track  156.4 px/unit 1.686
+  paired prediction_distribution.counts.NEGATIVE    v=  8 bar   13.4 track  156.4 px/unit 1.675
+  emo emotion.llm_emotion_counts.anger           v=  7 bar    8.8 track  100.3 px/unit 1.257
+  emo emotion.llm_emotion_counts.anticipation    v=  3 bar    3.8 track  100.3 px/unit 1.267
+  emo emotion.nrc_emotion_counts.anticipation    v= 14 bar   17.5 track  100.3 px/unit 1.250
+  emo emotion.llm_emotion_counts.disgust         v=  1 bar    2.0 track  100.3 px/unit 2.000
+  emo emotion.llm_emotion_counts.joy             v= 80 bar  100.3 track  100.3 px/unit 1.254
+  emo emotion.nrc_emotion_counts.joy             v= 22 bar   27.6 track  100.3 px/unit 1.255
+  emo emotion.nrc_emotion_counts.sadness         v=  1 bar    2.0 track  100.3 px/unit 2.000
+  emo emotion.llm_emotion_counts.trust           v=  9 bar   11.3 track  100.3 px/unit 1.256
+  emo emotion.nrc_emotion_counts.trust           v=  1 bar    2.0 track  100.3 px/unit 2.000
+  emo emotion.nrc_emotion_counts.TIE             v= 47 bar   58.9 track  100.3 px/unit 1.253
+  emo emotion.nrc_emotion_counts.NONE            v= 15 bar   18.8 track  100.3 px/unit 1.253
+  cbar ['Positive', 236, [['per_class.POSITIVE.correct', 91, 229], ['per_class.POSITIVE.wrong', 2, 5]]]
+  cbar ['Negative', 236, [['per_class.NEGATIVE.correct', 6, 200.6], ['per_class.NEGATIVE.wrong', 1, 33.4]]]
+
+== first100_v1 @ 400px
+  whole file rating_counts.5          share  84.1%  bar  154.8px  track  184.0px  => px per 1% = 1.84
+  whole file rating_counts.4          share   4.4%  bar    8.8px  track  199.7px  => px per 1% = 2.00
+  whole file rating_counts.3          share   2.1%  bar    4.3px  track  199.7px  => px per 1% = 2.00
+  whole file rating_counts.2          share   1.2%  bar    2.5px  track  199.7px  => px per 1% = 2.03
+  whole file rating_counts.1          share   8.1%  bar   15.5px  track  191.8px  => px per 1% = 1.92
+  sample     sample_rating_counts.5   share  91.0%  bar  199.3px  track  219.0px  => px per 1% = 2.19
+  sample     sample_rating_counts.4   share   2.0%  bar    4.4px  track  219.0px  => px per 1% = 2.20
+  sample     sample_rating_counts.3   share   2.0%  bar    4.4px  track  219.0px  => px per 1% = 2.20
+  sample     sample_rating_counts.2   share   1.0%  bar    2.2px  track  219.0px  => px per 1% = 2.20
+  sample     sample_rating_counts.1   share   4.0%  bar    8.8px  track  219.0px  => px per 1% = 2.20
+  paired truth_distribution.counts.POSITIVE         v= 93 bar  156.4 track  156.4 px/unit 1.682
+  paired prediction_distribution.counts.POSITIVE    v= 92 bar  154.7 track  156.4 px/unit 1.682
+  paired truth_distribution.counts.NEGATIVE         v=  7 bar   11.8 track  156.4 px/unit 1.686
+  paired prediction_distribution.counts.NEGATIVE    v=  8 bar   13.4 track  156.4 px/unit 1.675
+  cbar ['Positive', 236, [['per_class.POSITIVE.correct', 91, 229], ['per_class.POSITIVE.wrong', 2, 5]]]
+  cbar ['Negative', 236, [['per_class.NEGATIVE.correct', 6, 200.6], ['per_class.NEGATIVE.wrong', 1, 33.4]]]

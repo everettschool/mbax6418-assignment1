@@ -1,0 +1,1816 @@
+{
+ "balanced150_v3@1440": {
+  "order": [
+   [
+    "sec-verdict",
+    281
+   ],
+   [
+    "sec-describe",
+    666
+   ],
+   [
+    "sec-confusion",
+    1155
+   ],
+   [
+    "sec-classes",
+    1155
+   ],
+   [
+    "sec-emotion",
+    1643
+   ],
+   [
+    "sec-reviews",
+    2464
+   ],
+   [
+    "sec-method",
+    3385
+   ]
+  ],
+  "bars": [
+   {
+    "metric": "rating_counts.5",
+    "run": "__file__",
+    "value": 128248,
+    "w": 152.578125,
+    "h": 12,
+    "track": 181.328125,
+    "style": "width: 84.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.4",
+    "run": "__file__",
+    "value": 6692,
+    "w": 8.640625,
+    "h": 12,
+    "track": 197,
+    "style": "width: 4.39%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.3",
+    "run": "__file__",
+    "value": 3271,
+    "w": 4.234375,
+    "h": 12,
+    "track": 197,
+    "style": "width: 2.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.2",
+    "run": "__file__",
+    "value": 1873,
+    "w": 2.421875,
+    "h": 12,
+    "track": 197,
+    "style": "width: 1.23%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.1",
+    "run": "__file__",
+    "value": 12326,
+    "w": 15.296875,
+    "h": 12,
+    "track": 189.171875,
+    "style": "width: 8.09%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.5",
+    "run": "balanced150_v3",
+    "value": 50,
+    "w": 72.078125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 33.33%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.3",
+    "run": "balanced150_v3",
+    "value": 50,
+    "w": 72.078125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 33.33%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.2",
+    "run": "balanced150_v3",
+    "value": 7,
+    "w": 10.09375,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 4.67%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.1",
+    "run": "balanced150_v3",
+    "value": 43,
+    "w": 62,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 28.67%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.POSITIVE",
+    "run": "balanced150_v3",
+    "value": 50,
+    "w": 109.796875,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 71.43%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.POSITIVE",
+    "run": "balanced150_v3",
+    "value": 57,
+    "w": 125.171875,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 81.43%; --c: var(--pos);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEUTRAL",
+    "run": "balanced150_v3",
+    "value": 50,
+    "w": 109.796875,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 71.43%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEUTRAL",
+    "run": "balanced150_v3",
+    "value": 23,
+    "w": 50.515625,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 32.86%; --c: var(--neu);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEGATIVE",
+    "run": "balanced150_v3",
+    "value": 50,
+    "w": 109.796875,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 71.43%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEGATIVE",
+    "run": "balanced150_v3",
+    "value": 70,
+    "w": 153.734375,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 100%; --c: var(--neg);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   }
+  ],
+  "text": "What was scored, and what the model answered\n\nThe star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.\n\nStars in the whole file\n\n152,410 reviews in the Gift Cards file.\n\n5\u2605\n128,248\n84.1%\n4\u2605\n6,692\n4.4%\n3\u2605\n3,271\n2.1%\n2\u2605\n1,873\n1.2%\n1\u2605\n12,326\n8.1%\n\nStars in this run's sample\n\n150 reviews scored in this run.\n\n5\u2605\n50\n33.3%\n4\u2605\n0\n0.0%\n3\u2605\n50\n33.3%\n2\u2605\n7\n4.7%\n1\u2605\n43\n28.7%\n\nStars' answer vs the model's answer, per class\n\nReviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.\n\nPositive\nStars\n50\nModel\n57\nNeutral\nStars\n50\nModel\n23\nNegative\nStars\n50\nModel\n70\nUnparsed\nStars\n\u2014 not a star class\nModel\n0",
+  "classesText": "Right answers by class\n\nFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.\n\nPositive\n48 of 50 \u00b7 96.0% \u00b7 2 wrong\nNeutral\n17 of 50 \u00b7 34.0% \u00b7 33 wrong\nNegative\n45 of 50 \u00b7 90.0% \u00b7 5 wrong\nRight\nWrong\n\nWhen the model says a class, how often it is right (precision): Positive 84.2% \u00b7 Neutral 73.9% \u00b7 Negative 64.3%\n\nEach class is a third of this sample. The whole file is 88.5% positive, 2.1% neutral and 9.3% negative. Re-weighted to that mix, precision would be about: Positive 99.4% \u00b7 Neutral 14.5% \u00b7 Negative 88.6%, and accuracy about 94.1% (a rough estimate from this sample)."
+ },
+ "first100_v3@1440": {
+  "order": [
+   [
+    "sec-verdict",
+    260
+   ],
+   [
+    "sec-describe",
+    623
+   ],
+   [
+    "sec-confusion",
+    1112
+   ],
+   [
+    "sec-classes",
+    1112
+   ],
+   [
+    "sec-emotion",
+    1599
+   ],
+   [
+    "sec-reviews",
+    2400
+   ],
+   [
+    "sec-method",
+    3321
+   ]
+  ],
+  "bars": [
+   {
+    "metric": "rating_counts.5",
+    "run": "__file__",
+    "value": 128248,
+    "w": 152.578125,
+    "h": 12,
+    "track": 181.328125,
+    "style": "width: 84.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.4",
+    "run": "__file__",
+    "value": 6692,
+    "w": 8.640625,
+    "h": 12,
+    "track": 197,
+    "style": "width: 4.39%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.3",
+    "run": "__file__",
+    "value": 3271,
+    "w": 4.234375,
+    "h": 12,
+    "track": 197,
+    "style": "width: 2.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.2",
+    "run": "__file__",
+    "value": 1873,
+    "w": 2.421875,
+    "h": 12,
+    "track": 197,
+    "style": "width: 1.23%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.1",
+    "run": "__file__",
+    "value": 12326,
+    "w": 15.296875,
+    "h": 12,
+    "track": 189.171875,
+    "style": "width: 8.09%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.5",
+    "run": "first100_v3",
+    "value": 91,
+    "w": 196.828125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 91%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.4",
+    "run": "first100_v3",
+    "value": 2,
+    "w": 4.3125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.3",
+    "run": "first100_v3",
+    "value": 2,
+    "w": 4.3125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.2",
+    "run": "first100_v3",
+    "value": 1,
+    "w": 2.15625,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 1%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.1",
+    "run": "first100_v3",
+    "value": 4,
+    "w": 8.640625,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 4%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.POSITIVE",
+    "run": "first100_v3",
+    "value": 93,
+    "w": 153.734375,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 100%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.POSITIVE",
+    "run": "first100_v3",
+    "value": 91,
+    "w": 150.421875,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 97.85%; --c: var(--pos);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEUTRAL",
+    "run": "first100_v3",
+    "value": 2,
+    "w": 3.296875,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 2.15%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEUTRAL",
+    "run": "first100_v3",
+    "value": 2,
+    "w": 3.296875,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 2.15%; --c: var(--neu);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEGATIVE",
+    "run": "first100_v3",
+    "value": 5,
+    "w": 8.265625,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 5.38%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEGATIVE",
+    "run": "first100_v3",
+    "value": 7,
+    "w": 11.5625,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 7.53%; --c: var(--neg);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   }
+  ],
+  "text": "What was scored, and what the model answered\n\nThe star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.\n\nStars in the whole file\n\n152,410 reviews in the Gift Cards file.\n\n5\u2605\n128,248\n84.1%\n4\u2605\n6,692\n4.4%\n3\u2605\n3,271\n2.1%\n2\u2605\n1,873\n1.2%\n1\u2605\n12,326\n8.1%\n\nStars in this run's sample\n\n100 reviews scored in this run.\n\n5\u2605\n91\n91.0%\n4\u2605\n2\n2.0%\n3\u2605\n2\n2.0%\n2\u2605\n1\n1.0%\n1\u2605\n4\n4.0%\n\nStars' answer vs the model's answer, per class\n\nReviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.\n\nPositive\nStars\n93\nModel\n91\nNeutral\nStars\n2\nModel\n2\nNegative\nStars\n5\nModel\n7\nUnparsed\nStars\n\u2014 not a star class\nModel\n0",
+  "classesText": "Right answers by class\n\nFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.\n\nPositive\n90 of 93 \u00b7 96.8% \u00b7 3 wrong\nNeutral\n0 of 2 \u00b7 0.0% \u00b7 2 wrong\nNegative\n5 of 5 \u00b7 100.0% \u00b7 0 wrong\nRight\nWrong\n\nWhen the model says a class, how often it is right (precision): Positive 98.9% \u00b7 Neutral 0.0% \u00b7 Negative 71.4%"
+ },
+ "first100_v2@1440": {
+  "order": [
+   [
+    "sec-verdict",
+    260
+   ],
+   [
+    "sec-describe",
+    645
+   ],
+   [
+    "sec-confusion",
+    1076
+   ],
+   [
+    "sec-classes",
+    1076
+   ],
+   [
+    "sec-emotion",
+    1483
+   ],
+   [
+    "sec-reviews",
+    2284
+   ],
+   [
+    "sec-method",
+    3205
+   ]
+  ],
+  "bars": [
+   {
+    "metric": "rating_counts.5",
+    "run": "__file__",
+    "value": 128248,
+    "w": 152.578125,
+    "h": 12,
+    "track": 181.328125,
+    "style": "width: 84.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.4",
+    "run": "__file__",
+    "value": 6692,
+    "w": 8.640625,
+    "h": 12,
+    "track": 197,
+    "style": "width: 4.39%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.3",
+    "run": "__file__",
+    "value": 3271,
+    "w": 4.234375,
+    "h": 12,
+    "track": 197,
+    "style": "width: 2.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.2",
+    "run": "__file__",
+    "value": 1873,
+    "w": 2.421875,
+    "h": 12,
+    "track": 197,
+    "style": "width: 1.23%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.1",
+    "run": "__file__",
+    "value": 12326,
+    "w": 15.296875,
+    "h": 12,
+    "track": 189.171875,
+    "style": "width: 8.09%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.5",
+    "run": "first100_v2",
+    "value": 91,
+    "w": 196.828125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 91%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.4",
+    "run": "first100_v2",
+    "value": 2,
+    "w": 4.3125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.3",
+    "run": "first100_v2",
+    "value": 2,
+    "w": 4.3125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.2",
+    "run": "first100_v2",
+    "value": 1,
+    "w": 2.15625,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 1%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.1",
+    "run": "first100_v2",
+    "value": 4,
+    "w": 8.640625,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 4%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.POSITIVE",
+    "run": "first100_v2",
+    "value": 93,
+    "w": 153.734375,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 100%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.POSITIVE",
+    "run": "first100_v2",
+    "value": 92,
+    "w": 152.0625,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 98.92%; --c: var(--pos);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEGATIVE",
+    "run": "first100_v2",
+    "value": 7,
+    "w": 11.5625,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 7.53%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEGATIVE",
+    "run": "first100_v2",
+    "value": 8,
+    "w": 13.21875,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 8.6%; --c: var(--neg);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   }
+  ],
+  "text": "What was scored, and what the model answered\n\nThe star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.\n\nStars in the whole file\n\n152,410 reviews in the Gift Cards file.\n\n5\u2605\n128,248\n84.1%\n4\u2605\n6,692\n4.4%\n3\u2605\n3,271\n2.1%\n2\u2605\n1,873\n1.2%\n1\u2605\n12,326\n8.1%\n\nStars in this run's sample\n\n100 reviews scored in this run.\n\n5\u2605\n91\n91.0%\n4\u2605\n2\n2.0%\n3\u2605\n2\n2.0%\n2\u2605\n1\n1.0%\n1\u2605\n4\n4.0%\n\nStars' answer vs the model's answer, per class\n\nReviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.\n\nPositive\nStars\n93\nModel\n92\nNegative\nStars\n7\nModel\n8\nUnparsed\nStars\n\u2014 not a star class\nModel\n0",
+  "classesText": "Right answers by class\n\nFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.\n\nPositive\n91 of 93 \u00b7 97.8% \u00b7 2 wrong\nNegative\n6 of 7 \u00b7 85.7% \u00b7 1 wrong\nRight\nWrong\n\nWhen the model says a class, how often it is right (precision): Positive 98.9% \u00b7 Negative 75.0%"
+ },
+ "first100_v1@1440": {
+  "order": [
+   [
+    "sec-verdict",
+    260
+   ],
+   [
+    "sec-describe",
+    645
+   ],
+   [
+    "sec-confusion",
+    1076
+   ],
+   [
+    "sec-classes",
+    1076
+   ],
+   [
+    "sec-reviews",
+    1483
+   ],
+   [
+    "sec-method",
+    2404
+   ]
+  ],
+  "bars": [
+   {
+    "metric": "rating_counts.5",
+    "run": "__file__",
+    "value": 128248,
+    "w": 152.578125,
+    "h": 12,
+    "track": 181.328125,
+    "style": "width: 84.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.4",
+    "run": "__file__",
+    "value": 6692,
+    "w": 8.640625,
+    "h": 12,
+    "track": 197,
+    "style": "width: 4.39%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.3",
+    "run": "__file__",
+    "value": 3271,
+    "w": 4.234375,
+    "h": 12,
+    "track": 197,
+    "style": "width: 2.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.2",
+    "run": "__file__",
+    "value": 1873,
+    "w": 2.421875,
+    "h": 12,
+    "track": 197,
+    "style": "width: 1.23%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.1",
+    "run": "__file__",
+    "value": 12326,
+    "w": 15.296875,
+    "h": 12,
+    "track": 189.171875,
+    "style": "width: 8.09%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.5",
+    "run": "first100_v1",
+    "value": 91,
+    "w": 196.828125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 91%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.4",
+    "run": "first100_v1",
+    "value": 2,
+    "w": 4.3125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.3",
+    "run": "first100_v1",
+    "value": 2,
+    "w": 4.3125,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.2",
+    "run": "first100_v1",
+    "value": 1,
+    "w": 2.15625,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 1%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.1",
+    "run": "first100_v1",
+    "value": 4,
+    "w": 8.640625,
+    "h": 12,
+    "track": 216.296875,
+    "style": "width: 4%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.POSITIVE",
+    "run": "first100_v1",
+    "value": 93,
+    "w": 153.734375,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 100%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.POSITIVE",
+    "run": "first100_v1",
+    "value": 92,
+    "w": 152.0625,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 98.92%; --c: var(--pos);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEGATIVE",
+    "run": "first100_v1",
+    "value": 7,
+    "w": 11.5625,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 7.53%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEGATIVE",
+    "run": "first100_v1",
+    "value": 8,
+    "w": 13.21875,
+    "h": 10,
+    "track": 153.734375,
+    "style": "width: 8.6%; --c: var(--neg);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   }
+  ],
+  "text": "What was scored, and what the model answered\n\nThe star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.\n\nStars in the whole file\n\n152,410 reviews in the Gift Cards file.\n\n5\u2605\n128,248\n84.1%\n4\u2605\n6,692\n4.4%\n3\u2605\n3,271\n2.1%\n2\u2605\n1,873\n1.2%\n1\u2605\n12,326\n8.1%\n\nStars in this run's sample\n\n100 reviews scored in this run.\n\n5\u2605\n91\n91.0%\n4\u2605\n2\n2.0%\n3\u2605\n2\n2.0%\n2\u2605\n1\n1.0%\n1\u2605\n4\n4.0%\n\nStars' answer vs the model's answer, per class\n\nReviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.\n\nPositive\nStars\n93\nModel\n92\nNegative\nStars\n7\nModel\n8\nUnparsed\nStars\n\u2014 not a star class\nModel\n0",
+  "classesText": "Right answers by class\n\nFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.\n\nPositive\n91 of 93 \u00b7 97.8% \u00b7 2 wrong\nNegative\n6 of 7 \u00b7 85.7% \u00b7 1 wrong\nRight\nWrong\n\nWhen the model says a class, how often it is right (precision): Positive 98.9% \u00b7 Negative 75.0%"
+ },
+ "balanced150_v3@400": {
+  "order": [
+   [
+    "sec-verdict",
+    545
+   ],
+   [
+    "sec-describe",
+    1419
+   ],
+   [
+    "sec-confusion",
+    2361
+   ],
+   [
+    "sec-classes",
+    3003
+   ],
+   [
+    "sec-emotion",
+    3625
+   ],
+   [
+    "sec-reviews",
+    5156
+   ],
+   [
+    "sec-method",
+    6303
+   ]
+  ],
+  "bars": [
+   {
+    "metric": "rating_counts.5",
+    "run": "__file__",
+    "value": 128248,
+    "w": 154.828125,
+    "h": 12,
+    "track": 184,
+    "style": "width: 84.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.4",
+    "run": "__file__",
+    "value": 6692,
+    "w": 8.75,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 4.39%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.3",
+    "run": "__file__",
+    "value": 3271,
+    "w": 4.28125,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 2.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.2",
+    "run": "__file__",
+    "value": 1873,
+    "w": 2.453125,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 1.23%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.1",
+    "run": "__file__",
+    "value": 12326,
+    "w": 15.515625,
+    "h": 12,
+    "track": 191.84375,
+    "style": "width: 8.09%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.5",
+    "run": "balanced150_v3",
+    "value": 50,
+    "w": 72.96875,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 33.33%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.3",
+    "run": "balanced150_v3",
+    "value": 50,
+    "w": 72.96875,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 33.33%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.2",
+    "run": "balanced150_v3",
+    "value": 7,
+    "w": 10.21875,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 4.67%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.1",
+    "run": "balanced150_v3",
+    "value": 43,
+    "w": 62.765625,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 28.67%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.POSITIVE",
+    "run": "balanced150_v3",
+    "value": 50,
+    "w": 111.703125,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 71.43%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.POSITIVE",
+    "run": "balanced150_v3",
+    "value": 57,
+    "w": 127.34375,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 81.43%; --c: var(--pos);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEUTRAL",
+    "run": "balanced150_v3",
+    "value": 50,
+    "w": 111.703125,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 71.43%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEUTRAL",
+    "run": "balanced150_v3",
+    "value": 23,
+    "w": 51.375,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 32.86%; --c: var(--neu);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEGATIVE",
+    "run": "balanced150_v3",
+    "value": 50,
+    "w": 111.703125,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 71.43%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEGATIVE",
+    "run": "balanced150_v3",
+    "value": 70,
+    "w": 156.390625,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 100%; --c: var(--neg);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   }
+  ],
+  "text": "What was scored, and what the model answered\n\nThe star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.\n\nStars in the whole file\n\n152,410 reviews in the Gift Cards file.\n\n5\u2605\n128,248\n84.1%\n4\u2605\n6,692\n4.4%\n3\u2605\n3,271\n2.1%\n2\u2605\n1,873\n1.2%\n1\u2605\n12,326\n8.1%\n\nStars in this run's sample\n\n150 reviews scored in this run.\n\n5\u2605\n50\n33.3%\n4\u2605\n0\n0.0%\n3\u2605\n50\n33.3%\n2\u2605\n7\n4.7%\n1\u2605\n43\n28.7%\n\nStars' answer vs the model's answer, per class\n\nReviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.\n\nPositive\nStars\n50\nModel\n57\nNeutral\nStars\n50\nModel\n23\nNegative\nStars\n50\nModel\n70\nUnparsed\nStars\n\u2014 not a star class\nModel\n0",
+  "classesText": "Right answers by class\n\nFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.\n\nPositive\n48 of 50 \u00b7 96.0% \u00b7 2 wrong\nNeutral\n17 of 50 \u00b7 34.0% \u00b7 33 wrong\nNegative\n45 of 50 \u00b7 90.0% \u00b7 5 wrong\nRight\nWrong\n\nWhen the model says a class, how often it is right (precision): Positive 84.2% \u00b7 Neutral 73.9% \u00b7 Negative 64.3%\n\nEach class is a third of this sample. The whole file is 88.5% positive, 2.1% neutral and 9.3% negative. Re-weighted to that mix, precision would be about: Positive 99.4% \u00b7 Neutral 14.5% \u00b7 Negative 88.6%, and accuracy about 94.1% (a rough estimate from this sample)."
+ },
+ "first100_v3@400": {
+  "order": [
+   [
+    "sec-verdict",
+    482
+   ],
+   [
+    "sec-describe",
+    1333
+   ],
+   [
+    "sec-confusion",
+    2276
+   ],
+   [
+    "sec-classes",
+    2918
+   ],
+   [
+    "sec-emotion",
+    3430
+   ],
+   [
+    "sec-reviews",
+    4921
+   ],
+   [
+    "sec-method",
+    6067
+   ]
+  ],
+  "bars": [
+   {
+    "metric": "rating_counts.5",
+    "run": "__file__",
+    "value": 128248,
+    "w": 154.828125,
+    "h": 12,
+    "track": 184,
+    "style": "width: 84.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.4",
+    "run": "__file__",
+    "value": 6692,
+    "w": 8.75,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 4.39%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.3",
+    "run": "__file__",
+    "value": 3271,
+    "w": 4.28125,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 2.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.2",
+    "run": "__file__",
+    "value": 1873,
+    "w": 2.453125,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 1.23%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.1",
+    "run": "__file__",
+    "value": 12326,
+    "w": 15.515625,
+    "h": 12,
+    "track": 191.84375,
+    "style": "width: 8.09%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.5",
+    "run": "first100_v3",
+    "value": 91,
+    "w": 199.25,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 91%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.4",
+    "run": "first100_v3",
+    "value": 2,
+    "w": 4.375,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.3",
+    "run": "first100_v3",
+    "value": 2,
+    "w": 4.375,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.2",
+    "run": "first100_v3",
+    "value": 1,
+    "w": 2.1875,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 1%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.1",
+    "run": "first100_v3",
+    "value": 4,
+    "w": 8.75,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 4%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.POSITIVE",
+    "run": "first100_v3",
+    "value": 93,
+    "w": 156.390625,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 100%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.POSITIVE",
+    "run": "first100_v3",
+    "value": 91,
+    "w": 153.015625,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 97.85%; --c: var(--pos);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEUTRAL",
+    "run": "first100_v3",
+    "value": 2,
+    "w": 3.359375,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 2.15%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEUTRAL",
+    "run": "first100_v3",
+    "value": 2,
+    "w": 3.359375,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 2.15%; --c: var(--neu);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEGATIVE",
+    "run": "first100_v3",
+    "value": 5,
+    "w": 8.40625,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 5.38%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEGATIVE",
+    "run": "first100_v3",
+    "value": 7,
+    "w": 11.765625,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 7.53%; --c: var(--neg);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   }
+  ],
+  "text": "What was scored, and what the model answered\n\nThe star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.\n\nStars in the whole file\n\n152,410 reviews in the Gift Cards file.\n\n5\u2605\n128,248\n84.1%\n4\u2605\n6,692\n4.4%\n3\u2605\n3,271\n2.1%\n2\u2605\n1,873\n1.2%\n1\u2605\n12,326\n8.1%\n\nStars in this run's sample\n\n100 reviews scored in this run.\n\n5\u2605\n91\n91.0%\n4\u2605\n2\n2.0%\n3\u2605\n2\n2.0%\n2\u2605\n1\n1.0%\n1\u2605\n4\n4.0%\n\nStars' answer vs the model's answer, per class\n\nReviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.\n\nPositive\nStars\n93\nModel\n91\nNeutral\nStars\n2\nModel\n2\nNegative\nStars\n5\nModel\n7\nUnparsed\nStars\n\u2014 not a star class\nModel\n0",
+  "classesText": "Right answers by class\n\nFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.\n\nPositive\n90 of 93 \u00b7 96.8% \u00b7 3 wrong\nNeutral\n0 of 2 \u00b7 0.0% \u00b7 2 wrong\nNegative\n5 of 5 \u00b7 100.0% \u00b7 0 wrong\nRight\nWrong\n\nWhen the model says a class, how often it is right (precision): Positive 98.9% \u00b7 Neutral 0.0% \u00b7 Negative 71.4%"
+ },
+ "first100_v2@400": {
+  "order": [
+   [
+    "sec-verdict",
+    482
+   ],
+   [
+    "sec-describe",
+    1333
+   ],
+   [
+    "sec-confusion",
+    2217
+   ],
+   [
+    "sec-classes",
+    2699
+   ],
+   [
+    "sec-emotion",
+    3116
+   ],
+   [
+    "sec-reviews",
+    4607
+   ],
+   [
+    "sec-method",
+    5754
+   ]
+  ],
+  "bars": [
+   {
+    "metric": "rating_counts.5",
+    "run": "__file__",
+    "value": 128248,
+    "w": 154.828125,
+    "h": 12,
+    "track": 184,
+    "style": "width: 84.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.4",
+    "run": "__file__",
+    "value": 6692,
+    "w": 8.75,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 4.39%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.3",
+    "run": "__file__",
+    "value": 3271,
+    "w": 4.28125,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 2.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.2",
+    "run": "__file__",
+    "value": 1873,
+    "w": 2.453125,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 1.23%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.1",
+    "run": "__file__",
+    "value": 12326,
+    "w": 15.515625,
+    "h": 12,
+    "track": 191.84375,
+    "style": "width: 8.09%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.5",
+    "run": "first100_v2",
+    "value": 91,
+    "w": 199.25,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 91%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.4",
+    "run": "first100_v2",
+    "value": 2,
+    "w": 4.375,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.3",
+    "run": "first100_v2",
+    "value": 2,
+    "w": 4.375,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.2",
+    "run": "first100_v2",
+    "value": 1,
+    "w": 2.1875,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 1%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.1",
+    "run": "first100_v2",
+    "value": 4,
+    "w": 8.75,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 4%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.POSITIVE",
+    "run": "first100_v2",
+    "value": 93,
+    "w": 156.390625,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 100%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.POSITIVE",
+    "run": "first100_v2",
+    "value": 92,
+    "w": 154.6875,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 98.92%; --c: var(--pos);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEGATIVE",
+    "run": "first100_v2",
+    "value": 7,
+    "w": 11.765625,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 7.53%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEGATIVE",
+    "run": "first100_v2",
+    "value": 8,
+    "w": 13.4375,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 8.6%; --c: var(--neg);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   }
+  ],
+  "text": "What was scored, and what the model answered\n\nThe star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.\n\nStars in the whole file\n\n152,410 reviews in the Gift Cards file.\n\n5\u2605\n128,248\n84.1%\n4\u2605\n6,692\n4.4%\n3\u2605\n3,271\n2.1%\n2\u2605\n1,873\n1.2%\n1\u2605\n12,326\n8.1%\n\nStars in this run's sample\n\n100 reviews scored in this run.\n\n5\u2605\n91\n91.0%\n4\u2605\n2\n2.0%\n3\u2605\n2\n2.0%\n2\u2605\n1\n1.0%\n1\u2605\n4\n4.0%\n\nStars' answer vs the model's answer, per class\n\nReviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.\n\nPositive\nStars\n93\nModel\n92\nNegative\nStars\n7\nModel\n8\nUnparsed\nStars\n\u2014 not a star class\nModel\n0",
+  "classesText": "Right answers by class\n\nFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.\n\nPositive\n91 of 93 \u00b7 97.8% \u00b7 2 wrong\nNegative\n6 of 7 \u00b7 85.7% \u00b7 1 wrong\nRight\nWrong\n\nWhen the model says a class, how often it is right (precision): Positive 98.9% \u00b7 Negative 75.0%"
+ },
+ "first100_v1@400": {
+  "order": [
+   [
+    "sec-verdict",
+    482
+   ],
+   [
+    "sec-describe",
+    1333
+   ],
+   [
+    "sec-confusion",
+    2217
+   ],
+   [
+    "sec-classes",
+    2699
+   ],
+   [
+    "sec-reviews",
+    3116
+   ],
+   [
+    "sec-method",
+    4263
+   ]
+  ],
+  "bars": [
+   {
+    "metric": "rating_counts.5",
+    "run": "__file__",
+    "value": 128248,
+    "w": 154.828125,
+    "h": 12,
+    "track": 184,
+    "style": "width: 84.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.4",
+    "run": "__file__",
+    "value": 6692,
+    "w": 8.75,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 4.39%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.3",
+    "run": "__file__",
+    "value": 3271,
+    "w": 4.28125,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 2.15%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.2",
+    "run": "__file__",
+    "value": 1873,
+    "w": 2.453125,
+    "h": 12,
+    "track": 199.671875,
+    "style": "width: 1.23%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "rating_counts.1",
+    "run": "__file__",
+    "value": 12326,
+    "w": 15.515625,
+    "h": 12,
+    "track": 191.84375,
+    "style": "width: 8.09%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.5",
+    "run": "first100_v1",
+    "value": 91,
+    "w": 199.25,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 91%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.4",
+    "run": "first100_v1",
+    "value": 2,
+    "w": 4.375,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.3",
+    "run": "first100_v1",
+    "value": 2,
+    "w": 4.375,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 2%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.2",
+    "run": "first100_v1",
+    "value": 1,
+    "w": 2.1875,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 1%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "sample_rating_counts.1",
+    "run": "first100_v1",
+    "value": 4,
+    "w": 8.75,
+    "h": 12,
+    "track": 218.96875,
+    "style": "width: 4%; --c: var(--ink-2);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.POSITIVE",
+    "run": "first100_v1",
+    "value": 93,
+    "w": 156.390625,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 100%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.POSITIVE",
+    "run": "first100_v1",
+    "value": 92,
+    "w": 154.6875,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 98.92%; --c: var(--pos);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "truth_distribution.counts.NEGATIVE",
+    "run": "first100_v1",
+    "value": 7,
+    "w": 11.765625,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 7.53%; --c: var(--ink-3);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   },
+   {
+    "metric": "prediction_distribution.counts.NEGATIVE",
+    "run": "first100_v1",
+    "value": 8,
+    "w": 13.4375,
+    "h": 10,
+    "track": 156.390625,
+    "style": "width: 8.6%; --c: var(--neg);",
+    "overlap": false,
+    "aria": null,
+    "title": "",
+    "role": null
+   }
+  ],
+  "text": "What was scored, and what the model answered\n\nThe star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.\n\nStars in the whole file\n\n152,410 reviews in the Gift Cards file.\n\n5\u2605\n128,248\n84.1%\n4\u2605\n6,692\n4.4%\n3\u2605\n3,271\n2.1%\n2\u2605\n1,873\n1.2%\n1\u2605\n12,326\n8.1%\n\nStars in this run's sample\n\n100 reviews scored in this run.\n\n5\u2605\n91\n91.0%\n4\u2605\n2\n2.0%\n3\u2605\n2\n2.0%\n2\u2605\n1\n1.0%\n1\u2605\n4\n4.0%\n\nStars' answer vs the model's answer, per class\n\nReviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.\n\nPositive\nStars\n93\nModel\n92\nNegative\nStars\n7\nModel\n8\nUnparsed\nStars\n\u2014 not a star class\nModel\n0",
+  "classesText": "Right answers by class\n\nFor each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.\n\nPositive\n91 of 93 \u00b7 97.8% \u00b7 2 wrong\nNegative\n6 of 7 \u00b7 85.7% \u00b7 1 wrong\nRight\nWrong\n\nWhen the model says a class, how often it is right (precision): Positive 98.9% \u00b7 Negative 75.0%"
+ }
+}

@@ -6,9 +6,10 @@ Method (documented so the result can be reproduced by hand):
      HTML line breaks and entities are decoded first ("<br />" -> space, "&#34;" -> '"').
   2. Tokens = lowercase alphabetic runs: re.findall(r"[a-z]+", text.lower()).
      "don't" -> "don", "t".
-  3. Lemmatization fallback: use the token if it is in the lexicon; otherwise strip the
-     first of the suffixes "ing", "ed", "es", "s" (tried in that order) whose remaining
-     stem is in the lexicon; otherwise the token has no hits.
+  3. Lemmatization fallback: use the token if it is a lexicon word with at least one of the
+     8 emotions; otherwise strip the first of the suffixes "ing", "ed", "es", "s" (tried in
+     that order) whose remaining stem is such a word; otherwise the token has no hits.
+     (Lexicon words tagged only positive/negative, or with no tags, do not count.)
   4. Every token occurrence adds 1 to each of its word's emotions. Only the 8 emotions
      count; the lexicon's "positive" and "negative" sentiment columns are excluded.
   5. Primary emotion = the emotion with the highest total. Several share the highest
@@ -182,7 +183,7 @@ def emotion_metrics(run, rows, lex_meta):
         "lexicon": {k: lex_meta.get(k) for k in ("source", "download_url", "lexicon_sha256", "word_count",
                                                   "words_with_any_of_8_emotions", "citation")},
         "method": ("NRC: lowercase alphabetic tokens of title + text (same star-phrase blanking as the model); "
-                   "fallback strips ing/ed/es/s if the stem is in the lexicon; sum per emotion over the 8 "
+                   "fallback strips ing/ed/es/s if the stem is a lexicon word with >=1 of the 8 emotions; sum per emotion over the 8 "
                    "emotions only; argmax; ties -> TIE, no hits -> NONE. emotion_agree = exact match."),
         "n_rows": n,
         "crosstab_orientation": "rows = LLM emotion, columns = NRC word-list emotion",

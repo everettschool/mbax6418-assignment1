@@ -1,0 +1,134 @@
+== balanced150_v3@1440 order: [['sec-verdict', 281], ['sec-describe', 666], ['sec-confusion', 1155], ['sec-classes', 1155], ['sec-emotion', 1643], ['sec-reviews', 2464], ['sec-method', 3385]]
+  rating_counts.5                          v=128248  w= 152.58 track= 181.3 ratio=0.8414 overlap=False aria=None style=width: 84.15%; --c: var(--ink-2);
+  rating_counts.4                          v=6692    w=   8.64 track= 197.0 ratio=0.0439 overlap=False aria=None style=width: 4.39%; --c: var(--ink-2);
+  rating_counts.3                          v=3271    w=   4.23 track= 197.0 ratio=0.0215 overlap=False aria=None style=width: 2.15%; --c: var(--ink-2);
+  rating_counts.2                          v=1873    w=   2.42 track= 197.0 ratio=0.0123 overlap=False aria=None style=width: 1.23%; --c: var(--ink-2);
+  rating_counts.1                          v=12326   w=  15.30 track= 189.2 ratio=0.0809 overlap=False aria=None style=width: 8.09%; --c: var(--ink-2);
+  sample_rating_counts.5                   v=50      w=  72.08 track= 216.3 ratio=0.3332 overlap=False aria=None style=width: 33.33%; --c: var(--ink-2);
+  sample_rating_counts.3                   v=50      w=  72.08 track= 216.3 ratio=0.3332 overlap=False aria=None style=width: 33.33%; --c: var(--ink-2);
+  sample_rating_counts.2                   v=7       w=  10.09 track= 216.3 ratio=0.0467 overlap=False aria=None style=width: 4.67%; --c: var(--ink-2);
+  sample_rating_counts.1                   v=43      w=  62.00 track= 216.3 ratio=0.2866 overlap=False aria=None style=width: 28.67%; --c: var(--ink-2);
+  truth_distribution.counts.POSITIVE       v=50      w= 109.80 track= 153.7 ratio=0.7142 overlap=False aria=None style=width: 71.43%; --c: var(--ink-3);
+  prediction_distribution.counts.POSITIVE  v=57      w= 125.17 track= 153.7 ratio=0.8142 overlap=False aria=None style=width: 81.43%; --c: var(--pos);
+  truth_distribution.counts.NEUTRAL        v=50      w= 109.80 track= 153.7 ratio=0.7142 overlap=False aria=None style=width: 71.43%; --c: var(--ink-3);
+  prediction_distribution.counts.NEUTRAL   v=23      w=  50.52 track= 153.7 ratio=0.3286 overlap=False aria=None style=width: 32.86%; --c: var(--neu);
+  truth_distribution.counts.NEGATIVE       v=50      w= 109.80 track= 153.7 ratio=0.7142 overlap=False aria=None style=width: 71.43%; --c: var(--ink-3);
+  prediction_distribution.counts.NEGATIVE  v=70      w= 153.73 track= 153.7 ratio=1.0000 overlap=False aria=None style=width: 100%; --c: var(--neg);
+  track widths per chart: {'rating_counts': [181.3, 189.2, 197], 'sample_rating_counts': [216.3], 'truth_distribution.counts': [153.7], 'prediction_distribution.counts': [153.7]}
+== first100_v3@1440 order: [['sec-verdict', 260], ['sec-describe', 623], ['sec-confusion', 1112], ['sec-classes', 1112], ['sec-emotion', 1599], ['sec-reviews', 2400], ['sec-method', 3321]]
+  rating_counts.5                          v=128248  w= 152.58 track= 181.3 ratio=0.8414 overlap=False aria=None style=width: 84.15%; --c: var(--ink-2);
+  rating_counts.4                          v=6692    w=   8.64 track= 197.0 ratio=0.0439 overlap=False aria=None style=width: 4.39%; --c: var(--ink-2);
+  rating_counts.3                          v=3271    w=   4.23 track= 197.0 ratio=0.0215 overlap=False aria=None style=width: 2.15%; --c: var(--ink-2);
+  rating_counts.2                          v=1873    w=   2.42 track= 197.0 ratio=0.0123 overlap=False aria=None style=width: 1.23%; --c: var(--ink-2);
+  rating_counts.1                          v=12326   w=  15.30 track= 189.2 ratio=0.0809 overlap=False aria=None style=width: 8.09%; --c: var(--ink-2);
+  sample_rating_counts.5                   v=91      w= 196.83 track= 216.3 ratio=0.9100 overlap=False aria=None style=width: 91%; --c: var(--ink-2);
+  sample_rating_counts.4                   v=2       w=   4.31 track= 216.3 ratio=0.0199 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.3                   v=2       w=   4.31 track= 216.3 ratio=0.0199 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.2                   v=1       w=   2.16 track= 216.3 ratio=0.0100 overlap=False aria=None style=width: 1%; --c: var(--ink-2);
+  sample_rating_counts.1                   v=4       w=   8.64 track= 216.3 ratio=0.0399 overlap=False aria=None style=width: 4%; --c: var(--ink-2);
+  truth_distribution.counts.POSITIVE       v=93      w= 153.73 track= 153.7 ratio=1.0000 overlap=False aria=None style=width: 100%; --c: var(--ink-3);
+  prediction_distribution.counts.POSITIVE  v=91      w= 150.42 track= 153.7 ratio=0.9785 overlap=False aria=None style=width: 97.85%; --c: var(--pos);
+  truth_distribution.counts.NEUTRAL        v=2       w=   3.30 track= 153.7 ratio=0.0214 overlap=False aria=None style=width: 2.15%; --c: var(--ink-3);
+  prediction_distribution.counts.NEUTRAL   v=2       w=   3.30 track= 153.7 ratio=0.0214 overlap=False aria=None style=width: 2.15%; --c: var(--neu);
+  truth_distribution.counts.NEGATIVE       v=5       w=   8.27 track= 153.7 ratio=0.0538 overlap=False aria=None style=width: 5.38%; --c: var(--ink-3);
+  prediction_distribution.counts.NEGATIVE  v=7       w=  11.56 track= 153.7 ratio=0.0752 overlap=False aria=None style=width: 7.53%; --c: var(--neg);
+  track widths per chart: {'rating_counts': [181.3, 189.2, 197], 'sample_rating_counts': [216.3], 'truth_distribution.counts': [153.7], 'prediction_distribution.counts': [153.7]}
+== first100_v2@1440 order: [['sec-verdict', 260], ['sec-describe', 645], ['sec-confusion', 1076], ['sec-classes', 1076], ['sec-emotion', 1483], ['sec-reviews', 2284], ['sec-method', 3205]]
+  rating_counts.5                          v=128248  w= 152.58 track= 181.3 ratio=0.8414 overlap=False aria=None style=width: 84.15%; --c: var(--ink-2);
+  rating_counts.4                          v=6692    w=   8.64 track= 197.0 ratio=0.0439 overlap=False aria=None style=width: 4.39%; --c: var(--ink-2);
+  rating_counts.3                          v=3271    w=   4.23 track= 197.0 ratio=0.0215 overlap=False aria=None style=width: 2.15%; --c: var(--ink-2);
+  rating_counts.2                          v=1873    w=   2.42 track= 197.0 ratio=0.0123 overlap=False aria=None style=width: 1.23%; --c: var(--ink-2);
+  rating_counts.1                          v=12326   w=  15.30 track= 189.2 ratio=0.0809 overlap=False aria=None style=width: 8.09%; --c: var(--ink-2);
+  sample_rating_counts.5                   v=91      w= 196.83 track= 216.3 ratio=0.9100 overlap=False aria=None style=width: 91%; --c: var(--ink-2);
+  sample_rating_counts.4                   v=2       w=   4.31 track= 216.3 ratio=0.0199 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.3                   v=2       w=   4.31 track= 216.3 ratio=0.0199 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.2                   v=1       w=   2.16 track= 216.3 ratio=0.0100 overlap=False aria=None style=width: 1%; --c: var(--ink-2);
+  sample_rating_counts.1                   v=4       w=   8.64 track= 216.3 ratio=0.0399 overlap=False aria=None style=width: 4%; --c: var(--ink-2);
+  truth_distribution.counts.POSITIVE       v=93      w= 153.73 track= 153.7 ratio=1.0000 overlap=False aria=None style=width: 100%; --c: var(--ink-3);
+  prediction_distribution.counts.POSITIVE  v=92      w= 152.06 track= 153.7 ratio=0.9891 overlap=False aria=None style=width: 98.92%; --c: var(--pos);
+  truth_distribution.counts.NEGATIVE       v=7       w=  11.56 track= 153.7 ratio=0.0752 overlap=False aria=None style=width: 7.53%; --c: var(--ink-3);
+  prediction_distribution.counts.NEGATIVE  v=8       w=  13.22 track= 153.7 ratio=0.0860 overlap=False aria=None style=width: 8.6%; --c: var(--neg);
+  track widths per chart: {'rating_counts': [181.3, 189.2, 197], 'sample_rating_counts': [216.3], 'truth_distribution.counts': [153.7], 'prediction_distribution.counts': [153.7]}
+== first100_v1@1440 order: [['sec-verdict', 260], ['sec-describe', 645], ['sec-confusion', 1076], ['sec-classes', 1076], ['sec-reviews', 1483], ['sec-method', 2404]]
+  rating_counts.5                          v=128248  w= 152.58 track= 181.3 ratio=0.8414 overlap=False aria=None style=width: 84.15%; --c: var(--ink-2);
+  rating_counts.4                          v=6692    w=   8.64 track= 197.0 ratio=0.0439 overlap=False aria=None style=width: 4.39%; --c: var(--ink-2);
+  rating_counts.3                          v=3271    w=   4.23 track= 197.0 ratio=0.0215 overlap=False aria=None style=width: 2.15%; --c: var(--ink-2);
+  rating_counts.2                          v=1873    w=   2.42 track= 197.0 ratio=0.0123 overlap=False aria=None style=width: 1.23%; --c: var(--ink-2);
+  rating_counts.1                          v=12326   w=  15.30 track= 189.2 ratio=0.0809 overlap=False aria=None style=width: 8.09%; --c: var(--ink-2);
+  sample_rating_counts.5                   v=91      w= 196.83 track= 216.3 ratio=0.9100 overlap=False aria=None style=width: 91%; --c: var(--ink-2);
+  sample_rating_counts.4                   v=2       w=   4.31 track= 216.3 ratio=0.0199 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.3                   v=2       w=   4.31 track= 216.3 ratio=0.0199 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.2                   v=1       w=   2.16 track= 216.3 ratio=0.0100 overlap=False aria=None style=width: 1%; --c: var(--ink-2);
+  sample_rating_counts.1                   v=4       w=   8.64 track= 216.3 ratio=0.0399 overlap=False aria=None style=width: 4%; --c: var(--ink-2);
+  truth_distribution.counts.POSITIVE       v=93      w= 153.73 track= 153.7 ratio=1.0000 overlap=False aria=None style=width: 100%; --c: var(--ink-3);
+  prediction_distribution.counts.POSITIVE  v=92      w= 152.06 track= 153.7 ratio=0.9891 overlap=False aria=None style=width: 98.92%; --c: var(--pos);
+  truth_distribution.counts.NEGATIVE       v=7       w=  11.56 track= 153.7 ratio=0.0752 overlap=False aria=None style=width: 7.53%; --c: var(--ink-3);
+  prediction_distribution.counts.NEGATIVE  v=8       w=  13.22 track= 153.7 ratio=0.0860 overlap=False aria=None style=width: 8.6%; --c: var(--neg);
+  track widths per chart: {'rating_counts': [181.3, 189.2, 197], 'sample_rating_counts': [216.3], 'truth_distribution.counts': [153.7], 'prediction_distribution.counts': [153.7]}
+== balanced150_v3@400 order: [['sec-verdict', 545], ['sec-describe', 1419], ['sec-confusion', 2361], ['sec-classes', 3003], ['sec-emotion', 3625], ['sec-reviews', 5156], ['sec-method', 6303]]
+  rating_counts.5                          v=128248  w= 154.83 track= 184.0 ratio=0.8415 overlap=False aria=None style=width: 84.15%; --c: var(--ink-2);
+  rating_counts.4                          v=6692    w=   8.75 track= 199.7 ratio=0.0438 overlap=False aria=None style=width: 4.39%; --c: var(--ink-2);
+  rating_counts.3                          v=3271    w=   4.28 track= 199.7 ratio=0.0214 overlap=False aria=None style=width: 2.15%; --c: var(--ink-2);
+  rating_counts.2                          v=1873    w=   2.45 track= 199.7 ratio=0.0123 overlap=False aria=None style=width: 1.23%; --c: var(--ink-2);
+  rating_counts.1                          v=12326   w=  15.52 track= 191.8 ratio=0.0809 overlap=False aria=None style=width: 8.09%; --c: var(--ink-2);
+  sample_rating_counts.5                   v=50      w=  72.97 track= 219.0 ratio=0.3332 overlap=False aria=None style=width: 33.33%; --c: var(--ink-2);
+  sample_rating_counts.3                   v=50      w=  72.97 track= 219.0 ratio=0.3332 overlap=False aria=None style=width: 33.33%; --c: var(--ink-2);
+  sample_rating_counts.2                   v=7       w=  10.22 track= 219.0 ratio=0.0467 overlap=False aria=None style=width: 4.67%; --c: var(--ink-2);
+  sample_rating_counts.1                   v=43      w=  62.77 track= 219.0 ratio=0.2866 overlap=False aria=None style=width: 28.67%; --c: var(--ink-2);
+  truth_distribution.counts.POSITIVE       v=50      w= 111.70 track= 156.4 ratio=0.7143 overlap=False aria=None style=width: 71.43%; --c: var(--ink-3);
+  prediction_distribution.counts.POSITIVE  v=57      w= 127.34 track= 156.4 ratio=0.8143 overlap=False aria=None style=width: 81.43%; --c: var(--pos);
+  truth_distribution.counts.NEUTRAL        v=50      w= 111.70 track= 156.4 ratio=0.7143 overlap=False aria=None style=width: 71.43%; --c: var(--ink-3);
+  prediction_distribution.counts.NEUTRAL   v=23      w=  51.38 track= 156.4 ratio=0.3285 overlap=False aria=None style=width: 32.86%; --c: var(--neu);
+  truth_distribution.counts.NEGATIVE       v=50      w= 111.70 track= 156.4 ratio=0.7143 overlap=False aria=None style=width: 71.43%; --c: var(--ink-3);
+  prediction_distribution.counts.NEGATIVE  v=70      w= 156.39 track= 156.4 ratio=1.0000 overlap=False aria=None style=width: 100%; --c: var(--neg);
+  track widths per chart: {'rating_counts': [184, 191.8, 199.7], 'sample_rating_counts': [219.0], 'truth_distribution.counts': [156.4], 'prediction_distribution.counts': [156.4]}
+== first100_v3@400 order: [['sec-verdict', 482], ['sec-describe', 1333], ['sec-confusion', 2276], ['sec-classes', 2918], ['sec-emotion', 3430], ['sec-reviews', 4921], ['sec-method', 6067]]
+  rating_counts.5                          v=128248  w= 154.83 track= 184.0 ratio=0.8415 overlap=False aria=None style=width: 84.15%; --c: var(--ink-2);
+  rating_counts.4                          v=6692    w=   8.75 track= 199.7 ratio=0.0438 overlap=False aria=None style=width: 4.39%; --c: var(--ink-2);
+  rating_counts.3                          v=3271    w=   4.28 track= 199.7 ratio=0.0214 overlap=False aria=None style=width: 2.15%; --c: var(--ink-2);
+  rating_counts.2                          v=1873    w=   2.45 track= 199.7 ratio=0.0123 overlap=False aria=None style=width: 1.23%; --c: var(--ink-2);
+  rating_counts.1                          v=12326   w=  15.52 track= 191.8 ratio=0.0809 overlap=False aria=None style=width: 8.09%; --c: var(--ink-2);
+  sample_rating_counts.5                   v=91      w= 199.25 track= 219.0 ratio=0.9099 overlap=False aria=None style=width: 91%; --c: var(--ink-2);
+  sample_rating_counts.4                   v=2       w=   4.38 track= 219.0 ratio=0.0200 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.3                   v=2       w=   4.38 track= 219.0 ratio=0.0200 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.2                   v=1       w=   2.19 track= 219.0 ratio=0.0100 overlap=False aria=None style=width: 1%; --c: var(--ink-2);
+  sample_rating_counts.1                   v=4       w=   8.75 track= 219.0 ratio=0.0400 overlap=False aria=None style=width: 4%; --c: var(--ink-2);
+  truth_distribution.counts.POSITIVE       v=93      w= 156.39 track= 156.4 ratio=1.0000 overlap=False aria=None style=width: 100%; --c: var(--ink-3);
+  prediction_distribution.counts.POSITIVE  v=91      w= 153.02 track= 156.4 ratio=0.9784 overlap=False aria=None style=width: 97.85%; --c: var(--pos);
+  truth_distribution.counts.NEUTRAL        v=2       w=   3.36 track= 156.4 ratio=0.0215 overlap=False aria=None style=width: 2.15%; --c: var(--ink-3);
+  prediction_distribution.counts.NEUTRAL   v=2       w=   3.36 track= 156.4 ratio=0.0215 overlap=False aria=None style=width: 2.15%; --c: var(--neu);
+  truth_distribution.counts.NEGATIVE       v=5       w=   8.41 track= 156.4 ratio=0.0538 overlap=False aria=None style=width: 5.38%; --c: var(--ink-3);
+  prediction_distribution.counts.NEGATIVE  v=7       w=  11.77 track= 156.4 ratio=0.0752 overlap=False aria=None style=width: 7.53%; --c: var(--neg);
+  track widths per chart: {'rating_counts': [184, 191.8, 199.7], 'sample_rating_counts': [219.0], 'truth_distribution.counts': [156.4], 'prediction_distribution.counts': [156.4]}
+== first100_v2@400 order: [['sec-verdict', 482], ['sec-describe', 1333], ['sec-confusion', 2217], ['sec-classes', 2699], ['sec-emotion', 3116], ['sec-reviews', 4607], ['sec-method', 5754]]
+  rating_counts.5                          v=128248  w= 154.83 track= 184.0 ratio=0.8415 overlap=False aria=None style=width: 84.15%; --c: var(--ink-2);
+  rating_counts.4                          v=6692    w=   8.75 track= 199.7 ratio=0.0438 overlap=False aria=None style=width: 4.39%; --c: var(--ink-2);
+  rating_counts.3                          v=3271    w=   4.28 track= 199.7 ratio=0.0214 overlap=False aria=None style=width: 2.15%; --c: var(--ink-2);
+  rating_counts.2                          v=1873    w=   2.45 track= 199.7 ratio=0.0123 overlap=False aria=None style=width: 1.23%; --c: var(--ink-2);
+  rating_counts.1                          v=12326   w=  15.52 track= 191.8 ratio=0.0809 overlap=False aria=None style=width: 8.09%; --c: var(--ink-2);
+  sample_rating_counts.5                   v=91      w= 199.25 track= 219.0 ratio=0.9099 overlap=False aria=None style=width: 91%; --c: var(--ink-2);
+  sample_rating_counts.4                   v=2       w=   4.38 track= 219.0 ratio=0.0200 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.3                   v=2       w=   4.38 track= 219.0 ratio=0.0200 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.2                   v=1       w=   2.19 track= 219.0 ratio=0.0100 overlap=False aria=None style=width: 1%; --c: var(--ink-2);
+  sample_rating_counts.1                   v=4       w=   8.75 track= 219.0 ratio=0.0400 overlap=False aria=None style=width: 4%; --c: var(--ink-2);
+  truth_distribution.counts.POSITIVE       v=93      w= 156.39 track= 156.4 ratio=1.0000 overlap=False aria=None style=width: 100%; --c: var(--ink-3);
+  prediction_distribution.counts.POSITIVE  v=92      w= 154.69 track= 156.4 ratio=0.9891 overlap=False aria=None style=width: 98.92%; --c: var(--pos);
+  truth_distribution.counts.NEGATIVE       v=7       w=  11.77 track= 156.4 ratio=0.0752 overlap=False aria=None style=width: 7.53%; --c: var(--ink-3);
+  prediction_distribution.counts.NEGATIVE  v=8       w=  13.44 track= 156.4 ratio=0.0859 overlap=False aria=None style=width: 8.6%; --c: var(--neg);
+  track widths per chart: {'rating_counts': [184, 191.8, 199.7], 'sample_rating_counts': [219.0], 'truth_distribution.counts': [156.4], 'prediction_distribution.counts': [156.4]}
+== first100_v1@400 order: [['sec-verdict', 482], ['sec-describe', 1333], ['sec-confusion', 2217], ['sec-classes', 2699], ['sec-reviews', 3116], ['sec-method', 4263]]
+  rating_counts.5                          v=128248  w= 154.83 track= 184.0 ratio=0.8415 overlap=False aria=None style=width: 84.15%; --c: var(--ink-2);
+  rating_counts.4                          v=6692    w=   8.75 track= 199.7 ratio=0.0438 overlap=False aria=None style=width: 4.39%; --c: var(--ink-2);
+  rating_counts.3                          v=3271    w=   4.28 track= 199.7 ratio=0.0214 overlap=False aria=None style=width: 2.15%; --c: var(--ink-2);
+  rating_counts.2                          v=1873    w=   2.45 track= 199.7 ratio=0.0123 overlap=False aria=None style=width: 1.23%; --c: var(--ink-2);
+  rating_counts.1                          v=12326   w=  15.52 track= 191.8 ratio=0.0809 overlap=False aria=None style=width: 8.09%; --c: var(--ink-2);
+  sample_rating_counts.5                   v=91      w= 199.25 track= 219.0 ratio=0.9099 overlap=False aria=None style=width: 91%; --c: var(--ink-2);
+  sample_rating_counts.4                   v=2       w=   4.38 track= 219.0 ratio=0.0200 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.3                   v=2       w=   4.38 track= 219.0 ratio=0.0200 overlap=False aria=None style=width: 2%; --c: var(--ink-2);
+  sample_rating_counts.2                   v=1       w=   2.19 track= 219.0 ratio=0.0100 overlap=False aria=None style=width: 1%; --c: var(--ink-2);
+  sample_rating_counts.1                   v=4       w=   8.75 track= 219.0 ratio=0.0400 overlap=False aria=None style=width: 4%; --c: var(--ink-2);
+  truth_distribution.counts.POSITIVE       v=93      w= 156.39 track= 156.4 ratio=1.0000 overlap=False aria=None style=width: 100%; --c: var(--ink-3);
+  prediction_distribution.counts.POSITIVE  v=92      w= 154.69 track= 156.4 ratio=0.9891 overlap=False aria=None style=width: 98.92%; --c: var(--pos);
+  truth_distribution.counts.NEGATIVE       v=7       w=  11.77 track= 156.4 ratio=0.0752 overlap=False aria=None style=width: 7.53%; --c: var(--ink-3);
+  prediction_distribution.counts.NEGATIVE  v=8       w=  13.44 track= 156.4 ratio=0.0859 overlap=False aria=None style=width: 8.6%; --c: var(--neg);
+  track widths per chart: {'rating_counts': [184, 191.8, 199.7], 'sample_rating_counts': [219.0], 'truth_distribution.counts': [156.4], 'prediction_distribution.counts': [156.4]}

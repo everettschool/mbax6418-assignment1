@@ -130,6 +130,29 @@ def main():
         sum(v3_first["per_class"][k]["recall"] for k in first_support if k != "NEUTRAL")
         + (neu["correct"] + 1) / neu["support"]) / len(first_support)
 
+    # Addition: sensitivity of the re-weighted accuracy to Positive recall, which carries 88.5% of the weight.
+    pos = v3_bal["per_class"]["POSITIVE"]
+    out["balanced150_v3_positive_recall_wilson95"] = wilson95(pos["correct"], pos["support"])
+    out["balanced150_v3_population_weighted_accuracy_at_positive_recall_low"] = (
+        weights["POSITIVE"] * out["balanced150_v3_positive_recall_wilson95"][0]
+        + sum(weights[k] * v3_bal["per_class"][k]["recall"] for k in labels if k != "POSITIVE"))
+    out["interval_confidence"] = 0.95
+
+    # Addition: is each run's gain over "always answer the majority class" distinguishable from chance?
+    # Discordant reviews: model right where the shortcut is wrong, and the reverse; exact McNemar test.
+    for run in ("first100_v1", "first100_v2", "first100_v3", "balanced150_v3"):
+        m = load(run)
+        rows = [json.loads(line) for line in open(RUNS / run / "predictions.jsonl", encoding="utf-8")]
+        majority = m["majority_class"]
+        model_only = sum(r["prediction"] == r["truth"] and r["truth"] != majority for r in rows)
+        shortcut_only = sum(r["prediction"] != r["truth"] and r["truth"] == majority for r in rows)
+        n, k = model_only + shortcut_only, min(model_only, shortcut_only)
+        p = min(1.0, 2 * sum(math.comb(n, i) for i in range(k + 1)) / 2 ** n) if n else 1.0
+        out[f"{run}_vs_majority_class"] = majority
+        out[f"{run}_vs_majority_model_only_right"] = model_only
+        out[f"{run}_vs_majority_shortcut_only_right"] = shortcut_only
+        out[f"{run}_vs_majority_exact_mcnemar_p"] = p
+
     # Q3: emotion agreement beside the constant-answer baseline, per run that has emotions.
     for run, em in (("first100_v2", e_v2), ("first100_v3", e_first), ("balanced150_v3", e_bal)):
         if em is None:

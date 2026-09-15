@@ -17,3 +17,6 @@ reviews/**/cache/
 reviews/**/.env
 *.jsonl.gz
 **/NRC-Emotion-Lexicon*
+# reviewer scratch space (copies of run files, rebuilds, screenshots); findings and audit scripts are kept
+reviews/*_scratch/
+reviews/step7_*_r2/

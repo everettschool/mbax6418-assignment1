@@ -42,6 +42,8 @@ def score_run(run_dir):
         per_class[t] = {
             "support": truth_counts[t], "predicted": pred_counts[t], "correct": tp,
             "wrong": truth_counts[t] - tp,
+            # answers of this class that were wrong (reviews of another class labelled t)
+            "predicted_wrong": pred_counts[t] - tp,
             "precision": precision if precision is not None else 0.0,
             "precision_undefined_never_predicted": precision is None,
             "recall": recall, "f1": f1,

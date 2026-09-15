@@ -1,0 +1,5 @@
+CAUGHT: star bars drawn at 0% (still 2px on screen) -> exit 1, 36 failures; first: FAIL [balanced150_v3] mark rating_counts.5 (Whole file: 5★): drawn 2.00px, value implies 291.75px
+CAUGHT: model split bar always full width -> exit 1, 9 failures; first: FAIL [balanced150_v3] mark prediction_distribution.counts.POSITIVE (Model said Positive): drawn 754.36px, value implies 614.26px
+CAUGHT: right/wrong segments sized by the wrong field -> exit 1, 6 failures; first: FAIL [balanced150_v3] mark per_class.POSITIVE.correct (Model said Positive, right): drawn 518.88px, value implies 515.59px
+CAUGHT: emotion bars drawn at half length -> exit 1, 28 failures; first: FAIL [balanced150_v3] mark emotion.llm_emotion_counts.anger (Model: anger): drawn 52.55px, value implies 105.10px
+ALL MUTATIONS CAUGHT

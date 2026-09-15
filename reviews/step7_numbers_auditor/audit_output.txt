@@ -1,0 +1,28 @@
+[file] rows 152410; counts {1: 12326, 2: 1873, 3: 3271, 4: 6692, 5: 128248}; failing inclusion 49
+[balanced150_v3] accuracy 110/150; truth {'POSITIVE': 50, 'NEUTRAL': 50, 'NEGATIVE': 50}; predicted {'POSITIVE': 57, 'NEUTRAL': 23, 'NEGATIVE': 70, 'UNPARSED': 0}
+[balanced150_v3] emotions: agree 16/150; TIE 67; NONE 24; constant anger; best anticipation
+[first100_v3] accuracy 95/100; truth {'POSITIVE': 93, 'NEUTRAL': 2, 'NEGATIVE': 5}; predicted {'POSITIVE': 91, 'NEUTRAL': 2, 'NEGATIVE': 7, 'UNPARSED': 0}
+[first100_v3] emotions: agree 20/100; TIE 47; NONE 15; constant joy; best joy
+[first100_v2] accuracy 97/100; truth {'POSITIVE': 93, 'NEGATIVE': 7}; predicted {'POSITIVE': 92, 'NEGATIVE': 8, 'UNPARSED': 0}
+[first100_v2] emotions: agree 20/100; TIE 47; NONE 15; constant joy; best joy
+[first100_v1] accuracy 97/100; truth {'POSITIVE': 93, 'NEGATIVE': 7}; predicted {'POSITIVE': 92, 'NEGATIVE': 8, 'UNPARSED': 0}
+[balanced150_v3 @1440px] dashboard: 250 tagged numbers (227 distinct fields), 140 marks; untagged digit text: ["MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards", 'three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative', '1★', '2★', '3★', '4★', '5★', 'Macro F1', '150', 'Prompt sha256', 'runs/balanced150_v3/metrics.json', 'runs/balanced150_v3/predictions.jsonl']
+[first100_v3 @1440px] dashboard: 239 tagged numbers (217 distinct fields), 132 marks; untagged digit text: ["MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards", 'three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative', '1★', '2★', '3★', '4★', '5★', 'Macro F1', '100', 'Prompt sha256', 'runs/first100_v3/metrics.json', 'runs/first100_v3/predictions.jsonl']
+[first100_v2 @1440px] dashboard: 217 tagged numbers (197 distinct fields), 125 marks; untagged digit text: ["MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards", 'two classes; answer key from the stars: 4–5★ positive, 1–3★ negative', '1★', '2★', '3★', '4★', '5★', 'Macro F1', '100', 'Prompt sha256', 'runs/first100_v2/metrics.json', 'runs/first100_v2/predictions.jsonl']
+[first100_v1 @1440px] dashboard: 88 tagged numbers (69 distinct fields), 24 marks; untagged digit text: ["MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards", 'two classes; answer key from the stars: 4–5★ positive, 1–3★ negative', '1★', '2★', '3★', '4★', '5★', 'Macro F1', '100', 'Prompt sha256', 'runs/first100_v1/metrics.json', 'runs/first100_v1/predictions.jsonl']
+[balanced150_v3 @400px] dashboard: 250 tagged numbers (227 distinct fields), 140 marks; untagged digit text: ["MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards", 'three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative', '1★', '2★', '3★', '4★', '5★', 'Macro F1', '150', 'Prompt sha256', 'runs/balanced150_v3/metrics.json', 'runs/balanced150_v3/predictions.jsonl']
+[first100_v3 @400px] dashboard: 239 tagged numbers (217 distinct fields), 132 marks; untagged digit text: ["MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards", 'three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative', '1★', '2★', '3★', '4★', '5★', 'Macro F1', '100', 'Prompt sha256', 'runs/first100_v3/metrics.json', 'runs/first100_v3/predictions.jsonl']
+[first100_v2 @400px] dashboard: 217 tagged numbers (197 distinct fields), 125 marks; untagged digit text: ["MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards", 'two classes; answer key from the stars: 4–5★ positive, 1–3★ negative', '1★', '2★', '3★', '4★', '5★', 'Macro F1', '100', 'Prompt sha256', 'runs/first100_v2/metrics.json', 'runs/first100_v2/predictions.jsonl']
+[first100_v1 @400px] dashboard: 88 tagged numbers (69 distinct fields), 24 marks; untagged digit text: ["MBAX 6418 · Assignment 1 · Amazon Reviews '23, Gift Cards", 'two classes; answer key from the stars: 4–5★ positive, 1–3★ negative', '1★', '2★', '3★', '4★', '5★', 'Macro F1', '100', 'Prompt sha256', 'runs/first100_v1/metrics.json', 'runs/first100_v1/predictions.jsonl']
+[written] ISSUES: whole file 152,410 rows: present=True correct=True
+[written] ISSUES: 5★ 84.1%: present=True correct=True
+[written] ISSUES: 2★ 1.2%: present=True correct=True
+[written] ISSUES: 2★ smallest whole-file class ("small value such as 2★ at 1.2%"): present=True correct=True
+[written] ISSUES: batch_100 91% 5★: present=True correct=True
+[written] ISSUES: balanced sample drops 4★ entirely: present=True correct=True
+[written] ISSUES: NEUTRAL 50 stars vs 23 model: present=True correct=True
+[written] ISSUES: NEGATIVE 50 vs 70: present=True correct=True
+[written] ISSUES: "· 2 wrong" example exists (balanced POSITIVE wrong 2): present=True correct=True
+[written] ISSUES/PROGRESS: 4,404 checks, 0 failures (matches reviews/step7_verify_dashboard.txt): present=True correct=True
+
+18529 checks, 0 mismatches

@@ -8,7 +8,7 @@
     "words_with_any_of_8_emotions": 4454,
     "citation": "Saif M. Mohammad and Peter D. Turney. Crowdsourcing a Word-Emotion Association Lexicon. Computational Intelligence, 29(3): 436-465, 2013."
   },
-  "method": "NRC: lowercase alphabetic tokens of title + text (same star-phrase blanking as the model); fallback strips ing/ed/es/s if the stem is in the lexicon; sum per emotion over the 8 emotions only; argmax; ties -> TIE, no hits -> NONE. emotion_agree = exact match.",
+  "method": "NRC: lowercase alphabetic tokens of title + text (same star-phrase blanking as the model); fallback strips ing/ed/es/s if the stem is a lexicon word with >=1 of the 8 emotions; sum per emotion over the 8 emotions only; argmax; ties -> TIE, no hits -> NONE. emotion_agree = exact match.",
   "n_rows": 150,
   "crosstab_orientation": "rows = LLM emotion, columns = NRC word-list emotion",
   "llm_emotion_counts": {

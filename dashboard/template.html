@@ -8,8 +8,11 @@
 /* ============================================================
    THEME — the whole page is colored from this one block.
    Edit these values to recolor every chart, chip, and surface.
+   Heatmap cells pick whichever of --ink, --on-fill and --surface
+   reads best on their own fill, so keep those three well apart.
    ============================================================ */
 :root {
+  color-scheme: light;    /* set to "dark" when the palette below is dark, so form controls follow */
   --paper:      #f4f1ea;  /* page background */
   --surface:    #fffdf8;  /* cards */
   --surface-2:  #f0ece2;  /* tracks, empty cells, hovered rows */
@@ -34,6 +37,9 @@
   --llm:        #7a5195;
   --lex:        #b08a3e;
 
+  /* the stars' own count, drawn as a neutral reference bar */
+  --ref:        #b9b2a3;
+
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --radius: 10px;
@@ -47,6 +53,7 @@ body {
 }
 .wrap { max-width: 1180px; margin: 0 auto; padding-inline: 32px; }
 b, strong { font-weight: 650; }
+[hidden] { display: none !important; }
 
 /* ---------- masthead ---------- */
 .masthead { background: var(--surface); border-bottom: 1px solid var(--rule); padding-block: 28px 0; }
@@ -55,7 +62,7 @@ h1 { margin: 0; font-size: 30px; line-height: 1.15; font-weight: 680; letter-spa
 .run-tabs { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 22px; }
 .run-tab {
   font: inherit; font-size: 14px; color: var(--ink-2); background: transparent; border: 0;
-  padding: 10px 14px 12px; border-bottom: 2px solid transparent; cursor: pointer;
+  padding: 10px 14px 12px; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap;
 }
 .run-tab:hover { color: var(--ink); }
 .run-tab[aria-selected="true"] { color: var(--ink); font-weight: 650; border-bottom-color: var(--ink); }
@@ -67,14 +74,19 @@ section { margin-bottom: 24px; }
 .card { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 24px 28px; }
 .sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 18px; }
 h2 { margin: 0; font-size: 18px; line-height: 1.3; font-weight: 680; letter-spacing: -0.005em; }
+.h3 { margin: 0 0 4px; font-size: 14px; font-weight: 650; }
 .sub { margin: 4px 0 0; font-size: 13.5px; color: var(--ink-2); max-width: 70ch; }
 .grid-2 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; }
-@media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } }
+/* Grid children default to min-width:auto, which lets a wide child stretch its column past the
+   screen; 0 lets the child's own scroll wrapper take the overflow instead. */
+.grid-2 > *, .verdict > *, .emo-grid > *, .describe-grid > * { min-width: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--ink-2); }
+.key { display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: var(--c); margin-right: 6px; vertical-align: -1px; }
+.footnote { margin: 14px 0 0; font-size: 12.5px; color: var(--ink-3); }
 
 /* ---------- verdict ---------- */
 .run-blurb { margin: 0 0 14px; font-size: 14px; color: var(--ink-2); max-width: 90ch; }
 .verdict { display: grid; grid-template-columns: minmax(260px, 0.9fr) 2fr; gap: 36px; align-items: start; }
-@media (max-width: 960px) { .verdict { grid-template-columns: 1fr; } }
 .kicker { margin: 0 0 6px; font-size: 12.5px; color: var(--ink-2); }
 .hero-value { display: block; font-size: 68px; line-height: 1; font-weight: 680; letter-spacing: -0.035em; }
 .hero-sub { margin: 10px 0 0; font-size: 14px; color: var(--ink-2); }
@@ -85,19 +97,34 @@ h2 { margin: 0; font-size: 18px; line-height: 1.3; font-weight: 680; letter-spac
 .tile-label { font-size: 12.5px; color: var(--ink-2); }
 .tile-value { display: block; font-size: 26px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.2; margin-top: 2px; }
 .tile-note { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+.mixline { margin: 22px 0 0; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--ink-2); }
+/* Must come after the base .verdict / .grid-2 rules: equal specificity, so the later rule wins. */
+@media (max-width: 960px) { .grid-2, .verdict { grid-template-columns: minmax(0, 1fr); } }
 
-/* ---------- stacked class-mix bars ---------- */
-.mix { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--rule); }
-.mix-title { font-size: 12.5px; color: var(--ink-2); margin-bottom: 8px; }
-.stack-row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; align-items: center; margin-bottom: 10px; }
-.stack-label { font-size: 12.5px; color: var(--ink-2); }
-.stack { display: flex; gap: 2px; height: 16px; }
-.seg { height: 100%; min-width: 2px; min-height: 2px; background: var(--c); flex-basis: 0; }
-.seg:first-child { border-radius: 2px 0 0 2px; }
-.seg:last-child { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
-.stack-values { grid-column: 2; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12.5px; color: var(--ink-2); margin-top: -4px; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--ink-2); }
-.key { display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: var(--c); margin-right: 6px; vertical-align: -1px; }
+/* ---------- bars shared by every chart ---------- */
+.htrack { min-width: 0; }
+.bar { height: 12px; min-width: 2px; min-height: 2px; background: var(--c); border-radius: 0 4px 4px 0; }
+.v { color: var(--ink-2); font-variant-numeric: tabular-nums; text-align: right; }
+.zero-v { color: var(--ink-3); }
+
+/* ---------- descriptive layer ---------- */
+.describe-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 32px; }
+@media (max-width: 1000px) { .describe-grid { grid-template-columns: minmax(0, 1fr); } }
+.class-block { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 20px; }
+/* Fixed label columns: every track in both star charts has the same width, so bar length means the same share. */
+.starbars { display: grid; grid-template-columns: 30px minmax(0, 1fr) 7.5ch 6ch; gap: 7px 10px; align-items: center; font-size: 12.5px; margin-top: 12px; }
+.starbars .name { color: var(--ink-2); }
+.starbars .pct { color: var(--ink-3); text-align: right; font-variant-numeric: tabular-nums; }
+.grouped { margin-top: 12px; }
+.group-row { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 10px; align-items: center; padding: 7px 0; border-top: 1px solid var(--rule); }
+.group-row:first-child { border-top: 0; }
+/* Same columns for the Stars line and the Model line, so both bars in a pair share one track width. */
+.gbar { display: grid; grid-template-columns: 40px minmax(0, 1fr) 3.5ch 15ch; gap: 8px; align-items: center; font-size: 12.5px; margin: 2px 0; }
+.gbar .who { color: var(--ink-3); font-size: 11.5px; }
+.gbar .detail { color: var(--ink-3); font-size: 11.5px; white-space: nowrap; }
+.split { display: flex; gap: 2px; height: 12px; }
+.split .seg { height: 100%; }
+.split .seg:last-child { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
 
 /* ---------- confusion heatmap ---------- */
 .cm { display: grid; gap: 2px; }
@@ -111,16 +138,20 @@ h2 { margin: 0; font-size: 18px; line-height: 1.3; font-weight: 680; letter-spac
   align-items: center; justify-content: center; background: var(--surface-2); color: var(--ink);
 }
 .cell.dark { color: var(--on-fill); }
+.cell.on-surface { color: var(--surface); }
 .cell .count { font-size: 24px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; }
-.cell .share { font-size: 12px; opacity: .85; }
-.cell.zero .count { color: var(--ink-3); font-weight: 500; }
+.cell .share { font-size: 12px; }
+.cell.zero .count { color: var(--ink-2); font-weight: 500; }
+.cell.clickable { cursor: pointer; }
+.cell.clickable:hover { filter: brightness(0.94); }
 
 /* ---------- per-class correctness ---------- */
-.cbar { display: grid; grid-template-columns: 92px 1fr auto; gap: 14px; align-items: center; padding: 12px 0; border-top: 1px solid var(--rule); }
+.cbar { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 6px 14px; align-items: center; padding: 12px 0; border-top: 1px solid var(--rule); }
 .cbar:first-of-type { border-top: 0; }
 .cbar .track { display: flex; gap: 2px; height: 18px; }
-.cbar .seg:first-child { border-radius: 0; }
-.cbar-text { font-size: 13px; color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.seg { height: 100%; min-width: 2px; min-height: 2px; background: var(--c); flex-basis: 0; }
+.cbar .seg:last-child { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+.cbar-text { grid-column: 2; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .cbar-text b { color: var(--ink); }
 
 /* ---------- chips ---------- */
@@ -141,12 +172,16 @@ tbody tr { cursor: pointer; }
 tbody tr:hover td { background: var(--surface-2); }
 tbody tr.is-miss td { background: color-mix(in srgb, var(--miss) 6%, var(--surface)); }
 tbody tr.is-miss:hover td { background: color-mix(in srgb, var(--miss) 11%, var(--surface)); }
-td.title { font-weight: 600; min-width: 140px; max-width: 220px; }
-td.text { color: var(--ink-2); min-width: 300px; }
+td.review { min-width: 320px; }
+td.review .t { font-weight: 600; color: var(--ink); -webkit-line-clamp: 1; }
+td.review .x { color: var(--ink-2); }
 .clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: pre-line; }
 tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
+.hits { display: none; margin-top: 6px; font-size: 12px; color: var(--ink-3); }
+tr.expanded .hits { display: block; }
+td.emo { font-size: 12.5px; color: var(--ink); white-space: nowrap; }
+td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; white-space: normal; max-width: 22ch; }
 .empty { padding: 28px; text-align: center; color: var(--ink-2); margin: 0; }
-[hidden] { display: none !important; }
 
 /* ---------- filters ---------- */
 .filters { display: flex; flex-wrap: wrap; align-items: end; gap: 12px 16px; padding: 14px 16px; margin-bottom: 14px; background: var(--surface-2); border-radius: 8px; }
@@ -162,54 +197,24 @@ tr.expanded .clamp { display: block; -webkit-line-clamp: unset; }
 }
 .reset:hover { background: var(--surface); }
 .field select:focus-visible, .field input:focus-visible, .reset:focus-visible { outline: 2px solid var(--pos); outline-offset: 1px; }
+
 /* ---------- emotion ---------- */
 .emo-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; margin-bottom: 24px; }
 @media (max-width: 720px) { .emo-tiles, .tiles { grid-template-columns: 1fr; } }
-.emo-grid { display: grid; grid-template-columns: minmax(300px, 0.8fr) 1.2fr; gap: 32px; align-items: start; }
-@media (max-width: 1000px) { .emo-grid { grid-template-columns: 1fr; } }
-.h3 { margin: 0 0 4px; font-size: 14px; font-weight: 650; }
-.pairbars { display: grid; grid-template-columns: 96px 1fr 1fr; gap: 7px 14px; align-items: center; font-size: 12.5px; margin-top: 12px; }
-.pairbars .head { color: var(--ink-3); font-size: 11.5px; }
-.pairbars .name { color: var(--ink-2); }
-.hbar { display: flex; align-items: center; gap: 8px; min-width: 0; }
-.htrack { flex: 1; min-width: 0; }
-.hbar .bar { height: 12px; min-width: 2px; min-height: 2px; background: var(--c); border-radius: 0 4px 4px 0; }
-.hbar .v { color: var(--ink-2); font-variant-numeric: tabular-nums; min-width: 2ch; text-align: right; }
-.hbar.zero .v, .hbar.na { color: var(--ink-3); }
-.xt { display: grid; gap: 2px; margin-top: 12px; }
-.xt-head { font-size: 11px; color: var(--ink-2); text-align: center; padding-bottom: 4px; white-space: nowrap; line-height: 1.2; align-self: end; }
 .emo-context { margin: -8px 0 24px; font-size: 13.5px; color: var(--ink-2); max-width: 100ch; }
-.xt-wrap { overflow-x: auto; }
-.xt-wrap .xt { min-width: 560px; }  /* keeps column headers apart; narrower screens scroll the wrapper */
-/* Grid children default to min-width:auto, which lets a wide child (the cross-tab) stretch its
-   column past the screen; 0 lets the child's own scroll wrapper take the overflow instead. */
-.grid-2 > *, .verdict > *, .emo-grid > * { min-width: 0; }
+.emo-grid { display: grid; grid-template-columns: minmax(300px, 0.8fr) 1.2fr; gap: 32px; align-items: start; }
 @media (max-width: 1000px) { .emo-grid { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 960px) { .grid-2, .verdict { grid-template-columns: minmax(0, 1fr); } }
-
-/* ---------- narrow screens ---------- */
-@media (max-width: 560px) {
-  .wrap { padding-inline: 16px; }
-  .card { padding: 18px 16px; }
-  h1 { font-size: 24px; }
-  .hero-value { font-size: 52px; }
-  .stack-row { grid-template-columns: 1fr; gap: 6px; }
-  .stack-values { grid-column: 1; margin-top: 0; }
-  .cbar { grid-template-columns: 84px minmax(0, 1fr); }
-  .cbar-text { grid-column: 1 / -1; }
-  .pairbars { grid-template-columns: 70px minmax(0, 1fr) minmax(0, 1fr); gap: 6px 8px; }
-  .cm { grid-template-columns: 84px repeat(3, minmax(56px, 1fr)) !important; }
-}
+/* Fixed value columns keep both readers' bars on one track width. */
+.pairbars { display: grid; grid-template-columns: 96px minmax(0, 1fr) 3ch minmax(0, 1fr) 3ch; gap: 7px 10px; align-items: center; font-size: 12.5px; margin-top: 12px; }
+.pairbars .head { color: var(--ink-3); font-size: 11.5px; grid-column: span 2; }
+.pairbars .name { color: var(--ink-2); }
+.pairbars .na { color: var(--ink-3); }
+.xt-wrap { overflow-x: auto; }
+.xt { display: grid; gap: 2px; margin-top: 12px; min-width: 560px; }
+.xt-head { font-size: 11px; color: var(--ink-2); text-align: center; padding-bottom: 4px; white-space: nowrap; line-height: 1.2; align-self: end; }
 .xt-rowhead { font-size: 12px; color: var(--ink-2); display: flex; align-items: center; }
 .xt .cell { min-height: 32px; border-radius: 4px; }
 .xt .cell .count { font-size: 13px; font-weight: 600; letter-spacing: 0; }
-.hits { display: none; margin-top: 6px; font-size: 12px; color: var(--ink-3); }
-tr.expanded .hits { display: block; }
-td.emo { white-space: nowrap; font-size: 12.5px; color: var(--ink); }
-td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
-
-.cell.clickable { cursor: pointer; }
-.cell.clickable:hover { filter: brightness(0.94); }
 
 /* ---------- method ---------- */
 .facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px 28px; margin: 0; }
@@ -217,7 +222,6 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
 .facts dt { font-size: 12px; color: var(--ink-3); }
 .facts dd { margin: 2px 0 0; font-size: 13.5px; overflow-wrap: anywhere; }
 .mono { font-family: var(--font-mono); font-size: 12.5px; }
-.footnote { margin-top: 16px; font-size: 12.5px; color: var(--ink-3); }
 
 /* ---------- tooltip ---------- */
 .tip {
@@ -228,6 +232,29 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
 .tip.on { opacity: 1; transform: none; }
 .tip b { display: block; font-size: 15px; }
 [data-value]:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* ---------- narrow screens ---------- */
+@media (max-width: 560px) {
+  .wrap { padding-inline: 16px; }
+  .card { padding: 18px 16px; }
+  h1 { font-size: 24px; }
+  .run-tabs { flex-wrap: nowrap; overflow-x: auto; margin-inline: -16px; padding-inline: 16px; }
+  .hero-value { font-size: 52px; }
+  .gbar { grid-template-columns: 40px minmax(0, 1fr) 3.5ch; }
+  .gbar .detail { grid-column: 2 / -1; white-space: normal; }
+  .pairbars { grid-template-columns: 70px minmax(0, 1fr) 3ch minmax(0, 1fr) 3ch; gap: 6px 6px; }
+  .cm { grid-template-columns: 84px repeat(var(--cm-cols), minmax(56px, 1fr)) !important; }
+  /* One card per review: the title and text are the point, so they must not sit behind a sideways scroll. */
+  .table-wrap { max-height: none; }
+  #review-table, #review-table tbody { display: block; }
+  #review-table thead { display: none; }
+  #review-table tr { display: grid; grid-template-columns: auto auto 1fr; gap: 4px 10px; padding: 12px; border-bottom: 1px solid var(--rule); }
+  #review-table td { display: block; padding: 0; border: 0; background: none !important; }
+  #review-table td.num:first-child { display: none; }
+  #review-table td.review { grid-column: 1 / -1; min-width: 0; }
+  #review-table td.emo { grid-column: span 1; }
+  tbody tr.is-miss { background: color-mix(in srgb, var(--miss) 6%, var(--surface)); }
+}
 </style>
 </head>
 <body>
@@ -243,6 +270,8 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
   <p class="run-blurb" id="run-blurb"></p>
 
   <section class="card" id="sec-verdict" aria-labelledby="verdict-head"></section>
+
+  <section class="card" id="sec-describe" aria-labelledby="describe-title"></section>
 
   <div class="grid-2">
     <section class="card" id="sec-confusion" aria-labelledby="cm-title"></section>
@@ -269,6 +298,7 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
     pct:   v => (v * 100).toFixed(1) + "%",
     count: v => Math.round(v).toLocaleString("en-US"),
     pp:    v => (v < 0 ? "−" : "+") + Math.abs(v * 100).toFixed(1) + " pts",
+    dec2:  v => v.toFixed(2),
     text:  v => String(v),
   };
   const CLASS_VAR = { POSITIVE: "--pos", NEUTRAL: "--neu", NEGATIVE: "--neg", UNPARSED: "--unparsed" };
@@ -285,12 +315,14 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
       else n.setAttribute(k, v);
     }
     for (const c of children.flat(Infinity)) {
-      if (c === undefined || c === null) continue;
+      if (c === undefined || c === null || c === false) continue;
       n.append(c instanceof Node ? c : document.createTextNode(String(c)));
     }
     return n;
   }
   const $ = id => document.getElementById(id);
+  // Every section is filled through this, so a null/false child can never print as text.
+  const fill = (id, ...children) => $(id).replaceChildren(el("div", { class: "section-body" }, ...children));
 
   // Review text in the dataset carries HTML line breaks and entities (e.g. "<br />", "&#34;").
   // For reading only, show them as line breaks and characters; still inserted as plain text.
@@ -316,21 +348,48 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
   }
   const M = (run, path, format, cls) => metric(run.metrics, run.sources.metrics, path, format, run.run, cls);
   const META = (run, path, format, cls) => metric(run.meta, run.sources.meta, path, format, run.run, cls);
+  const CMP = (run, path, format, cls) => metric(DATA.comparisons, DATA.comparisons_source, path, format, run.run, cls);
+  const hasCmp = path => !!DATA.comparisons && getPath(DATA.comparisons, path) !== undefined;
 
-  // A chart mark: carries run, metric path, value, and a human label.
-  function mark(run, path, value, label, cls, style) {
+  // A chart mark: carries run, metric path, value, a human label, an accessible name, and — where the
+  // bar is sized directly — the fraction of its track it should occupy, so the length can be verified.
+  function mark(runName, path, value, label, cls, style, scale, frac) {
     return el("div", {
-      class: cls, style, tabindex: "0", "data-run": run.run, "data-metric": path,
-      "data-value": String(value), "data-label": label,
+      class: cls, style, tabindex: "0", role: "img", "aria-label": `${label}: ${Number(value).toLocaleString("en-US")}`,
+      "data-run": runName, "data-metric": path, "data-value": String(value), "data-label": label,
+      "data-scale": scale, "data-frac": frac === undefined ? null : String(frac),
     });
   }
+
+  // Heatmap text color from the cell's actual fill, so any :root palette stays readable.
+  const inkCtx = document.createElement("canvas").getContext("2d");
+  function toRgb(color) {
+    inkCtx.clearRect(0, 0, 1, 1); inkCtx.fillStyle = "#000"; inkCtx.fillStyle = color; inkCtx.fillRect(0, 0, 1, 1);
+    return [...inkCtx.getImageData(0, 0, 1, 1).data.slice(0, 3)];
+  }
+  const luminance = rgb => rgb.map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; })
+    .reduce((a, v, i) => a + v * [0.2126, 0.7152, 0.0722][i], 0);
+  const contrast = (a, b) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+  const CELL_INK = [["", "--ink"], ["dark", "--on-fill"], ["on-surface", "--surface"]];
+  function inkCells(root) {
+    const style = getComputedStyle(document.documentElement);
+    const options = CELL_INK.map(([cls, token]) => [cls, luminance(toRgb(style.getPropertyValue(token).trim()))]);
+    for (const c of root.querySelectorAll(".cell")) {
+      const bg = luminance(toRgb(getComputedStyle(c).backgroundColor));
+      const best = options.reduce((a, b) => contrast(bg, b[1]) > contrast(bg, a[1]) ? b : a);
+      c.classList.remove("dark", "on-surface");
+      if (best[0]) c.classList.add(best[0]);
+    }
+  }
+  // Fill strength for a share: light tints below half, deep fills above, skipping the mid-tones where
+  // neither dark nor light text is legible.
+  const strengthOf = share => share < 0.5 ? Math.round(14 + 62 * share) : Math.round(80 + 40 * (share - 0.5));
 
   let current = null;
 
   /* ---------- run tabs ---------- */
   function renderTabs() {
-    const nav = $("run-tabs");
-    nav.replaceChildren(...DATA.runs.map(r => {
+    $("run-tabs").replaceChildren(...DATA.runs.map(r => {
       const b = el("button", {
         class: "run-tab", role: "tab", type: "button", "data-run-tab": r.run,
         "aria-selected": String(r.run === current.run),
@@ -340,53 +399,72 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
     }));
   }
 
-  /* ---------- run description, built from run_meta.json ---------- */
+  /* ---------- run description in plain words, built from run_meta.json / metrics.json ---------- */
   const SCHEME_TEXT = {
     binary: "two classes; answer key from the stars: 4–5★ positive, 1–3★ negative",
     three: "three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative",
   };
   function renderBlurb(run) {
-    // Star mix of this run's own sample, so gaps (e.g. no 4-star reviews) are visible on the page.
-    const stars = ["1", "2", "3", "4", "5"].map((s, i) => [i ? " · " : "", s + "★ ", M(run, `sample_rating_counts.${s}`, "count")]);
-    $("run-blurb").replaceChildren(
-      META(run, "n_rows", "count"), " reviews: ", META(run, "selection_rule", "text"), ". Prompt ",
-      META(run, "prompt_file", "text", "mono"), ", ", SCHEME_TEXT[run.meta.label_scheme] || run.meta.label_scheme, ".",
-      el("br"), el("span", {}, "Stars in this sample: ", stars, "."));
+    const m = run.metrics;
+    const how = run.meta.selection === "balanced_150"
+      ? [M(run, `truth_distribution.counts.${m.labels[0]}`, "count"), " drawn at random from each star class across the whole file (seed ",
+         META(run, "seed", "text"), ")"]
+      : ["the first ", M(run, "n_rows", "count"), " in the file that have review text"];
+    $("run-blurb").replaceChildren(el("span", {},
+      META(run, "n_rows", "count"), " reviews: ", how, ". Scored with ", META(run, "prompt_file", "text", "mono"), "; ",
+      SCHEME_TEXT[run.meta.label_scheme] || run.meta.label_scheme, ". The exact selection rule is under “How this run was made”."));
   }
 
   /* ---------- verdict + headline numbers ---------- */
   function renderVerdict(run) {
-    const m = run.metrics;
-    const labels = m.labels;
+    const m = run.metrics, labels = m.labels;
     const weakest = labels.slice().sort((a, b) =>
       m.per_class[a].recall - m.per_class[b].recall || labels.indexOf(a) - labels.indexOf(b))[0];
+    const smallest = labels.slice().sort((a, b) => m.per_class[a].support - m.per_class[b].support)[0];
     // On a balanced sample every class is equally common; naming one would imply a choice that isn't there.
     const topCount = Math.max(...labels.map(l => m.truth_distribution.counts[l]));
     const tiedMajority = labels.filter(l => m.truth_distribution.counts[l] === topCount).length > 1;
     const shortcut = tiedMajority ? "any one class" : "“" + nice(m.majority_class) + "”";
+    // The run's largest mistake as a share of its own class, so a big class cannot crowd out a small one.
+    const mistakes = labels.flatMap(t => m.confusion_matrix.columns.filter(c => c !== t)
+      .map(c => ({ t, c, n: m.confusion_cells[`${t}->${c}`], s: m.confusion_row_share[`${t}->${c}`] || 0 })))
+      .filter(x => x.n > 0).sort((a, b) => b.s - a.s || b.n - a.n);
+    const top = mistakes[0];
+    const wilson = `${run.run}_accuracy_wilson95`, vs = `${run.run}_vs_majority`;
+    // Intervals belong to the run that was actually sampled at random; the first-100 runs are a file-order slice.
+    const showInterval = run.meta.selection === "balanced_150" && hasCmp(`${wilson}.0`);
 
     const hero = el("div", {},
       el("p", { class: "kicker" }, "Agreement with the star rating"),
       M(run, "accuracy", "pct", "hero-value"),
-      el("p", { class: "hero-sub" },
-        M(run, "correct", "count"), " of ", M(run, "n_rows", "count"), " reviews match the answer key."),
-      el("p", { class: "hero-sub" },
-        "Unreadable model replies: ", M(run, "unparsed_count", "count"), " (counted as wrong)."));
+      el("p", { class: "hero-sub" }, M(run, "correct", "count"), " of ", M(run, "n_rows", "count"), " reviews match the answer key."),
+      showInterval && el("p", { class: "hero-sub" }, "Likely range for the underlying agreement rate: ",
+        CMP(run, `${wilson}.0`, "pct"), " to ", CMP(run, `${wilson}.1`, "pct"),
+        " (Wilson interval, ", CMP(run, "interval_confidence", "pct"), " confidence)."),
+      el("p", { class: "hero-sub" }, "Unreadable model replies: ", M(run, "unparsed_count", "count"), " (counted as wrong)."));
 
     const body = el("div", {},
       el("h2", { class: "verdict-head", id: "verdict-head" },
         "The model matches the stars on ", M(run, "accuracy", "pct"), " of these reviews. ",
-        "Answering ", shortcut, " every time would score ",
-        M(run, "majority_baseline_accuracy", "pct"), "."),
+        "Answering ", shortcut, " every time would score ", M(run, "majority_baseline_accuracy", "pct"), "."),
       el("p", { class: "verdict-line" },
         // On an equal-mix sample the shortcut is set by the sampling, so a margin over it is not comparable across runs.
         tiedMajority
-          ? ["Every class is the same size in this sample, so that shortcut reflects the sample's forced mix, not real reviews. Weakest class: "]
-          : ["Reading the reviews is worth ", M(run, "accuracy_minus_majority_baseline", "pp"), " over that shortcut. Weakest class: "],
-        el("b", {}, nice(weakest)), ", ",
-        M(run, `per_class.${weakest}.correct`, "count"), " of ",
-        M(run, `per_class.${weakest}.support`, "count"), " right (",
-        M(run, `per_class.${weakest}.recall`, "pct"), ")."),
+          ? "Every class is the same size in this sample, so that shortcut reflects the sample's forced mix, not real reviews. "
+          : hasCmp(`${vs}_model_only_right`)
+            ? ["Against that shortcut the model gets ", CMP(run, `${vs}_model_only_right`, "count"),
+               " reviews right that it would miss, and misses ", CMP(run, `${vs}_shortcut_only_right`, "count"),
+               " that it would get; an exact test puts the chance of a gap this size at p = ",
+               CMP(run, `${vs}_exact_mcnemar_p`, "dec2"), " (above 0.05 means a gap this size is common by chance). "]
+            : ["Reading the reviews is worth ", M(run, "accuracy_minus_majority_baseline", "pp"), " over that shortcut. "],
+        top && ["Largest mistake as a share of its class: ", el("b", {}, nice(top.t)), " reviews answered ", el("b", {}, nice(top.c)), ", ",
+          M(run, `confusion_cells.${top.t}->${top.c}`, "count"), " of ", M(run, `per_class.${top.t}.support`, "count"),
+          " (", M(run, `confusion_row_share.${top.t}->${top.c}`, "pct"), "). "],
+        "Weakest class: ", el("b", {}, nice(weakest)), ", ",
+        M(run, `per_class.${weakest}.correct`, "count"), " of ", M(run, `per_class.${weakest}.support`, "count"), " right (",
+        M(run, `per_class.${weakest}.recall`, "pct"), ")",
+        m.per_class[weakest].support < 10 ? ["; with only ", M(run, `per_class.${weakest}.support`, "count"),
+          " reviews in that class, one review moves this rate a lot."] : "."),
       el("div", { class: "tiles" },
         el("div", { class: "tile" },
           el("div", { class: "tile-label" }, tiedMajority ? "Always-one-class baseline" : "Always-“" + nice(m.majority_class) + "” baseline"),
@@ -395,46 +473,102 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
         el("div", { class: "tile" },
           el("div", { class: "tile-label" }, "Balanced accuracy"),
           M(run, "balanced_accuracy", "pct", "tile-value"),
-          el("div", { class: "tile-note" }, "average hit rate per class; baseline ",
-            M(run, "majority_baseline_balanced_accuracy", "pct"))),
+          el("div", { class: "tile-note" }, "average hit rate per class; smallest class ",
+            M(run, `per_class.${smallest}.support`, "count"), " reviews; baseline ", M(run, "majority_baseline_balanced_accuracy", "pct"))),
         el("div", { class: "tile" },
           el("div", { class: "tile-label" }, "Macro F1"),
           M(run, "macro_f1", "pct", "tile-value"),
           el("div", { class: "tile-note" }, "precision and recall, classes weighted equally"))));
 
-    $("sec-verdict").replaceChildren(el("div", { class: "verdict" }, hero, body), renderMix(run));
+    const mixline = el("p", { class: "mixline" }, "Answer key in this run: ",
+      labels.map((k, i) => [i ? " · " : "", el("span", { class: "key", style: `--c:${colorOf(k)}` }), nice(k), " ",
+        M(run, `truth_distribution.counts.${k}`, "count"), " (", M(run, `truth_distribution.share.${k}`, "pct"), ")"]),
+      ". The model's answers per class are compared just below.");
+
+    fill("sec-verdict", el("div", { class: "verdict" }, hero, body), mixline);
   }
 
-  // Answer-key mix vs model mix, as two stacked bars with values beside them.
-  function renderMix(run) {
-    const m = run.metrics;
-    const wrap = el("div", { class: "mix" },
-      el("div", { class: "mix-title" }, "How the classes are split: the stars' answer key vs the model's answers"));
-    const rows = [
-      ["Answer key", "truth_distribution", m.labels],
-      ["Model", "prediction_distribution", m.confusion_matrix.columns],
-    ];
-    for (const [title, key, keys] of rows) {
-      const counts = m[key].counts;
-      const stack = el("div", { class: "stack", role: "img", "aria-label": title + " class mix" });
-      for (const k of keys) {
-        if (!counts[k]) continue;
-        stack.append(mark(run, `${key}.counts.${k}`, counts[k], `${title} · ${nice(k)}`, "seg",
-          `flex-grow:${counts[k]}; --c:${colorOf(k)}`));
-      }
-      const values = el("div", { class: "stack-values" }, keys.map(k => el("span", {},
-        el("span", { class: "key", style: `--c:${colorOf(k)}` }), nice(k), " ",
-        M(run, `${key}.counts.${k}`, "count"), " (", M(run, `${key}.share.${k}`, "pct"), ")")));
-      wrap.append(el("div", { class: "stack-row" }, el("span", { class: "stack-label" }, title), stack, values));
-    }
-    return wrap;
+  /* ---------- descriptive layer: stars in the file vs this sample; answer key vs model per class ---------- */
+  function renderDescribe(run) {
+    const m = run.metrics, dist = DATA.rating_distribution;
+    const F = (path, format, cls) => metric(dist, DATA.rating_distribution_source, path, format, "__file__", cls);
+    const S = (path, format, cls) => M(run, path, format, cls);
+    const STARS = ["5", "4", "3", "2", "1"];
+
+    // Star distribution as shares on one 0-100% scale; fixed label columns make every track the same width.
+    const starChart = (who, markRun, countPath, sharePath, span, counts, shares) => el("div", { class: "starbars" },
+      STARS.map(s => {
+        const v = counts[s];
+        const track = el("div", { class: "htrack" }, v > 0 && mark(markRun, `${countPath}.${s}`, v, `${who}: ${s}★`, "bar",
+          `width:${(100 * shares[s]).toFixed(2)}%; --c:var(--ink-2)`, "star-share", shares[s]));
+        return [el("span", { class: "name" }, s + "★"), track,
+          span(`${countPath}.${s}`, "count", "v" + (v ? "" : " zero-v")), el("span", { class: "pct" }, span(`${sharePath}.${s}`, "pct"))];
+      }));
+
+    const fileBlock = el("div", {},
+      el("p", { class: "h3" }, "Stars in the whole file"),
+      el("p", { class: "sub" }, F("row_count", "count"), " reviews in the Gift Cards file."),
+      starChart("Whole file", "__file__", "rating_counts", "rating_share", F, dist.rating_counts, dist.rating_share));
+    const sampleBlock = el("div", {},
+      el("p", { class: "h3" }, "Stars in this run's sample"),
+      el("p", { class: "sub" }, S("n_rows", "count"), " reviews scored in this run."),
+      starChart("This sample", run.run, "sample_rating_counts", "sample_rating_share", S, m.sample_rating_counts, m.sample_rating_share));
+
+    // The stars' count per class, and the model's answers for that class split into right and wrong.
+    const cols = m.confusion_matrix.columns.filter(c => m.labels.includes(c) || m.prediction_distribution.counts[c] > 0);
+    const maxC = Math.max(1, ...cols.map(c => Math.max(m.truth_distribution.counts[c] || 0, m.prediction_distribution.counts[c] || 0)));
+    const starsLine = c => {
+      const v = m.truth_distribution.counts[c];
+      if (v === undefined) return el("div", { class: "gbar" }, el("span", { class: "who" }, "Stars"),
+        el("span", { class: "detail" }, "not a star class"), el("span", {}), el("span", {}));
+      return el("div", { class: "gbar" }, el("span", { class: "who" }, "Stars"),
+        el("div", { class: "htrack" }, v > 0 && mark(run.run, `truth_distribution.counts.${c}`, v, `Stars · ${nice(c)}`, "bar",
+          `width:${(100 * v / maxC).toFixed(2)}%; --c:var(--ref)`, "class-counts", v / maxC)),
+        S(`truth_distribution.counts.${c}`, "count", "v"), el("span", {}));
+    };
+    const modelLine = c => {
+      const total = m.prediction_distribution.counts[c], pc = m.per_class[c];
+      const segs = pc ? [pc.correct, pc.predicted_wrong].filter(v => v > 0).length : (total > 0 ? 1 : 0);
+      // The split box is itself a mark: its own length carries the class total, and its segments carry
+      // right vs wrong, so a wrong length is caught at either level.
+      const split = mark(run.run, `prediction_distribution.counts.${c}`, total, `Model said ${nice(c)}`, "split",
+        `width:${(100 * total / maxC).toFixed(2)}%; min-width:${segs * 2 + (segs - 1) * 2}px`, "class-counts", total / maxC);
+      split.append(...(pc
+        ? [pc.correct > 0 && mark(run.run, `per_class.${c}.correct`, pc.correct, `Model said ${nice(c)}, right`, "seg",
+             `flex-grow:${pc.correct}; --c:var(--hit)`),
+           pc.predicted_wrong > 0 && mark(run.run, `per_class.${c}.predicted_wrong`, pc.predicted_wrong, `Model said ${nice(c)}, wrong`, "seg",
+             `flex-grow:${pc.predicted_wrong}; --c:var(--miss)`)]
+        : [el("div", { class: "seg", style: "flex-grow:1; --c:var(--miss)" })]).filter(Boolean));
+      return el("div", { class: "gbar" }, el("span", { class: "who" }, "Model"),
+        el("div", { class: "htrack" }, total > 0 && split),
+        S(`prediction_distribution.counts.${c}`, "count", "v"),
+        el("span", { class: "detail" }, pc
+          ? [S(`per_class.${c}.correct`, "count"), " right · ", S(`per_class.${c}.predicted_wrong`, "count"), " wrong"]
+          : "all wrong"));
+    };
+    const classBlock = el("div", { class: "class-block" },
+      el("p", { class: "h3" }, "Stars' answer vs the model's answer, per class"),
+      el("p", { class: "sub" }, "Upper bar: reviews the stars put in the class. Lower bar: reviews the model put there, split into right and wrong answers, since matching totals can still hide wrong answers."),
+      el("div", { class: "grouped" }, cols.map(c => el("div", { class: "group-row" },
+        el("span", { class: "chip", style: `--c:${colorOf(c)}` }, nice(c)), el("div", {}, starsLine(c), modelLine(c))))),
+      el("div", { class: "legend", style: "margin-top:10px" },
+        el("span", {}, el("span", { class: "key", style: "--c:var(--ref)" }), "Stars' count"),
+        el("span", {}, el("span", { class: "key", style: "--c:var(--hit)" }), "Model right"),
+        el("span", {}, el("span", { class: "key", style: "--c:var(--miss)" }), "Model wrong")));
+
+    fill("sec-describe",
+      el("div", { class: "sec-head" }, el("div", {},
+        el("h2", { id: "describe-title" }, "What was scored, and what the model answered"),
+        el("p", { class: "sub" }, "The star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned."))),
+      el("div", { class: "describe-grid" }, fileBlock, sampleBlock, classBlock));
   }
 
   /* ---------- confusion matrix heatmap ---------- */
   function renderConfusion(run) {
-    const m = run.metrics, rows = m.confusion_matrix.rows, cols = m.confusion_matrix.columns;
+    const m = run.metrics, rows = m.confusion_matrix.rows;
+    const cols = m.confusion_matrix.columns.filter(c => rows.includes(c) || m.prediction_distribution.counts[c] > 0);
     const grid = el("div", { class: "cm", role: "table", "aria-label": "Confusion matrix, rows are the answer key, columns are the model's prediction",
-      style: `grid-template-columns: 118px repeat(${cols.length}, minmax(64px, 1fr))` });
+      style: `grid-template-columns: 118px repeat(${cols.length}, minmax(64px, 1fr)); --cm-cols: ${cols.length}` });
     grid.append(el("div", { class: "cm-corner cm-axis" }, "Stars say ↓ / model says →"));
     for (const c of cols) grid.append(el("div", { class: "cm-colhead", role: "columnheader" },
       el("span", { class: "chip", style: `--c:${colorOf(c)}` }, nice(c))));
@@ -445,11 +579,8 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
       for (const c of cols) {
         const cellKey = `${r}->${c}`;
         const n = m.confusion_cells[cellKey], share = m.confusion_row_share[cellKey] || 0;
-        const tone = r === c ? "--hit" : "--miss";
-        const strength = n ? Math.round(14 + 86 * share) : 0;
-        const style = n ? `background: color-mix(in srgb, var(${tone}) ${strength}%, var(--surface))` : "";
-        const cell = mark(run, `confusion_cells.${cellKey}`, n,
-          `Stars: ${nice(r)} → model: ${nice(c)}`, "cell" + (n ? "" : " zero") + (strength > 55 ? " dark" : ""), style);
+        const style = n ? `background: color-mix(in srgb, var(${r === c ? "--hit" : "--miss"}) ${strengthOf(share)}%, var(--surface))` : "";
+        const cell = mark(run.run, `confusion_cells.${cellKey}`, n, `Stars: ${nice(r)} → model: ${nice(c)}`, "cell" + (n ? "" : " zero"), style);
         cell.setAttribute("role", "cell");
         if (n) {
           cell.classList.add("clickable");
@@ -462,52 +593,63 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
         grid.append(cell);
       }
     }
-    $("sec-confusion").replaceChildren(
+    const neutralRange = `${run.run}_neutral_to_negative_share_wilson95`, neutralRecall = `${run.run}_neutral_recall_wilson95`;
+    fill("sec-confusion",
       el("div", { class: "sec-head" }, el("div", {},
         el("h2", { id: "cm-title" }, "Where the answers land"),
-        el("p", { class: "sub" }, "Confusion matrix. Rows are the answer key from the stars; columns are the model's prediction. Slate cells on the diagonal are right; amber cells are mistakes. Darker means a bigger share of the row."))),
+        el("p", { class: "sub" }, "Confusion matrix. Rows are the answer key from the stars; columns are the model's prediction. The diagonal holds right answers and every other cell is a mistake (see key); a stronger fill means a bigger share of the row. Click a cell to list those reviews."))),
       grid,
       el("div", { class: "legend", style: "margin-top:14px" },
         el("span", {}, el("span", { class: "key", style: "--c:var(--hit)" }), "Right (diagonal)"),
         el("span", {}, el("span", { class: "key", style: "--c:var(--miss)" }), "Wrong"),
-        el("span", {}, "Unparsed = the reply could not be read; always wrong")));
+        cols.includes("UNPARSED") && el("span", {}, "Unparsed = the reply could not be read; always wrong")),
+      hasCmp(`${neutralRange}.0`) && hasCmp(`${neutralRecall}.0`) && el("p", { class: "footnote" },
+        "Likely ranges for the underlying rates, from ", M(run, "per_class.NEUTRAL.support", "count"),
+        " neutral reviews (Wilson interval, ", CMP(run, "interval_confidence", "pct"), " confidence): neutral answered negative ",
+        CMP(run, `${neutralRange}.0`, "pct"), " to ", CMP(run, `${neutralRange}.1`, "pct"), "; neutral answered right ",
+        CMP(run, `${neutralRecall}.0`, "pct"), " to ", CMP(run, `${neutralRecall}.1`, "pct"), "."));
+    inkCells($("sec-confusion"));
   }
 
   /* ---------- per-class correctness ---------- */
   function renderClasses(run) {
     const m = run.metrics;
-    const list = el("div", {});
-    for (const k of m.labels) {
+    const list = el("div", {}, m.labels.map(k => {
       const pc = m.per_class[k];
-      const track = el("div", { class: "track", role: "img", "aria-label": `${nice(k)}: ${pc.correct} right, ${pc.wrong} wrong` });
-      if (pc.correct) track.append(mark(run, `per_class.${k}.correct`, pc.correct, `${nice(k)} reviews answered right`, "seg", `flex-grow:${pc.correct}; --c:var(--hit)`));
-      if (pc.wrong) track.append(mark(run, `per_class.${k}.wrong`, pc.wrong, `${nice(k)} reviews answered wrong`, "seg", `flex-grow:${pc.wrong}; --c:var(--miss)`));
-      list.append(el("div", { class: "cbar" },
-        el("span", { class: "chip", style: `--c:${colorOf(k)}` }, nice(k)),
-        track,
+      const track = el("div", { class: "track" },
+        pc.correct > 0 && mark(run.run, `per_class.${k}.correct`, pc.correct, `${nice(k)} reviews answered right`, "seg", `flex-grow:${pc.correct}; --c:var(--hit)`, "right-wrong"),
+        pc.wrong > 0 && mark(run.run, `per_class.${k}.wrong`, pc.wrong, `${nice(k)} reviews answered wrong`, "seg", `flex-grow:${pc.wrong}; --c:var(--miss)`, "right-wrong"));
+      return el("div", { class: "cbar" },
+        el("span", { class: "chip", style: `--c:${colorOf(k)}` }, nice(k)), track,
         el("span", { class: "cbar-text" }, el("b", {}, M(run, `per_class.${k}.correct`, "count")), " of ",
-          M(run, `per_class.${k}.support`, "count"), " · ", el("b", {}, M(run, `per_class.${k}.recall`, "pct")))));
-    }
+          M(run, `per_class.${k}.support`, "count"), " right · ", el("b", {}, M(run, `per_class.${k}.recall`, "pct")),
+          " · ", M(run, `per_class.${k}.wrong`, "count"), " wrong"));
+    }));
     const precision = el("p", { class: "footnote" }, "When the model says a class, how often it is right (precision): ",
       m.labels.map((k, i) => [i ? " · " : "", nice(k), " ", M(run, `per_class.${k}.precision`, "pct")]));
-    // On a balanced sample precision reflects the forced equal mix; show the whole-file re-weighting when saved.
-    const cmp = DATA.comparisons, popKey = `${run.run}_population_weighted_precision`;
-    const C = (path, format) => metric(cmp, DATA.comparisons_source, path, format, run.run);
-    const popNote = !(cmp && cmp[popKey]) ? null : el("p", { class: "footnote" },
-      "Each class is a third of this sample. The whole file is ", C("population_weights.POSITIVE", "pct"), " positive, ",
-      C("population_weights.NEUTRAL", "pct"), " neutral and ", C("population_weights.NEGATIVE", "pct"),
+    // On a balanced sample precision and accuracy reflect the forced equal mix; show the whole-file re-weighting when saved.
+    const popKey = `${run.run}_population_weighted_precision`, lowKey = `${run.run}_population_weighted_accuracy_at_positive_recall_low`;
+    const popNote = hasCmp(popKey) && el("p", { class: "footnote" },
+      "Each class is a third of this sample. The whole file is ", CMP(run, "population_weights.POSITIVE", "pct"), " positive, ",
+      CMP(run, "population_weights.NEUTRAL", "pct"), " neutral and ", CMP(run, "population_weights.NEGATIVE", "pct"),
       " negative. Re-weighted to that mix, precision would be about: ",
-      m.labels.map((k, i) => [i ? " · " : "", nice(k), " ", C(`${popKey}.${k}`, "pct")]),
-      ", and accuracy about ", C(`${run.run}_population_weighted_accuracy`, "pct"), " (a rough estimate from this sample).");
-    $("sec-classes").replaceChildren(
+      m.labels.map((k, i) => [i ? " · " : "", nice(k), " ", CMP(run, `${popKey}.${k}`, "pct")]),
+      ", and accuracy about ", CMP(run, `${run.run}_population_weighted_accuracy`, "pct"),
+      ", where always answering positive would score ", CMP(run, "population_weights.POSITIVE", "pct"), " (a rough estimate from this sample).",
+      hasCmp(lowKey) && [" That gap rests on positive recall: at the low end of its likely range (",
+        CMP(run, `${run.run}_positive_recall_wilson95.0`, "pct"), ") the re-weighted accuracy would be about ",
+        CMP(run, lowKey, "pct"), "."]);
+    const no4 = m.labels.includes("POSITIVE") && m.sample_rating_counts["4"] === 0 && el("p", { class: "footnote" },
+      "Positive here means 5★ reviews only: this sample has ", M(run, "sample_rating_counts.4", "count"), " 4★ reviews.");
+    fill("sec-classes",
       el("div", { class: "sec-head" }, el("div", {},
         el("h2", { id: "classes-title" }, "Right answers by class"),
-        el("p", { class: "sub" }, "For each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews."))),
+        el("p", { class: "sub" }, "For each answer-key class: how many reviews the model got right (recall). Every bar uses the same full length for its class, and small classes swing on one or two reviews."))),
       list,
       el("div", { class: "legend", style: "margin-top:12px" },
         el("span", {}, el("span", { class: "key", style: "--c:var(--hit)" }), "Right"),
         el("span", {}, el("span", { class: "key", style: "--c:var(--miss)" }), "Wrong")),
-      precision, ...(popNote ? [popNote] : []));  // replaceChildren would print a literal "null"
+      precision, popNote, no4);
   }
 
   /* ---------- emotion: the model vs the NRC word list ---------- */
@@ -519,84 +661,85 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
     if (!em) { sec.hidden = true; sec.replaceChildren(); return; }
     sec.hidden = false;
     const E = (path, format, cls) => metric(em, run.sources.emotion_metrics, path, format, run.run, cls);
+    const showUnparsed = em.llm_emotion_counts.UNPARSED > 0;
 
-    const tile = (label, ratePath, groupPath, note) => el("div", { class: "tile" },
-      el("div", { class: "tile-label" }, label),
-      E(ratePath, "pct", "tile-value"),
-      el("div", { class: "tile-note" }, E(groupPath + ".agree", "count"), " of ", E(groupPath + ".n", "count"), " reviews", note));
-
+    const tile = (label, ratePath, groupPath) => el("div", { class: "tile" },
+      el("div", { class: "tile-label" }, label), E(ratePath, "pct", "tile-value"),
+      el("div", { class: "tile-note" }, E(groupPath + ".agree", "count"), " of ", E(groupPath + ".n", "count"), " reviews"));
     const tiles = el("div", { class: "emo-tiles" },
       tile("Same emotion, all reviews", "agreement_rate_all_rows", "agreement.all_rows"),
       tile("Leaving out reviews with no lexicon words", "agreement_rate_excluding_none", "agreement.excluding_none"),
       tile("Also leaving out word-list ties", "agreement_rate_excluding_none_and_tie", "agreement.excluding_none_and_tie"));
 
-    // Skew context: what a constant answer would score against the same word list.
+    // Skew context: what constant answers would score against the same word list, on the same subsets as the tiles.
     const context = el("p", { class: "emo-context" },
-      "For scale: answering “", E("constant_baseline_emotion", "text"), "” for every review would match the word list on ",
+      "For scale: answering “", E("constant_baseline_emotion", "text"), "” (the model's most common emotion) for every review would match the word list on ",
       E("constant_baseline_rate_all_rows", "pct"), " of all reviews (", E("constant_baseline.all_rows.agree", "count"), " of ",
       E("constant_baseline.all_rows.n", "count"), ") and on ", E("constant_baseline_rate_excluding_none_and_tie", "pct"),
       " where it has one winner (", E("constant_baseline.excluding_none_and_tie.agree", "count"), " of ",
-      E("constant_baseline.excluding_none_and_tie.n", "count"), "). The word list tied on ", E("tie_rows", "count"),
-      " reviews; the model's emotion is among the tied ones in ", E("tie_rows_llm_emotion_in_tied_set", "count"),
-      " of them, and “", E("constant_baseline_emotion", "text"), "” is among them in ", E("tie_rows_constant_in_tied_set", "count"), ".",
-      em.best_constant_baseline_emotion === em.constant_baseline_emotion ? null : [
-        " The strongest single constant is “", E("best_constant_baseline_emotion", "text"), "”, which matches the word list on ",
+      E("constant_baseline.excluding_none_and_tie.n", "count"), ").",
+      em.best_constant_baseline_emotion !== em.constant_baseline_emotion && [
+        " The strongest single constant is “", E("best_constant_baseline_emotion", "text"), "”: ",
         E("best_constant_baseline_rate_all_rows", "pct"), " of all reviews (", E("best_constant_baseline.all_rows.agree", "count"),
-        " of ", E("best_constant_baseline.all_rows.n", "count"), "); the model is at ", E("agreement_rate_all_rows", "pct"), "."]);
+        " of ", E("best_constant_baseline.all_rows.n", "count"), ") and ", E("best_constant_baseline_rate_excluding_none_and_tie", "pct"),
+        " where the word list has one winner (", E("best_constant_baseline.excluding_none_and_tie.agree", "count"), " of ",
+        E("best_constant_baseline.excluding_none_and_tie.n", "count"), ")."],
+      " The model itself matches the word list on ", E("agreement_rate_all_rows", "pct"), " of all reviews and ",
+      E("agreement_rate_excluding_none_and_tie", "pct"), " where the word list has one winner.",
+      " The word list tied on ", E("tie_rows", "count"), " reviews; the model's emotion is among the tied ones in ",
+      E("tie_rows_llm_emotion_in_tied_set", "count"), " of them, and “", E("constant_baseline_emotion", "text"), "” is among them in ",
+      E("tie_rows_constant_in_tied_set", "count"), ".");
 
-    // Counts per emotion from each reader, on one shared scale.
-    const keys = [...EMOTIONS, "TIE", "NONE", "UNPARSED"];
+    // Counts per emotion from each reader, on one shared scale (fixed value columns keep tracks equal).
+    const keys = [...EMOTIONS, "TIE", "NONE", ...(showUnparsed ? ["UNPARSED"] : [])];
     const max = Math.max(1, ...Object.values(em.llm_emotion_counts), ...Object.values(em.nrc_emotion_counts));
     const bar = (field, key, tone, who) => {
       const v = em[field][key];
-      if (v === undefined) return el("div", { class: "hbar na" }, "—");
-      const track = el("div", { class: "htrack" });
-      if (v > 0) track.append(mark(run, `emotion.${field}.${key}`, v, `${who}: ${emoName(key)}`, "bar",
-        `width:${(100 * v / max).toFixed(2)}%; --c:var(${tone})`));
-      return el("div", { class: "hbar" + (v ? "" : " zero") }, track, E(`${field}.${key}`, "count", "v"));
+      if (v === undefined) return [el("span", { class: "na" }, "—"), el("span", {})];
+      return [el("div", { class: "htrack" }, v > 0 && mark(run.run, `emotion.${field}.${key}`, v, `${who}: ${emoName(key)}`, "bar",
+          `width:${(100 * v / max).toFixed(2)}%; --c:var(${tone})`, "emotion-counts", v / max)),
+        E(`${field}.${key}`, "count", "v" + (v ? "" : " zero-v"))];
     };
     const pair = el("div", { class: "pairbars" },
       el("span", {}), el("span", { class: "head" }, el("span", { class: "key", style: "--c:var(--llm)" }), "Model"),
       el("span", { class: "head" }, el("span", { class: "key", style: "--c:var(--lex)" }), "NRC word list"),
-      keys.map(k => [el("span", { class: "name" }, emoName(k)),
-        bar("llm_emotion_counts", k, "--llm", "Model"), bar("nrc_emotion_counts", k, "--lex", "Word list")]));
+      keys.map(k => [el("span", { class: "name" }, emoName(k)), bar("llm_emotion_counts", k, "--llm", "Model"), bar("nrc_emotion_counts", k, "--lex", "Word list")]));
 
     // Cross-tab: rows = the model's emotion, columns = the word list's emotion.
-    const rows = em.crosstab.rows, cols = em.crosstab.columns;
+    const rows = em.crosstab.rows.filter(r => r !== "UNPARSED" || showUnparsed), cols = em.crosstab.columns;
     const cmax = Math.max(1, ...Object.values(em.crosstab_cells));
     const xt = el("div", { class: "xt", role: "table", "aria-label": "Emotion cross-tab, rows are the model, columns are the word list",
       style: `grid-template-columns: 88px repeat(${cols.length}, minmax(34px, 1fr))` });
     xt.append(el("div", { class: "cm-axis", style: "align-self:end" }, "Model ↓ words →"));
     const SHORT = { anticipation: "anticip." };  // keeps a narrow column header on one line
-    for (const c of cols) xt.append(el("div", { class: "xt-head", role: "columnheader", title: emoName(c), "aria-label": emoName(c) },
-      SHORT[c] || emoName(c)));
+    for (const c of cols) xt.append(el("div", { class: "xt-head", role: "columnheader", title: emoName(c), "aria-label": emoName(c) }, SHORT[c] || emoName(c)));
     for (const r of rows) {
       xt.append(el("div", { class: "xt-rowhead", role: "rowheader" }, emoName(r)));
       for (const c of cols) {
         const key = `${r}->${c}`, n = em.crosstab_cells[key];
-        const strength = n ? Math.round(14 + 86 * n / cmax) : 0;
-        const tone = r === c ? "--hit" : "--lex";
-        const cell = mark(run, `emotion.crosstab_cells.${key}`, n, `Model: ${emoName(r)} · word list: ${emoName(c)}`,
-          "cell" + (n ? "" : " zero") + (strength > 55 ? " dark" : ""),
-          n ? `background: color-mix(in srgb, var(${tone}) ${strength}%, var(--surface))` : "");
+        const cell = mark(run.run, `emotion.crosstab_cells.${key}`, n, `Model: ${emoName(r)} · word list: ${emoName(c)}`,
+          "cell" + (n ? "" : " zero"), n ? `background: color-mix(in srgb, var(${r === c ? "--hit" : "--lex"}) ${strengthOf(n / cmax)}%, var(--surface))` : "");
         cell.setAttribute("role", "cell");
         cell.append(E(`crosstab_cells.${key}`, "count", "count"));
         xt.append(cell);
       }
     }
 
-    sec.replaceChildren(
+    fill("sec-emotion",
       el("div", { class: "sec-head" }, el("div", {},
         el("h2", { id: "emo-title" }, "Primary emotion, read two ways"),
         el("p", { class: "sub" }, "The model names one emotion per review. The NRC word list counts emotion words in the same title and text and takes the most frequent emotion: Tie means several emotions share the top count, None means it found no emotion words."))),
-      tiles,
-      context,
+      tiles, context,
       el("div", { class: "emo-grid" },
         el("div", {}, el("p", { class: "h3" }, "How often each reader picks each emotion"),
-          el("p", { class: "sub" }, "Reviews per emotion; both bars share one scale."), pair),
+          el("p", { class: "sub" }, "Reviews per emotion; both readers' bars share one scale."), pair),
         el("div", {}, el("p", { class: "h3" }, "Where the two readers land together"),
-          el("p", { class: "sub" }, "Rows: the model's emotion. Columns: the word list's. Slate diagonal = same emotion; ochre = different, darker = more reviews."),
-          el("div", { class: "xt-wrap" }, xt))));
+          el("p", { class: "sub" }, "Rows: the model's emotion. Columns: the word list's. The diagonal is the same emotion (see key); a stronger fill means more reviews."),
+          el("div", { class: "xt-wrap" }, xt),
+          el("div", { class: "legend", style: "margin-top:10px" },
+            el("span", {}, el("span", { class: "key", style: "--c:var(--hit)" }), "Same emotion"),
+            el("span", {}, el("span", { class: "key", style: "--c:var(--lex)" }), "Different")))));
+    inkCells(sec);
   }
 
   function emoGroup(r) {
@@ -613,25 +756,22 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
     const tbody = el("tbody", {});
     for (const r of rows) {
       const ok = r.prediction === r.truth;
-      const emoCells = !hasEmo ? [] : [
-        el("td", { class: "emo" }, r.llm_emotion || "—"),
-        el("td", { class: "emo" }, r.nrc_emotion === "TIE" ? ["tie", el("small", {}, r.nrc_tied.join(" / "))]
-          : r.nrc_emotion === "NONE" ? "none" : r.nrc_emotion,
-          el("small", {}, r.emotion_agree ? "same as model" : ""))];
-      const hits = !hasEmo ? null : el("div", { class: "hits" }, "Word-list hits: ",
+      const hits = hasEmo && el("div", { class: "hits" }, "Word-list hits: ",
         r.nrc_hits.length ? r.nrc_hits.map(h => `${h[0]}${h[0] !== h[1] ? " → " + h[1] : ""} (${h[2].join(", ")})`).join("; ") : "none");
       const tr = el("tr", { class: ok ? "" : "is-miss", "data-review-id": r.review_id,
-        "data-correct": String(ok), "data-truth": r.truth, "data-prediction": r.prediction,
-        "data-emo": hasEmo ? emoGroup(r) : null },
+        "data-correct": String(ok), "data-truth": r.truth, "data-prediction": r.prediction, "data-emo": hasEmo ? emoGroup(r) : null },
         el("td", { class: "num" }, r.review_id),
         el("td", { class: "num" }, r.rating + "★"),
         el("td", {}, el("span", { class: "chip", style: `--c:${colorOf(r.truth)}` }, nice(r.truth))),
         el("td", {}, el("span", { class: "chip", style: `--c:${colorOf(r.prediction)}` }, nice(r.prediction))),
         el("td", {}, el("span", { class: "result", style: `--c:var(${ok ? "--hit" : "--miss"})` },
           el("span", { class: "mark", "aria-hidden": "true" }, ok ? "✓" : "✕"), ok ? "Match" : "Miss")),
-        emoCells,
-        el("td", { class: "title" }, el("div", { class: "clamp" }, displayText(r.title))),
-        el("td", { class: "text" }, el("div", { class: "clamp" }, displayText(r.text)), hits));
+        el("td", { class: "review" },
+          el("div", { class: "clamp t" }, displayText(r.title)), el("div", { class: "clamp x" }, displayText(r.text)), hits),
+        hasEmo && [
+          el("td", { class: "emo" }, r.llm_emotion || "—"),
+          el("td", { class: "emo" }, r.nrc_emotion === "TIE" ? ["tie", el("small", {}, r.nrc_tied.join(" / "))]
+            : r.nrc_emotion === "NONE" ? "none" : r.nrc_emotion, el("small", {}, r.emotion_agree ? "same as model" : ""))]);
       tr.addEventListener("click", () => tr.classList.toggle("expanded"));
       // Search matches the stored text or its display form (entities decoded), case-insensitive.
       const hay = r.title + "\n" + r.text;
@@ -640,10 +780,10 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
       tbody.append(tr);
     }
     const table = el("table", { id: "review-table" },
-      el("thead", {}, el("tr", {}, ["ID", "Stars", "Answer key", "Model", "Result",
-        ...(hasEmo ? ["Model emotion", "Word list"] : []), "Title", "Review"].map(h => el("th", { scope: "col" }, h)))),
+      el("thead", {}, el("tr", {}, ["ID", "Stars", "Answer key", "Model", "Result", "Title and review",
+        ...(hasEmo ? ["Model emotion", "Word list"] : [])].map(h => el("th", { scope: "col" }, h)))),
       tbody);
-    $("sec-reviews").replaceChildren(
+    fill("sec-reviews",
       el("div", { class: "sec-head" },
         el("div", {},
           el("h2", { id: "reviews-title" }, "Every review, with the model's answer"),
@@ -652,21 +792,22 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
           "Showing ", el("b", { id: "shown-count", "data-live-count": String(rows.length) }, rows.length.toLocaleString("en-US")),
           " of ", M(run, "n_rows", "count"), " reviews")),
       renderFilters(run),
-      el("div", { class: "table-wrap" }, table,
-        el("p", { class: "empty", id: "table-empty", hidden: "" }, "No reviews match these filters.")));
+      el("div", { class: "table-wrap" }, table, el("p", { class: "empty", id: "table-empty", hidden: "" }, "No reviews match these filters.")));
   }
 
   /* ---------- filters (combinable; live count) ---------- */
   function renderFilters(run) {
+    const m = run.metrics;
     const opt = (value, text) => el("option", { value }, text);
+    const predOptions = m.confusion_matrix.columns.filter(c => m.labels.includes(c) || m.prediction_distribution.counts[c] > 0);
     const box = el("div", { class: "filters", role: "search", "aria-label": "Filter reviews" },
       el("label", { class: "field" }, el("span", {}, "Result"),
         el("select", { id: "f-result" }, opt("all", "All"), opt("match", "Matches only"), opt("miss", "Mistakes only"))),
       el("label", { class: "field" }, el("span", {}, "Answer key (stars)"),
-        el("select", { id: "f-truth" }, opt("all", "Any"), run.metrics.labels.map(l => opt(l, nice(l))))),
+        el("select", { id: "f-truth" }, opt("all", "Any"), m.labels.map(l => opt(l, nice(l))))),
       el("label", { class: "field" }, el("span", {}, "Model said"),
-        el("select", { id: "f-pred" }, opt("all", "Any"), run.metrics.confusion_matrix.columns.map(c => opt(c, nice(c))))),
-      !(run.rows.length && "nrc_emotion" in run.rows[0]) ? null : el("label", { class: "field" }, el("span", {}, "Emotion readers"),
+        el("select", { id: "f-pred" }, opt("all", "Any"), predOptions.map(c => opt(c, nice(c))))),
+      run.rows.length > 0 && "nrc_emotion" in run.rows[0] && el("label", { class: "field" }, el("span", {}, "Emotion readers"),
         el("select", { id: "f-emo" }, opt("all", "Any"), opt("agree", "Same emotion"), opt("differ", "Different emotion"),
           opt("tie", "Word list tie"), opt("none", "Word list found none"))),
       el("label", { class: "field grow" }, el("span", {}, "Search title and review"),
@@ -678,10 +819,7 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
     }
     box.querySelector("#f-search").addEventListener("input", applyFilters);
     box.querySelector("#f-reset").addEventListener("click", () => {
-      if (box.querySelector("#f-emo")) box.querySelector("#f-emo").value = "all";
-      box.querySelector("#f-result").value = "all";
-      box.querySelector("#f-truth").value = "all";
-      box.querySelector("#f-pred").value = "all";
+      for (const id of ["f-result", "f-truth", "f-pred", "f-emo"]) { const s = box.querySelector("#" + id); if (s) s.value = "all"; }
       box.querySelector("#f-search").value = "";
       applyFilters();
     });
@@ -723,7 +861,7 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
   /* ---------- method facts ---------- */
   function renderMethod(run) {
     const f = (label, ...value) => el("div", {}, el("dt", {}, label), el("dd", {}, ...value));
-    $("sec-method").replaceChildren(
+    fill("sec-method",
       el("div", { class: "sec-head" }, el("div", {},
         el("h2", { id: "method-title" }, "How this run was made"),
         el("p", { class: "sub" }, "Everything on this page is read from the run's saved files; nothing is typed in by hand."))),
@@ -733,7 +871,7 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
         f("Prompt file", META(run, "prompt_file", "text", "mono")),
         f("Prompt sha256", META(run, "prompt_sha256", "text", "mono")),
         f("Reviews scored", META(run, "n_rows", "count")),
-        f("Selection", META(run, "selection_rule", "text")),
+        f("Selection rule", META(run, "selection_rule", "text")),
         f("Random seed", META(run, "seed", "text")),
         f("Parse failures · API errors", META(run, "parse_fail_count", "count"), " · ", META(run, "api_error_count", "count")),
         f("Dataset rows in file", META(run, "dataset_row_count", "count")),
@@ -769,6 +907,7 @@ td.emo small { display: block; color: var(--ink-3); font-size: 11.5px; }
     renderTabs();
     renderBlurb(current);
     renderVerdict(current);
+    renderDescribe(current);
     renderConfusion(current);
     renderClasses(current);
     renderEmotion(current);

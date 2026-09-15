@@ -1,0 +1,4 @@
+lexicon: 4454 words with >=1 of the 8 emotions (source: official)
+balanced150_v3: agreement all 16/150 (10.7%), excl NONE 16/126, excl NONE+TIE 16/59; TIE 67, NONE 24
+  LLM: {'anger': 62, 'anticipation': 8, 'disgust': 3, 'fear': 1, 'joy': 46, 'sadness': 6, 'surprise': 2, 'trust': 22, 'UNPARSED': 0}
+  NRC: {'anger': 4, 'anticipation': 22, 'disgust': 2, 'fear': 3, 'joy': 8, 'sadness': 2, 'surprise': 0, 'trust': 18, 'TIE': 67, 'NONE': 24}

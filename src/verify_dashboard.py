@@ -25,6 +25,8 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parent.parent
 PAGE = ROOT / "dashboard" / "index.html"
 MIN_PX = 2
+MIN_TRACK_PX = 100        # checked at the 1440px viewport
+LENGTH_TOLERANCE_PX = 2.0  # rounding plus a neighbouring segment held at the 2px floor
 ENTITIES = {"amp": "&", "lt": "<", "gt": ">", "quot": '"', "apos": "'", "nbsp": " "}
 
 failures = []
@@ -52,6 +54,8 @@ def display(value, fmt):
         return f"{int(Decimal(value).quantize(Decimal('1'), rounding=ROUND_HALF_UP)):,}"
     if fmt == "pp":
         return ("−" if value < 0 else "+") + js_fixed1(abs(value * 100)) + " pts"
+    if fmt == "dec2":
+        return str(Decimal(value).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
     if fmt == "text":
         if isinstance(value, float) and value.is_integer():
             return str(int(value))
@@ -88,7 +92,7 @@ def resolve(source):
     rel, _, path = source.partition("#")
     value = load_file(rel)
     for key in path.split("."):
-        value = value[key]
+        value = value[int(key)] if isinstance(value, list) else value[key]
     return value
 
 
@@ -127,10 +131,48 @@ def check_metrics(page, run):
 
 
 def check_marks(page, run):
+    # A mark's true value must also be printed nearby: a visible tagged number in the same section
+    # with the same field and value (emotion marks use an "emotion." prefix on data-metric).
     marks = page.eval_on_selector_all("[data-value]", """els => els.map(e => {
         const r = e.getBoundingClientRect();
+        const field = e.dataset.metric.replace(/^emotion\\./, "");
+        const scope = e.closest("section") || document.body;
+        const labelled = [...scope.querySelectorAll("[data-raw]")].some(s =>
+            s.dataset.metric === field && s.getClientRects().length > 0 &&
+            Number(JSON.parse(s.dataset.raw)) === Number(e.dataset.value));
+        const parent = e.parentElement, track = parent.getBoundingClientRect();
+        // Intended length: a bar's declared fraction of its track, or a flex segment's share of its container.
+        let expected = null;
+        // A declared fraction is of the chart's track, even when the mark sits inside another mark.
+        if (e.dataset.frac !== undefined) {
+            const host = e.closest(".htrack") || parent;
+            expected = Number(e.dataset.frac) * host.getBoundingClientRect().width;
+        }
+        else if (e.classList.contains("seg")) {
+            const sibs = [...parent.children].filter(s => s.dataset && s.dataset.value !== undefined);
+            const gap = parseFloat(getComputedStyle(parent).columnGap) || 0;
+            const total = sibs.reduce((a, s) => a + Number(s.dataset.value), 0);
+            expected = (track.width - gap * (sibs.length - 1)) * Number(e.dataset.value) / total;
+        }
         return { run: e.dataset.run, metric: e.dataset.metric, value: e.dataset.value,
-                 label: e.dataset.label, w: r.width, h: r.height }; })""")
+                 label: e.dataset.label, w: r.width, h: r.height, labelled,
+                 scale: e.dataset.scale || null, trackW: track.width, expected }; })""")
+    # Bars that claim one scale (same data-scale group) must sit in tracks of equal width,
+    # or a label's width silently stretches some bars relative to others.
+    groups = {}
+    for mk in marks:
+        if mk["scale"] and float(mk["value"]) > 0:
+            groups.setdefault(mk["scale"], []).append(mk["trackW"])
+    for name, widths in groups.items():
+        check(max(widths) - min(widths) <= 1.0,
+              f"[{run}] scale group '{name}': track widths differ {min(widths):.1f}-{max(widths):.1f}px")
+        # A track too narrow for its values pins bars to the 2px floor and erases their proportions.
+        check(min(widths) >= MIN_TRACK_PX,
+              f"[{run}] scale group '{name}': track only {min(widths):.1f}px wide (< {MIN_TRACK_PX}px)")
+    for mk in marks:
+        if mk["expected"] is not None and float(mk["value"]) > 0:
+            check(abs(mk["w"] - max(MIN_PX, mk["expected"])) <= LENGTH_TOLERANCE_PX,
+                  f"[{run}] mark {mk['metric']} ({mk['label']}): drawn {mk['w']:.2f}px, value implies {mk['expected']:.2f}px")
     for mk in marks:
         where = f"[{run}] mark {mk['metric']} ({mk['label']})"
         check(all(mk[k] not in (None, "") for k in ("run", "metric", "value", "label")), f"{where}: missing data attribute")
@@ -144,6 +186,7 @@ def check_marks(page, run):
         if float(mk["value"]) > 0:
             check(mk["w"] >= MIN_PX and mk["h"] >= MIN_PX,
                   f"{where}: value {mk['value']} renders at {mk['w']:.2f}x{mk['h']:.2f}px (< {MIN_PX}px)")
+            check(mk["labelled"], f"{where}: value {mk['value']} has no visible label with its true value")
     return len(marks)
 
 
@@ -199,8 +242,13 @@ def check_filters(page, run):
     rows = predictions(run)
     labels = load_file(f"runs/{run}/metrics.json")["labels"]
     columns = load_file(f"runs/{run}/metrics.json")["confusion_matrix"]["columns"]
+    # The page only offers a prediction option (e.g. Unparsed) when that answer occurs in the run.
+    offered = [c for c in columns if page.locator(f'#f-pred option[value="{c}"]').count()]
+    for c in columns:
+        if c not in offered:
+            check(not any(r["prediction"] == c for r in rows), f"[{run}] prediction '{c}' occurs but has no filter option")
     cases = [{}, {"result": "match"}, {"result": "miss"}]
-    cases += [{"truth": t} for t in labels] + [{"pred": c} for c in columns]
+    cases += [{"truth": t} for t in labels] + [{"pred": c} for c in offered]
     cases += [{"query": q} for q in ["gift", "SCAM", "  card ", "zzqqxx-no-match"]]
     cases += [
         {"result": "miss", "truth": labels[-1]},
@@ -235,6 +283,23 @@ def check_filters(page, run):
     page.click("#f-reset")
     check(len(visible_ids(page)) == len(rows), f"[{run}] reset does not restore all {len(rows)} rows")
     return len(cases)
+
+
+def check_cell_contrast(page, run):
+    """Heatmap and cross-tab cell text must reach 4.5:1 against its own fill (recolor-proof)."""
+    worst = page.evaluate("""() => {
+        const ctx = document.createElement("canvas").getContext("2d");
+        const rgb = c => { ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = "#000"; ctx.fillStyle = c; ctx.fillRect(0, 0, 1, 1);
+                           return [...ctx.getImageData(0, 0, 1, 1).data.slice(0, 3)]; };
+        const lum = ([r, g, b]) => [r, g, b].map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; })
+                                    .reduce((a, v, i) => a + v * [0.2126, 0.7152, 0.0722][i], 0);
+        return [...document.querySelectorAll(".cell")].filter(c => c.getClientRects().length).map(c => {
+            const bg = getComputedStyle(c).backgroundColor, fg = getComputedStyle(c.querySelector(".count") || c).color;
+            const [a, b] = [lum(rgb(bg)), lum(rgb(fg))].sort((x, y) => y - x);
+            return { label: c.dataset.label, ratio: (a + 0.05) / (b + 0.05) };
+        }).sort((x, y) => x.ratio - y.ratio).slice(0, 3); }""")
+    for cell in worst:
+        check(cell["ratio"] >= 4.5, f"[{run}] cell '{cell['label']}' text contrast {cell['ratio']:.2f}:1 (< 4.5)")
 
 
 def check_untagged_percentages(page, run):
@@ -272,6 +337,7 @@ def main():
             print(f"[{run}] {n_metrics} metric numbers and {n_marks} chart marks checked")
             n_cases = check_filters(page, run)
             check_untagged_percentages(page, run)
+            check_cell_contrast(page, run)
             # Rendering slips that no number check catches: stringified DOM nodes, missing fields.
             # Review text is customer data and may legitimately contain these words; check everything else.
             body = page.evaluate("""() => { const c = document.body.cloneNode(true);

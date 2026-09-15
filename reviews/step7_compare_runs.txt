@@ -1,0 +1,165 @@
+{
+  "note": "Rates are fractions in [0, 1]; *_minus_* fields are differences of fractions (display as points).",
+  "sources": [
+    "runs/first100_v1/metrics.json",
+    "runs/first100_v3/metrics.json",
+    "runs/balanced150_v3/metrics.json",
+    "runs/first100_v2/emotion_metrics.json",
+    "runs/first100_v3/emotion_metrics.json",
+    "runs/balanced150_v3/emotion_metrics.json"
+  ],
+  "first100_v1_accuracy": 0.97,
+  "first100_v1_majority_baseline": 0.93,
+  "first100_v1_margin_over_baseline": 0.039999999999999925,
+  "first100_v1_negative_support": 7,
+  "first100_v3_accuracy": 0.95,
+  "balanced150_v3_accuracy": 0.7333333333333333,
+  "accuracy_balanced150_v3_minus_first100_v3": -0.21666666666666667,
+  "first100_v3_majority_baseline": 0.93,
+  "balanced150_v3_majority_baseline": 0.3333333333333333,
+  "first100_v3_margin_over_baseline": 0.019999999999999907,
+  "balanced150_v3_margin_over_baseline": 0.39999999999999997,
+  "first100_v3_balanced_accuracy": 0.6559139784946236,
+  "balanced150_v3_balanced_accuracy": 0.7333333333333334,
+  "first100_v3_macro_f1": 0.6038647342995169,
+  "balanced150_v3_macro_f1": 0.704316562113259,
+  "first100_v3_truth_counts": {
+    "POSITIVE": 93,
+    "NEUTRAL": 2,
+    "NEGATIVE": 5
+  },
+  "balanced150_v3_truth_counts": {
+    "POSITIVE": 50,
+    "NEUTRAL": 50,
+    "NEGATIVE": 50
+  },
+  "first100_v3_recall": {
+    "POSITIVE": 0.967741935483871,
+    "NEUTRAL": 0.0,
+    "NEGATIVE": 1.0
+  },
+  "balanced150_v3_recall": {
+    "POSITIVE": 0.96,
+    "NEUTRAL": 0.34,
+    "NEGATIVE": 0.9
+  },
+  "balanced150_v3_neutral_to_neutral": 17,
+  "balanced150_v3_neutral_to_negative": 25,
+  "balanced150_v3_neutral_to_positive": 8,
+  "balanced150_v3_negative_to_neutral": 4,
+  "balanced150_v3_positive_to_neutral": 2,
+  "balanced150_v3_negative_to_positive": 1,
+  "balanced150_v3_positive_to_negative": 0,
+  "balanced150_v3_neutral_to_negative_share": 0.5,
+  "balanced150_v3_neutral_to_positive_share": 0.16,
+  "balanced150_v3_neutral_recall": 0.34,
+  "balanced150_v3_neutral_precision": 0.7391304347826086,
+  "balanced150_v3_negative_precision": 0.6428571428571429,
+  "balanced150_v3_predicted_negative": 70,
+  "balanced150_v3_neutral_errors_to_negative_minus_negative_errors_to_neutral": 21,
+  "balanced150_v3_neutral_main_destination": "NEGATIVE",
+  "interval_method": "Wilson score 95% interval, [low, high] as fractions",
+  "first100_v1_accuracy_wilson95": [
+    0.9154806357094722,
+    0.9897454759759611
+  ],
+  "first100_v3_accuracy_wilson95": [
+    0.8882495307680808,
+    0.9784563208456318
+  ],
+  "balanced150_v3_accuracy_wilson95": [
+    0.6573854995109168,
+    0.7976283864506473
+  ],
+  "balanced150_v3_neutral_recall_wilson95": [
+    0.2243694922250009,
+    0.478461739497674
+  ],
+  "balanced150_v3_neutral_to_negative_share_wilson95": [
+    0.3664451431682858,
+    0.6335548568317143
+  ],
+  "balanced150_v3_neutral_to_positive_share_wilson95": [
+    0.08337420678033404,
+    0.2851421606303499
+  ],
+  "population_pool_sizes": {
+    "NEGATIVE": 14178,
+    "NEUTRAL": 3270,
+    "POSITIVE": 134913
+  },
+  "population_weights": {
+    "NEGATIVE": 0.09305530942957843,
+    "NEUTRAL": 0.021462185204875264,
+    "POSITIVE": 0.8854825053655463
+  },
+  "population_weighting_note": "balanced150_v3 row shares weighted by the included-row pool size of each three-class truth label in the whole file; rough estimate, see analysis",
+  "balanced150_v3_population_weighted_accuracy": 0.9411101266072025,
+  "balanced150_v3_population_weighted_precision": {
+    "POSITIVE": 0.9938095461715041,
+    "NEUTRAL": 0.14547481472176862,
+    "NEGATIVE": 0.8864204734911636
+  },
+  "balanced150_v3_population_weighted_share_of_negative_predictions_from_neutral": 0.11357952650883628,
+  "balanced150_v3_population_weighted_share_of_neutral_predictions_from_positive": 0.7061141816354729,
+  "balanced150_v3_share_of_negative_predictions_from_neutral": 0.35714285714285715,
+  "balanced_accuracy_balanced150_v3_minus_first100_v3": 0.07741935483870976,
+  "first100_v3_accuracy_expected_from_balanced150_v3_recalls": 0.9446000000000001,
+  "first100_v3_neutral_support": 2,
+  "first100_v3_balanced_accuracy_if_one_more_neutral_right": 0.8225806451612904,
+  "balanced150_v3_positive_recall_wilson95": [
+    0.8653990931249298,
+    0.9889611156723801
+  ],
+  "balanced150_v3_population_weighted_accuracy_at_positive_recall_low": 0.8573426785776128,
+  "interval_confidence": 0.95,
+  "first100_v1_vs_majority_class": "POSITIVE",
+  "first100_v1_vs_majority_model_only_right": 6,
+  "first100_v1_vs_majority_shortcut_only_right": 2,
+  "first100_v1_vs_majority_exact_mcnemar_p": 0.2890625,
+  "first100_v2_vs_majority_class": "POSITIVE",
+  "first100_v2_vs_majority_model_only_right": 6,
+  "first100_v2_vs_majority_shortcut_only_right": 2,
+  "first100_v2_vs_majority_exact_mcnemar_p": 0.2890625,
+  "first100_v3_vs_majority_class": "POSITIVE",
+  "first100_v3_vs_majority_model_only_right": 5,
+  "first100_v3_vs_majority_shortcut_only_right": 3,
+  "first100_v3_vs_majority_exact_mcnemar_p": 0.7265625,
+  "balanced150_v3_vs_majority_class": "POSITIVE",
+  "balanced150_v3_vs_majority_model_only_right": 62,
+  "balanced150_v3_vs_majority_shortcut_only_right": 2,
+  "balanced150_v3_vs_majority_exact_mcnemar_p": 2.2562247209423347e-16,
+  "first100_v2_emotion_agreement_all_rows": 0.2,
+  "first100_v2_emotion_agreement_excluding_none_and_tie": 0.5263157894736842,
+  "first100_v2_emotion_constant_baseline_emotion": "joy",
+  "first100_v2_emotion_constant_baseline_all_rows": 0.22,
+  "first100_v2_emotion_llm_minus_constant_all_rows": -0.01999999999999999,
+  "first100_v2_emotion_llm_minus_constant_excluding_none_and_tie": -0.052631578947368474,
+  "first100_v2_emotion_best_constant_emotion": "joy",
+  "first100_v2_emotion_best_constant_all_rows": 0.22,
+  "first100_v2_emotion_best_constant_excluding_none_and_tie": 0.5789473684210527,
+  "first100_v2_emotion_llm_minus_best_constant_all_rows": -0.01999999999999999,
+  "first100_v2_emotion_llm_minus_best_constant_excluding_none_and_tie": -0.052631578947368474,
+  "first100_v3_emotion_agreement_all_rows": 0.2,
+  "first100_v3_emotion_agreement_excluding_none_and_tie": 0.5263157894736842,
+  "first100_v3_emotion_constant_baseline_emotion": "joy",
+  "first100_v3_emotion_constant_baseline_all_rows": 0.22,
+  "first100_v3_emotion_llm_minus_constant_all_rows": -0.01999999999999999,
+  "first100_v3_emotion_llm_minus_constant_excluding_none_and_tie": -0.052631578947368474,
+  "first100_v3_emotion_best_constant_emotion": "joy",
+  "first100_v3_emotion_best_constant_all_rows": 0.22,
+  "first100_v3_emotion_best_constant_excluding_none_and_tie": 0.5789473684210527,
+  "first100_v3_emotion_llm_minus_best_constant_all_rows": -0.01999999999999999,
+  "first100_v3_emotion_llm_minus_best_constant_excluding_none_and_tie": -0.052631578947368474,
+  "balanced150_v3_emotion_agreement_all_rows": 0.10666666666666667,
+  "balanced150_v3_emotion_agreement_excluding_none_and_tie": 0.2711864406779661,
+  "balanced150_v3_emotion_constant_baseline_emotion": "anger",
+  "balanced150_v3_emotion_constant_baseline_all_rows": 0.02666666666666667,
+  "balanced150_v3_emotion_llm_minus_constant_all_rows": 0.08,
+  "balanced150_v3_emotion_llm_minus_constant_excluding_none_and_tie": 0.2033898305084746,
+  "balanced150_v3_emotion_best_constant_emotion": "anticipation",
+  "balanced150_v3_emotion_best_constant_all_rows": 0.14666666666666667,
+  "balanced150_v3_emotion_best_constant_excluding_none_and_tie": 0.3728813559322034,
+  "balanced150_v3_emotion_llm_minus_best_constant_all_rows": -0.039999999999999994,
+  "balanced150_v3_emotion_llm_minus_best_constant_excluding_none_and_tie": -0.1016949152542373
+}

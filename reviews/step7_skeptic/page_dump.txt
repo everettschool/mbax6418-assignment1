@@ -1,0 +1,1108 @@
+default run: balanced150_v3 tab order: ['balanced150_v3', 'first100_v3', 'first100_v2', 'first100_v1']
+
+##### balanced150_v3
+order: ['run-blurb', 'sec-verdict', 'sec-describe', 'grid-2', 'sec-emotion', 'sec-reviews', 'sec-method']
+--- run-blurb
+150 reviews: for each three-class truth label, random.Random(42).sample(sorted included review_ids of that class, 50); ids saved to sample_ids.json. Prompt prompts/sentiment_v3.txt, three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative.
+Stars in this sample: 1★ 43 · 2★ 7 · 3★ 50 · 4★ 0 · 5★ 50.
+--- sec-verdict
+Agreement with the star rating
+
+73.3%
+
+110 of 150 reviews match the answer key.
+
+Unreadable model replies: 0 (counted as wrong).
+
+The model matches the stars on 73.3% of these reviews. Answering any one class every time would score 33.3%.
+
+Every class is the same size in this sample, so that shortcut reflects the sample's forced mix, not real reviews. Weakest class: Neutral, 17 of 50 right (34.0%).
+
+Always-one-class baseline
+33.3%
+every class is the same size here
+Balanced accuracy
+73.3%
+average hit rate per class; baseline 33.3%
+Macro F1
+70.4%
+precision and recall, classes weighted equally
+
+Answer key in this run: Positive 50 (33.3%) · Neutral 50 (33.3%) · Negative 50 (33.3%). The model's answers per class are compared just below.
+--- sec-describe
+What was scored, and what the model answered
+
+The star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.
+
+Stars in the whole file
+
+152,410 reviews in the Gift Cards file.
+
+5★
+128,248
+84.1%
+4★
+6,692
+4.4%
+3★
+3,271
+2.1%
+2★
+1,873
+1.2%
+1★
+12,326
+8.1%
+
+Stars in this run's sample
+
+150 reviews scored in this run.
+
+5★
+50
+33.3%
+4★
+0
+0.0%
+3★
+50
+33.3%
+2★
+7
+4.7%
+1★
+43
+28.7%
+
+Stars' answer vs the model's answer, per class
+
+Reviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.
+
+Positive
+Stars
+50
+Model
+57
+Neutral
+Stars
+50
+Model
+23
+Negative
+Stars
+50
+Model
+70
+Unparsed
+Stars
+— not a star class
+Model
+0
+--- sec-confusion
+Where the answers land
+
+Confusion matrix. Rows are the answer key from the stars; columns are the model's prediction. Slate cells on the diagonal are right; amber cells are mistakes. Darker means a bigger share of the row.
+
+STARS SAY ↓ / MODEL SAYS →
+Positive
+Neutral
+Negative
+Unparsed
+Positive
+50 reviews
+48
+96.0% of row
+2
+4.0% of row
+0
+0.0% of row
+0
+0.0% of row
+Neutral
+50 reviews
+8
+16.0% of row
+17
+34.0% of row
+25
+50.0% of row
+0
+0.0% of row
+Negative
+50 reviews
+1
+2.0% of row
+4
+8.0% of row
+45
+90.0% of row
+0
+0.0% of row
+Right (diagonal)
+Wrong
+Unparsed = the reply could not be read; always wrong
+--- sec-classes
+Right answers by class
+
+For each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.
+
+Positive
+48 of 50 · 96.0% · 2 wrong
+Neutral
+17 of 50 · 34.0% · 33 wrong
+Negative
+45 of 50 · 90.0% · 5 wrong
+Right
+Wrong
+
+When the model says a class, how often it is right (precision): Positive 84.2% · Neutral 73.9% · Negative 64.3%
+
+Each class is a third of this sample. The whole file is 88.5% positive, 2.1% neutral and 9.3% negative. Re-weighted to that mix, precision would be about: Positive 99.4% · Neutral 14.5% · Negative 88.6%, and accuracy about 94.1% (a rough estimate from this sample).
+--- sec-emotion
+Primary emotion, read two ways
+
+The model names one emotion per review. The NRC word list counts emotion words in the same title and text and takes the most frequent emotion: Tie means several emotions share the top count, None means it found no emotion words.
+
+Same emotion, all reviews
+10.7%
+16 of 150 reviews
+Leaving out reviews with no lexicon words
+12.7%
+16 of 126 reviews
+Also leaving out word-list ties
+27.1%
+16 of 59 reviews
+
+For scale: answering “anger” for every review would match the word list on 2.7% of all reviews (4 of 150) and on 6.8% where it has one winner (4 of 59). The word list tied on 67 reviews; the model's emotion is among the tied ones in 37 of them, and “anger” is among them in 6. The strongest single constant is “anticipation”, which matches the word list on 14.7% of all reviews (22 of 150); the model is at 10.7%.
+
+How often each reader picks each emotion
+
+Reviews per emotion; both bars share one scale.
+
+Model
+NRC word list
+anger
+62
+4
+anticipation
+8
+22
+disgust
+3
+2
+fear
+1
+3
+joy
+46
+8
+sadness
+6
+2
+surprise
+2
+0
+trust
+22
+18
+Tie
+—
+67
+None
+—
+24
+Unparsed
+0
+—
+
+Where the two readers land together
+
+Rows: the model's emotion. Columns: the word list's. Slate diagonal = same emotion; ochre = different, darker = more reviews.
+
+MODEL ↓ WORDS →
+anger
+anticip.
+disgust
+fear
+joy
+sadness
+surprise
+trust
+Tie
+None
+anger
+4
+12
+2
+3
+1
+2
+0
+9
+25
+4
+anticipation
+0
+1
+0
+0
+0
+0
+0
+0
+5
+2
+disgust
+0
+0
+0
+0
+0
+0
+0
+0
+2
+1
+fear
+0
+0
+0
+0
+0
+0
+0
+0
+1
+0
+joy
+0
+2
+0
+0
+7
+0
+0
+2
+24
+11
+sadness
+0
+2
+0
+0
+0
+0
+0
+3
+1
+0
+surprise
+0
+1
+0
+0
+0
+0
+0
+0
+1
+0
+trust
+0
+4
+0
+0
+0
+0
+0
+4
+8
+6
+Unparsed
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+marks: [['rating_counts.5', '128248', 152.6, 12], ['rating_counts.4', '6692', 8.6, 12], ['rating_counts.3', '3271', 4.2, 12], ['rating_counts.2', '1873', 2.4, 12], ['rating_counts.1', '12326', 15.3, 12], ['sample_rating_counts.5', '50', 72.1, 12], ['sample_rating_counts.3', '50', 72.1, 12], ['sample_rating_counts.2', '7', 10.1, 12], ['sample_rating_counts.1', '43', 62, 12], ['truth_distribution.counts.POSITIVE', '50', 109.8, 10], ['prediction_distribution.counts.POSITIVE', '57', 125.2, 10], ['truth_distribution.counts.NEUTRAL', '50', 109.8, 10], ['prediction_distribution.counts.NEUTRAL', '23', 50.5, 10], ['truth_distribution.counts.NEGATIVE', '50', 109.8, 10], ['prediction_distribution.counts.NEGATIVE', '70', 153.7, 10], ['per_class.POSITIVE.correct', '48', 154.3, 18], ['per_class.POSITIVE.wrong', '2', 6.4, 18], ['per_class.NEUTRAL.correct', '17', 51.9, 18], ['per_class.NEUTRAL.wrong', '33', 100.7, 18], ['per_class.NEGATIVE.correct', '45', 144.6, 18], ['per_class.NEGATIVE.wrong', '5', 16.1, 18]]
+
+##### first100_v3
+order: ['run-blurb', 'sec-verdict', 'sec-describe', 'grid-2', 'sec-emotion', 'sec-reviews', 'sec-method']
+--- run-blurb
+100 reviews: first 100 review_ids in file order that pass the inclusion rule. Prompt prompts/sentiment_v3.txt, three classes; answer key from the stars: 4–5★ positive, 3★ neutral, 1–2★ negative.
+Stars in this sample: 1★ 4 · 2★ 1 · 3★ 2 · 4★ 2 · 5★ 91.
+--- sec-verdict
+Agreement with the star rating
+
+95.0%
+
+95 of 100 reviews match the answer key.
+
+Unreadable model replies: 0 (counted as wrong).
+
+The model matches the stars on 95.0% of these reviews. Answering “Positive” every time would score 93.0%.
+
+Reading the reviews is worth +2.0 pts over that shortcut. Weakest class: Neutral, 0 of 2 right (0.0%).
+
+Always-“Positive” baseline
+93.0%
+share of the most common class
+Balanced accuracy
+65.6%
+average hit rate per class; baseline 33.3%
+Macro F1
+60.4%
+precision and recall, classes weighted equally
+
+Answer key in this run: Positive 93 (93.0%) · Neutral 2 (2.0%) · Negative 5 (5.0%). The model's answers per class are compared just below.
+--- sec-describe
+What was scored, and what the model answered
+
+The star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.
+
+Stars in the whole file
+
+152,410 reviews in the Gift Cards file.
+
+5★
+128,248
+84.1%
+4★
+6,692
+4.4%
+3★
+3,271
+2.1%
+2★
+1,873
+1.2%
+1★
+12,326
+8.1%
+
+Stars in this run's sample
+
+100 reviews scored in this run.
+
+5★
+91
+91.0%
+4★
+2
+2.0%
+3★
+2
+2.0%
+2★
+1
+1.0%
+1★
+4
+4.0%
+
+Stars' answer vs the model's answer, per class
+
+Reviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.
+
+Positive
+Stars
+93
+Model
+91
+Neutral
+Stars
+2
+Model
+2
+Negative
+Stars
+5
+Model
+7
+Unparsed
+Stars
+— not a star class
+Model
+0
+--- sec-confusion
+Where the answers land
+
+Confusion matrix. Rows are the answer key from the stars; columns are the model's prediction. Slate cells on the diagonal are right; amber cells are mistakes. Darker means a bigger share of the row.
+
+STARS SAY ↓ / MODEL SAYS →
+Positive
+Neutral
+Negative
+Unparsed
+Positive
+93 reviews
+90
+96.8% of row
+2
+2.2% of row
+1
+1.1% of row
+0
+0.0% of row
+Neutral
+2 reviews
+1
+50.0% of row
+0
+0.0% of row
+1
+50.0% of row
+0
+0.0% of row
+Negative
+5 reviews
+0
+0.0% of row
+0
+0.0% of row
+5
+100.0% of row
+0
+0.0% of row
+Right (diagonal)
+Wrong
+Unparsed = the reply could not be read; always wrong
+--- sec-classes
+Right answers by class
+
+For each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.
+
+Positive
+90 of 93 · 96.8% · 3 wrong
+Neutral
+0 of 2 · 0.0% · 2 wrong
+Negative
+5 of 5 · 100.0% · 0 wrong
+Right
+Wrong
+
+When the model says a class, how often it is right (precision): Positive 98.9% · Neutral 0.0% · Negative 71.4%
+--- sec-emotion
+Primary emotion, read two ways
+
+The model names one emotion per review. The NRC word list counts emotion words in the same title and text and takes the most frequent emotion: Tie means several emotions share the top count, None means it found no emotion words.
+
+Same emotion, all reviews
+20.0%
+20 of 100 reviews
+Leaving out reviews with no lexicon words
+23.5%
+20 of 85 reviews
+Also leaving out word-list ties
+52.6%
+20 of 38 reviews
+
+For scale: answering “joy” for every review would match the word list on 22.0% of all reviews (22 of 100) and on 57.9% where it has one winner (22 of 38). The word list tied on 47 reviews; the model's emotion is among the tied ones in 45 of them, and “joy” is among them in 45.
+
+How often each reader picks each emotion
+
+Reviews per emotion; both bars share one scale.
+
+Model
+NRC word list
+anger
+7
+0
+anticipation
+2
+14
+disgust
+0
+0
+fear
+0
+0
+joy
+82
+22
+sadness
+0
+1
+surprise
+0
+0
+trust
+9
+1
+Tie
+—
+47
+None
+—
+15
+Unparsed
+0
+—
+
+Where the two readers land together
+
+Rows: the model's emotion. Columns: the word list's. Slate diagonal = same emotion; ochre = different, darker = more reviews.
+
+MODEL ↓ WORDS →
+anger
+anticip.
+disgust
+fear
+joy
+sadness
+surprise
+trust
+Tie
+None
+anger
+0
+3
+0
+0
+1
+1
+0
+1
+0
+1
+anticipation
+0
+0
+0
+0
+0
+0
+0
+0
+2
+0
+disgust
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+fear
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+joy
+0
+9
+0
+0
+20
+0
+0
+0
+44
+9
+sadness
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+surprise
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+trust
+0
+2
+0
+0
+1
+0
+0
+0
+1
+5
+Unparsed
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+marks: [['rating_counts.5', '128248', 152.6, 12], ['rating_counts.4', '6692', 8.6, 12], ['rating_counts.3', '3271', 4.2, 12], ['rating_counts.2', '1873', 2.4, 12], ['rating_counts.1', '12326', 15.3, 12], ['sample_rating_counts.5', '91', 196.8, 12], ['sample_rating_counts.4', '2', 4.3, 12], ['sample_rating_counts.3', '2', 4.3, 12], ['sample_rating_counts.2', '1', 2.2, 12], ['sample_rating_counts.1', '4', 8.6, 12], ['truth_distribution.counts.POSITIVE', '93', 153.7, 10], ['prediction_distribution.counts.POSITIVE', '91', 150.4, 10], ['truth_distribution.counts.NEUTRAL', '2', 3.3, 10], ['prediction_distribution.counts.NEUTRAL', '2', 3.3, 10], ['truth_distribution.counts.NEGATIVE', '5', 8.3, 10], ['prediction_distribution.counts.NEGATIVE', '7', 11.6, 10], ['per_class.POSITIVE.correct', '90', 155.5, 18], ['per_class.POSITIVE.wrong', '3', 5.2, 18], ['per_class.NEUTRAL.wrong', '2', 187.9, 18], ['per_class.NEGATIVE.correct', '5', 170.8, 18]]
+
+##### first100_v2
+order: ['run-blurb', 'sec-verdict', 'sec-describe', 'grid-2', 'sec-emotion', 'sec-reviews', 'sec-method']
+--- run-blurb
+100 reviews: first 100 review_ids in file order that pass the inclusion rule. Prompt prompts/sentiment_v2.txt, two classes; answer key from the stars: 4–5★ positive, 1–3★ negative.
+Stars in this sample: 1★ 4 · 2★ 1 · 3★ 2 · 4★ 2 · 5★ 91.
+--- sec-verdict
+Agreement with the star rating
+
+97.0%
+
+97 of 100 reviews match the answer key.
+
+Unreadable model replies: 0 (counted as wrong).
+
+The model matches the stars on 97.0% of these reviews. Answering “Positive” every time would score 93.0%.
+
+Reading the reviews is worth +4.0 pts over that shortcut. Weakest class: Negative, 6 of 7 right (85.7%).
+
+Always-“Positive” baseline
+93.0%
+share of the most common class
+Balanced accuracy
+91.8%
+average hit rate per class; baseline 50.0%
+Macro F1
+89.2%
+precision and recall, classes weighted equally
+
+Answer key in this run: Positive 93 (93.0%) · Negative 7 (7.0%). The model's answers per class are compared just below.
+--- sec-describe
+What was scored, and what the model answered
+
+The star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.
+
+Stars in the whole file
+
+152,410 reviews in the Gift Cards file.
+
+5★
+128,248
+84.1%
+4★
+6,692
+4.4%
+3★
+3,271
+2.1%
+2★
+1,873
+1.2%
+1★
+12,326
+8.1%
+
+Stars in this run's sample
+
+100 reviews scored in this run.
+
+5★
+91
+91.0%
+4★
+2
+2.0%
+3★
+2
+2.0%
+2★
+1
+1.0%
+1★
+4
+4.0%
+
+Stars' answer vs the model's answer, per class
+
+Reviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.
+
+Positive
+Stars
+93
+Model
+92
+Negative
+Stars
+7
+Model
+8
+Unparsed
+Stars
+— not a star class
+Model
+0
+--- sec-confusion
+Where the answers land
+
+Confusion matrix. Rows are the answer key from the stars; columns are the model's prediction. Slate cells on the diagonal are right; amber cells are mistakes. Darker means a bigger share of the row.
+
+STARS SAY ↓ / MODEL SAYS →
+Positive
+Negative
+Unparsed
+Positive
+93 reviews
+91
+97.8% of row
+2
+2.2% of row
+0
+0.0% of row
+Negative
+7 reviews
+1
+14.3% of row
+6
+85.7% of row
+0
+0.0% of row
+Right (diagonal)
+Wrong
+Unparsed = the reply could not be read; always wrong
+--- sec-classes
+Right answers by class
+
+For each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.
+
+Positive
+91 of 93 · 97.8% · 2 wrong
+Negative
+6 of 7 · 85.7% · 1 wrong
+Right
+Wrong
+
+When the model says a class, how often it is right (precision): Positive 98.9% · Negative 75.0%
+--- sec-emotion
+Primary emotion, read two ways
+
+The model names one emotion per review. The NRC word list counts emotion words in the same title and text and takes the most frequent emotion: Tie means several emotions share the top count, None means it found no emotion words.
+
+Same emotion, all reviews
+20.0%
+20 of 100 reviews
+Leaving out reviews with no lexicon words
+23.5%
+20 of 85 reviews
+Also leaving out word-list ties
+52.6%
+20 of 38 reviews
+
+For scale: answering “joy” for every review would match the word list on 22.0% of all reviews (22 of 100) and on 57.9% where it has one winner (22 of 38). The word list tied on 47 reviews; the model's emotion is among the tied ones in 45 of them, and “joy” is among them in 45.
+
+How often each reader picks each emotion
+
+Reviews per emotion; both bars share one scale.
+
+Model
+NRC word list
+anger
+7
+0
+anticipation
+3
+14
+disgust
+1
+0
+fear
+0
+0
+joy
+80
+22
+sadness
+0
+1
+surprise
+0
+0
+trust
+9
+1
+Tie
+—
+47
+None
+—
+15
+Unparsed
+0
+—
+
+Where the two readers land together
+
+Rows: the model's emotion. Columns: the word list's. Slate diagonal = same emotion; ochre = different, darker = more reviews.
+
+MODEL ↓ WORDS →
+anger
+anticip.
+disgust
+fear
+joy
+sadness
+surprise
+trust
+Tie
+None
+anger
+0
+3
+0
+0
+1
+1
+0
+1
+0
+1
+anticipation
+0
+1
+0
+0
+0
+0
+0
+0
+2
+0
+disgust
+0
+0
+0
+0
+1
+0
+0
+0
+0
+0
+fear
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+joy
+0
+8
+0
+0
+19
+0
+0
+0
+44
+9
+sadness
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+surprise
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+trust
+0
+2
+0
+0
+1
+0
+0
+0
+1
+5
+Unparsed
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+marks: [['rating_counts.5', '128248', 152.6, 12], ['rating_counts.4', '6692', 8.6, 12], ['rating_counts.3', '3271', 4.2, 12], ['rating_counts.2', '1873', 2.4, 12], ['rating_counts.1', '12326', 15.3, 12], ['sample_rating_counts.5', '91', 196.8, 12], ['sample_rating_counts.4', '2', 4.3, 12], ['sample_rating_counts.3', '2', 4.3, 12], ['sample_rating_counts.2', '1', 2.2, 12], ['sample_rating_counts.1', '4', 8.6, 12], ['truth_distribution.counts.POSITIVE', '93', 153.7, 10], ['prediction_distribution.counts.POSITIVE', '92', 152.1, 10], ['truth_distribution.counts.NEGATIVE', '7', 11.6, 10], ['prediction_distribution.counts.NEGATIVE', '8', 13.2, 10], ['per_class.POSITIVE.correct', '91', 157.3, 18], ['per_class.POSITIVE.wrong', '2', 3.5, 18], ['per_class.NEGATIVE.correct', '6', 152, 18], ['per_class.NEGATIVE.wrong', '1', 25.3, 18]]
+
+##### first100_v1
+order: ['run-blurb', 'sec-verdict', 'sec-describe', 'grid-2', 'sec-emotion', 'sec-reviews', 'sec-method']
+--- run-blurb
+100 reviews: first 100 review_ids in file order that pass the inclusion rule. Prompt prompts/sentiment_v1.txt, two classes; answer key from the stars: 4–5★ positive, 1–3★ negative.
+Stars in this sample: 1★ 4 · 2★ 1 · 3★ 2 · 4★ 2 · 5★ 91.
+--- sec-verdict
+Agreement with the star rating
+
+97.0%
+
+97 of 100 reviews match the answer key.
+
+Unreadable model replies: 0 (counted as wrong).
+
+The model matches the stars on 97.0% of these reviews. Answering “Positive” every time would score 93.0%.
+
+Reading the reviews is worth +4.0 pts over that shortcut. Weakest class: Negative, 6 of 7 right (85.7%).
+
+Always-“Positive” baseline
+93.0%
+share of the most common class
+Balanced accuracy
+91.8%
+average hit rate per class; baseline 50.0%
+Macro F1
+89.2%
+precision and recall, classes weighted equally
+
+Answer key in this run: Positive 93 (93.0%) · Negative 7 (7.0%). The model's answers per class are compared just below.
+--- sec-describe
+What was scored, and what the model answered
+
+The star mix of the whole file next to this run's sample, and for each class how many reviews the stars assign versus how many the model assigned.
+
+Stars in the whole file
+
+152,410 reviews in the Gift Cards file.
+
+5★
+128,248
+84.1%
+4★
+6,692
+4.4%
+3★
+3,271
+2.1%
+2★
+1,873
+1.2%
+1★
+12,326
+8.1%
+
+Stars in this run's sample
+
+100 reviews scored in this run.
+
+5★
+91
+91.0%
+4★
+2
+2.0%
+3★
+2
+2.0%
+2★
+1
+1.0%
+1★
+4
+4.0%
+
+Stars' answer vs the model's answer, per class
+
+Reviews per class. In each pair the upper bar is what the stars say and the lower bar is what the model said.
+
+Positive
+Stars
+93
+Model
+92
+Negative
+Stars
+7
+Model
+8
+Unparsed
+Stars
+— not a star class
+Model
+0
+--- sec-confusion
+Where the answers land
+
+Confusion matrix. Rows are the answer key from the stars; columns are the model's prediction. Slate cells on the diagonal are right; amber cells are mistakes. Darker means a bigger share of the row.
+
+STARS SAY ↓ / MODEL SAYS →
+Positive
+Negative
+Unparsed
+Positive
+93 reviews
+91
+97.8% of row
+2
+2.2% of row
+0
+0.0% of row
+Negative
+7 reviews
+1
+14.3% of row
+6
+85.7% of row
+0
+0.0% of row
+Right (diagonal)
+Wrong
+Unparsed = the reply could not be read; always wrong
+--- sec-classes
+Right answers by class
+
+For each answer-key class: how many reviews the model got right (recall). Small classes swing on one or two reviews.
+
+Positive
+91 of 93 · 97.8% · 2 wrong
+Negative
+6 of 7 · 85.7% · 1 wrong
+Right
+Wrong
+
+When the model says a class, how often it is right (precision): Positive 98.9% · Negative 75.0%
+marks: [['rating_counts.5', '128248', 152.6, 12], ['rating_counts.4', '6692', 8.6, 12], ['rating_counts.3', '3271', 4.2, 12], ['rating_counts.2', '1873', 2.4, 12], ['rating_counts.1', '12326', 15.3, 12], ['sample_rating_counts.5', '91', 196.8, 12], ['sample_rating_counts.4', '2', 4.3, 12], ['sample_rating_counts.3', '2', 4.3, 12], ['sample_rating_counts.2', '1', 2.2, 12], ['sample_rating_counts.1', '4', 8.6, 12], ['truth_distribution.counts.POSITIVE', '93', 153.7, 10], ['prediction_distribution.counts.POSITIVE', '92', 152.1, 10], ['truth_distribution.counts.NEGATIVE', '7', 11.6, 10], ['prediction_distribution.counts.NEGATIVE', '8', 13.2, 10], ['per_class.POSITIVE.correct', '91', 157.3, 18], ['per_class.POSITIVE.wrong', '2', 3.5, 18], ['per_class.NEGATIVE.correct', '6', 152, 18], ['per_class.NEGATIVE.wrong', '1', 25.3, 18]]
+400px balanced150_v3 [['rating_counts.2', '1873', 2.5]]
+400px first100_v3 [['rating_counts.2', '1873', 2.5], ['sample_rating_counts.2', '1', 2.2], ['truth_distribution.counts.NEUTRAL', '2', 3.4], ['prediction_distribution.counts.NEUTRAL', '2', 3.4]]
+400px first100_v2 [['rating_counts.2', '1873', 2.5], ['sample_rating_counts.2', '1', 2.2]]
+400px first100_v1 [['rating_counts.2', '1873', 2.5], ['sample_rating_counts.2', '1', 2.2]]
