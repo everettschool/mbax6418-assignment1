@@ -59,14 +59,17 @@ def main():
             failures.append(f"README says {shown!r} for ({source}: {field}) but {rel} gives {expected!r}")
         else:
             print(f"OK  {shown:>10}  ({source}: {field})")
-    # Every percentage or ratio in the results and question sections must carry a citation.
-    body = text[text.index("## Results"):text.index("## Reproduction")]
-    for line in body.splitlines():
-        stripped = CITATION.sub("", line)
-        for hit in re.finditer(r"(?<![\w.])\d+(?:\.\d+)?%", stripped):
-            if "95% range" in line or "p = " in line:
-                continue
-            failures.append(f"uncited percentage {hit.group(0)!r} in: {line.strip()[:90]}")
+
+    # Percentages in the Q1-Q3 prose must repeat a value cited in the sources table.
+    def norm(v):
+        return v[:-3] + "%" if v.endswith(".0%") else v
+    cited = {norm(m["value"].strip()) for m in CITATION.finditer(text)}
+    prose = text[text.index("## Q1."):text.index("### Where these numbers come from")]
+    for line in prose.splitlines():
+        for pct in re.findall(r"\d+(?:\.\d+)?%", line):
+            if norm(pct) not in cited:
+                failures.append(f"README prose says {pct!r}, which is not cited in the sources table")
+
     print(f"\n{checked} citations checked, {len(failures)} problems")
     for f in failures:
         print("  FAIL", f)

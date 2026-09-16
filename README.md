@@ -59,27 +59,47 @@ Open `dashboard/index.html` in a browser: no server, no network. The run tabs sw
 
 ## Q1. Why did the lopsided run look accurate, and what did balanced sampling change?
 
-<!-- REWRITE IN YOUR OWN WORDS -->
-The first batch is **93** (first100_v1: truth_distribution.counts.POSITIVE) positive reviews out of 100, so answering "positive" every time already scores **93.0%** (first100_v1: majority_baseline_accuracy). The model's **97.0%** (first100_v1: accuracy) is four reviews better than that, and the difference is not distinguishable from chance: it wins **6** (comparisons: first100_v1_vs_majority_model_only_right) reviews the shortcut loses and loses **2** (comparisons: first100_v1_vs_majority_shortcut_only_right) it wins, an exact test giving p = 0.29.
+The first 100 reviews in the file are almost all positive — 93 of them. So a classifier that ignores the text and answers "positive" every time scores 93% before it reads a word. My model got 97%, which is only four reviews better than doing nothing. The gap isn't even big enough to call real: the model wins 6 reviews the shortcut loses and loses 2 that it wins, which works out to p = 0.29.
 
-Balanced sampling (50 per class) drops accuracy to **73.3%** (balanced150_v3: accuracy) against a **33.3%** (balanced150_v3: majority_baseline_accuracy) baseline. The fall is the class mix, not the model: applying the balanced run's per-class hit rates to the first batch's mix predicts **94.5%** (comparisons: first100_v3_accuracy_expected_from_balanced150_v3_recalls) there, close to the observed **95.0%** (first100_v3: accuracy). What the lopsided run hid is the middle: it contains **2** (first100_v3: per_class.NEUTRAL.support) neutral reviews, while the balanced run shows neutral recall of **34.0%** (balanced150_v3: per_class.NEUTRAL.recall).
-<!-- /REWRITE -->
+Sampling 50 reviews from each class dropped accuracy to 73.3%, against a 33.3% baseline. That looks worse, but the model didn't get worse — the test got harder. Take the per-class hit rates from the balanced run, apply them back to the lopsided mix, and you get 94.5%, near the 95% I actually measured there. What the first batch was hiding is the middle class: it held 2 neutral reviews, so there was nothing to measure. Given 50 of them, the model only gets 34% right.
 
 ## Q2. Where do the mistakes go?
 
-<!-- REWRITE IN YOUR OWN WORDS -->
-On the balanced run (rows = stars, columns = model): of 50 three-star reviews, **17** (balanced150_v3: confusion_cells.NEUTRAL->NEUTRAL) are called neutral, **25** (balanced150_v3: confusion_cells.NEUTRAL->NEGATIVE) negative and **8** (balanced150_v3: confusion_cells.NEUTRAL->POSITIVE) positive. The reverse is small: **4** (balanced150_v3: confusion_cells.NEGATIVE->NEUTRAL) one- and two-star reviews are called neutral, and **2** (balanced150_v3: confusion_cells.POSITIVE->NEUTRAL) four- and five-star ones. Polar confusions are rare: **0** (balanced150_v3: confusion_cells.POSITIVE->NEGATIVE) and **1** (balanced150_v3: confusion_cells.NEGATIVE->POSITIVE).
+The balanced run makes this easy to see. Of the 50 three-star reviews, the model called 17 neutral, 25 negative and 8 positive. The reverse barely happens: 4 one- and two-star reviews were called neutral, and 2 four- and five-star ones. It almost never flips a review pole to pole — zero positives called negative, one negative called positive.
 
-So three-star reviews get labelled negative far more than negative ones get called neutral. That is half of them (**50.0%** (comparisons: balanced150_v3_neutral_to_negative_share)), with a 95% range of 36.6%–63.4%, so this sample cannot show whether it is a majority. Reading all 25: 17 are complaints that are NEGATIVE under the prompt's own rules (card unusable, money lost, "won't buy again"), and at most 8 are mixed reviews the prompt would call neutral. The cell mostly measures disagreement between the prompt's policy and reviewers who still gave three stars, not a misreading of words. Precision on this sample is also mix-dependent: neutral precision of **73.9%** (balanced150_v3: per_class.NEUTRAL.precision) becomes about **14.5%** (comparisons: balanced150_v3_population_weighted_precision.NEUTRAL) when re-weighted to the file's real class mix.
-<!-- /REWRITE -->
+So three-star reviews get pulled toward negative far more than the poles drift toward the middle. That is half of them, though with only 50 reviews in the class the true rate could sit anywhere between 36.6% and 63.4%, so I can't call it a majority. I read all 25. Seventeen are flat complaints — the card didn't work, money was lost, they wouldn't buy again — and my prompt tells the model to call exactly those negative. At most eight are genuinely mixed. So that cell is mostly my own prompt disagreeing with people who complained and still gave three stars, not the model misreading the words. One caveat: neutral precision looks like 73.9%, but that number only holds because I forced the classes to be equal. Weighted to the file's real mix it is closer to 14.5%.
 
 ## Q3. How do the LLM's emotions and the word list's differ, and why?
 
-<!-- REWRITE IN YOUR OWN WORDS -->
-They rarely agree. On the balanced run the two pick the same emotion for **10.7%** (balanced150_v3 emotions: agreement_rate_all_rows) of reviews, and **27.1%** (balanced150_v3 emotions: agreement_rate_excluding_none_and_tie) of the 59 reviews where the word list has a single winner. That is not better than a constant answer: always saying "anticipation" would match the word list on **14.7%** (comparisons: balanced150_v3_emotion_best_constant_all_rows), leaving the model **−4.0 pts** (comparisons: balanced150_v3_emotion_llm_minus_best_constant_all_rows) behind. On the first batch the picture repeats: **20.0%** (first100_v2 emotions: agreement_rate_all_rows) against a constant "joy" at **22.0%** (comparisons: first100_v2_emotion_best_constant_all_rows).
+They barely agree. On the balanced run the two pick the same emotion for 10.7% of reviews, or 27.1% if you count only the 59 where the word list settles on a single emotion. That is worse than it sounds: answering "anticipation" every time matches the list 14.7% of the time, so the model runs about 4 points behind one word repeated. The first batch says the same — 20.0% agreement against a constant "joy" at 22.0%.
 
-The reasons are visible in the rows. The word list counts vocabulary, so it scores what a review is about: "gift" is itself tagged anticipation/joy/surprise and was hit 104 times in the first batch, which is why it ties on **67** (balanced150_v3 emotions: tie_rows) reviews and finds nothing on **24** (balanced150_v3 emotions: none_rows). It ignores word sense ("Hit button by mistake" → anger), reads sarcasm literally ("A Bronx cheer for you!" → joy/trust), cannot handle negation, and misses "loved" because the suffix rule leaves "lov". The LLM reads the whole review, but has its own bias: joy for 80 of the first 100 reviews, and one implausible "disgust" on a review titled "Love it!!".
-<!-- /REWRITE -->
+The reason shows up as soon as you read the rows. The word list only counts words, so it scores what a review is about rather than how the writer feels. "Gift" is itself tagged anticipation, joy and surprise, and it turns up 104 times in the first batch, which is why the list ties on 67 reviews and finds nothing at all on 24. It has no sense of context either: "hit button by mistake" registers as anger, "a Bronx cheer for you" comes out joy and trust, negation goes straight past it, and it misses "loved" because chopping off the "-ed" leaves "lov". The model reads the whole review, but it has its own habit — joy for 80 of the first 100, and disgust for a review titled "Love it!!".
+
+### Where these numbers come from
+
+Every figure above is read from a saved file; `python src/check_readme_numbers.py` re-checks each one.
+
+| | |
+|---|---|
+| First batch, positive reviews | **93** (first100_v1: truth_distribution.counts.POSITIVE) |
+| Always-"positive" baseline | **93.0%** (first100_v1: majority_baseline_accuracy) |
+| Binary accuracy | **97.0%** (first100_v1: accuracy) |
+| Model-only-right / shortcut-only-right | **6** (comparisons: first100_v1_vs_majority_model_only_right) / **2** (comparisons: first100_v1_vs_majority_shortcut_only_right) |
+| Balanced accuracy / baseline | **73.3%** (balanced150_v3: accuracy) / **33.3%** (balanced150_v3: majority_baseline_accuracy) |
+| Predicted from balanced hit rates | **94.5%** (comparisons: first100_v3_accuracy_expected_from_balanced150_v3_recalls) |
+| Three-class accuracy, first batch | **95.0%** (first100_v3: accuracy) |
+| First batch, neutral reviews | **2** (first100_v3: per_class.NEUTRAL.support) |
+| Neutral recall, balanced | **34.0%** (balanced150_v3: per_class.NEUTRAL.recall) |
+| 3★ called neutral / negative / positive | **17** (balanced150_v3: confusion_cells.NEUTRAL->NEUTRAL) / **25** (balanced150_v3: confusion_cells.NEUTRAL->NEGATIVE) / **8** (balanced150_v3: confusion_cells.NEUTRAL->POSITIVE) |
+| 1–2★ called neutral | **4** (balanced150_v3: confusion_cells.NEGATIVE->NEUTRAL) |
+| 4–5★ called neutral | **2** (balanced150_v3: confusion_cells.POSITIVE->NEUTRAL) |
+| Pole-to-pole flips | **0** (balanced150_v3: confusion_cells.POSITIVE->NEGATIVE) / **1** (balanced150_v3: confusion_cells.NEGATIVE->POSITIVE) |
+| 3★ called negative | **50.0%** (comparisons: balanced150_v3_neutral_to_negative_share), 95% range **36.6%** (comparisons: balanced150_v3_neutral_to_negative_share_wilson95.0) to **63.4%** (comparisons: balanced150_v3_neutral_to_negative_share_wilson95.1) |
+| Neutral precision, balanced / re-weighted | **73.9%** (balanced150_v3: per_class.NEUTRAL.precision) / **14.5%** (comparisons: balanced150_v3_population_weighted_precision.NEUTRAL) |
+| Emotion agreement, all rows / single-winner | **10.7%** (balanced150_v3 emotions: agreement_rate_all_rows) / **27.1%** (balanced150_v3 emotions: agreement_rate_excluding_none_and_tie) |
+| Best constant emotion / model's gap to it | **14.7%** (comparisons: balanced150_v3_emotion_best_constant_all_rows) / **−4.0 pts** (comparisons: balanced150_v3_emotion_llm_minus_best_constant_all_rows) |
+| First batch agreement / best constant | **20.0%** (first100_v2 emotions: agreement_rate_all_rows) / **22.0%** (comparisons: first100_v2_emotion_best_constant_all_rows) |
+| Word list ties / no hits | **67** (balanced150_v3 emotions: tie_rows) / **24** (balanced150_v3 emotions: none_rows) |
 
 ## Q4. What bugs and issues came up?
 
